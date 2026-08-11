@@ -1,7 +1,11 @@
-<!DOCTYPE html><html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Connections | Talent Exchange</title><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<title>My Connections | Talent Exchange</title><style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -10,255 +14,645 @@
 }
 
 body{
+
     min-height:100vh;
+
     color:white;
+
     background:
-    radial-gradient(circle at top right,#3b2470,transparent 35%),
-    linear-gradient(135deg,#080812,#15132b);
+    radial-gradient(
+        circle at top right,
+        #3b2470,
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #080812,
+        #15132b
+    );
+
 }
 
+
+/* NAVIGATION */
+
 nav{
+
     height:75px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 7%;
+
     background:rgba(10,10,20,.75);
-    border-bottom:1px solid rgba(255,255,255,.1);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.1);
+
     backdrop-filter:blur(15px);
+
 }
 
 .logo{
+
     font-size:22px;
+
     font-weight:bold;
+
 }
 
 .back{
+
     color:white;
+
     text-decoration:none;
+
     padding:10px 16px;
-    border:1px solid rgba(255,255,255,.2);
+
+    border:
+    1px solid rgba(255,255,255,.2);
+
     border-radius:10px;
+
 }
 
+
+/* MAIN */
+
 .container{
-    width:88%;
-    max-width:1000px;
+
+    width:90%;
+
+    max-width:1100px;
+
     margin:45px auto;
+
 }
 
 .heading{
+
     text-align:center;
+
     margin-bottom:35px;
+
 }
 
 .heading h1{
+
     font-size:40px;
+
     margin-bottom:10px;
+
 }
 
 .heading p{
+
     color:#aaa;
+
 }
+
+
+/* CONNECTION GRID */
 
 .connections{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:20px;
+
 }
 
+
+/* CARD */
+
 .card{
+
     padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:22px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
     transition:.3s;
+
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    background:rgba(255,255,255,.1);
+
+    transform:
+    translateY(-7px);
+
+    background:
+    rgba(255,255,255,.1);
+
 }
 
+
+/* AVATAR */
+
 .avatar{
+
     width:65px;
+
     height:65px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-radius:50%;
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
-    font-size:28px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
+
+    font-size:30px;
+
     margin-bottom:18px;
+
 }
 
 .card h2{
-    margin-bottom:8px;
+
+    margin-bottom:7px;
+
 }
 
 .card p{
+
     color:#aaa;
+
     margin-bottom:12px;
+
 }
 
-.tag{
+.skill{
+
     display:inline-block;
+
     padding:7px 12px;
+
     border-radius:20px;
-    background:rgba(150,120,255,.2);
+
+    background:
+    rgba(150,120,255,.2);
+
     color:#c9baff;
+
     font-size:13px;
+
+    margin-bottom:20px;
+
 }
 
-.connected{
-    margin-top:18px;
-    padding:9px;
-    text-align:center;
-    border-radius:10px;
-    background:rgba(80,200,120,.12);
-    color:#86efac;
+
+/* STATUS */
+
+.status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:#7ee787;
+
     font-size:13px;
+
+    margin-bottom:18px;
+
 }
+
+.dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#4caf50;
+
+}
+
+
+/* CHAT BUTTON */
+
+.chat-button{
+
+    width:100%;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #8066ff,
+        #bd82ff
+    );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.chat-button:hover{
+
+    transform:
+    translateY(-2px);
+
+}
+
+
+/* EMPTY */
 
 .empty{
+
+    display:none;
+
     text-align:center;
-    padding:60px 20px;
+
     color:#aaa;
+
+    padding:50px;
+
 }
 
-.empty h2{
-    color:white;
-    margin-bottom:10px;
-}
 
-.find{
-    display:inline-block;
-    margin-top:22px;
-    padding:13px 22px;
-    border-radius:12px;
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
+/* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
     .connections{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .connections{
+
         grid-template-columns:1fr;
+
     }
 
     .heading h1{
+
         font-size:30px;
+
     }
+
 }
-</style></head><body><nav><div class="logo">
+
+</style></head><body><!-- NAVIGATION --><nav><div class="logo">
+
     ✨ Talent Exchange
+
 </div>
+
 
 <a
     href="dashboard.html"
     class="back"
 >
+
     ← Dashboard
+
 </a>
 
-</nav><div class="container"><div class="heading">
+</nav><!-- MAIN --><div class="container"><div class="heading">
 
     <h1>
         My Connections 🤝
     </h1>
 
     <p>
-        People you've connected with through Talent Exchange.
+        Chat, learn and connect with your skill exchange partners.
     </p>
 
 </div>
 
 
+<!-- CONNECTIONS -->
+
 <div
     class="connections"
     id="connections"
-></div>
+>
+
+
+    <!-- ARJUN -->
+
+    <div class="card">
+
+        <div class="avatar">
+            👨‍💻
+        </div>
+
+        <h2>
+            Arjun
+        </h2>
+
+        <p>
+            Python & Programming
+        </p>
+
+        <span class="skill">
+            Python
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Arjun','Python')"
+        >
+
+            💬 Chat with Arjun
+
+        </button>
+
+    </div>
+
+
+    <!-- RAHUL -->
+
+    <div class="card">
+
+        <div class="avatar">
+            🎸
+        </div>
+
+        <h2>
+            Rahul
+        </h2>
+
+        <p>
+            Guitar & Music
+        </p>
+
+        <span class="skill">
+            Guitar
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Rahul','Guitar')"
+        >
+
+            💬 Chat with Rahul
+
+        </button>
+
+    </div>
+
+
+    <!-- PRIYA -->
+
+    <div class="card">
+
+        <div class="avatar">
+            🎬
+        </div>
+
+        <h2>
+            Priya
+        </h2>
+
+        <p>
+            Video Editing
+        </p>
+
+        <span class="skill">
+            Video Editing
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Priya','Video Editing')"
+        >
+
+            💬 Chat with Priya
+
+        </button>
+
+    </div>
+
+
+    <!-- NEHA -->
+
+    <div class="card">
+
+        <div class="avatar">
+            🎨
+        </div>
+
+        <h2>
+            Neha
+        </h2>
+
+        <p>
+            Graphic Design
+        </p>
+
+        <span class="skill">
+            Design
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Neha','Graphic Design')"
+        >
+
+            💬 Chat with Neha
+
+        </button>
+
+    </div>
+
+
+    <!-- VIKRAM -->
+
+    <div class="card">
+
+        <div class="avatar">
+            💻
+        </div>
+
+        <h2>
+            Vikram
+        </h2>
+
+        <p>
+            Web Development
+        </p>
+
+        <span class="skill">
+            Web Development
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Vikram','Web Development')"
+        >
+
+            💬 Chat with Vikram
+
+        </button>
+
+    </div>
+
+
+    <!-- SNEHA -->
+
+    <div class="card">
+
+        <div class="avatar">
+            📸
+        </div>
+
+        <h2>
+            Sneha
+        </h2>
+
+        <p>
+            Photography
+        </p>
+
+        <span class="skill">
+            Photography
+        </span>
+
+        <div class="status">
+
+            <span class="dot"></span>
+
+            Connected
+
+        </div>
+
+        <button
+            class="chat-button"
+            onclick="openChat('Sneha','Photography')"
+        >
+
+            💬 Chat with Sneha
+
+        </button>
+
+    </div>
+
+
+</div>
 
 
 <div
     class="empty"
     id="empty"
-    style="display:none;"
 >
 
     <h2>
-        No connections yet 🤝
+        🤝 No Connections Yet
     </h2>
 
     <p>
-        Find someone with a skill you want to learn.
+        Start exchanging skills to build connections.
     </p>
-
-    <a
-        href="find-skills.html"
-        class="find"
-    >
-        🔎 Find Skills
-    </a>
 
 </div>
 
 </div><script>
 
-const connectionList =
-    JSON.parse(
-        localStorage.getItem("connections") || "[]"
+
+/* OPEN CHAT */
+
+function openChat(name,skill){
+
+    localStorage.setItem(
+        "activeChatName",
+        name
+    );
+
+    localStorage.setItem(
+        "activeChatSkill",
+        skill
     );
 
 
-const container =
-    document.getElementById("connections");
-
-const empty =
-    document.getElementById("empty");
-
-
-if(connectionList.length === 0){
-
-    empty.style.display = "block";
-
-}else{
-
-    connectionList.forEach((connection,index) => {
-
-        container.innerHTML += `
-
-            <div class="card">
-
-                <div class="avatar">
-                    🤝
-                </div>
-
-                <h2>
-                    ${connection.name}
-                </h2>
-
-                <p>
-                    Can teach you:
-                </p>
-
-                <span class="tag">
-                    ${connection.skill}
-                </span>
-
-                <div class="connected">
-                    🟢 Connected
-                </div>
-
-            </div>
-
-        `;
-
-    });
+    window.location.href =
+        "chat.html";
 
 }
 
-</script></body>
-</html>
+
+</script></body></html>
