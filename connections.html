@@ -10,28 +10,19 @@
 body{
     min-height:100vh;
     color:white;
-
     background:
     radial-gradient(circle at top right,#3b2470,transparent 35%),
     linear-gradient(135deg,#080812,#15112b);
 }
-
-
-/* NAVBAR */
 
 nav{
     height:75px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 7%;
-
     background:rgba(10,10,20,.8);
-
-    border-bottom:
-    1px solid rgba(255,255,255,.1);
-
+    border-bottom:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(15px);
 }
 
@@ -43,22 +34,14 @@ nav{
 .back{
     color:white;
     text-decoration:none;
-
     padding:10px 16px;
-
-    border:
-    1px solid rgba(255,255,255,.2);
-
+    border:1px solid rgba(255,255,255,.2);
     border-radius:10px;
 }
-
-
-/* MAIN */
 
 .container{
     width:90%;
     max-width:1100px;
-
     margin:45px auto;
 }
 
@@ -76,69 +59,34 @@ nav{
     color:#aaa;
 }
 
-
-/* CONNECTION GRID */
-
 .connections{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
-
-/* CARD */
-
 .card{
-
     padding:25px;
-
     border-radius:22px;
-
-    background:
-    rgba(255,255,255,.07);
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
     transition:.3s;
 }
 
 .card:hover{
-
     transform:translateY(-6px);
-
-    background:
-    rgba(255,255,255,.11);
+    background:rgba(255,255,255,.1);
 }
 
-
-/* AVATAR */
-
 .avatar{
-
     width:65px;
     height:65px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
-    background:
-    linear-gradient(
-        135deg,
-        #8066ff,
-        #bd82ff
-    );
-
+    background:linear-gradient(135deg,#8066ff,#bd82ff);
     font-size:30px;
-
     margin-bottom:18px;
 }
 
@@ -151,101 +99,74 @@ nav{
     margin-bottom:12px;
 }
 
-
-/* SKILL */
-
 .skill{
-
     display:inline-block;
-
     padding:7px 12px;
-
-    margin-bottom:18px;
-
+    margin-bottom:16px;
     border-radius:20px;
-
-    background:
-    rgba(150,120,255,.2);
-
+    background:rgba(150,120,255,.2);
     color:#c9baff;
-
     font-size:13px;
 }
 
-
-/* STATUS */
-
 .status{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
-    color:#7ee787;
-
+    color:#6ee77d;
     font-size:13px;
-
     margin-bottom:18px;
 }
 
 .dot{
-
     width:8px;
     height:8px;
-
     border-radius:50%;
-
     background:#4caf50;
 }
 
-
-/* CHAT BUTTON */
-
 .chat-button{
-
     width:100%;
-
     padding:14px;
-
     border:none;
-
     border-radius:12px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #8066ff,
-        #bd82ff
-    );
-
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
     color:white;
-
     font-size:15px;
-
     font-weight:bold;
-
     cursor:pointer;
-
-    display:block;
-
 }
 
 .chat-button:hover{
-
     transform:translateY(-2px);
-
 }
 
+.empty{
+    text-align:center;
+    padding:60px 20px;
+    color:#aaa;
+}
 
-/* MOBILE */
+.empty h2{
+    color:white;
+    margin-bottom:10px;
+}
+
+.find-button{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
 
 @media(max-width:900px){
 
     .connections{
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
@@ -262,276 +183,199 @@ nav{
 
 }
 
-</style></head><body><!-- NAVIGATION --><nav><div class="logo">
+</style></head><body><nav><div class="logo">
     ✨ Talent Exchange
 </div>
 
-<a
-    href="dashboard.html"
-    class="back"
->
+<a href="dashboard.html" class="back">
     ← Dashboard
 </a>
 
-</nav><!-- MAIN --><div class="container"><div class="heading">
+</nav><div class="container"><div class="heading">
 
     <h1>
         My Connections 🤝
     </h1>
 
     <p>
-        Chat and connect with your skill exchange partners.
+        People you connected with through Talent Exchange.
     </p>
 
 </div>
 
 
-<div class="connections">
-
-
-    <!-- ARJUN -->
-
-    <div class="card">
-
-        <div class="avatar">
-            👨‍💻
-        </div>
-
-        <h2>
-            Arjun
-        </h2>
-
-        <p>
-            Python & Programming
-        </p>
-
-        <span class="skill">
-            Python
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Arjun','Python')"
-        >
-
-            💬 Chat with Arjun
-
-        </button>
-
-    </div>
-
-
-    <!-- RAHUL -->
-
-    <div class="card">
-
-        <div class="avatar">
-            🎸
-        </div>
-
-        <h2>
-            Rahul
-        </h2>
-
-        <p>
-            Guitar & Music
-        </p>
-
-        <span class="skill">
-            Guitar
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Rahul','Guitar')"
-        >
-
-            💬 Chat with Rahul
-
-        </button>
-
-    </div>
-
-
-    <!-- PRIYA -->
-
-    <div class="card">
-
-        <div class="avatar">
-            🎬
-        </div>
-
-        <h2>
-            Priya
-        </h2>
-
-        <p>
-            Video Editing
-        </p>
-
-        <span class="skill">
-            Video Editing
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Priya','Video Editing')"
-        >
-
-            💬 Chat with Priya
-
-        </button>
-
-    </div>
-
-
-    <!-- NEHA -->
-
-    <div class="card">
-
-        <div class="avatar">
-            🎨
-        </div>
-
-        <h2>
-            Neha
-        </h2>
-
-        <p>
-            Graphic Design
-        </p>
-
-        <span class="skill">
-            Design
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Neha','Graphic Design')"
-        >
-
-            💬 Chat with Neha
-
-        </button>
-
-    </div>
-
-
-    <!-- VIKRAM -->
-
-    <div class="card">
-
-        <div class="avatar">
-            💻
-        </div>
-
-        <h2>
-            Vikram
-        </h2>
-
-        <p>
-            Web Development
-        </p>
-
-        <span class="skill">
-            Web Development
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Vikram','Web Development')"
-        >
-
-            💬 Chat with Vikram
-
-        </button>
-
-    </div>
-
-
-    <!-- SNEHA -->
-
-    <div class="card">
-
-        <div class="avatar">
-            📸
-        </div>
-
-        <h2>
-            Sneha
-        </h2>
-
-        <p>
-            Photography
-        </p>
-
-        <span class="skill">
-            Photography
-        </span>
-
-        <div class="status">
-
-            <span class="dot"></span>
-
-            Connected
-
-        </div>
-
-        <button
-            class="chat-button"
-            onclick="openChat('Sneha','Photography')"
-        >
-
-            💬 Chat with Sneha
-
-        </button>
-
-    </div>
-
-
-</div>
+<div
+    class="connections"
+    id="connections"
+></div>
 
 </div><script>
+
+
+const defaultPeople = [
+
+    {
+        name:"Arjun",
+        skill:"Python",
+        emoji:"👨‍💻"
+    },
+
+    {
+        name:"Rahul",
+        skill:"Guitar",
+        emoji:"🎸"
+    },
+
+    {
+        name:"Priya",
+        skill:"Video Editing",
+        emoji:"🎬"
+    },
+
+    {
+        name:"Neha",
+        skill:"Graphic Design",
+        emoji:"🎨"
+    },
+
+    {
+        name:"Vikram",
+        skill:"Web Development",
+        emoji:"💻"
+    },
+
+    {
+        name:"Sneha",
+        skill:"Photography",
+        emoji:"📸"
+    }
+
+];
+
+
+function loadConnections(){
+
+    const box =
+        document.getElementById(
+            "connections"
+        );
+
+
+    let savedConnections =
+
+        JSON.parse(
+
+            localStorage.getItem(
+                "myConnections"
+            ) || "[]"
+
+        );
+
+
+    /*
+       If accepted connections exist,
+       show only those.
+    */
+
+    let people = savedConnections;
+
+
+    /*
+       Prototype fallback:
+       If no accepted connection exists,
+       show demo connection.
+    */
+
+    if(people.length === 0){
+
+        people = [
+
+            {
+                name:"Arjun",
+                skill:"Python",
+                emoji:"👨‍💻"
+            }
+
+        ];
+
+    }
+
+
+    box.innerHTML = "";
+
+
+    people.forEach(person => {
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "card";
+
+
+        card.innerHTML = `
+
+            <div class="avatar">
+
+                ${person.emoji || "🤝"}
+
+            </div>
+
+
+            <h2>
+
+                ${escapeHTML(person.name)}
+
+            </h2>
+
+
+            <p>
+
+                ${escapeHTML(person.skill)}
+
+            </p>
+
+
+            <span class="skill">
+
+                ${escapeHTML(person.skill)}
+
+            </span>
+
+
+            <div class="status">
+
+                <span class="dot"></span>
+
+                Connected
+
+            </div>
+
+
+            <button
+                class="chat-button"
+                onclick="openChat(
+                    '${escapeJS(person.name)}',
+                    '${escapeJS(person.skill)}'
+                )"
+            >
+
+                💬 Chat with
+                ${escapeHTML(person.name)}
+
+            </button>
+
+        `;
+
+
+        box.appendChild(card);
+
+    });
+
+}
 
 
 function openChat(name,skill){
@@ -546,10 +390,37 @@ function openChat(name,skill){
         skill
     );
 
+
     window.location.href =
         "chat.html";
 
 }
 
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+function escapeJS(text){
+
+    return String(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
+
+}
+
+
+loadConnections();
 
 </script></body></html>
