@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Offer Your Skill | Talent Exchange</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(circle at top right, #3b2470, transparent 35%),
+                linear-gradient(135deg, #080812, #15112b);
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(10,10,20,0.7);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            margin: 45px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #aaa;
+        }
+
+        .form-box {
+            padding: 30px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .field select option {
+            color: black;
+        }
+
+        .field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #8066ff, #bd82ff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .success {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            background: rgba(80,200,120,0.15);
+            border: 1px solid rgba(80,200,120,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .form-box {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ✨ Talent Exchange
+        </div>
+
+        <a href="dashboard.html" class="back">
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h1>Offer Your Skill 🤝</h1>
+
+            <p>
+                Share what you're good at and help someone learn.
+            </p>
+
+        </div>
+
+
+        <div class="form-box">
+
+            <form id="skillForm">
+
+                <div class="field">
+
+                    <label>Your Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>Skill You Can Teach</label>
+
+                    <input
+                        type="text"
+                        id="skill"
+                        placeholder="Example: Python, Guitar, Photoshop"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>Skill Level</label>
+
+                    <select id="level" required>
+
+                        <option value="">
+                            Select your level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>About Your Skill</label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Tell others what you can teach..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit"
+                >
+                    🚀 Add My Skill
+                </button>
+
+            </form>
+
+
+            <div
+                class="success"
+                id="success"
+            >
+                🎉 Your skill has been added successfully!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document
+            .getElementById("skillForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("name").value;
+
+                const skill =
+                    document.getElementById("skill").value;
+
+                const level =
+                    document.getElementById("level").value;
+
+                const description =
+                    document.getElementById("description").value;
+
+
+                localStorage.setItem(
+                    "offeredSkillName",
+                    name
+                );
+
+                localStorage.setItem(
+                    "offeredSkill",
+                    skill
+                );
+
+                localStorage.setItem(
+                    "offeredSkillLevel",
+                    level
+                );
+
+                localStorage.setItem(
+                    "offeredSkillDescription",
+                    description
+                );
+
+
+                document
+                    .getElementById("success")
+                    .style.display = "block";
+
+                document
+                    .getElementById("skillForm")
+                    .reset();
+
+            });
+
+    </script>
+
+</body>
+</html>
