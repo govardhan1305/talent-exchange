@@ -214,9 +214,7 @@
                 <h3>Arjun</h3>
                 <p>Can teach Python & Programming</p>
                 <span class="tag">Python</span>
-                <button class="request" onclick="sendRequest('Arjun')">
-                    Request Exchange
-                </button>
+                <button onclick="requestExchange('Arjun')">Request Exchange</button>
             </div>
 
             <div class="person" data-skill="guitar music">
@@ -224,9 +222,7 @@
                 <h3>Rahul</h3>
                 <p>Can teach Guitar & Music</p>
                 <span class="tag">Guitar</span>
-                <button class="request" onclick="sendRequest('Rahul')">
-                    Request Exchange
-                </button>
+                <button onclick="requestExchange('Rahul')">Request Exchange</button>
             </div>
 
             <div class="person" data-skill="video editing">
@@ -234,9 +230,7 @@
                 <h3>Priya</h3>
                 <p>Can teach Video Editing</p>
                 <span class="tag">Video Editing</span>
-                <button class="request" onclick="sendRequest('Priya')">
-                    Request Exchange
-                </button>
+                <button onclick="requestExchange('Priya')">Request Exchange</button>
             </div>
 
             <div class="person" data-skill="graphic design photoshop">
@@ -244,9 +238,12 @@
                 <h3>Neha</h3>
                 <p>Can teach Graphic Design</p>
                 <span class="tag">Design</span>
-                <button class="request" onclick="sendRequest('Neha')">
-                    Request Exchange
-                </button>
+                <script>
+function requestExchange(name) {
+    alert("🔄 Exchange request sent to " + name + "!");
+}
+</script>
+                
             </div>
 
             <div class="person" data-skill="web development html css javascript">
