@@ -83,6 +83,10 @@
             font-size: 16px;
         }
 
+        .search-box input::placeholder {
+            color: #999;
+        }
+
         .search-box button {
             padding: 0 25px;
             border: none;
@@ -153,6 +157,10 @@
             font-weight: bold;
         }
 
+        .request:hover {
+            transform: translateY(-2px);
+        }
+
         .no-results {
             display: none;
             text-align: center;
@@ -184,7 +192,10 @@
 
     <nav>
         <div class="logo">✨ Talent Exchange</div>
-        <a href="dashboard.html" class="back">← Dashboard</a>
+
+        <a href="dashboard.html" class="back">
+            ← Dashboard
+        </a>
     </nav>
 
     <div class="container">
@@ -195,6 +206,7 @@
         </div>
 
         <div class="search-box">
+
             <input
                 type="text"
                 id="search"
@@ -205,65 +217,152 @@
             <button onclick="searchSkills()">
                 Search
             </button>
+
         </div>
 
         <div class="skills" id="skills">
 
+            <!-- ARJUN -->
+
             <div class="person" data-skill="python programming">
+
                 <div class="avatar">👨‍💻</div>
+
                 <h3>Arjun</h3>
+
                 <p>Can teach Python & Programming</p>
-                <span class="tag">Python</span>
-                <button onclick="requestExchange('Arjun')">Request Exchange</button>
+
+                <span class="tag">
+                    Python
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Arjun')"
+                >
+                    Request Exchange
+                </button>
+
             </div>
+
+
+            <!-- RAHUL -->
 
             <div class="person" data-skill="guitar music">
+
                 <div class="avatar">🎸</div>
+
                 <h3>Rahul</h3>
+
                 <p>Can teach Guitar & Music</p>
-                <span class="tag">Guitar</span>
-                <button onclick="requestExchange('Rahul')">Request Exchange</button>
+
+                <span class="tag">
+                    Guitar
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Rahul')"
+                >
+                    Request Exchange
+                </button>
+
             </div>
+
+
+            <!-- PRIYA -->
 
             <div class="person" data-skill="video editing">
+
                 <div class="avatar">🎬</div>
+
                 <h3>Priya</h3>
+
                 <p>Can teach Video Editing</p>
-                <span class="tag">Video Editing</span>
-                <button onclick="requestExchange('Priya')">Request Exchange</button>
+
+                <span class="tag">
+                    Video Editing
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Priya')"
+                >
+                    Request Exchange
+                </button>
+
             </div>
+
+
+            <!-- NEHA -->
 
             <div class="person" data-skill="graphic design photoshop">
+
                 <div class="avatar">🎨</div>
+
                 <h3>Neha</h3>
+
                 <p>Can teach Graphic Design</p>
-                <span class="tag">Design</span>
-                <script>
-function requestExchange(name) {
-    alert("🔄 Exchange request sent to " + name + "!");
-}
-</script>
-                <button onclick="requestExchange('Neha')">Request Exchange</button>
+
+                <span class="tag">
+                    Design
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Neha')"
+                >
+                    Request Exchange
+                </button>
+
             </div>
+
+
+            <!-- VIKRAM -->
 
             <div class="person" data-skill="web development html css javascript">
+
                 <div class="avatar">💻</div>
+
                 <h3>Vikram</h3>
+
                 <p>Can teach Web Development</p>
-                <span class="tag">Web Development</span>
-                <button class="request" onclick="sendRequest('Vikram')">
+
+                <span class="tag">
+                    Web Development
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Vikram')"
+                >
                     Request Exchange
                 </button>
+
             </div>
 
+
+            <!-- SNEHA -->
+
             <div class="person" data-skill="photography camera">
+
                 <div class="avatar">📸</div>
+
                 <h3>Sneha</h3>
+
                 <p>Can teach Photography</p>
-                <span class="tag">Photography</span>
-                <button class="request" onclick="sendRequest('Sneha')">
+
+                <span class="tag">
+                    Photography
+                </span>
+
+                <button
+                    class="request"
+                    onclick="sendRequest('Sneha')"
+                >
                     Request Exchange
                 </button>
+
             </div>
 
         </div>
@@ -273,6 +372,7 @@ function requestExchange(name) {
         </div>
 
     </div>
+
 
     <script>
 
@@ -295,10 +395,14 @@ function requestExchange(name) {
                     .toLowerCase();
 
                 if (skill.includes(search)) {
+
                     person.style.display = "block";
                     found = true;
+
                 } else {
+
                     person.style.display = "none";
+
                 }
 
             });
@@ -307,12 +411,13 @@ function requestExchange(name) {
                 found ? "none" : "block";
         }
 
+
         function sendRequest(name) {
 
             alert(
-                "Exchange request sent to " +
+                "🤝 Exchange request sent to " +
                 name +
-                " 🤝"
+                "!"
             );
 
         }
