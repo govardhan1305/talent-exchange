@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | Talent Exchange</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(circle at top right, #3b2470, transparent 35%),
+                linear-gradient(135deg, #080812, #15112b);
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: rgba(10,10,20,0.75);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin: 45px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #aaa;
+        }
+
+        .profile-box {
+            padding: 30px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8066ff, #bd82ff);
+            font-size: 40px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .save {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #8066ff, #bd82ff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+            background: rgba(80,200,120,0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            ✨ Talent Exchange
+        </div>
+
+        <a href="dashboard.html" class="back">
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h1>My Profile 👤</h1>
+
+            <p>
+                Tell the community what you can offer.
+            </p>
+
+        </div>
+
+
+        <div class="profile-box">
+
+            <div class="avatar">
+                👤
+            </div>
+
+
+            <div class="field">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Your Main Skill</label>
+
+                <input
+                    type="text"
+                    id="skill"
+                    placeholder="Example: Cybersecurity"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>About Me</label>
+
+                <textarea
+                    id="about"
+                    placeholder="Tell others about yourself..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                class="save"
+                onclick="saveProfile()"
+            >
+                💾 Save Profile
+            </button>
+
+
+            <div
+                class="message"
+                id="message"
+            >
+                ✅ Profile saved successfully!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document.getElementById("name").value =
+            localStorage.getItem("profileName") || "";
+
+        document.getElementById("email").value =
+            localStorage.getItem("profileEmail") || "";
+
+        document.getElementById("skill").value =
+            localStorage.getItem("profileSkill") || "";
+
+        document.getElementById("about").value =
+            localStorage.getItem("profileAbout") || "";
+
+
+        function saveProfile() {
+
+            localStorage.setItem(
+                "profileName",
+                document.getElementById("name").value
+            );
+
+            localStorage.setItem(
+                "profileEmail",
+                document.getElementById("email").value
+            );
+
+            localStorage.setItem(
+                "profileSkill",
+                document.getElementById("skill").value
+            );
+
+            localStorage.setItem(
+                "profileAbout",
+                document.getElementById("about").value
+            );
+
+
+            document.getElementById("message").style.display =
+                "block";
+
+        }
+
+    </script>
+
+</body>
+</html>
