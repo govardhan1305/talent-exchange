@@ -1,512 +1,917 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Talent Exchange | Dashboard</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            color: white;
-            background:
-                radial-gradient(circle at 10% 10%, #4b267d, transparent 30%),
-                radial-gradient(circle at 90% 80%, #253b7a, transparent 30%),
-                linear-gradient(135deg, #070711, #15132b);
-        }
-
-        /* NAVIGATION */
-
-        .navbar {
-            min-height: 72px;
-            padding: 12px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-
-            background: rgba(10, 10, 20, 0.75);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-
-            backdrop-filter: blur(18px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 9px 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.12);
-            transform: translateY(-2px);
-        }
-
-        .logout {
-            background: rgba(255,70,70,0.15);
-        }
-
-        /* MAIN */
-
-        .container {
-            width: 88%;
-            max-width: 1150px;
-            margin: 45px auto;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, #9d7cff, #e19cff);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            color: #aaa;
-            font-size: 17px;
-        }
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-        /* PROFILE CARD */
+«»
 
-        .profile-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+<title>Talent Exchange | Dashboard</title><style>
 
-            padding: 25px;
-            margin-bottom: 30px;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-            border-radius: 22px;
+body{
 
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
+    min-height:100vh;
 
-            backdrop-filter: blur(15px);
-        }
+    color:white;
 
-        .avatar {
-            width: 75px;
-            height: 75px;
+    background:
+    radial-gradient(
+        circle at 10% 10%,
+        #4b267d,
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 80%,
+        #253b7a,
+        transparent 30%
+    ),
+    linear-gradient(
+        135deg,
+        #070711,
+        #15132b
+    );
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+}
 
-            border-radius: 50%;
 
-            background: linear-gradient(
-                135deg,
-                #8066ff,
-                #bd82ff
-            );
+/* NAVBAR */
 
-            font-size: 32px;
-        }
+.navbar{
 
-        .profile-info h2 {
-            margin-bottom: 7px;
-        }
+    min-height:72px;
 
-        .profile-info p {
-            color: #aaa;
-        }
+    padding:12px 6%;
 
-        .profile-button {
-            margin-left: auto;
+    display:flex;
 
-            padding: 11px 18px;
+    justify-content:space-between;
 
-            border-radius: 10px;
+    align-items:center;
 
-            background: rgba(255,255,255,0.1);
+    gap:20px;
 
-            color: white;
+    background:
+    rgba(10,10,20,.8);
 
-            text-decoration: none;
-        }
+    border-bottom:
+    1px solid rgba(255,255,255,.1);
 
-        /* FEATURE GRID */
+    backdrop-filter:blur(18px);
 
-        .section-title {
-            margin-bottom: 18px;
-            font-size: 25px;
-        }
+    position:sticky;
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
+    top:0;
 
-        .feature {
-            min-height: 190px;
-            padding: 25px;
+    z-index:100;
 
-            border-radius: 20px;
+}
 
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
+.logo{
 
-            transition: 0.3s;
-        }
+    font-size:22px;
 
-        .feature:hover {
-            transform: translateY(-7px);
-            background: rgba(255,255,255,0.1);
-        }
+    font-weight:bold;
 
-        .icon {
-            font-size: 35px;
-            margin-bottom: 18px;
-        }
+    white-space:nowrap;
 
-        .feature h3 {
-            margin-bottom: 9px;
-        }
+}
 
-        .feature p {
-            color: #aaa;
-            line-height: 1.5;
-            margin-bottom: 18px;
-        }
+.nav-links{
 
-        .feature a {
-            color: #cbbcff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    display:flex;
 
-        /* FOOTER */
+    gap:8px;
 
-        footer {
-            text-align: center;
-            padding: 45px 20px;
-            color: #777;
-        }
+    flex-wrap:wrap;
 
-        /* MOBILE */
+    justify-content:flex-end;
 
-        @media (max-width: 900px) {
+}
 
-            .navbar {
-                flex-direction: column;
-            }
+.nav-links a{
 
-            .nav-links {
-                justify-content: center;
-            }
+    color:white;
 
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    text-decoration:none;
 
-        @media (max-width: 600px) {
+    padding:9px 12px;
 
-            .hero h1 {
-                font-size: 35px;
-            }
+    border-radius:10px;
 
-            .features {
-                grid-template-columns: 1fr;
-            }
+    font-size:14px;
 
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-            }
+    transition:.3s;
 
-            .profile-button {
-                margin-left: 0;
-            }
-        }
-    </style>
-</head>
+}
 
+.nav-links a:hover{
 
-<body>
+    background:
+    rgba(255,255,255,.12);
 
+    transform:translateY(-2px);
 
-    <!-- NAVIGATION -->
+}
 
-    <nav class="navbar">
+.logout{
 
-        <div class="logo">
-            ✨ Talent Exchange
-        </div>
+    background:
+    rgba(255,70,70,.15);
 
-        <div class="nav-links">
+}
 
-            <a href="dashboard.html">
-                🏠 Home
-            </a>
 
-            <a href="profile.html">
-                👤 Profile
-            </a>
+/* MAIN */
 
-            <a href="find-skills.html">
-                🔎 Find Skills
-            </a>
+.container{
 
-            <a href="offer-skill.html">
-                💡 Offer Skill
-            </a>
+    width:88%;
 
-            <a href="requests.html">
-                📨 Requests
-            </a>
+    max-width:1150px;
 
-            <a
-                href="login.html"
-                class="logout"
-                onclick="logout()"
-            >
-                🚪 Logout
-            </a>
+    margin:40px auto;
 
-        </div>
+}
 
-    </nav>
 
+/* HERO */
 
-    <!-- MAIN -->
+.hero{
 
-    <main class="container">
+    text-align:center;
 
+    padding:35px 20px;
 
-        <!-- HERO -->
+}
 
-        <section class="hero">
+.hero h1{
 
-            <h1>
-                Welcome to
-                <span>Talent Exchange</span> 🚀
-            </h1>
+    font-size:48px;
 
-            <p>
-                Learn something new. Share what you know.
-                Connect with people who grow together.
-            </p>
+    margin-bottom:12px;
 
-        </section>
+}
 
+.hero h1 span{
 
-        <!-- PROFILE -->
+    background:
+    linear-gradient(
+        90deg,
+        #9d7cff,
+        #e19cff
+    );
 
-        <section class="profile-card">
+    -webkit-background-clip:text;
 
-            <div class="avatar">
-                👤
-            </div>
+    color:transparent;
 
-            <div class="profile-info">
+}
 
-                <h2 id="userName">
-                    Welcome, Talent Explorer
-                </h2>
+.hero p{
 
-                <p>
-                    Build your profile and start exchanging skills.
-                </p>
+    color:#aaa;
 
-            </div>
+    font-size:17px;
 
-            <a
-                href="profile.html"
-                class="profile-button"
-            >
-                View Profile →
-            </a>
+}
 
-        </section>
 
+/* PROFILE */
 
-        <!-- FEATURES -->
+.profile-card{
 
-        <h2 class="section-title">
-            What do you want to do?
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border-radius:22px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+}
+
+.avatar{
+
+    width:75px;
+    height:75px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
+
+    font-size:32px;
+
+}
+
+.profile-info{
+
+    flex:1;
+
+}
+
+.profile-info h2{
+
+    margin-bottom:7px;
+
+}
+
+.profile-info p{
+
+    color:#aaa;
+
+}
+
+.profile-button{
+
+    padding:11px 18px;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.1);
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+
+/* STATS */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:35px;
+
+}
+
+.stat{
+
+    padding:22px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+}
+
+.stat-icon{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.stat-number{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+
+}
+
+.stat-label{
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
+
+
+/* SECTION */
+
+.section-title{
+
+    font-size:25px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* FEATURES */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+.feature{
+
+    min-height:205px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    transition:.3s;
+
+}
+
+.feature:hover{
+
+    transform:translateY(-7px);
+
+    background:
+    rgba(255,255,255,.1);
+
+}
+
+.icon{
+
+    font-size:35px;
+
+    margin-bottom:18px;
+
+}
+
+.feature h3{
+
+    margin-bottom:9px;
+
+}
+
+.feature p{
+
+    color:#aaa;
+
+    line-height:1.5;
+
+    margin-bottom:18px;
+
+}
+
+.feature a{
+
+    color:#cbbcff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    color:#777;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .navbar{
+
+        flex-direction:column;
+
+    }
+
+    .nav-links{
+
+        justify-content:center;
+
+    }
+
+    .features{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+
+        font-size:35px;
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .profile-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .profile-button{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
+
+</style></head><body><!-- NAVIGATION --><nav class="navbar"><div class="logo">
+
+    ✨ Talent Exchange
+
+</div>
+
+
+<div class="nav-links">
+
+    <a href="dashboard.html">
+        🏠 Home
+    </a>
+
+    <a href="profile.html">
+        👤 Profile
+    </a>
+
+    <a href="find-skills.html">
+        🔎 Find Skills
+    </a>
+
+    <a href="offer-skill.html">
+        💡 Offer Skill
+    </a>
+
+    <a href="requests.html">
+        📨 Requests
+    </a>
+
+    <a href="connections.html">
+        🤝 Connections
+    </a>
+
+    <a
+        href="login.html"
+        class="logout"
+        onclick="logout()"
+    >
+        🚪 Logout
+    </a>
+
+</div>
+
+</nav><!-- MAIN --><main class="container"><!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+
+        Welcome to
+        <span>Talent Exchange</span> 🚀
+
+    </h1>
+
+
+    <p>
+
+        Learn something new.
+        Share what you know.
+        Grow together.
+
+    </p>
+
+</section>
+
+
+<!-- PROFILE CARD -->
+
+<section class="profile-card">
+
+    <div class="avatar">
+
+        👤
+
+    </div>
+
+
+    <div class="profile-info">
+
+        <h2 id="userName">
+
+            Welcome, Talent Explorer 👋
+
         </h2>
 
 
-        <section class="features">
+        <p id="userSkill">
+
+            Add your skill to start exchanging knowledge.
+
+        </p>
+
+    </div>
 
 
-            <!-- FIND SKILLS -->
+    <a
+        href="profile.html"
+        class="profile-button"
+    >
 
-            <div class="feature">
+        Edit Profile →
 
-                <div class="icon">
-                    🔎
-                </div>
+    </a>
 
-                <h3>
-                    Find Skills
-                </h3>
-
-                <p>
-                    Discover people who can teach
-                    the skills you want to learn.
-                </p>
-
-                <a href="find-skills.html">
-                    Explore →
-                </a>
-
-            </div>
+</section>
 
 
-            <!-- OFFER SKILL -->
+<!-- STATS -->
 
-            <div class="feature">
-
-                <div class="icon">
-                    💡
-                </div>
-
-                <h3>
-                    Offer Your Skill
-                </h3>
-
-                <p>
-                    Share your knowledge and
-                    help someone learn.
-                </p>
-
-                <a href="offer-skill.html">
-                    Add Skill →
-                </a>
-
-            </div>
+<section class="stats">
 
 
-            <!-- REQUESTS -->
+    <div class="stat">
 
-            <div class="feature">
+        <div class="stat-icon">
+            🤝
+        </div>
 
-                <div class="icon">
-                    📨
-                </div>
+        <div
+            class="stat-number"
+            id="connectionCount"
+        >
+            0
+        </div>
 
-                <h3>
-                    Exchange Requests
-                </h3>
+        <div class="stat-label">
+            Connections
+        </div>
 
-                <p>
-                    View incoming requests and
-                    accept or reject exchanges.
-                </p>
-
-                <a href="requests.html">
-                    View Requests →
-                </a>
-
-            </div>
+    </div>
 
 
-            <!-- PROFILE -->
+    <div class="stat">
 
-            <div class="feature">
+        <div class="stat-icon">
+            💡
+        </div>
 
-                <div class="icon">
-                    👤
-                </div>
+        <div
+            class="stat-number"
+            id="skillStatus"
+        >
+            0
+        </div>
 
-                <h3>
-                    My Profile
-                </h3>
+        <div class="stat-label">
+            Skills Offered
+        </div>
 
-                <p>
-                    Manage your name, email,
-                    skills and personal information.
-                </p>
-
-                <a href="profile.html">
-                    Edit Profile →
-                </a>
-
-            </div>
+    </div>
 
 
-        </section>
+    <div class="stat">
+
+        <div class="stat-icon">
+            📨
+        </div>
+
+        <div
+            class="stat-number"
+            id="requestStatus"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Active Request
+        </div>
+
+    </div>
 
 
-    </main>
+</section>
 
 
-    <footer>
+<!-- FEATURES -->
 
-        © 2026 Talent Exchange
-        <br>
-        Learn • Share • Connect
+<h2 class="section-title">
 
-    </footer>
+    What do you want to do?
 
-
-    <script>
-
-        /* LOAD PROFILE NAME */
-
-        const savedName =
-            localStorage.getItem("profileName");
-
-        if (savedName) {
-
-            document.getElementById("userName").textContent =
-                "Welcome, " + savedName + " 👋";
-
-        }
+</h2>
 
 
-        /* LOGOUT */
-
-        function logout() {
-
-            localStorage.removeItem("profileName");
-            localStorage.removeItem("profileEmail");
-            localStorage.removeItem("profileSkill");
-            localStorage.removeItem("profileAbout");
-
-        }
-
-    </script>
+<section class="features">
 
 
-</body>
-</html>
+    <!-- FIND -->
+
+    <div class="feature">
+
+        <div class="icon">
+            🔎
+        </div>
+
+        <h3>
+            Find Skills
+        </h3>
+
+        <p>
+
+            Discover people who can teach
+            the skills you want to learn.
+
+        </p>
+
+        <a href="find-skills.html">
+            Explore →
+        </a>
+
+    </div>
+
+
+    <!-- OFFER -->
+
+    <div class="feature">
+
+        <div class="icon">
+            💡
+        </div>
+
+        <h3>
+            Offer Your Skill
+        </h3>
+
+        <p>
+
+            Share your knowledge and
+            help someone learn.
+
+        </p>
+
+        <a href="offer-skill.html">
+            Add Skill →
+        </a>
+
+    </div>
+
+
+    <!-- CONNECTIONS -->
+
+    <div class="feature">
+
+        <div class="icon">
+            🤝
+        </div>
+
+        <h3>
+            My Connections
+        </h3>
+
+        <p>
+
+            Chat with people you've
+            connected with.
+
+        </p>
+
+        <a href="connections.html">
+            Open Connections →
+        </a>
+
+    </div>
+
+
+    <!-- REQUESTS -->
+
+    <div class="feature">
+
+        <div class="icon">
+            📨
+        </div>
+
+        <h3>
+            Exchange Requests
+        </h3>
+
+        <p>
+
+            Manage your incoming
+            skill exchange requests.
+
+        </p>
+
+        <a href="requests.html">
+            View Requests →
+        </a>
+
+    </div>
+
+
+</section>
+
+</main><footer>© 2026 Talent Exchange
+
+<br>
+
+Learn • Share • Connect
+
+</footer><script>
+
+
+/* PROFILE */
+
+const savedName =
+
+    localStorage.getItem(
+        "profileName"
+    );
+
+
+const savedSkill =
+
+    localStorage.getItem(
+        "profileSkill"
+    );
+
+
+if(savedName){
+
+    document
+        .getElementById(
+            "userName"
+        )
+        .textContent =
+            "Welcome, " +
+            savedName +
+            " 👋";
+
+}
+
+
+if(savedSkill){
+
+    document
+        .getElementById(
+            "userSkill"
+        )
+        .textContent =
+            "Your main skill: " +
+            savedSkill;
+
+}
+
+
+/* CONNECTION COUNT */
+
+const connections =
+
+    JSON.parse(
+
+        localStorage.getItem(
+            "myConnections"
+        ) || "[]"
+
+    );
+
+
+document
+    .getElementById(
+        "connectionCount"
+    )
+    .textContent =
+        connections.length;
+
+
+/* SKILL STATUS */
+
+const offeredSkill =
+
+    localStorage.getItem(
+        "offeredSkill"
+    );
+
+
+if(offeredSkill){
+
+    document
+        .getElementById(
+            "skillStatus"
+        )
+        .textContent =
+            "1";
+
+}
+
+
+/* REQUEST STATUS */
+
+const requestName =
+
+    localStorage.getItem(
+        "exchangeRequestName"
+    );
+
+
+if(requestName){
+
+    document
+        .getElementById(
+            "requestStatus"
+        )
+        .textContent =
+            "1";
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    localStorage.removeItem(
+        "profileName"
+    );
+
+    localStorage.removeItem(
+        "profileEmail"
+    );
+
+    localStorage.removeItem(
+        "profileSkill"
+    );
+
+    localStorage.removeItem(
+        "profileAbout"
+    );
+
+}
+
+
+</script></body></html>
