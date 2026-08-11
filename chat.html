@@ -4,7 +4,7 @@ content="width=device-width, initial-scale=1.0"
 
 «»
 
-<title>Connect | Talent Exchange</title><style>
+<title>Chat | Talent Exchange</title><style>
 
 *{
     box-sizing:border-box;
@@ -34,11 +34,11 @@ body{
 }
 
 
-/* NAVIGATION */
+/* NAVBAR */
 
 nav{
 
-    height:75px;
+    height:70px;
 
     display:flex;
 
@@ -46,9 +46,10 @@ nav{
 
     justify-content:space-between;
 
-    padding:0 7%;
+    padding:0 6%;
 
-    background:rgba(10,10,20,.75);
+    background:
+    rgba(10,10,20,.85);
 
     border-bottom:
     1px solid rgba(255,255,255,.1);
@@ -59,7 +60,7 @@ nav{
 
 .logo{
 
-    font-size:22px;
+    font-size:21px;
 
     font-weight:bold;
 
@@ -71,7 +72,7 @@ nav{
 
     text-decoration:none;
 
-    padding:10px 16px;
+    padding:9px 14px;
 
     border:
     1px solid rgba(255,255,255,.2);
@@ -89,12 +90,12 @@ nav{
 
     max-width:850px;
 
-    margin:25px auto;
+    margin:20px auto;
 
 }
 
 
-/* PROFILE HEADER */
+/* PROFILE */
 
 .profile{
 
@@ -102,11 +103,11 @@ nav{
 
     align-items:center;
 
-    gap:15px;
+    gap:14px;
 
-    padding:20px;
+    padding:16px 18px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     background:
     rgba(255,255,255,.07);
@@ -114,20 +115,18 @@ nav{
     border:
     1px solid rgba(255,255,255,.1);
 
-    margin-bottom:18px;
+    margin-bottom:12px;
 
 }
 
 .avatar{
 
     width:55px;
-
     height:55px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -139,21 +138,21 @@ nav{
         #bd82ff
     );
 
-    font-size:25px;
+    font-size:26px;
 
 }
 
 .profile h2{
 
-    margin-bottom:5px;
+    margin-bottom:4px;
 
 }
 
-.profile p{
+.online{
 
-    color:#aaa;
+    color:#62e27c;
 
-    font-size:14px;
+    font-size:13px;
 
 }
 
@@ -166,25 +165,25 @@ nav{
 
     grid-template-columns:1fr 1fr;
 
-    gap:15px;
+    gap:12px;
 
-    margin-bottom:18px;
+    margin-bottom:12px;
 
 }
 
 .call{
 
-    padding:18px;
+    padding:14px;
 
     border:none;
 
-    border-radius:16px;
+    border-radius:14px;
 
     color:white;
 
-    font-size:16px;
-
     font-weight:bold;
+
+    font-size:15px;
 
     cursor:pointer;
 
@@ -194,7 +193,7 @@ nav{
 
 .call:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 
 }
 
@@ -214,58 +213,58 @@ nav{
     background:
     linear-gradient(
         135deg,
-        #3b9cff,
-        #5c6cff
+        #347cff,
+        #5b69ff
     );
 
 }
 
 
-/* CHAT */
+/* CHAT BOX */
 
 .chat{
 
-    height:600px;
+    height:610px;
 
     display:flex;
 
     flex-direction:column;
 
-    border-radius:22px;
-
     overflow:hidden;
 
+    border-radius:20px;
+
     background:
-    rgba(255,255,255,.06);
+    rgba(255,255,255,.055);
 
     border:
     1px solid rgba(255,255,255,.1);
 
 }
 
-.chat-title{
 
-    padding:18px 20px;
+/* CHAT HEADER */
 
-    background:
-    rgba(255,255,255,.05);
+.chat-header{
+
+    padding:15px 18px;
 
     border-bottom:
     1px solid rgba(255,255,255,.08);
 
 }
 
-.chat-title h3{
+.chat-header h3{
 
     margin-bottom:4px;
 
 }
 
-.chat-title p{
+.chat-header p{
 
-    color:#aaa;
+    color:#999;
 
-    font-size:13px;
+    font-size:12px;
 
 }
 
@@ -276,9 +275,9 @@ nav{
 
     flex:1;
 
-    padding:20px;
-
     overflow-y:auto;
+
+    padding:18px;
 
     display:flex;
 
@@ -292,11 +291,13 @@ nav{
 
     max-width:75%;
 
-    padding:12px 15px;
+    padding:11px 14px;
 
     border-radius:16px;
 
     line-height:1.4;
+
+    font-size:14px;
 
     word-wrap:break-word;
 
@@ -308,6 +309,8 @@ nav{
 
     background:
     rgba(255,255,255,.1);
+
+    border-bottom-left-radius:4px;
 
 }
 
@@ -322,17 +325,37 @@ nav{
         #bd82ff
     );
 
+    border-bottom-right-radius:4px;
+
 }
 
 .time{
 
     display:block;
 
+    text-align:right;
+
+    font-size:9px;
+
+    opacity:.6;
+
     margin-top:4px;
 
-    font-size:10px;
+}
 
-    opacity:.65;
+
+/* TYPING */
+
+.typing{
+
+    display:none;
+
+    padding:
+    0 20px 10px;
+
+    color:#aaa;
+
+    font-size:12px;
 
 }
 
@@ -343,12 +366,38 @@ nav{
 
     display:flex;
 
-    gap:10px;
+    align-items:center;
 
-    padding:15px;
+    gap:8px;
+
+    padding:12px;
 
     background:
-    rgba(10,10,20,.8);
+    rgba(8,8,18,.9);
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+
+}
+
+.input-area button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.1);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:17px;
 
 }
 
@@ -356,7 +405,7 @@ nav{
 
     flex:1;
 
-    padding:14px;
+    padding:13px;
 
     border:none;
 
@@ -369,41 +418,27 @@ nav{
 
     color:white;
 
-    font-size:15px;
-
 }
 
 .input-area input::placeholder{
 
-    color:#999;
+    color:#888;
 
 }
 
-.input-area button{
-
-    padding:0 20px;
-
-    border:none;
-
-    border-radius:12px;
+.send{
 
     background:
     linear-gradient(
-        90deg,
+        135deg,
         #8066ff,
         #bd82ff
-    );
-
-    color:white;
-
-    font-weight:bold;
-
-    cursor:pointer;
+    ) !important;
 
 }
 
 
-/* CALL POPUP */
+/* CALL SCREEN */
 
 .call-screen{
 
@@ -418,7 +453,7 @@ nav{
     justify-content:center;
 
     background:
-    rgba(5,5,15,.96);
+    rgba(3,3,10,.97);
 
     z-index:999;
 
@@ -428,11 +463,11 @@ nav{
 
     width:90%;
 
-    max-width:450px;
-
-    text-align:center;
+    max-width:430px;
 
     padding:35px;
+
+    text-align:center;
 
     border-radius:25px;
 
@@ -440,22 +475,21 @@ nav{
     rgba(255,255,255,.08);
 
     border:
-    1px solid rgba(255,255,255,.15);
+    1px solid rgba(255,255,255,.12);
 
 }
 
 .call-avatar{
 
     width:90px;
-
     height:90px;
 
-    margin:0 auto 20px;
+    margin:
+    0 auto 18px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -510,25 +544,31 @@ nav{
 
     .container{
 
-        width:95%;
+        width:96%;
 
     }
 
     .call-buttons{
 
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
 
     }
 
     .chat{
 
-        height:550px;
+        height:600px;
 
     }
 
     .message{
 
         max-width:85%;
+
+    }
+
+    .logo{
+
+        font-size:17px;
 
     }
 
@@ -550,7 +590,7 @@ nav{
 
 </a>
 
-</nav><div class="container"><!-- CONNECTION -->
+</nav><div class="container"><!-- PROFILE -->
 
 <div class="profile">
 
@@ -563,28 +603,22 @@ nav{
 
     <div>
 
-        <h2 id="chatName">
-
+        <h2 id="personName">
             Connection
-
         </h2>
 
-
-        <p id="chatSkill">
-
-            Skill Exchange
-
-        </p>
+        <div class="online">
+            🟢 Online
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- CALL BUTTONS -->
+<!-- CALLS -->
 
 <div class="call-buttons">
-
 
     <button
         class="call video"
@@ -605,7 +639,6 @@ nav{
 
     </button>
 
-
 </div>
 
 
@@ -614,14 +647,14 @@ nav{
 <div class="chat">
 
 
-    <div class="chat-title">
+    <div class="chat-header">
 
         <h3>
-            💬 Chat
+            💬 Messages
         </h3>
 
-        <p>
-            Exchange messages and learn together.
+        <p id="skillName">
+            Skill Exchange
         </p>
 
     </div>
@@ -633,7 +666,24 @@ nav{
     ></div>
 
 
+    <div
+        class="typing"
+        id="typing"
+    >
+
+        ✍️ Typing...
+
+    </div>
+
+
     <div class="input-area">
+
+
+        <button
+            onclick="addEmoji()"
+        >
+            😊
+        </button>
 
 
         <input
@@ -641,14 +691,16 @@ nav{
             id="messageInput"
             placeholder="Type a message..."
             onkeydown="handleKey(event)"
+            oninput="showTyping()"
         >
 
 
         <button
+            class="send"
             onclick="sendMessage()"
         >
 
-            Send
+            ➤
 
         </button>
 
@@ -664,16 +716,12 @@ nav{
 
 
     <div class="call-avatar">
-
         🤝
-
     </div>
 
 
     <h2 id="callName">
-
         Connection
-
     </h2>
 
 
@@ -681,9 +729,7 @@ nav{
         class="call-status"
         id="callStatus"
     >
-
         Calling...
-
     </p>
 
 
@@ -702,9 +748,9 @@ nav{
 </div><script>
 
 
-/* CONNECTION INFO */
+/* CONNECTION */
 
-const chatName =
+const personName =
 
     localStorage.getItem(
         "activeChatName"
@@ -712,7 +758,7 @@ const chatName =
     || "Connection";
 
 
-const chatSkill =
+const skillName =
 
     localStorage.getItem(
         "activeChatSkill"
@@ -721,14 +767,15 @@ const chatSkill =
 
 
 document
-    .getElementById("chatName")
-    .textContent = chatName;
+    .getElementById("personName")
+    .textContent =
+        personName;
 
 
 document
-    .getElementById("chatSkill")
+    .getElementById("skillName")
     .textContent =
-        "Can teach: " + chatSkill;
+        "Skill: " + skillName;
 
 
 /* CHAT STORAGE */
@@ -736,8 +783,10 @@ document
 const chatKey =
 
     "chat_" +
-    chatName
-    .replace(/\s+/g,"_");
+    personName.replace(
+        /\s+/g,
+        "_"
+    );
 
 
 let messages =
@@ -748,49 +797,77 @@ let messages =
     );
 
 
+/* FIRST MESSAGE */
+
+if(messages.length === 0){
+
+    messages.push({
+
+        text:
+        "Hey! 👋 Nice to connect with you.",
+
+        type:
+        "received",
+
+        time:
+        getTime()
+
+    });
+
+    saveMessages();
+
+}
+
+
 /* DISPLAY */
 
 function displayMessages(){
 
-    const container =
+    const box =
         document.getElementById(
             "messages"
         );
 
 
-    container.innerHTML = "";
+    box.innerHTML = "";
 
 
     messages.forEach(message => {
 
-        container.innerHTML += `
+        const div =
+            document.createElement("div");
 
-            <div
-                class="message ${message.type}"
-            >
 
-                ${escapeHTML(message.text)}
+        div.className =
+            "message " +
+            message.type;
 
-                <span class="time">
 
-                    ${message.time}
+        div.innerHTML =
 
-                </span>
+            escapeHTML(
+                message.text
+            )
 
-            </div>
+            +
 
-        `;
+            `<span class="time">
+                ${message.time}
+            </span>`;
+
+
+        box.appendChild(div);
 
     });
 
 
-    container.scrollTop =
-        container.scrollHeight;
+    box.scrollTop =
+        box.scrollHeight;
 
 }
 
 
-/* SEND */
+/* SEND MESSAGE */
 
 function sendMessage(){
 
@@ -804,7 +881,7 @@ function sendMessage(){
         input.value.trim();
 
 
-    if(!text){
+    if(text === ""){
 
         return;
 
@@ -817,32 +894,64 @@ function sendMessage(){
 
         type:"sent",
 
-        time:
-        new Date()
-        .toLocaleTimeString(
-            [],
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        )
+        time:getTime()
 
     });
 
 
-    localStorage.setItem(
-
-        chatKey,
-
-        JSON.stringify(messages)
-
-    );
+    saveMessages();
 
 
     input.value = "";
 
 
     displayMessages();
+
+
+    /* FAKE REPLY */
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "typing"
+            )
+            .style.display =
+                "block";
+
+
+    },500);
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "typing"
+            )
+            .style.display =
+                "none";
+
+
+        messages.push({
+
+            text:
+            "Sounds great! 👍",
+
+            type:
+            "received",
+
+            time:
+            getTime()
+
+        });
+
+
+        saveMessages();
+
+        displayMessages();
+
+    },1500);
 
 }
 
@@ -860,14 +969,77 @@ function handleKey(event){
 }
 
 
+/* EMOJI */
+
+function addEmoji(){
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    input.value += " 😊";
+
+    input.focus();
+
+}
+
+
+/* TYPING */
+
+function showTyping(){
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+}
+
+
+/* SAVE */
+
+function saveMessages(){
+
+    localStorage.setItem(
+
+        chatKey,
+
+        JSON.stringify(messages)
+
+    );
+
+}
+
+
+/* TIME */
+
+function getTime(){
+
+    return new Date()
+        .toLocaleTimeString(
+            [],
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+}
+
+
 /* SECURITY */
 
 function escapeHTML(text){
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    div.textContent = text;
+    div.textContent =
+        text;
 
     return div.innerHTML;
 
@@ -878,43 +1050,41 @@ function escapeHTML(text){
 
 function startCall(type){
 
-    const screen =
-        document.getElementById(
+    document
+        .getElementById(
             "callScreen"
-        );
+        )
+        .style.display =
+            "flex";
 
 
-    const name =
-        document.getElementById(
+    document
+        .getElementById(
             "callName"
-        );
-
-
-    const status =
-        document.getElementById(
-            "callStatus"
-        );
-
-
-    name.textContent =
-        chatName;
+        )
+        .textContent =
+            personName;
 
 
     if(type === "video"){
 
-        status.textContent =
-            "🎥 Starting video call...";
+        document
+            .getElementById(
+                "callStatus"
+            )
+            .textContent =
+                "🎥 Starting video call...";
 
     }else{
 
-        status.textContent =
-            "📞 Starting audio call...";
+        document
+            .getElementById(
+                "callStatus"
+            )
+            .textContent =
+                "📞 Starting audio call...";
 
     }
-
-
-    screen.style.display =
-        "flex";
 
 }
 
@@ -923,10 +1093,12 @@ function startCall(type){
 
 function endCall(){
 
-    document.getElementById(
-        "callScreen"
-    ).style.display =
-        "none";
+    document
+        .getElementById(
+            "callScreen"
+        )
+        .style.display =
+            "none";
 
 }
 
@@ -934,6 +1106,5 @@ function endCall(){
 /* LOAD */
 
 displayMessages();
-
 
 </script></body></html>
