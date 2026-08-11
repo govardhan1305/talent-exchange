@@ -1,358 +1,327 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Exchange Requests | Talent Exchange</title><style>
 
-    <title>Exchange Requests | Talent Exchange</title>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+body{
+    min-height:100vh;
+    color:white;
+    background:
+    radial-gradient(circle at top right,#3b2470,transparent 35%),
+    linear-gradient(135deg,#080812,#15112b);
+}
 
-        body {
-            min-height: 100vh;
-            color: white;
-            background:
-                radial-gradient(circle at top right, #3b2470, transparent 35%),
-                linear-gradient(135deg, #080812, #15112b);
-        }
+nav{
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(10,10,20,.75);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+}
 
-        nav {
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: rgba(10,10,20,0.75);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-        }
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+.back{
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:10px;
+}
 
-        .back {
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-        }
+.container{
+    width:88%;
+    max-width:1000px;
+    margin:45px auto;
+}
 
-        .container {
-            width: 88%;
-            max-width: 1000px;
-            margin: 45px auto;
-        }
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
 
-        .heading {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+.heading h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
 
-        .heading h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+.heading p{
+    color:#aaa;
+}
 
-        .heading p {
-            color: #aaa;
-        }
+.request-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:25px;
+    margin-bottom:18px;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+}
 
-        .request-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 25px;
-            margin-bottom: 18px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+.person{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
 
-        .person {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+.avatar{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:linear-gradient(135deg,#8066ff,#bd82ff);
+    font-size:24px;
+}
 
-        .avatar {
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8066ff, #bd82ff);
-            font-size: 24px;
-        }
+.info h3{
+    margin-bottom:5px;
+}
 
-        .info h3 {
-            margin-bottom: 5px;
-        }
+.info p{
+    color:#aaa;
+}
 
-        .info p {
-            color: #aaa;
-        }
+.skill{
+    display:inline-block;
+    margin-top:8px;
+    padding:6px 11px;
+    border-radius:20px;
+    background:rgba(150,120,255,.2);
+    color:#c9baff;
+    font-size:13px;
+}
 
-        .skill {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 6px 11px;
-            border-radius: 20px;
-            background: rgba(150,120,255,0.2);
-            color: #c9baff;
-            font-size: 13px;
-        }
+.actions{
+    display:flex;
+    gap:10px;
+}
 
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
+.actions button{
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-        .actions button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 10px;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.accept{
+    background:linear-gradient(90deg,#4caf50,#67c96b);
+}
 
-        .accept {
-            background: linear-gradient(90deg, #4caf50, #67c96b);
-        }
+.reject{
+    background:rgba(255,255,255,.12);
+}
 
-        .reject {
-            background: rgba(255,255,255,0.12);
-        }
+.empty{
+    display:none;
+    text-align:center;
+    padding:50px 20px;
+    color:#aaa;
+}
 
-        .empty {
-            display: none;
-            text-align: center;
-            padding: 50px 20px;
-            color: #aaa;
-        }
+@media(max-width:700px){
 
-        @media (max-width: 700px) {
+    .request-card{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-            .request-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+    .actions{
+        width:100%;
+    }
 
-            .actions {
-                width: 100%;
-            }
+    .actions button{
+        flex:1;
+    }
 
-            .actions button {
-                flex: 1;
-            }
+    .heading h1{
+        font-size:30px;
+    }
+}
 
-            .heading h1 {
-                font-size: 30px;
-            }
-        }
-    </style>
-</head>
+</style></head><body><nav><div class="logo">
+    ✨ Talent Exchange
+</div>
 
-<body>
+<a href="dashboard.html" class="back">
+    ← Dashboard
+</a>
 
-    <nav>
+</nav><div class="container"><div class="heading">
 
-        <div class="logo">
-            ✨ Talent Exchange
-        </div>
+    <h1>
+        Exchange Requests 📨
+    </h1>
 
-        <a href="dashboard.html" class="back">
-            ← Dashboard
-        </a>
+    <p>
+        Manage your talent exchange requests.
+    </p>
 
-    </nav>
-
-
-    <div class="container">
-
-        <div class="heading">
-
-            <h1>Exchange Requests 📨</h1>
-
-            <p>
-                Manage your talent exchange requests.
-            </p>
-
-        </div>
+</div>
 
 
-        <div id="requests">
+<div id="requests"></div>
 
 
-            <div class="request-card">
+<div class="empty" id="empty">
 
-                <div class="person">
+    <h2>
+        🎉 No pending requests
+    </h2>
 
-                    <div class="avatar">
-                        👨‍💻
-                    </div>
+    <p>
+        You're all caught up!
+    </p>
 
-                    <div class="info">
+</div>
 
-                        <h3>Arjun</h3>
+</div><script>
 
-                        <p>
-                            Wants to exchange skills with you
-                        </p>
+const name =
+    localStorage.getItem("exchangeRequestName");
 
-                        <span class="skill">
-                            Python
-                        </span>
+const skill =
+    localStorage.getItem("exchangeRequestSkill");
 
-                    </div>
 
+function showRequest(){
+
+    const requests =
+        document.getElementById("requests");
+
+    if(!name){
+
+        document.getElementById("empty")
+        .style.display = "block";
+
+        return;
+    }
+
+
+    requests.innerHTML = `
+
+        <div class="request-card">
+
+            <div class="person">
+
+                <div class="avatar">
+                    🤝
                 </div>
 
+                <div class="info">
 
-                <div class="actions">
+                    <h3>${name}</h3>
 
-                    <button
-                        class="accept"
-                        onclick="acceptRequest(this)"
-                    >
-                        ✓ Accept
-                    </button>
+                    <p>
+                        Wants to exchange skills with you
+                    </p>
 
-                    <button
-                        class="reject"
-                        onclick="rejectRequest(this)"
-                    >
-                        ✕ Reject
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="request-card">
-
-                <div class="person">
-
-                    <div class="avatar">
-                        🎸
-                    </div>
-
-                    <div class="info">
-
-                        <h3>Rahul</h3>
-
-                        <p>
-                            Wants to exchange skills with you
-                        </p>
-
-                        <span class="skill">
-                            Guitar
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="actions">
-
-                    <button
-                        class="accept"
-                        onclick="acceptRequest(this)"
-                    >
-                        ✓ Accept
-                    </button>
-
-                    <button
-                        class="reject"
-                        onclick="rejectRequest(this)"
-                    >
-                        ✕ Reject
-                    </button>
+                    <span class="skill">
+                        ${skill}
+                    </span>
 
                 </div>
 
             </div>
 
 
+            <div class="actions">
+
+                <button
+                    class="accept"
+                    onclick="acceptRequest()"
+                >
+                    ✓ Accept
+                </button>
+
+                <button
+                    class="reject"
+                    onclick="rejectRequest()"
+                >
+                    ✕ Reject
+                </button>
+
+            </div>
+
         </div>
 
+    `;
 
-        <div
-            class="empty"
-            id="empty"
-        >
-            <h2>🎉 No pending requests</h2>
-            <p>
-                You're all caught up!
-            </p>
-        </div>
-
-    </div>
+}
 
 
-    <script>
+function acceptRequest(){
 
-        function acceptRequest(button) {
+    document.getElementById("requests")
+    .innerHTML = `
 
-            const card =
-                button.closest(".request-card");
+        <div class="request-card">
 
-            card.innerHTML = `
-                <div class="person">
-                    <div class="avatar">🤝</div>
+            <div class="person">
 
-                    <div class="info">
-                        <h3>Exchange Accepted!</h3>
-                        <p>You can now connect and exchange skills.</p>
-                    </div>
+                <div class="avatar">
+                    🤝
                 </div>
-            `;
 
-            checkEmpty();
+                <div class="info">
 
-        }
+                    <h3>
+                        Exchange Accepted!
+                    </h3>
+
+                    <p>
+                        You can now connect and exchange skills.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
 
 
-        function rejectRequest(button) {
+    localStorage.removeItem("exchangeRequestName");
+    localStorage.removeItem("exchangeRequestSkill");
 
-            const card =
-                button.closest(".request-card");
-
-            card.remove();
-
-            checkEmpty();
-
-        }
+}
 
 
-        function checkEmpty() {
+function rejectRequest(){
 
-            const requests =
-                document.querySelectorAll(".request-card");
+    localStorage.removeItem("exchangeRequestName");
+    localStorage.removeItem("exchangeRequestSkill");
 
-            if (requests.length === 0) {
+    document.getElementById("requests")
+    .innerHTML = "";
 
-                document.getElementById("empty").style.display =
-                    "block";
+    document.getElementById("empty")
+    .style.display = "block";
 
-            }
+}
 
-        }
 
-    </script>
+showRequest();
 
-</body>
+</script></body>
 </html>
