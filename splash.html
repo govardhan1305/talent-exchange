@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Talent Exchange</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #6c3cc7, transparent 30%),
+                radial-gradient(circle at 80% 80%, #244c9b, transparent 30%),
+                linear-gradient(135deg, #05050c, #15122b);
+        }
+
+        .splash {
+            text-align: center;
+            animation: appear 1.2s ease;
+        }
+
+        .logo {
+            width: 105px;
+            height: 105px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 30px;
+
+            font-size: 48px;
+
+            background: linear-gradient(
+                135deg,
+                #8066ff,
+                #bd82ff
+            );
+
+            box-shadow:
+                0 0 35px rgba(150,100,255,0.45);
+
+            animation: float 2s ease-in-out infinite;
+        }
+
+        h1 {
+            margin-top: 28px;
+
+            font-size: 42px;
+            letter-spacing: 2px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #bd9cff
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .tagline {
+            margin-top: 10px;
+
+            color: #aaa;
+
+            font-size: 16px;
+            letter-spacing: 3px;
+        }
+
+        .loader {
+            width: 190px;
+            height: 4px;
+
+            margin: 35px auto 15px;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.12);
+        }
+
+        .loader span {
+            display: block;
+
+            width: 45%;
+            height: 100%;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                90deg,
+                #8066ff,
+                #bd82ff
+            );
+
+            animation: loading 1.5s infinite;
+        }
+
+        .loading-text {
+            color: #888;
+            font-size: 13px;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+        @keyframes loading {
+
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(330%);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="splash">
+
+        <div class="logo">
+            ✨
+        </div>
+
+        <h1>
+            TALENT EXCHANGE
+        </h1>
+
+        <p class="tagline">
+            LEARN • SHARE • CONNECT
+        </p>
+
+        <div class="loader">
+            <span></span>
+        </div>
+
+        <p class="loading-text">
+            Preparing your experience...
+        </p>
+
+    </div>
+
+
+    <script>
+
+        setTimeout(function() {
+
+            window.location.href = "login.html";
+
+        }, 3000);
+
+    </script>
+
+</body>
+</html>
