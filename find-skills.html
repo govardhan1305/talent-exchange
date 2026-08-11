@@ -1,7 +1,5 @@
-<!DOCTYPE html><html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Find Skills | Talent Exchange</title><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Find Skills | Talent Exchange</title><style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -10,401 +8,808 @@
 }
 
 body{
+
     min-height:100vh;
+
     color:white;
+
     background:
-    radial-gradient(circle at top right,#3b2470,transparent 35%),
-    linear-gradient(135deg,#080812,#15112b);
+    radial-gradient(
+        circle at top right,
+        #3b2470,
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #080812,
+        #15112b
+    );
+
 }
 
+
+/* NAV */
+
 nav{
+
     height:75px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 7%;
-    border-bottom:1px solid rgba(255,255,255,.1);
-    background:rgba(10,10,20,.7);
+
+    background:
+    rgba(10,10,20,.8);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.1);
+
     backdrop-filter:blur(15px);
+
 }
 
 .logo{
+
     font-size:22px;
+
     font-weight:bold;
+
 }
 
 .back{
+
     color:white;
+
     text-decoration:none;
+
     padding:10px 16px;
-    border:1px solid rgba(255,255,255,.2);
+
+    border:
+    1px solid rgba(255,255,255,.2);
+
     border-radius:10px;
+
 }
 
+
+/* MAIN */
+
 .container{
-    width:86%;
+
+    width:88%;
+
     max-width:1100px;
+
     margin:45px auto;
+
 }
 
 .heading{
+
     text-align:center;
+
     margin-bottom:30px;
+
 }
 
 .heading h1{
+
     font-size:40px;
+
     margin-bottom:10px;
+
 }
 
 .heading p{
+
     color:#aaa;
+
 }
 
+
+/* SEARCH */
+
 .search-box{
+
     display:flex;
+
     gap:12px;
+
     margin-bottom:35px;
+
 }
 
 .search-box input{
+
     flex:1;
+
     padding:16px;
+
     border-radius:14px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    background:
+    rgba(255,255,255,.08);
+
     color:white;
+
     outline:none;
+
     font-size:16px;
+
 }
 
 .search-box input::placeholder{
+
     color:#999;
+
 }
 
 .search-box button{
+
     padding:0 25px;
+
     border:none;
+
     border-radius:14px;
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
+
+    background:
+    linear-gradient(
+        90deg,
+        #8066ff,
+        #bd82ff
+    );
+
     color:white;
+
     font-weight:bold;
+
     cursor:pointer;
+
 }
+
+
+/* GRID */
 
 .skills{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:20px;
+
 }
 
+
+/* PERSON */
+
 .person{
+
     padding:25px;
+
     border-radius:20px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1);
+
+    background:
+    rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
     transition:.3s;
+
 }
 
 .person:hover{
+
     transform:translateY(-5px);
+
+    background:
+    rgba(255,255,255,.1);
+
 }
 
+
+/* AVATAR */
+
 .avatar{
-    width:55px;
-    height:55px;
+
+    width:60px;
+    height:60px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-radius:50%;
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
-    font-size:24px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
+
+    font-size:27px;
+
     margin-bottom:15px;
+
 }
 
 .person h3{
+
     margin-bottom:6px;
+
 }
 
 .person p{
+
     color:#aaa;
+
     margin-bottom:12px;
+
 }
 
 .tag{
+
     display:inline-block;
+
     padding:7px 12px;
+
     border-radius:20px;
-    background:rgba(150,120,255,.2);
+
+    background:
+    rgba(150,120,255,.2);
+
     color:#c9baff;
+
     font-size:13px;
+
+    margin-bottom:16px;
+
+}
+
+.level{
+
+    color:#8fe39a;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+
 }
 
 .request{
+
     width:100%;
-    margin-top:18px;
-    padding:11px;
+
+    padding:12px;
+
     border:none;
+
     border-radius:10px;
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
+
+    background:
+    linear-gradient(
+        90deg,
+        #8066ff,
+        #bd82ff
+    );
+
     color:white;
+
     cursor:pointer;
+
     font-weight:bold;
+
 }
 
 .request:hover{
+
     transform:translateY(-2px);
+
 }
 
-.user-card{
-    border:1px solid rgba(189,130,255,.5);
-    box-shadow:0 0 25px rgba(128,102,255,.12);
-}
 
-.your-skill{
-    display:inline-block;
-    margin-bottom:15px;
-    padding:6px 10px;
-    border-radius:20px;
-    background:rgba(80,200,120,.15);
-    color:#86efac;
-    font-size:12px;
-}
+/* NO RESULTS */
 
 .no-results{
+
     display:none;
+
     text-align:center;
+
     color:#aaa;
-    padding:30px;
+
+    padding:35px;
+
 }
+
+
+/* MOBILE */
 
 @media(max-width:800px){
 
     .skills{
+
         grid-template-columns:1fr;
+
     }
 
     .search-box{
+
         flex-direction:column;
+
     }
 
     .search-box button{
+
         padding:14px;
+
     }
 
     .heading h1{
+
         font-size:30px;
+
     }
+
 }
+
 </style></head><body><nav><div class="logo">
+
     ✨ Talent Exchange
+
 </div>
 
-<a href="dashboard.html" class="back">
+
+<a
+    href="dashboard.html"
+    class="back"
+>
+
     ← Dashboard
+
 </a>
 
 </nav><div class="container"><div class="heading">
 
     <h1>
+
         Find Your Skill Match 🔎
+
     </h1>
 
+
     <p>
+
         Discover people who can teach what you want to learn.
+
     </p>
 
 </div>
 
+
+<!-- SEARCH -->
 
 <div class="search-box">
 
     <input
         type="text"
         id="search"
-        placeholder="Search skills... e.g. Python, Guitar, Editing"
-        onkeyup="searchSkills()"
+        placeholder="Search Python, Guitar, Editing..."
+        oninput="searchSkills()"
     >
 
-    <button onclick="searchSkills()">
+
+    <button
+        onclick="searchSkills()"
+    >
+
         Search
+
     </button>
 
 </div>
 
 
-<div class="skills" id="skills">
+<!-- SKILLS -->
 
-    <!-- USER'S OWN OFFERED SKILL WILL APPEAR HERE -->
+<div
+    class="skills"
+    id="skills"
+>
+
+
+    <!-- ARJUN -->
+
+    <div
+        class="person"
+        data-skill="python programming"
+    >
+
+        <div class="avatar">
+            👨‍💻
+        </div>
+
+        <h3>
+            Arjun
+        </h3>
+
+        <p>
+            Can teach Python & Programming
+        </p>
+
+        <span class="tag">
+            Python
+        </span>
+
+        <div class="level">
+            ● Advanced
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Arjun',
+                'Python'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
+
+    <!-- RAHUL -->
+
+    <div
+        class="person"
+        data-skill="guitar music"
+    >
+
+        <div class="avatar">
+            🎸
+        </div>
+
+        <h3>
+            Rahul
+        </h3>
+
+        <p>
+            Can teach Guitar & Music
+        </p>
+
+        <span class="tag">
+            Guitar
+        </span>
+
+        <div class="level">
+            ● Intermediate
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Rahul',
+                'Guitar'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
+
+    <!-- PRIYA -->
+
+    <div
+        class="person"
+        data-skill="video editing"
+    >
+
+        <div class="avatar">
+            🎬
+        </div>
+
+        <h3>
+            Priya
+        </h3>
+
+        <p>
+            Can teach Video Editing
+        </p>
+
+        <span class="tag">
+            Video Editing
+        </span>
+
+        <div class="level">
+            ● Advanced
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Priya',
+                'Video Editing'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
+
+    <!-- NEHA -->
+
+    <div
+        class="person"
+        data-skill="graphic design photoshop"
+    >
+
+        <div class="avatar">
+            🎨
+        </div>
+
+        <h3>
+            Neha
+        </h3>
+
+        <p>
+            Can teach Graphic Design
+        </p>
+
+        <span class="tag">
+            Graphic Design
+        </span>
+
+        <div class="level">
+            ● Intermediate
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Neha',
+                'Graphic Design'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
+
+    <!-- VIKRAM -->
+
+    <div
+        class="person"
+        data-skill="web development html css javascript"
+    >
+
+        <div class="avatar">
+            💻
+        </div>
+
+        <h3>
+            Vikram
+        </h3>
+
+        <p>
+            Can teach Web Development
+        </p>
+
+        <span class="tag">
+            Web Development
+        </span>
+
+        <div class="level">
+            ● Advanced
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Vikram',
+                'Web Development'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
+
+    <!-- SNEHA -->
+
+    <div
+        class="person"
+        data-skill="photography camera"
+    >
+
+        <div class="avatar">
+            📸
+        </div>
+
+        <h3>
+            Sneha
+        </h3>
+
+        <p>
+            Can teach Photography
+        </p>
+
+        <span class="tag">
+            Photography
+        </span>
+
+        <div class="level">
+            ● Intermediate
+        </div>
+
+        <button
+            class="request"
+            onclick="sendRequest(
+                'Sneha',
+                'Photography'
+            )"
+        >
+
+            🤝 Request Exchange
+
+        </button>
+
+    </div>
+
 
 </div>
 
 
-<div class="no-results" id="noResults">
-    No matching skills found 😕
+<div
+    class="no-results"
+    id="noResults"
+>
+
+    😕 No matching skills found.
+
 </div>
 
 </div><script>
 
-const offeredName =
-    localStorage.getItem("offeredSkillName");
 
-const offeredSkill =
-    localStorage.getItem("offeredSkill");
+/* ADD USER'S OWN OFFERED SKILL */
 
-const offeredLevel =
-    localStorage.getItem("offeredSkillLevel");
+function addMySkill(){
 
-const offeredDescription =
-    localStorage.getItem("offeredSkillDescription");
+    const name =
 
-
-const skillsContainer =
-    document.getElementById("skills");
+        localStorage.getItem(
+            "offeredSkillName"
+        );
 
 
-/* SAMPLE USERS */
+    const skill =
 
-const sampleUsers = [
+        localStorage.getItem(
+            "offeredSkill"
+        );
 
-    {
-        name:"Arjun",
-        skill:"Python",
-        description:"Can teach Python & Programming",
-        avatar:"👨‍💻",
-        search:"python programming"
-    },
 
-    {
-        name:"Rahul",
-        skill:"Guitar",
-        description:"Can teach Guitar & Music",
-        avatar:"🎸",
-        search:"guitar music"
-    },
+    const level =
 
-    {
-        name:"Priya",
-        skill:"Video Editing",
-        description:"Can teach Video Editing",
-        avatar:"🎬",
-        search:"video editing"
-    },
+        localStorage.getItem(
+            "offeredSkillLevel"
+        );
 
-    {
-        name:"Neha",
-        skill:"Graphic Design",
-        description:"Can teach Graphic Design",
-        avatar:"🎨",
-        search:"graphic design photoshop"
-    },
 
-    {
-        name:"Vikram",
-        skill:"Web Development",
-        description:"Can teach Web Development",
-        avatar:"💻",
-        search:"web development html css javascript"
-    },
+    const description =
 
-    {
-        name:"Sneha",
-        skill:"Photography",
-        description:"Can teach Photography",
-        avatar:"📸",
-        search:"photography camera"
+        localStorage.getItem(
+            "offeredSkillDescription"
+        );
+
+
+    if(!name || !skill){
+
+        return;
+
     }
 
-];
+
+    const skillsBox =
+
+        document.getElementById(
+            "skills"
+        );
 
 
-function createCard(user){
+    const card =
 
-    return `
+        document.createElement(
+            "div"
+        );
 
-        <div
-            class="person"
-            data-skill="${user.search}"
-        >
 
-            <div class="avatar">
-                ${user.avatar}
-            </div>
+    card.className =
+        "person";
 
-            <h3>
-                ${user.name}
-            </h3>
 
-            <p>
-                ${user.description}
-            </p>
+    card.setAttribute(
+        "data-skill",
+        skill.toLowerCase()
+    );
 
-            <span class="tag">
-                ${user.skill}
-            </span>
 
-            <button
-                class="request"
-                onclick="sendRequest('${user.name}','${user.skill}')"
-            >
-                🤝 Request Exchange
-            </button>
+    card.innerHTML = `
+
+        <div class="avatar">
+            ⭐
+        </div>
+
+
+        <h3>
+            ${escapeHTML(name)}
+        </h3>
+
+
+        <p>
+            ${escapeHTML(
+                description ||
+                "Can teach " + skill
+            )}
+        </p>
+
+
+        <span class="tag">
+            ${escapeHTML(skill)}
+        </span>
+
+
+        <div class="level">
+
+            ● ${escapeHTML(
+                level || "Beginner"
+            )}
 
         </div>
 
-    `;
 
-}
-
-
-/* ADD SAMPLE USERS */
-
-sampleUsers.forEach(user => {
-
-    skillsContainer.innerHTML +=
-        createCard(user);
-
-});
-
-
-/* ADD CURRENT USER */
-
-if(offeredSkill){
-
-    skillsContainer.innerHTML += `
-
-        <div
-            class="person user-card"
-            data-skill="${offeredSkill.toLowerCase()}"
+        <button
+            class="request"
+            onclick="sendRequest(
+                '${escapeJS(name)}',
+                '${escapeJS(skill)}'
+            )"
         >
 
-            <div class="avatar">
-                ⭐
-            </div>
+            🤝 Request Exchange
 
-            <span class="your-skill">
-                YOUR OFFERED SKILL
-            </span>
-
-            <h3>
-                ${offeredName || "You"}
-            </h3>
-
-            <p>
-                ${offeredDescription}
-            </p>
-
-            <span class="tag">
-                ${offeredSkill}
-            </span>
-
-            <p style="margin-top:10px;">
-                Level: ${offeredLevel}
-            </p>
-
-        </div>
+        </button>
 
     `;
+
+
+    skillsBox.prepend(card);
 
 }
 
@@ -414,67 +819,141 @@ if(offeredSkill){
 function searchSkills(){
 
     const search =
+
         document
         .getElementById("search")
         .value
         .toLowerCase()
         .trim();
 
+
     const people =
-        document.querySelectorAll(".person");
+
+        document.querySelectorAll(
+            ".person"
+        );
+
 
     let found = false;
+
 
     people.forEach(person => {
 
         const skill =
+
             person
-            .getAttribute("data-skill")
+            .getAttribute(
+                "data-skill"
+            )
             .toLowerCase();
 
-        if(skill.includes(search)){
 
-            person.style.display = "block";
+        const content =
+
+            person.textContent
+            .toLowerCase();
+
+
+        if(
+
+            skill.includes(search)
+            ||
+            content.includes(search)
+
+        ){
+
+            person.style.display =
+                "block";
 
             found = true;
 
         }else{
 
-            person.style.display = "none";
+            person.style.display =
+                "none";
 
         }
 
     });
 
 
-    document.getElementById("noResults")
+    document
+        .getElementById(
+            "noResults"
+        )
         .style.display =
-        found ? "none" : "block";
+
+            found
+            ? "none"
+            : "block";
 
 }
 
 
 /* SEND REQUEST */
 
-function sendRequest(name,skill){
+function sendRequest(
+    name,
+    skill
+){
 
     localStorage.setItem(
+
         "exchangeRequestName",
+
         name
+
     );
 
+
     localStorage.setItem(
+
         "exchangeRequestSkill",
+
         skill
+
     );
+
 
     alert(
-        "🤝 Exchange request sent to " +
-        name +
-        "!"
+
+        "🤝 Exchange request sent to "
+        + name
+        + "!"
+
     );
 
 }
 
-</script></body>
-</html>
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+function escapeJS(text){
+
+    return String(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
+
+}
+
+
+/* LOAD */
+
+addMySkill();
+
+</script></body></html>
