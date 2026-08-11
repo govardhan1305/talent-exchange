@@ -156,6 +156,21 @@ nav{
     transform:translateY(-2px);
 }
 
+.user-card{
+    border:1px solid rgba(189,130,255,.5);
+    box-shadow:0 0 25px rgba(128,102,255,.12);
+}
+
+.your-skill{
+    display:inline-block;
+    margin-bottom:15px;
+    padding:6px 10px;
+    border-radius:20px;
+    background:rgba(80,200,120,.15);
+    color:#86efac;
+    font-size:12px;
+}
+
 .no-results{
     display:none;
     text-align:center;
@@ -220,150 +235,7 @@ nav{
 
 <div class="skills" id="skills">
 
-
-    <div class="person" data-skill="python programming">
-
-        <div class="avatar">👨‍💻</div>
-
-        <h3>Arjun</h3>
-
-        <p>
-            Can teach Python & Programming
-        </p>
-
-        <span class="tag">
-            Python
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Arjun','Python')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
-
-    <div class="person" data-skill="guitar music">
-
-        <div class="avatar">🎸</div>
-
-        <h3>Rahul</h3>
-
-        <p>
-            Can teach Guitar & Music
-        </p>
-
-        <span class="tag">
-            Guitar
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Rahul','Guitar')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
-
-    <div class="person" data-skill="video editing">
-
-        <div class="avatar">🎬</div>
-
-        <h3>Priya</h3>
-
-        <p>
-            Can teach Video Editing
-        </p>
-
-        <span class="tag">
-            Video Editing
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Priya','Video Editing')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
-
-    <div class="person" data-skill="graphic design photoshop">
-
-        <div class="avatar">🎨</div>
-
-        <h3>Neha</h3>
-
-        <p>
-            Can teach Graphic Design
-        </p>
-
-        <span class="tag">
-            Design
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Neha','Graphic Design')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
-
-    <div class="person" data-skill="web development html css javascript">
-
-        <div class="avatar">💻</div>
-
-        <h3>Vikram</h3>
-
-        <p>
-            Can teach Web Development
-        </p>
-
-        <span class="tag">
-            Web Development
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Vikram','Web Development')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
-
-    <div class="person" data-skill="photography camera">
-
-        <div class="avatar">📸</div>
-
-        <h3>Sneha</h3>
-
-        <p>
-            Can teach Photography
-        </p>
-
-        <span class="tag">
-            Photography
-        </span>
-
-        <button
-            class="request"
-            onclick="sendRequest('Sneha','Photography')"
-        >
-            🤝 Request Exchange
-        </button>
-
-    </div>
-
+    <!-- USER'S OWN OFFERED SKILL WILL APPEAR HERE -->
 
 </div>
 
@@ -373,6 +245,171 @@ nav{
 </div>
 
 </div><script>
+
+const offeredName =
+    localStorage.getItem("offeredSkillName");
+
+const offeredSkill =
+    localStorage.getItem("offeredSkill");
+
+const offeredLevel =
+    localStorage.getItem("offeredSkillLevel");
+
+const offeredDescription =
+    localStorage.getItem("offeredSkillDescription");
+
+
+const skillsContainer =
+    document.getElementById("skills");
+
+
+/* SAMPLE USERS */
+
+const sampleUsers = [
+
+    {
+        name:"Arjun",
+        skill:"Python",
+        description:"Can teach Python & Programming",
+        avatar:"👨‍💻",
+        search:"python programming"
+    },
+
+    {
+        name:"Rahul",
+        skill:"Guitar",
+        description:"Can teach Guitar & Music",
+        avatar:"🎸",
+        search:"guitar music"
+    },
+
+    {
+        name:"Priya",
+        skill:"Video Editing",
+        description:"Can teach Video Editing",
+        avatar:"🎬",
+        search:"video editing"
+    },
+
+    {
+        name:"Neha",
+        skill:"Graphic Design",
+        description:"Can teach Graphic Design",
+        avatar:"🎨",
+        search:"graphic design photoshop"
+    },
+
+    {
+        name:"Vikram",
+        skill:"Web Development",
+        description:"Can teach Web Development",
+        avatar:"💻",
+        search:"web development html css javascript"
+    },
+
+    {
+        name:"Sneha",
+        skill:"Photography",
+        description:"Can teach Photography",
+        avatar:"📸",
+        search:"photography camera"
+    }
+
+];
+
+
+function createCard(user){
+
+    return `
+
+        <div
+            class="person"
+            data-skill="${user.search}"
+        >
+
+            <div class="avatar">
+                ${user.avatar}
+            </div>
+
+            <h3>
+                ${user.name}
+            </h3>
+
+            <p>
+                ${user.description}
+            </p>
+
+            <span class="tag">
+                ${user.skill}
+            </span>
+
+            <button
+                class="request"
+                onclick="sendRequest('${user.name}','${user.skill}')"
+            >
+                🤝 Request Exchange
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ADD SAMPLE USERS */
+
+sampleUsers.forEach(user => {
+
+    skillsContainer.innerHTML +=
+        createCard(user);
+
+});
+
+
+/* ADD CURRENT USER */
+
+if(offeredSkill){
+
+    skillsContainer.innerHTML += `
+
+        <div
+            class="person user-card"
+            data-skill="${offeredSkill.toLowerCase()}"
+        >
+
+            <div class="avatar">
+                ⭐
+            </div>
+
+            <span class="your-skill">
+                YOUR OFFERED SKILL
+            </span>
+
+            <h3>
+                ${offeredName || "You"}
+            </h3>
+
+            <p>
+                ${offeredDescription}
+            </p>
+
+            <span class="tag">
+                ${offeredSkill}
+            </span>
+
+            <p style="margin-top:10px;">
+                Level: ${offeredLevel}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* SEARCH */
 
 function searchSkills(){
 
@@ -398,6 +435,7 @@ function searchSkills(){
         if(skill.includes(search)){
 
             person.style.display = "block";
+
             found = true;
 
         }else{
@@ -408,12 +446,17 @@ function searchSkills(){
 
     });
 
-    document.getElementById("noResults").style.display =
+
+    document.getElementById("noResults")
+        .style.display =
         found ? "none" : "block";
+
 }
 
 
-function sendRequest(name, skill){
+/* SEND REQUEST */
+
+function sendRequest(name,skill){
 
     localStorage.setItem(
         "exchangeRequestName",
