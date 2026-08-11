@@ -2,7 +2,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Exchange Requests | Talent Exchange</title><style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -138,6 +137,18 @@ nav{
     color:#aaa;
 }
 
+.connection-link{
+    display:block;
+    width:fit-content;
+    margin:25px auto 0;
+    padding:13px 22px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
 @media(max-width:700px){
 
     .request-card{
@@ -157,7 +168,6 @@ nav{
         font-size:30px;
     }
 }
-
 </style></head><body><nav><div class="logo">
     ✨ Talent Exchange
 </div>
@@ -192,6 +202,13 @@ nav{
         You're all caught up!
     </p>
 
+    <a
+        href="connections.html"
+        class="connection-link"
+    >
+        🤝 My Connections
+    </a>
+
 </div>
 
 </div><script>
@@ -211,7 +228,7 @@ function showRequest(){
     if(!name){
 
         document.getElementById("empty")
-        .style.display = "block";
+            .style.display = "block";
 
         return;
     }
@@ -224,12 +241,14 @@ function showRequest(){
             <div class="person">
 
                 <div class="avatar">
-                    🤝
+                    👤
                 </div>
 
                 <div class="info">
 
-                    <h3>${name}</h3>
+                    <h3>
+                        ${name}
+                    </h3>
 
                     <p>
                         Wants to exchange skills with you
@@ -271,8 +290,38 @@ function showRequest(){
 
 function acceptRequest(){
 
+    const connections =
+        JSON.parse(
+            localStorage.getItem("connections") || "[]"
+        );
+
+
+    connections.push({
+
+        name:name,
+        skill:skill,
+        date:new Date().toLocaleDateString()
+
+    });
+
+
+    localStorage.setItem(
+        "connections",
+        JSON.stringify(connections)
+    );
+
+
+    localStorage.removeItem(
+        "exchangeRequestName"
+    );
+
+    localStorage.removeItem(
+        "exchangeRequestSkill"
+    );
+
+
     document.getElementById("requests")
-    .innerHTML = `
+        .innerHTML = `
 
         <div class="request-card">
 
@@ -289,7 +338,7 @@ function acceptRequest(){
                     </h3>
 
                     <p>
-                        You can now connect and exchange skills.
+                        ${name} is now connected with you.
                     </p>
 
                 </div>
@@ -298,25 +347,35 @@ function acceptRequest(){
 
         </div>
 
+        <a
+            href="connections.html"
+            class="connection-link"
+        >
+            🤝 View My Connections
+        </a>
+
     `;
-
-
-    localStorage.removeItem("exchangeRequestName");
-    localStorage.removeItem("exchangeRequestSkill");
 
 }
 
 
 function rejectRequest(){
 
-    localStorage.removeItem("exchangeRequestName");
-    localStorage.removeItem("exchangeRequestSkill");
+    localStorage.removeItem(
+        "exchangeRequestName"
+    );
+
+    localStorage.removeItem(
+        "exchangeRequestSkill"
+    );
+
 
     document.getElementById("requests")
-    .innerHTML = "";
+        .innerHTML = "";
+
 
     document.getElementById("empty")
-    .style.display = "block";
+        .style.display = "block";
 
 }
 
