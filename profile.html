@@ -1,290 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Profile | Talent Exchange</title>
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            min-height: 100vh;
-            color: white;
-            background:
-                radial-gradient(circle at top right, #3b2470, transparent 35%),
-                linear-gradient(135deg, #080812, #15112b);
-        }
+<title>My Profile | Talent Exchange</title>
 
-        nav {
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: rgba(10,10,20,0.75);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-        }
+<style>
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        .back {
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-        }
+body {
 
-        .container {
-            width: 90%;
-            max-width: 750px;
-            margin: 45px auto;
-        }
+    min-height: 100vh;
 
-        .heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    color: white;
 
-        .heading h1 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #58348c,
+            transparent 30%
+        ),
 
-        .heading p {
-            color: #aaa;
-        }
+        radial-gradient(
+            circle at 90% 80%,
+            #244c9b,
+            transparent 30%
+        ),
 
-        .profile-box {
-            padding: 30px;
-            border-radius: 24px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        linear-gradient(
+            135deg,
+            #070711,
+            #15132b
+        );
+}
 
-        .avatar {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8066ff, #bd82ff);
-            font-size: 40px;
-        }
 
-        .field {
-            margin-bottom: 20px;
-        }
+/* NAVBAR */
 
-        .field label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
+.navbar {
 
-        .field input,
-        .field textarea {
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.08);
-            color: white;
-            outline: none;
-            font-size: 15px;
-        }
+    min-height: 72px;
 
-        .field textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
+    padding: 12px 6%;
 
-        .save {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, #8066ff, #bd82ff);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    display: flex;
 
-        .message {
-            display: none;
-            margin-top: 18px;
-            padding: 14px;
-            border-radius: 12px;
-            text-align: center;
-            background: rgba(80,200,120,0.15);
-        }
-    </style>
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(10,10,20,0.78);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(18px);
+
+}
+
+
+.logo {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+}
+
+
+.back {
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+
+/* PROFILE */
+
+.container {
+
+    width: 90%;
+
+    max-width: 650px;
+
+    margin: 50px auto;
+
+}
+
+
+.heading {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.heading h1 {
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            white,
+            #c49cff
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+}
+
+
+.heading p {
+
+    color: #aaa;
+
+}
+
+
+/* CARD */
+
+.profile-card {
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(18px);
+
+}
+
+
+/* AVATAR */
+
+.avatar {
+
+    width: 85px;
+
+    height: 85px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8066ff,
+            #bd82ff
+        );
+
+}
+
+
+/* FORM */
+
+.form-group {
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ddd;
+
+    font-size: 14px;
+
+}
+
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 15px;
+
+}
+
+
+.form-group textarea {
+
+    min-height: 110px;
+
+    resize: vertical;
+
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: #a985ff;
+
+    background:
+        rgba(255,255,255,0.10);
+
+}
+
+
+/* SAVE BUTTON */
+
+.save-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8066ff,
+            #bd82ff
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.save-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* SUCCESS */
+
+.success-message {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(70,200,120,0.15);
+
+    border:
+        1px solid rgba(70,200,120,0.25);
+
+    color: #9be6a5;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .heading h1 {
+
+        font-size: 32px;
+
+    }
+
+    .profile-card {
+
+        padding: 22px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <nav>
 
-        <div class="logo">
-            ✨ Talent Exchange
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        ✨ Talent Exchange
+    </div>
+
+    <a
+        href="dashboard.html"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+
+<main class="container">
+
+
+    <div class="heading">
+
+        <h1>
+            My Profile 👤
+        </h1>
+
+        <p>
+            Tell people about yourself and your skills.
+        </p>
+
+    </div>
+
+
+
+    <div class="profile-card">
+
+
+        <div class="avatar">
+            👤
         </div>
 
-        <a href="dashboard.html" class="back">
-            ← Dashboard
-        </a>
 
-    </nav>
-
-
-    <div class="container">
-
-        <div class="heading">
-
-            <h1>My Profile 👤</h1>
-
-            <p>
-                Tell the community what you can offer.
-            </p>
-
-        </div>
+        <form
+            onsubmit="saveProfile(event)"
+        >
 
 
-        <div class="profile-box">
+            <!-- NAME -->
 
-            <div class="avatar">
-                👤
-            </div>
+            <div class="form-group">
 
-
-            <div class="field">
-
-                <label>Full Name</label>
+                <label>
+                    Full Name
+                </label>
 
                 <input
                     type="text"
                     id="name"
                     placeholder="Enter your name"
+                    required
                 >
 
             </div>
 
 
-            <div class="field">
 
-                <label>Email</label>
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
 
                 <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
+                    required
                 >
 
             </div>
 
 
-            <div class="field">
 
-                <label>Your Main Skill</label>
+            <!-- SKILL -->
+
+            <div class="form-group">
+
+                <label>
+                    Skill You Offer
+                </label>
 
                 <input
                     type="text"
                     id="skill"
-                    placeholder="Example: Cybersecurity"
+                    placeholder="Example: Python, Video Editing, Guitar"
+                    required
                 >
 
             </div>
 
 
-            <div class="field">
 
-                <label>About Me</label>
+            <!-- BIO -->
+
+            <div class="form-group">
+
+                <label>
+                    About You
+                </label>
 
                 <textarea
-                    id="about"
-                    placeholder="Tell others about yourself..."
+                    id="bio"
+                    placeholder="Tell people a little about yourself..."
                 ></textarea>
 
             </div>
 
 
+
+            <!-- SAVE -->
+
             <button
-                class="save"
-                onclick="saveProfile()"
+                type="submit"
+                class="save-btn"
             >
+
                 💾 Save Profile
+
             </button>
 
 
-            <div
-                class="message"
-                id="message"
-            >
-                ✅ Profile saved successfully!
-            </div>
+        </form>
+
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div
+            class="success-message"
+            id="successMessage"
+        >
+
+            ✅ Profile saved successfully!
+
+            <br>
+
+            <small>
+                Redirecting to Dashboard...
+            </small>
 
         </div>
+
 
     </div>
 
 
-    <script>
-
-        document.getElementById("name").value =
-            localStorage.getItem("profileName") || "";
-
-        document.getElementById("email").value =
-            localStorage.getItem("profileEmail") || "";
-
-        document.getElementById("skill").value =
-            localStorage.getItem("profileSkill") || "";
-
-        document.getElementById("about").value =
-            localStorage.getItem("profileAbout") || "";
+</main>
 
 
-        function saveProfile() {
 
-            localStorage.setItem(
-                "profileName",
-                document.getElementById("name").value
-            );
-
-            localStorage.setItem(
-                "profileEmail",
-                document.getElementById("email").value
-            );
-
-            localStorage.setItem(
-                "profileSkill",
-                document.getElementById("skill").value
-            );
-
-            localStorage.setItem(
-                "profileAbout",
-                document.getElementById("about").value
-            );
+<script>
 
 
-            document.getElementById("message").style.display =
-                "block";
+/* LOAD EXISTING PROFILE */
 
-        }
+function loadProfile() {
 
-    </script>
+    const savedProfile =
+        localStorage.getItem(
+            "userProfile"
+        );
+
+
+    if (!savedProfile) {
+        return;
+    }
+
+
+    const profile =
+        JSON.parse(
+            savedProfile
+        );
+
+
+    document.getElementById("name").value =
+        profile.name || "";
+
+
+    document.getElementById("email").value =
+        profile.email || "";
+
+
+    document.getElementById("skill").value =
+        profile.skill || "";
+
+
+    document.getElementById("bio").value =
+        profile.bio || "";
+
+}
+
+
+/* SAVE PROFILE */
+
+function saveProfile(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    const skill =
+        document.getElementById(
+            "skill"
+        ).value.trim();
+
+
+    const bio =
+        document.getElementById(
+            "bio"
+        ).value.trim();
+
+
+    /* PROFILE OBJECT */
+
+    const profile = {
+
+        name: name,
+
+        email: email,
+
+        skill: skill,
+
+        bio: bio
+
+    };
+
+
+    /* SAVE */
+
+    localStorage.setItem(
+
+        "userProfile",
+
+        JSON.stringify(profile)
+
+    );
+
+
+    /* SUCCESS MESSAGE */
+
+    const message =
+        document.getElementById(
+            "successMessage"
+        );
+
+
+    message.style.display =
+        "block";
+
+
+    /* DISABLE BUTTON */
+
+    const button =
+        document.querySelector(
+            ".save-btn"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "✅ Profile Saved";
+
+
+    /* REDIRECT AFTER 3 SECONDS */
+
+    setTimeout(
+        function() {
+
+            window.location.href =
+                "dashboard.html";
+
+        },
+        3000
+    );
+
+}
+
+
+/* LOAD PROFILE WHEN PAGE OPENS */
+
+loadProfile();
+
+
+</script>
+
 
 </body>
+
 </html>
