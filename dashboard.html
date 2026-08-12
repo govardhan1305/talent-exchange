@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Talent Exchange | Dashboard</title>
@@ -19,36 +17,28 @@
 }
 
 body {
-
     min-height: 100vh;
-
     color: white;
 
     background:
         radial-gradient(circle at 10% 10%, #58348c, transparent 30%),
         radial-gradient(circle at 90% 80%, #244c9b, transparent 30%),
         linear-gradient(135deg, #070711, #15132b);
-
 }
 
 
 /* NAVBAR */
 
 .navbar {
-
     min-height: 72px;
-
     padding: 12px 6%;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 20px;
 
-    background: rgba(10,10,20,0.8);
+    background: rgba(10,10,20,0.85);
 
     border-bottom:
         1px solid rgba(255,255,255,0.1);
@@ -56,37 +46,24 @@ body {
     backdrop-filter: blur(18px);
 
     position: sticky;
-
     top: 0;
-
     z-index: 100;
-
 }
 
 .logo {
-
     font-size: 21px;
-
     font-weight: bold;
-
 }
 
 .nav-links {
-
     display: flex;
-
-    gap: 8px;
-
+    gap: 7px;
     flex-wrap: wrap;
-
     justify-content: flex-end;
-
 }
 
 .nav-links a {
-
     color: white;
-
     text-decoration: none;
 
     padding: 9px 12px;
@@ -95,56 +72,40 @@ body {
 
     font-size: 14px;
 
+    transition: 0.2s;
 }
 
 .nav-links a:hover {
-
-    background:
-        rgba(255,255,255,0.12);
-
+    background: rgba(255,255,255,0.12);
 }
 
 .logout {
-
-    background:
-        rgba(255,70,70,0.15);
-
+    background: rgba(255,70,70,0.15);
 }
 
 
 /* MAIN */
 
 .container {
-
     width: 90%;
-
     max-width: 1100px;
-
     margin: 40px auto;
-
 }
 
 
 /* WELCOME */
 
 .hero {
-
     text-align: center;
-
-    padding: 30px 20px;
-
+    padding: 35px 20px;
 }
 
 .hero h1 {
-
     font-size: 42px;
-
-    margin-bottom: 10px;
-
+    margin-bottom: 12px;
 }
 
 .hero h1 span {
-
     background:
         linear-gradient(
             90deg,
@@ -153,23 +114,20 @@ body {
         );
 
     -webkit-background-clip: text;
-
     color: transparent;
-
 }
 
 .hero p {
-
     color: #aaa;
-
+    font-size: 16px;
 }
 
 
-/* PROFILE FORM */
+/* PROFILE CARD */
 
-.profile-section {
+.profile-card {
 
-    margin: 25px 0 35px;
+    margin-bottom: 35px;
 
     padding: 28px;
 
@@ -182,14 +140,51 @@ body {
         1px solid rgba(255,255,255,0.1);
 
     backdrop-filter: blur(15px);
-
 }
 
-.profile-section h2 {
+.profile-header {
 
-    margin-bottom: 20px;
+    display: flex;
 
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
 }
+
+.avatar {
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8066ff,
+            #bd82ff
+        );
+}
+
+.profile-header h2 {
+    margin-bottom: 5px;
+}
+
+.profile-header p {
+    color: #aaa;
+}
+
+
+/* FORM */
 
 .form-grid {
 
@@ -199,22 +194,15 @@ body {
         repeat(2, 1fr);
 
     gap: 18px;
-
 }
 
 .form-group {
-
     display: flex;
-
     flex-direction: column;
-
 }
 
 .form-group.full {
-
-    grid-column:
-        1 / -1;
-
+    grid-column: 1 / -1;
 }
 
 .form-group label {
@@ -224,7 +212,6 @@ body {
     color: #ddd;
 
     font-size: 14px;
-
 }
 
 .form-group input,
@@ -246,6 +233,7 @@ body {
 
     color: white;
 
+    font-size: 15px;
 }
 
 .form-group textarea {
@@ -253,14 +241,25 @@ body {
     min-height: 90px;
 
     resize: vertical;
-
 }
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: #a985ff;
+
+    background:
+        rgba(255,255,255,0.10);
+}
+
+
+/* SAVE BUTTON */
 
 .save-btn {
 
-    margin-top: 20px;
-
     width: 100%;
+
+    margin-top: 20px;
 
     padding: 14px;
 
@@ -282,8 +281,17 @@ body {
             #8066ff,
             #bd82ff
         );
-
 }
+
+.save-btn:disabled {
+
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+/* SUCCESS */
 
 .success {
 
@@ -291,26 +299,26 @@ body {
 
     margin-top: 15px;
 
-    padding: 14px;
+    padding: 15px;
 
     text-align: center;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background:
         rgba(70,200,120,0.15);
 
-    color: #9be6a5;
+    border:
+        1px solid rgba(70,200,120,0.25);
 
+    color: #9be6a5;
 }
 
 
 /* FEATURES */
 
 .section-title {
-
     margin-bottom: 18px;
-
 }
 
 .features {
@@ -321,7 +329,6 @@ body {
         repeat(4, 1fr);
 
     gap: 18px;
-
 }
 
 .feature {
@@ -339,7 +346,6 @@ body {
         1px solid rgba(255,255,255,0.1);
 
     transition: 0.3s;
-
 }
 
 .feature:hover {
@@ -349,7 +355,6 @@ body {
 
     background:
         rgba(255,255,255,0.1);
-
 }
 
 .icon {
@@ -357,13 +362,11 @@ body {
     font-size: 34px;
 
     margin-bottom: 15px;
-
 }
 
 .feature h3 {
 
     margin-bottom: 8px;
-
 }
 
 .feature p {
@@ -373,7 +376,6 @@ body {
     line-height: 1.5;
 
     margin-bottom: 16px;
-
 }
 
 .feature a {
@@ -383,7 +385,6 @@ body {
     text-decoration: none;
 
     font-weight: bold;
-
 }
 
 
@@ -392,46 +393,32 @@ body {
 @media(max-width:900px) {
 
     .navbar {
-
         flex-direction: column;
-
     }
 
     .features {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
-
 }
 
 @media(max-width:600px) {
 
     .form-grid {
-
         grid-template-columns: 1fr;
-
     }
 
     .form-group.full {
-
         grid-column: auto;
-
     }
 
     .features {
-
         grid-template-columns: 1fr;
-
     }
 
     .hero h1 {
-
         font-size: 32px;
-
     }
-
 }
 
 </style>
@@ -492,13 +479,13 @@ body {
 <main class="container">
 
 
-<!-- HERO -->
+<!-- WELCOME -->
 
 <section class="hero">
 
     <h1>
-        Welcome to
-        <span>Talent Exchange</span> 🚀
+        Welcome,
+        <span id="welcomeName">there</span> 👋
     </h1>
 
     <p>
@@ -509,18 +496,39 @@ body {
 </section>
 
 
-<!-- PROFILE DETAILS -->
+<!-- PROFILE -->
 
-<section class="profile-section">
+<section class="profile-card">
 
-    <h2>
-        👤 Your Profile Details
-    </h2>
+
+    <div class="profile-header">
+
+        <div class="avatar">
+            👤
+        </div>
+
+        <div>
+
+            <h2>
+                Your Profile
+            </h2>
+
+            <p>
+                Add or update your details
+            </p>
+
+        </div>
+
+    </div>
+
 
     <form onsubmit="saveProfile(event)">
 
+
         <div class="form-grid">
 
+
+            <!-- NAME -->
 
             <div class="form-group">
 
@@ -538,6 +546,8 @@ body {
             </div>
 
 
+            <!-- EMAIL -->
+
             <div class="form-group">
 
                 <label>
@@ -553,6 +563,8 @@ body {
 
             </div>
 
+
+            <!-- OFFER -->
 
             <div class="form-group">
 
@@ -570,6 +582,8 @@ body {
             </div>
 
 
+            <!-- LEARNING -->
+
             <div class="form-group">
 
                 <label>
@@ -584,6 +598,8 @@ body {
 
             </div>
 
+
+            <!-- BIO -->
 
             <div class="form-group full">
 
@@ -605,6 +621,7 @@ body {
         <button
             type="submit"
             class="save-btn"
+            id="saveButton"
         >
 
             💾 Save Profile
@@ -614,6 +631,8 @@ body {
 
     </form>
 
+
+    <!-- SUCCESS MESSAGE -->
 
     <div
         class="success"
@@ -625,10 +644,11 @@ body {
         <br>
 
         <small>
-            Returning to Dashboard...
+            Returning to Dashboard in 3 seconds...
         </small>
 
     </div>
+
 
 </section>
 
@@ -642,6 +662,8 @@ body {
 
 <section class="features">
 
+
+    <!-- FIND -->
 
     <div class="feature">
 
@@ -665,6 +687,8 @@ body {
     </div>
 
 
+    <!-- OFFER -->
+
     <div class="feature">
 
         <div class="icon">
@@ -687,6 +711,8 @@ body {
     </div>
 
 
+    <!-- REQUESTS -->
+
     <div class="feature">
 
         <div class="icon">
@@ -708,6 +734,8 @@ body {
 
     </div>
 
+
+    <!-- CONNECTIONS -->
 
     <div class="feature">
 
@@ -740,49 +768,259 @@ body {
 <script>
 
 
-/* LOAD SAVED PROFILE */
+/* =========================================
+   LOAD THE LATEST SAVED PROFILE
+========================================= */
 
 function loadProfile() {
 
-    const saved =
-        localStorage.getItem(
+    const savedProfile =
+        localStorage.getItem("userProfile");
+
+
+    /* No profile yet */
+
+    if (!savedProfile) {
+
+        document.getElementById(
+            "welcomeName"
+        ).textContent = "there";
+
+        return;
+
+    }
+
+
+    try {
+
+        const profile =
+            JSON.parse(savedProfile);
+
+
+        /*
+          ALWAYS USE THE CURRENT
+          SAVED PROFILE
+        */
+
+        document.getElementById(
+            "welcomeName"
+        ).textContent =
+            profile.name || "there";
+
+
+        document.getElementById(
+            "name"
+        ).value =
+            profile.name || "";
+
+
+        document.getElementById(
+            "email"
+        ).value =
+            profile.email || "";
+
+
+        document.getElementById(
+            "skill"
+        ).value =
+            profile.skill || "";
+
+
+        document.getElementById(
+            "learningSkill"
+        ).value =
+            profile.learningSkill || "";
+
+
+        document.getElementById(
+            "bio"
+        ).value =
+            profile.bio || "";
+
+
+    } catch(error) {
+
+        /*
+          If old/broken data exists,
+          remove it instead of showing
+          an old name.
+        */
+
+        localStorage.removeItem(
             "userProfile"
         );
 
-    if (!saved) {
-        return;
+
+        document.getElementById(
+            "welcomeName"
+        ).textContent =
+            "there";
+
     }
-
-    const profile =
-        JSON.parse(saved);
-
-
-    document.getElementById("name").value =
-        profile.name || "";
-
-    document.getElementById("email").value =
-        profile.email || "";
-
-    document.getElementById("skill").value =
-        profile.skill || "";
-
-    document.getElementById("learningSkill").value =
-        profile.learningSkill || "";
-
-    document.getElementById("bio").value =
-        profile.bio || "";
 
 }
 
 
-/* SAVE PROFILE */
+/* =========================================
+   SAVE PROFILE
+========================================= */
 
 function saveProfile(event) {
 
     event.preventDefault();
 
 
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    const skill =
+        document.getElementById(
+            "skill"
+        ).value.trim();
+
+
+    const learningSkill =
+        document.getElementById(
+            "learningSkill"
+        ).value.trim();
+
+
+    const bio =
+        document.getElementById(
+            "bio"
+        ).value.trim();
+
+
+    /*
+      CREATE COMPLETELY NEW PROFILE
+      FROM CURRENT FORM VALUES
+    */
+
     const profile = {
 
-        name:
-            document.getElementBy
+        name: name,
+
+        email: email,
+
+        skill: skill,
+
+        learningSkill:
+            learningSkill,
+
+        bio: bio,
+
+        updatedAt:
+            new Date().toISOString()
+
+    };
+
+
+    /*
+      THIS REPLACES THE OLD PROFILE.
+      So Shrinidhi will NOT remain
+      if a new name is saved.
+    */
+
+    localStorage.setItem(
+
+        "userProfile",
+
+        JSON.stringify(profile)
+
+    );
+
+
+    /*
+      Immediately update welcome name
+    */
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent =
+        name || "there";
+
+
+    /*
+      Show success message
+    */
+
+    document.getElementById(
+        "success"
+    ).style.display =
+        "block";
+
+
+    /*
+      Disable button temporarily
+    */
+
+    const button =
+        document.getElementById(
+            "saveButton"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "✅ Profile Saved";
+
+
+    /*
+      After exactly 3 seconds,
+      reload dashboard.
+
+      Because profile was already
+      saved to localStorage, the
+      dashboard will show the NEW name.
+    */
+
+    setTimeout(
+        function() {
+
+            window.location.href =
+                "dashboard.html";
+
+        },
+        3000
+    );
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout() {
+
+    /*
+      Do NOT delete userProfile here.
+      Profile data should remain saved.
+    */
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+loadProfile();
+
+
+</script>
+
+
+</body>
+
+</html>
