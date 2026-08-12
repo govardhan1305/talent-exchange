@@ -1,162 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talent Exchange - Login</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Talent Exchange</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            #5b358d,
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 85%,
+            #254e9d,
+            transparent 32%
+        ),
+
+        linear-gradient(
+            135deg,
+            #070711,
+            #15132b
+        );
+
+}
+
+
+/* MAIN */
+
+.login-container {
+
+    width: 90%;
+
+    max-width: 430px;
+
+    padding: 20px;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+.logo-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 8px;
+
+}
+
+.logo h1 {
+
+    font-size: 30px;
+
+}
+
+.logo p {
+
+    color: #aaa;
+
+    margin-top: 8px;
+
+}
+
+
+/* CARD */
+
+.login-card {
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+
+}
+
+
+.login-card h2 {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    font-size: 25px;
+
+}
+
+
+/* INPUT */
+
+.input-group {
+
+    margin-bottom: 18px;
+
+}
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ddd;
+
+    font-size: 14px;
+
+}
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    outline: none;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    font-size: 15px;
+
+}
+
+.input-group input:focus {
+
+    border-color: #a786ff;
+
+    background:
+        rgba(255,255,255,0.11);
+
+}
+
+
+/* LOGIN BUTTON */
+
+.login-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8066ff,
+            #bd82ff
+        );
+
+    transition: 0.3s;
+
+}
+
+.login-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(128,102,255,0.3);
+
+}
+
+
+/* DIVIDER */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+/* SIGNUP */
+
+.signup-text {
+
+    text-align: center;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+}
+
+.signup-btn {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 13px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: white;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    background:
+        rgba(255,255,255,0.06);
+
+    transition: 0.3s;
+
+}
+
+.signup-btn:hover {
+
+    background:
+        rgba(255,255,255,0.13);
+
+}
+
+
+/* ERROR */
+
+.error-message {
+
+    display: none;
+
+    margin-bottom: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    color: #ffaaaa;
+
+    background:
+        rgba(255,70,70,0.12);
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:500px) {
+
+    .login-card {
+
+        padding: 25px 20px;
+
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #111827, #4f46e5, #7c3aed);
-      overflow: hidden;
+    .logo h1 {
+
+        font-size: 26px;
+
     }
 
-    .login-box {
-      width: 90%;
-      max-width: 400px;
-      padding: 35px 25px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 25px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      text-align: center;
-      color: white;
-    }
+}
 
-    .logo {
-      font-size: 55px;
-      margin-bottom: 10px;
-    }
+</style>
 
-    h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #ddd;
-      margin-bottom: 30px;
-    }
-
-    input {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      border: none;
-      outline: none;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      font-size: 16px;
-    }
-
-    input::placeholder {
-      color: #ddd;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 12px;
-      background: #ffffff;
-      color: #4f46e5;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.03);
-      background: #e0e7ff;
-    }
-
-    #message {
-      margin-top: 18px;
-      font-weight: bold;
-    }
-  </style>
 </head>
+
 
 <body>
 
-  <div class="login-box">
 
-    <div class="logo">🤝</div>
+<div class="login-container">
 
-    <h1>Talent Exchange</h1>
 
-    <p class="subtitle">
-      Share Skills • Learn • Connect
-    </p>
+    <!-- LOGO -->
 
-    <form id="loginForm">
+    <div class="logo">
 
-      <input
-        type="text"
-        id="username"
-        placeholder="Enter your username"
-        required
-      >
+        <div class="logo-icon">
+            ✨
+        </div>
 
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter your password"
-        required
-      >
+        <h1>
+            Talent Exchange
+        </h1>
 
-      <button type="submit">
-        Login 🚀
-      </button>
+        <p>
+            Learn • Share • Connect
+        </p>
 
-    </form>
+    </div>
 
-    <p id="message"></p>
 
-  </div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    <!-- LOGIN CARD -->
 
-      event.preventDefault();
+    <div class="login-card">
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const message = document.getElementById("message");
 
-      if (username !== "" && password !== "") {
+        <h2>
+            Welcome Back 👋
+        </h2>
 
-        message.style.color = "#86efac";
-        message.textContent = "Login successful! 🚀";
 
-        setTimeout(() => {
-          window.location.href = "profile.html";
-        }, 1000);
+        <!-- ERROR -->
 
-      } else {
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+            Please enter your email and password.
+        </div>
 
-        message.style.color = "#fca5a5";
-        message.textContent = "Please enter all details.";
 
-      }
 
-    });
-  </script>
+        <!-- LOGIN FORM -->
+
+        <form
+            onsubmit="loginUser(event)"
+        >
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                🔐 Login
+            </button>
+
+
+        </form>
+
+
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+            OR
+        </div>
+
+
+
+        <!-- SIGN UP -->
+
+        <div class="signup-text">
+
+            Don't have an account?
+
+        </div>
+
+
+        <a
+            href="signup.html"
+            class="signup-btn"
+        >
+            ✨ Create New Account
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+function loginUser(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value.trim();
+
+
+    const error =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    if (!email || !password) {
+
+        error.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    /*
+      TEMPORARY LOGIN
+
+      Backend will replace this
+      tomorrow with real authentication.
+    */
+
+    localStorage.setItem(
+        "loggedIn",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "currentUser",
+        email
+    );
+
+
+    /* GO TO DASHBOARD */
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+</script>
+
 
 </body>
+
 </html>
