@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
 <title>Talent Exchange | Dashboard</title>
 
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -19,32 +17,23 @@
 body {
     min-height: 100vh;
     color: white;
-
     background:
-        radial-gradient(circle at 10% 10%, #58348c, transparent 30%),
-        radial-gradient(circle at 90% 80%, #244c9b, transparent 30%),
+        radial-gradient(circle at 10% 10%, #59338d, transparent 30%),
+        radial-gradient(circle at 90% 80%, #254d9c, transparent 30%),
         linear-gradient(135deg, #070711, #15132b);
 }
 
-
 /* NAVBAR */
-
 .navbar {
-    min-height: 72px;
-    padding: 12px 6%;
-
+    min-height: 75px;
+    padding: 0 4%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
-
-    background: rgba(10,10,20,0.85);
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.1);
-
+    background: rgba(8, 8, 18, 0.9);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(18px);
-
     position: sticky;
     top: 0;
     z-index: 100;
@@ -53,383 +42,217 @@ body {
 .logo {
     font-size: 21px;
     font-weight: bold;
+    white-space: nowrap;
 }
 
+/* NAV LINKS */
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 7px;
     flex-wrap: wrap;
     justify-content: flex-end;
 }
 
 .nav-links a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-
-    padding: 9px 12px;
-
+    padding: 10px 12px;
     border-radius: 10px;
-
     font-size: 14px;
-
-    transition: 0.2s;
+    transition: 0.25s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
     background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
 }
 
 .logout {
-    background: rgba(255,70,70,0.15);
+    color: #ffb3b3 !important;
 }
 
-
-/* MAIN */
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 40px auto;
-}
-
-
-/* WELCOME */
-
+/* HERO */
 .hero {
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 35px 20px;
+    padding: 50px 20px 30px;
 }
 
 .hero h1 {
-    font-size: 42px;
-    margin-bottom: 12px;
+    font-size: clamp(38px, 6vw, 62px);
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .hero h1 span {
-    background:
-        linear-gradient(
-            90deg,
-            #9d7cff,
-            #e19cff
-        );
-
+    background: linear-gradient(90deg, #a485ff, #e29cff);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
 .hero p {
     color: #aaa;
-    font-size: 16px;
+    font-size: 17px;
+    max-width: 650px;
+    line-height: 1.6;
 }
 
-
-/* PROFILE CARD */
-
-.profile-card {
-
-    margin-bottom: 35px;
-
-    padding: 28px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255,255,255,0.07);
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
-    backdrop-filter: blur(15px);
+/* MAIN */
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
 }
-
-.profile-header {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    margin-bottom: 25px;
-}
-
-.avatar {
-
-    width: 70px;
-    height: 70px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    font-size: 32px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8066ff,
-            #bd82ff
-        );
-}
-
-.profile-header h2 {
-    margin-bottom: 5px;
-}
-
-.profile-header p {
-    color: #aaa;
-}
-
-
-/* FORM */
-
-.form-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 18px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group.full {
-    grid-column: 1 / -1;
-}
-
-.form-group label {
-
-    margin-bottom: 8px;
-
-    color: #ddd;
-
-    font-size: 14px;
-}
-
-.form-group input,
-.form-group textarea {
-
-    width: 100%;
-
-    padding: 13px 14px;
-
-    border-radius: 11px;
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    outline: none;
-
-    background:
-        rgba(255,255,255,0.07);
-
-    color: white;
-
-    font-size: 15px;
-}
-
-.form-group textarea {
-
-    min-height: 90px;
-
-    resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-
-    border-color: #a985ff;
-
-    background:
-        rgba(255,255,255,0.10);
-}
-
-
-/* SAVE BUTTON */
-
-.save-btn {
-
-    width: 100%;
-
-    margin-top: 20px;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8066ff,
-            #bd82ff
-        );
-}
-
-.save-btn:disabled {
-
-    opacity: 0.7;
-
-    cursor: not-allowed;
-}
-
-
-/* SUCCESS */
-
-.success {
-
-    display: none;
-
-    margin-top: 15px;
-
-    padding: 15px;
-
-    text-align: center;
-
-    border-radius: 12px;
-
-    background:
-        rgba(70,200,120,0.15);
-
-    border:
-        1px solid rgba(70,200,120,0.25);
-
-    color: #9be6a5;
-}
-
-
-/* FEATURES */
 
 .section-title {
-    margin-bottom: 18px;
+    text-align: center;
+    margin: 10px 0 25px;
+    font-size: 24px;
 }
 
+/* CARDS */
 .features {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-bottom: 60px;
 }
 
-.feature {
-
-    min-height: 190px;
-
-    padding: 24px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,0.07);
-
-    border:
-        1px solid rgba(255,255,255,0.1);
-
+.card {
+    min-height: 235px;
+    padding: 27px 22px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
     transition: 0.3s;
+    text-align: center;
 }
 
-.feature:hover {
-
-    transform:
-        translateY(-5px);
-
-    background:
-        rgba(255,255,255,0.1);
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.11);
+    border-color: rgba(190,160,255,0.35);
 }
 
-.icon {
-
-    font-size: 34px;
-
-    margin-bottom: 15px;
+.card-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 30px;
+    background: rgba(150,120,255,0.18);
 }
 
-.feature h3 {
-
-    margin-bottom: 8px;
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
-.feature p {
-
+.card p {
     color: #aaa;
-
     line-height: 1.5;
-
-    margin-bottom: 16px;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.feature a {
-
-    color: #cbbcff;
-
+.card a {
+    display: inline-block;
     text-decoration: none;
-
-    font-weight: bold;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: rgba(150,120,255,0.25);
+    transition: 0.2s;
 }
 
+.card a:hover {
+    background: rgba(150,120,255,0.45);
+}
 
-/* MOBILE */
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
 
-@media(max-width:900px) {
-
+/* TABLET */
+@media (max-width: 1000px) {
     .navbar {
         flex-direction: column;
+        padding: 18px 4%;
+    }
+
+    .nav-links {
+        justify-content: center;
     }
 
     .features {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media(max-width:600px) {
+/* MOBILE */
+@media (max-width: 600px) {
 
-    .form-grid {
-        grid-template-columns: 1fr;
+    .navbar {
+        position: relative;
+        min-height: auto;
+        padding: 18px 12px;
     }
 
-    .form-group.full {
-        grid-column: auto;
+    .logo {
+        font-size: 19px;
     }
 
-    .features {
-        grid-template-columns: 1fr;
+    .nav-links {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        padding: 8px 9px;
+    }
+
+    .hero {
+        min-height: 280px;
     }
 
     .hero h1 {
-        font-size: 32px;
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 210px;
     }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
 <nav class="navbar">
 
@@ -456,18 +279,14 @@ body {
         </a>
 
         <a href="requests.html">
-            📨 Requests
+            📨 My Requests
         </a>
 
         <a href="connections.html">
             🤝 Connections
         </a>
 
-        <a
-            href="login.html"
-            class="logout"
-            onclick="logout()"
-        >
+        <a href="#" class="logout" onclick="logoutUser()">
             🚪 Logout
         </a>
 
@@ -476,16 +295,14 @@ body {
 </nav>
 
 
-<main class="container">
-
-
-<!-- WELCOME -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
     <h1>
         Welcome,
-        <span id="welcomeName">there</span> 👋
+        <span id="welcomeName">there</span>
+        👋
     </h1>
 
     <p>
@@ -496,531 +313,212 @@ body {
 </section>
 
 
-<!-- PROFILE -->
+<!-- ================= MAIN ================= -->
 
-<section class="profile-card">
+<main class="container">
 
+    <h2 class="section-title">
+        Explore Talent Exchange
+    </h2>
 
-    <div class="profile-header">
+    <section class="features">
 
-        <div class="avatar">
-            👤
-        </div>
+        <!-- FIND SKILLS -->
 
-        <div>
+        <div class="card">
 
-            <h2>
-                Your Profile
-            </h2>
+            <div class="card-icon">
+                🔎
+            </div>
+
+            <h3>
+                Find Skills
+            </h3>
 
             <p>
-                Add or update your details
+                Discover people who have
+                the skills you want to learn.
             </p>
 
+            <a href="find-skills.html">
+                Explore →
+            </a>
+
         </div>
 
-    </div>
 
+        <!-- OFFER SKILL -->
 
-    <form onsubmit="saveProfile(event)">
+        <div class="card">
 
-
-        <div class="form-grid">
-
-
-            <!-- NAME -->
-
-            <div class="form-group">
-
-                <label>
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    required
-                >
-
+            <div class="card-icon">
+                💡
             </div>
 
+            <h3>
+                Offer Skill
+            </h3>
 
-            <!-- EMAIL -->
+            <p>
+                Share your knowledge
+                and help someone learn.
+            </p>
 
-            <div class="form-group">
+            <a href="offer-skill.html">
+                Offer Skill →
+            </a>
 
-                <label>
-                    Email
-                </label>
+        </div>
 
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    required
-                >
 
+        <!-- REQUESTS -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                📨
             </div>
 
+            <h3>
+                Requests
+            </h3>
 
-            <!-- OFFER -->
+            <p>
+                View incoming exchange
+                requests and accept or reject them.
+            </p>
 
-            <div class="form-group">
+            <a href="requests.html">
+                View Requests →
+            </a>
 
-                <label>
-                    Skill You Offer
-                </label>
+        </div>
 
-                <input
-                    type="text"
-                    id="skill"
-                    placeholder="Example: Python"
-                    required
-                >
 
+        <!-- CONNECTIONS -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                🤝
             </div>
 
+            <h3>
+                Connections
+            </h3>
 
-            <!-- LEARNING -->
+            <p>
+                Chat and connect with
+                your accepted partners.
+            </p>
 
-            <div class="form-group">
-
-                <label>
-                    Skill You Want To Learn
-                </label>
-
-                <input
-                    type="text"
-                    id="learningSkill"
-                    placeholder="Example: Video Editing"
-                >
-
-            </div>
-
-
-            <!-- BIO -->
-
-            <div class="form-group full">
-
-                <label>
-                    About You
-                </label>
-
-                <textarea
-                    id="bio"
-                    placeholder="Tell people about yourself..."
-                ></textarea>
-
-            </div>
-
+            <a href="connections.html">
+                My Connections →
+            </a>
 
         </div>
 
-
-        <button
-            type="submit"
-            class="save-btn"
-            id="saveButton"
-        >
-
-            💾 Save Profile
-
-        </button>
-
-
-    </form>
-
-
-    <!-- SUCCESS MESSAGE -->
-
-    <div
-        class="success"
-        id="success"
-    >
-
-        ✅ Profile saved successfully!
-
-        <br>
-
-        <small>
-            Returning to Dashboard in 3 seconds...
-        </small>
-
-    </div>
-
-
-</section>
-
-
-<!-- FEATURES -->
-
-<h2 class="section-title">
-    What do you want to do?
-</h2>
-
-
-<section class="features">
-
-
-    <!-- FIND -->
-
-    <div class="feature">
-
-        <div class="icon">
-            🔎
-        </div>
-
-        <h3>
-            Find Skills
-        </h3>
-
-        <p>
-            Find people who can teach
-            you the skills you want.
-        </p>
-
-        <a href="find-skills.html">
-            Explore →
-        </a>
-
-    </div>
-
-
-    <!-- OFFER -->
-
-    <div class="feature">
-
-        <div class="icon">
-            💡
-        </div>
-
-        <h3>
-            Offer Your Skill
-        </h3>
-
-        <p>
-            Share your knowledge
-            with other learners.
-        </p>
-
-        <a href="offer-skill.html">
-            Add Skill →
-        </a>
-
-    </div>
-
-
-    <!-- REQUESTS -->
-
-    <div class="feature">
-
-        <div class="icon">
-            📨
-        </div>
-
-        <h3>
-            Exchange Requests
-        </h3>
-
-        <p>
-            Accept or reject incoming
-            skill exchange requests.
-        </p>
-
-        <a href="requests.html">
-            View Requests →
-        </a>
-
-    </div>
-
-
-    <!-- CONNECTIONS -->
-
-    <div class="feature">
-
-        <div class="icon">
-            🤝
-        </div>
-
-        <h3>
-            My Connections
-        </h3>
-
-        <p>
-            Connect with accepted
-            skill exchange partners.
-        </p>
-
-        <a href="connections.html">
-            View Connections →
-        </a>
-
-    </div>
-
-
-</section>
-
+    </section>
 
 </main>
 
 
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    © 2026 Talent Exchange
+    <br>
+    Learn • Share • Grow 🚀
+
+</footer>
+
+
 <script>
 
+/* ==========================================
+   LOAD CURRENT PROFILE NAME
+========================================== */
 
-/* =========================================
-   LOAD THE LATEST SAVED PROFILE
-========================================= */
-
-function loadProfile() {
+function loadUserName() {
 
     const savedProfile =
         localStorage.getItem("userProfile");
 
-
-    /* No profile yet */
-
     if (!savedProfile) {
 
-        document.getElementById(
-            "welcomeName"
-        ).textContent = "there";
+        document.getElementById("welcomeName")
+            .textContent = "there";
 
         return;
-
     }
-
 
     try {
 
         const profile =
             JSON.parse(savedProfile);
 
-
         /*
-          ALWAYS USE THE CURRENT
-          SAVED PROFILE
+          Different versions of your profile
+          code may use different property names.
+          So we check all common ones.
         */
 
-        document.getElementById(
-            "welcomeName"
-        ).textContent =
-            profile.name || "there";
+        const name =
+            profile.name ||
+            profile.fullName ||
+            profile.fullname ||
+            "";
+
+        if (name.trim() !== "") {
+
+            document.getElementById("welcomeName")
+                .textContent = name;
+
+        } else {
+
+            document.getElementById("welcomeName")
+                .textContent = "there";
+        }
+
+    } catch (error) {
+
+        document.getElementById("welcomeName")
+            .textContent = "there";
+    }
+}
 
 
-        document.getElementById(
-            "name"
-        ).value =
-            profile.name || "";
+/* ==========================================
+   LOGOUT
+========================================== */
 
+function logoutUser() {
 
-        document.getElementById(
-            "email"
-        ).value =
-            profile.email || "";
+    const confirmLogout =
+        confirm("Are you sure you want to logout?");
 
-
-        document.getElementById(
-            "skill"
-        ).value =
-            profile.skill || "";
-
-
-        document.getElementById(
-            "learningSkill"
-        ).value =
-            profile.learningSkill || "";
-
-
-        document.getElementById(
-            "bio"
-        ).value =
-            profile.bio || "";
-
-
-    } catch(error) {
-
-        /*
-          If old/broken data exists,
-          remove it instead of showing
-          an old name.
-        */
-
-        localStorage.removeItem(
-            "userProfile"
-        );
-
-
-        document.getElementById(
-            "welcomeName"
-        ).textContent =
-            "there";
-
+    if (!confirmLogout) {
+        return;
     }
 
+    /*
+      Only login/session information is removed.
+      Profile data is NOT deleted.
+    */
+
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("currentUser");
+
+    window.location.href = "index.html";
 }
 
 
-/* =========================================
-   SAVE PROFILE
-========================================= */
+/* LOAD NAME */
 
-function saveProfile(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById(
-            "name"
-        ).value.trim();
-
-
-    const email =
-        document.getElementById(
-            "email"
-        ).value.trim();
-
-
-    const skill =
-        document.getElementById(
-            "skill"
-        ).value.trim();
-
-
-    const learningSkill =
-        document.getElementById(
-            "learningSkill"
-        ).value.trim();
-
-
-    const bio =
-        document.getElementById(
-            "bio"
-        ).value.trim();
-
-
-    /*
-      CREATE COMPLETELY NEW PROFILE
-      FROM CURRENT FORM VALUES
-    */
-
-    const profile = {
-
-        name: name,
-
-        email: email,
-
-        skill: skill,
-
-        learningSkill:
-            learningSkill,
-
-        bio: bio,
-
-        updatedAt:
-            new Date().toISOString()
-
-    };
-
-
-    /*
-      THIS REPLACES THE OLD PROFILE.
-      So Shrinidhi will NOT remain
-      if a new name is saved.
-    */
-
-    localStorage.setItem(
-
-        "userProfile",
-
-        JSON.stringify(profile)
-
-    );
-
-
-    /*
-      Immediately update welcome name
-    */
-
-    document.getElementById(
-        "welcomeName"
-    ).textContent =
-        name || "there";
-
-
-    /*
-      Show success message
-    */
-
-    document.getElementById(
-        "success"
-    ).style.display =
-        "block";
-
-
-    /*
-      Disable button temporarily
-    */
-
-    const button =
-        document.getElementById(
-            "saveButton"
-        );
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "✅ Profile Saved";
-
-
-    /*
-      After exactly 3 seconds,
-      reload dashboard.
-
-      Because profile was already
-      saved to localStorage, the
-      dashboard will show the NEW name.
-    */
-
-    setTimeout(
-        function() {
-
-            window.location.href =
-                "dashboard.html";
-
-        },
-        3000
-    );
-
-}
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-function logout() {
-
-    /*
-      Do NOT delete userProfile here.
-      Profile data should remain saved.
-    */
-
-}
-
-
-/* =========================================
-   START
-========================================= */
-
-loadProfile();
-
+loadUserName();
 
 </script>
 
-
 </body>
-
 </html>
