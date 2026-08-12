@@ -1,426 +1,913 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Connections | Talent Exchange</title><style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    min-height:100vh;
-    color:white;
-    background:
-    radial-gradient(circle at top right,#3b2470,transparent 35%),
-    linear-gradient(135deg,#080812,#15112b);
-}
-
-nav{
-    height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 7%;
-    background:rgba(10,10,20,.8);
-    border-bottom:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-}
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.back{
-    color:white;
-    text-decoration:none;
-    padding:10px 16px;
-    border:1px solid rgba(255,255,255,.2);
-    border-radius:10px;
-}
-
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:45px auto;
-}
-
-.heading{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.heading h1{
-    font-size:40px;
-    margin-bottom:10px;
-}
-
-.heading p{
-    color:#aaa;
-}
-
-.connections{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.card{
-    padding:25px;
-    border-radius:22px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.12);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-    background:rgba(255,255,255,.1);
-}
-
-.avatar{
-    width:65px;
-    height:65px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
-    font-size:30px;
-    margin-bottom:18px;
-}
-
-.card h2{
-    margin-bottom:7px;
-}
-
-.card p{
-    color:#aaa;
-    margin-bottom:12px;
-}
-
-.skill{
-    display:inline-block;
-    padding:7px 12px;
-    margin-bottom:16px;
-    border-radius:20px;
-    background:rgba(150,120,255,.2);
-    color:#c9baff;
-    font-size:13px;
-}
-
-.status{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    color:#6ee77d;
-    font-size:13px;
-    margin-bottom:18px;
-}
-
-.dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#4caf50;
-}
-
-.chat-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.chat-button:hover{
-    transform:translateY(-2px);
-}
-
-.empty{
-    text-align:center;
-    padding:60px 20px;
-    color:#aaa;
-}
-
-.empty h2{
-    color:white;
-    margin-bottom:10px;
-}
-
-.find-button{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    border-radius:12px;
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-@media(max-width:900px){
-
-    .connections{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:600px){
-
-    .connections{
-        grid-template-columns:1fr;
-    }
-
-    .heading h1{
-        font-size:30px;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-}
+<head>
 
-</style></head><body><nav><div class="logo">
-    ✨ Talent Exchange
-</div>
+    <meta charset="UTF-8">
 
-<a href="dashboard.html" class="back">
-    ← Dashboard
-</a>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-</nav><div class="container"><div class="heading">
+    <title>My Connections | Talent Exchange</title>
 
-    <h1>
-        My Connections 🤝
-    </h1>
 
-    <p>
-        People you connected with through Talent Exchange.
-    </p>
+    <style>
 
-</div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
 
-<div
-    class="connections"
-    id="connections"
-></div>
+        body {
 
-</div><script>
+            min-height: 100vh;
 
+            color: white;
 
-const defaultPeople = [
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    #58348c,
+                    transparent 30%
+                ),
 
-    {
-        name:"Arjun",
-        skill:"Python",
-        emoji:"👨‍💻"
-    },
+                radial-gradient(
+                    circle at 90% 80%,
+                    #244c9b,
+                    transparent 30%
+                ),
 
-    {
-        name:"Rahul",
-        skill:"Guitar",
-        emoji:"🎸"
-    },
+                linear-gradient(
+                    135deg,
+                    #070711,
+                    #15132b
+                );
 
-    {
-        name:"Priya",
-        skill:"Video Editing",
-        emoji:"🎬"
-    },
+        }
 
-    {
-        name:"Neha",
-        skill:"Graphic Design",
-        emoji:"🎨"
-    },
 
-    {
-        name:"Vikram",
-        skill:"Web Development",
-        emoji:"💻"
-    },
+        /* NAVBAR */
 
-    {
-        name:"Sneha",
-        skill:"Photography",
-        emoji:"📸"
-    }
+        .navbar {
 
-];
+            min-height: 72px;
 
+            padding: 12px 6%;
 
-function loadConnections(){
+            display: flex;
 
-    const box =
-        document.getElementById(
-            "connections"
-        );
+            align-items: center;
 
+            justify-content: space-between;
 
-    let savedConnections =
+            gap: 20px;
 
-        JSON.parse(
+            background:
+                rgba(10, 10, 20, 0.78);
 
-            localStorage.getItem(
-                "myConnections"
-            ) || "[]"
+            border-bottom:
+                1px solid rgba(255,255,255,0.1);
 
-        );
+            backdrop-filter: blur(18px);
 
+        }
 
-    /*
-       If accepted connections exist,
-       show only those.
-    */
 
-    let people = savedConnections;
+        .logo {
 
+            font-size: 21px;
 
-    /*
-       Prototype fallback:
-       If no accepted connection exists,
-       show demo connection.
-    */
+            font-weight: bold;
 
-    if(people.length === 0){
+        }
 
-        people = [
 
-            {
-                name:"Arjun",
-                skill:"Python",
-                emoji:"👨‍💻"
+        .back {
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 10px 16px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.12);
+
+            transition: 0.3s;
+
+        }
+
+
+        .back:hover {
+
+            background:
+                rgba(255,255,255,0.15);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* MAIN */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1000px;
+
+            margin: 50px auto;
+
+        }
+
+
+        .heading {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .heading h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 12px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c49cff
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .heading p {
+
+            color: #aaa;
+
+            font-size: 16px;
+
+        }
+
+
+        /* CONNECTION CARD */
+
+        .connection-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 24px;
+
+            margin-bottom: 18px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            backdrop-filter:
+                blur(15px);
+
+            transition: 0.3s;
+
+        }
+
+
+        .connection-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        /* AVATAR */
+
+        .avatar {
+
+            width: 65px;
+
+            height: 65px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8066ff,
+                    #bd82ff
+                );
+
+            box-shadow:
+                0 0 25px rgba(
+                    130,
+                    100,
+                    255,
+                    0.25
+                );
+
+        }
+
+
+        /* INFO */
+
+        .info {
+
+            flex: 1;
+
+        }
+
+
+        .info h2 {
+
+            margin-bottom: 6px;
+
+            font-size: 20px;
+
+        }
+
+
+        .info p {
+
+            color: #aaa;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .skill {
+
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            color: #d3c4ff;
+
+            background:
+                rgba(130,100,255,0.18);
+
+            font-size: 13px;
+
+        }
+
+
+        /* ACTIONS */
+
+        .actions {
+
+            display: flex;
+
+            gap: 9px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+        }
+
+
+        .actions button {
+
+            border: none;
+
+            color: white;
+
+            padding: 11px 13px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .actions button:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .chat {
+
+            background:
+                rgba(100,130,255,0.20);
+
+        }
+
+
+        .audio {
+
+            background:
+                rgba(70,190,130,0.18);
+
+        }
+
+
+        .video {
+
+            background:
+                rgba(190,100,255,0.20);
+
+        }
+
+
+        /* EMPTY STATE */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            display: none;
+
+            color: #aaa;
+
+        }
+
+
+        .empty-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .empty h2 {
+
+            color: white;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        /* MODAL */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,0.72);
+
+            backdrop-filter:
+                blur(8px);
+
+            z-index: 1000;
+
+        }
+
+
+        .modal-box {
+
+            width: 100%;
+
+            max-width: 430px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 24px;
+
+            background:
+                #17152b;
+
+            border:
+                1px solid rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.4);
+
+        }
+
+
+        .modal-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .modal-box h2 {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .modal-box p {
+
+            color: #aaa;
+
+            line-height: 1.5;
+
+        }
+
+
+        .close {
+
+            margin-top: 22px;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8066ff,
+                    #bd82ff
+                );
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+
+                flex-direction: column;
+
             }
 
-        ];
 
-    }
+            .connection-card {
 
+                flex-direction: column;
 
-    box.innerHTML = "";
+                text-align: center;
 
-
-    people.forEach(person => {
-
-        const card =
-            document.createElement(
-                "div"
-            );
+            }
 
 
-        card.className =
-            "card";
+            .actions {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
 
 
-        card.innerHTML = `
+            .actions button {
 
-            <div class="avatar">
+                flex: 1;
 
-                ${person.emoji || "🤝"}
+                min-width: 85px;
+
+            }
+
+
+            .heading h1 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            ✨ Talent Exchange
+
+        </div>
+
+
+        <a
+            href="dashboard.html"
+            class="back"
+        >
+
+            ← Dashboard
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <div class="heading">
+
+            <h1>
+
+                My Connections 🤝
+
+            </h1>
+
+
+            <p>
+
+                Connect, learn and grow together.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- CONNECTIONS -->
+
+        <div id="connections">
+
+
+            <!-- ARJUN -->
+
+            <div class="connection-card">
+
+                <div class="avatar">
+
+                    👨‍💻
+
+                </div>
+
+
+                <div class="info">
+
+                    <h2>
+
+                        Arjun
+
+                    </h2>
+
+
+                    <p>
+
+                        Connected through skill exchange
+
+                    </p>
+
+
+                    <span class="skill">
+
+                        Python
+
+                    </span>
+
+                </div>
+
+
+                <div class="actions">
+
+
+                    <button
+                        class="chat"
+                        onclick="openFeature('💬', 'Chat', 'Chat with Arjun will open here.')"
+                    >
+
+                        💬 Chat
+
+                    </button>
+
+
+                    <button
+                        class="audio"
+                        onclick="openFeature('🎙️', 'Audio Call', 'Audio calling with Arjun will be available here.')"
+                    >
+
+                        🎙️ Audio
+
+                    </button>
+
+
+                    <button
+                        class="video"
+                        onclick="openFeature('📹', 'Video Call', 'Video calling with Arjun will be available here.')"
+                    >
+
+                        📹 Video
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RAHUL -->
+
+            <div class="connection-card">
+
+                <div class="avatar">
+
+                    🎸
+
+                </div>
+
+
+                <div class="info">
+
+                    <h2>
+
+                        Rahul
+
+                    </h2>
+
+
+                    <p>
+
+                        Connected through skill exchange
+
+                    </p>
+
+
+                    <span class="skill">
+
+                        Guitar
+
+                    </span>
+
+                </div>
+
+
+                <div class="actions">
+
+
+                    <button
+                        class="chat"
+                        onclick="openFeature('💬', 'Chat', 'Chat with Rahul will open here.')"
+                    >
+
+                        💬 Chat
+
+                    </button>
+
+
+                    <button
+                        class="audio"
+                        onclick="openFeature('🎙️', 'Audio Call', 'Audio calling with Rahul will be available here.')"
+                    >
+
+                        🎙️ Audio
+
+                    </button>
+
+
+                    <button
+                        class="video"
+                        onclick="openFeature('📹', 'Video Call', 'Video calling with Rahul will be available here.')"
+                    >
+
+                        📹 Video
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty"
+            id="empty"
+        >
+
+            <div class="empty-icon">
+
+                🤝
 
             </div>
 
 
             <h2>
 
-                ${escapeHTML(person.name)}
+                No connections yet
 
             </h2>
 
 
             <p>
 
-                ${escapeHTML(person.skill)}
+                Accept an exchange request to create
+                your first connection.
 
             </p>
 
-
-            <span class="skill">
-
-                ${escapeHTML(person.skill)}
-
-            </span>
+        </div>
 
 
-            <div class="status">
+    </main>
 
-                <span class="dot"></span>
 
-                Connected
+
+    <!-- MODAL -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+        <div class="modal-box">
+
+
+            <div
+                class="modal-icon"
+                id="modalIcon"
+            >
+
+                💬
 
             </div>
 
 
-            <button
-                class="chat-button"
-                onclick="openChat(
-                    '${escapeJS(person.name)}',
-                    '${escapeJS(person.skill)}'
-                )"
+            <h2
+                id="modalTitle"
             >
 
-                💬 Chat with
-                ${escapeHTML(person.name)}
+                Chat
+
+            </h2>
+
+
+            <p
+                id="modalText"
+            >
+
+                Feature coming next.
+
+            </p>
+
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+
+                Got it
 
             </button>
 
-        `;
+
+        </div>
+
+    </div>
 
 
-        box.appendChild(card);
 
-    });
-
-}
+    <script>
 
 
-function openChat(name,skill){
+        function openFeature(
+            icon,
+            title,
+            text
+        ) {
 
-    localStorage.setItem(
-        "activeChatName",
-        name
-    );
-
-    localStorage.setItem(
-        "activeChatSkill",
-        skill
-    );
+            document.getElementById(
+                "modalIcon"
+            ).textContent = icon;
 
 
-    window.location.href =
-        "chat.html";
+            document.getElementById(
+                "modalTitle"
+            ).textContent = title;
 
-}
+
+            document.getElementById(
+                "modalText"
+            ).textContent = text;
 
 
-function escapeHTML(text){
+            document.getElementById(
+                "modal"
+            ).style.display = "flex";
 
-    const div =
-        document.createElement(
-            "div"
+        }
+
+
+
+        function closeModal() {
+
+            document.getElementById(
+                "modal"
+            ).style.display = "none";
+
+        }
+
+
+
+        document.getElementById(
+            "modal"
+        ).addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    document.getElementById("modal")
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
         );
 
-    div.textContent =
-        text;
 
-    return div.innerHTML;
-
-}
+    </script>
 
 
-function escapeJS(text){
+</body>
 
-    return String(text)
-        .replace(/\\/g,"\\\\")
-        .replace(/'/g,"\\'");
-
-}
-
-
-loadConnections();
-
-</script></body></html>
+</html>
