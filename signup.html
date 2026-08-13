@@ -360,257 +360,55 @@ body{
 
 <script>
 
-/* =========================================
-   SUPABASE CONFIG
-========================================= */
-
 const SUPABASE_URL =
 "https://uigekrizjpypvxrpnzy.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
 
+async function testSupabase() {
 
-/* =========================================
-   SIGNUP
-========================================= */
+    const errorBox =
+        document.getElementById("errorMessage");
 
-document
-.getElementById("signupForm")
-.addEventListener("submit", async function(event){
+    errorBox.style.display = "block";
+    errorBox.style.color = "white";
+    errorBox.style.background = "#333";
 
-    event.preventDefault();
+    try {
 
-
-    const name =
-    document
-    .getElementById("name")
-    .value
-    .trim();
-
-
-    const email =
-    document
-    .getElementById("email")
-    .value
-    .trim();
-
-
-    const password =
-    document
-    .getElementById("password")
-    .value;
-
-
-    const confirmPassword =
-    document
-    .getElementById("confirmPassword")
-    .value;
-
-
-    const errorMessage =
-    document
-    .getElementById("errorMessage");
-
-
-    const successMessage =
-    document
-    .getElementById("successMessage");
-
-
-    const button =
-    document
-    .getElementById("createButton");
-
-
-    /* CLEAR OLD MESSAGES */
-
-    errorMessage.style.display = "none";
-    successMessage.style.display = "none";
-
-
-    /* PASSWORD CHECK */
-
-    if(password !== confirmPassword){
-
-        errorMessage.innerText =
-        "❌ Passwords do not match.";
-
-        errorMessage.style.display =
-        "block";
-
-        return;
-    }
-
-
-    if(password.length < 6){
-
-        errorMessage.innerText =
-        "❌ Password must contain at least 6 characters.";
-
-        errorMessage.style.display =
-        "block";
-
-        return;
-    }
-
-
-    /* LOADING */
-
-    button.disabled = true;
-
-    button.innerText =
-    "Creating Account...";
-
-
-    try{
-
-
-        /* =====================================
-           DIRECT SUPABASE AUTH REQUEST
-
-           IMPORTANT:
-           apikey is explicitly sent here.
-        ===================================== */
-
-        const response =
-        await fetch(
-            SUPABASE_URL + "/auth/v1/signup",
+        const response = await fetch(
+            SUPABASE_URL + "/auth/v1/settings",
             {
+                method: "GET",
 
-                method:"POST",
-
-                headers:{
-
-                    "apikey":
-                    SUPABASE_KEY,
-
-                    "Content-Type":
-                    "application/json"
-
-                },
-
-                body:JSON.stringify({
-
-                    email:email,
-
-                    password:password,
-
-                    data:{
-
-                        full_name:name
-
-                    }
-
-                })
-
+                headers: {
+                    "apikey": SUPABASE_KEY
+                }
             }
         );
 
+        const text = await response.text();
 
-        /* GET RESPONSE */
+        console.log("STATUS:", response.status);
+        console.log("RESPONSE:", text);
 
-        const result =
-        await response.json();
+        errorBox.innerHTML =
+            "STATUS: " + response.status +
+            "<br><br>" +
+            text;
 
+    } catch (error) {
 
-        console.log(
-            "Supabase response:",
-            result
-        );
+        console.error(error);
 
-
-        /* ERROR */
-
-        if(!response.ok){
-
-            throw new Error(
-                result.msg ||
-                result.message ||
-                result.error_description ||
-                "Signup failed."
-            );
-
-        }
-
-
-        /* =====================================
-           SUCCESS
-        ===================================== */
-
-        successMessage.innerHTML =
-        "✅ Account created successfully!<br><br>" +
-        "📧 Check your email and verify your account.";
-
-
-        successMessage.style.display =
-        "block";
-
-
-        button.innerText =
-        "Account Created ✓";
-
-
-        /* SAVE PROFILE NAME */
-
-        localStorage.setItem(
-            "userProfile",
-            JSON.stringify({
-
-                name:name,
-
-                email:email,
-
-                skill:"",
-
-                learningSkill:"",
-
-                bio:""
-
-            })
-        );
-
-
-        /* REDIRECT */
-
-        setTimeout(function(){
-
-            window.location.href =
-            "login.html";
-
-        },4000);
-
-
+        errorBox.innerHTML =
+            "BROWSER ERROR:<br>" +
+            error.message;
     }
+}
 
-
-    catch(error){
-
-
-        console.error(
-            "SIGNUP ERROR:",
-            error
-        );
-
-
-        errorMessage.innerHTML =
-        "❌ " + error.message;
-
-
-        errorMessage.style.display =
-        "block";
-
-
-        button.disabled =
-        false;
-
-
-        button.innerText =
-        "✨ Create New Account";
-
-    }
-
-});
+window.onload = testSupabase;
 
 </script>
 
