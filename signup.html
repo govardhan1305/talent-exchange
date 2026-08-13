@@ -8,6 +8,9 @@
 
 <title>Create Account | Talent Exchange</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 * {
@@ -151,6 +154,12 @@ body {
 
     box-shadow:
         0 8px 25px rgba(128,102,255,0.3);
+}
+
+.create-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .message {
@@ -395,7 +404,29 @@ body {
 
 <script>
 
-function createAccount(event) {
+/* ==========================================
+   SUPABASE CONNECTION
+========================================== */
+
+const SUPABASE_URL =
+    "https://uigekrizjpypvxrpnzy.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* ==========================================
+   CREATE ACCOUNT
+========================================== */
+
+async function createAccount(event) {
 
     event.preventDefault();
 
@@ -438,12 +469,16 @@ function createAccount(event) {
         );
 
 
-    /* Hide previous error */
+    /* Hide old messages */
 
-    errorMessage.style.display = "none";
+    errorMessage.style.display =
+        "none";
+
+    successMessage.style.display =
+        "none";
 
 
-    /* Check password */
+    /* Password check */
 
     if (password !== confirmPassword) {
 
@@ -457,7 +492,7 @@ function createAccount(event) {
     }
 
 
-    /* Check password length */
+    /* Password length */
 
     if (password.length < 6) {
 
@@ -471,77 +506,129 @@ function createAccount(event) {
     }
 
 
-    /*
-      TEMPORARY ACCOUNT DATA
-
-      Tomorrow this will be replaced
-      with Supabase authentication.
-    */
-
-    const account = {
-
-        name: name,
-
-        email: email,
-
-        password: password
-
-    };
-
-
-    localStorage.setItem(
-        "userAccount",
-        JSON.stringify(account)
-    );
-
-
-    /*
-      Also create the profile so
-      Dashboard can use the name.
-    */
-
-    const profile = {
-
-        name: name,
-
-        email: email,
-
-        skill: "",
-
-        learningSkill: "",
-
-        bio: ""
-
-    };
-
-
-    localStorage.setItem(
-        "userProfile",
-        JSON.stringify(profile)
-    );
-
-
-    /* Show success */
-
-    successMessage.style.display =
-        "block";
-
+    /* Loading */
 
     createButton.disabled = true;
 
-
     createButton.textContent =
-        "Account Created ✓";
+        "Creating Account...";
 
 
-    /* Go to login */
+    try {
 
-    setTimeout(function() {
 
-        window.location.href =
-            "login.html";
+        /* ======================================
+           SUPABASE AUTH SIGNUP
+        ====================================== */
 
-    }, 2000);
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password,
+
+                options: {
+
+                    data: {
+
+                        full_name: name
+
+                    }
+
+                }
+
+            });
+
+
+        /* Supabase error */
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        /* ======================================
+           SAVE PROFILE LOCALLY FOR NOW
+
+           Later we'll move this into
+           Supabase Database.
+        ====================================== */
+
+        const profile = {
+
+            name: name,
+
+            email: email,
+
+            skill: "",
+
+            learningSkill: "",
+
+            bio: ""
+
+        };
+
+
+        localStorage.setItem(
+            "userProfile",
+            JSON.stringify(profile)
+        );
+
+
+        /* ======================================
+           SUCCESS
+        ====================================== */
+
+        successMessage.style.display =
+            "block";
+
+
+        createButton.textContent =
+            "Account Created ✓";
+
+
+        /* ======================================
+           REDIRECT TO LOGIN
+        ====================================== */
+
+        setTimeout(function() {
+
+            window.location.href =
+                "login.html";
+
+        }, 2000);
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "Signup Error:",
+            error
+        );
+
+
+        errorMessage.textContent =
+            "❌ " + error.message;
+
+
+        errorMessage.style.display =
+            "block";
+
+
+        createButton.disabled =
+            false;
+
+
+        createButton.textContent =
+            "✨ Create New Account";
+
+    }
 
 }
 
