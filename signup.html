@@ -2,316 +2,174 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Create Account | Talent Exchange</title>
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-body {
-
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: white;
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
 
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            #5b358d,
-            transparent 32%
-        ),
-
-        radial-gradient(
-            circle at 85% 85%,
-            #254e9d,
-            transparent 32%
-        ),
-
-        linear-gradient(
-            135deg,
-            #070711,
-            #15132b
-        );
-
+        radial-gradient(circle at 15% 15%,#5b358d,transparent 32%),
+        radial-gradient(circle at 85% 85%,#254e9d,transparent 32%),
+        linear-gradient(135deg,#070711,#15132b);
 }
 
-.signup-container {
-
-    width: 90%;
-    max-width: 450px;
-    padding: 20px;
-
+.signup-container{
+    width:90%;
+    max-width:450px;
+    padding:20px;
 }
 
-.logo {
-
-    text-align: center;
-    margin-bottom: 25px;
-
+.logo{
+    text-align:center;
+    margin-bottom:25px;
 }
 
-.logo-icon {
-
-    font-size: 48px;
-    margin-bottom: 8px;
-
+.logo-icon{
+    font-size:48px;
 }
 
-.logo h1 {
-
-    font-size: 30px;
-
+.logo h1{
+    font-size:30px;
 }
 
-.logo p {
-
-    color: #aaa;
-    margin-top: 8px;
-
+.logo p{
+    color:#aaa;
+    margin-top:8px;
 }
 
-.signup-card {
+.signup-card{
+    padding:32px;
+    border-radius:24px;
 
-    padding: 32px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
 
-    border-radius: 24px;
+    backdrop-filter:blur(18px);
 
-    background:
-        rgba(255,255,255,0.07);
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
 }
 
-.signup-card h2 {
-
-    text-align: center;
-
-    margin-bottom: 25px;
-
-    font-size: 25px;
-
+.signup-card h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:25px;
 }
 
-.input-group {
-
-    margin-bottom: 17px;
-
+.input-group{
+    margin-bottom:17px;
 }
 
-.input-group label {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #ddd;
-
-    font-size: 14px;
-
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#ddd;
+    font-size:14px;
 }
 
-.input-group input {
+.input-group input{
+    width:100%;
+    padding:14px;
 
-    width: 100%;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.12);
 
-    padding: 14px;
+    outline:none;
 
-    border-radius: 12px;
+    color:white;
+    background:rgba(255,255,255,0.08);
 
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    outline: none;
-
-    color: white;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    font-size: 15px;
-
+    font-size:15px;
 }
 
-.input-group input:focus {
-
-    border-color: #a786ff;
-
-    background:
-        rgba(255,255,255,0.11);
-
+.input-group input:focus{
+    border-color:#a786ff;
 }
 
-.create-btn {
+.create-btn{
+    width:100%;
+    padding:14px;
+    margin-top:5px;
 
-    width: 100%;
+    border:none;
+    border-radius:12px;
 
-    padding: 14px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
 
-    margin-top: 5px;
+    cursor:pointer;
 
-    border: none;
-
-    border-radius: 12px;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8066ff,
-            #bd82ff
-        );
-
-    transition: 0.3s;
-
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
 }
 
-.create-btn:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 25px
-        rgba(128,102,255,0.3);
-
+.create-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
 }
 
-.create-btn:disabled {
+.message{
+    display:none;
 
-    opacity: 0.6;
+    margin-bottom:15px;
+    padding:12px;
 
-    cursor: not-allowed;
+    border-radius:10px;
 
-    transform: none;
-
+    text-align:center;
+    font-size:14px;
 }
 
-.message {
-
-    display: none;
-
-    margin-bottom: 15px;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    text-align: center;
-
-    font-size: 14px;
-
+.error{
+    color:#ffaaaa;
+    background:rgba(255,70,70,0.15);
 }
 
-.error {
-
-    color: #ffaaaa;
-
-    background:
-        rgba(255,70,70,0.12);
-
+.success{
+    color:#9be6a5;
+    background:rgba(70,200,120,0.15);
 }
 
-.success {
-
-    color: #9be6a5;
-
-    background:
-        rgba(70,200,120,0.15);
-
+.login-text{
+    text-align:center;
+    margin-top:22px;
+    color:#aaa;
+    font-size:14px;
 }
 
-.login-text {
+.login-link{
+    display:block;
+    margin-top:10px;
 
-    text-align: center;
+    text-align:center;
 
-    margin-top: 22px;
-
-    color: #aaa;
-
-    font-size: 14px;
-
-}
-
-.login-link {
-
-    display: block;
-
-    margin-top: 10px;
-
-    text-align: center;
-
-    color: #c9b7ff;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-}
-
-.login-link:hover {
-
-    text-decoration: underline;
-
-}
-
-@media(max-width:500px) {
-
-    .signup-card {
-
-        padding: 25px 20px;
-
-    }
-
-    .logo h1 {
-
-        font-size: 26px;
-
-    }
-
+    color:#c9b7ff;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
 <div class="signup-container">
-
-
-    <!-- LOGO -->
 
     <div class="logo">
 
@@ -319,133 +177,95 @@ body {
             ✨
         </div>
 
-        <h1>
-            Talent Exchange
-        </h1>
+        <h1>Talent Exchange</h1>
 
-        <p>
-            Learn • Share • Connect
-        </p>
+        <p>Learn • Share • Connect</p>
 
     </div>
 
 
-    <!-- CARD -->
-
     <div class="signup-card">
-
 
         <h2>
             Create Your Account 🚀
         </h2>
 
 
-        <!-- ERROR -->
-
-        <div
-            id="errorMessage"
-            class="message error">
+        <div id="errorMessage"
+             class="message error">
         </div>
 
 
-        <!-- SUCCESS -->
-
-        <div
-            id="successMessage"
-            class="message success">
+        <div id="successMessage"
+             class="message success">
         </div>
 
-
-        <!-- FORM -->
 
         <form id="signupForm">
 
 
-            <!-- NAME -->
-
             <div class="input-group">
 
-                <label>
-                    Full Name
-                </label>
+                <label>Full Name</label>
 
                 <input
                     type="text"
                     id="name"
                     placeholder="Enter your full name"
-                    autocomplete="name"
                     required>
 
             </div>
 
 
-            <!-- EMAIL -->
-
             <div class="input-group">
 
-                <label>
-                    Email
-                </label>
+                <label>Email</label>
 
                 <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
-                    autocomplete="email"
                     required>
 
             </div>
 
 
-            <!-- PASSWORD -->
-
             <div class="input-group">
 
-                <label>
-                    Password
-                </label>
+                <label>Password</label>
 
                 <input
                     type="password"
                     id="password"
                     placeholder="Create a password"
-                    autocomplete="new-password"
                     minlength="6"
                     required>
 
             </div>
 
 
-            <!-- CONFIRM -->
-
             <div class="input-group">
 
-                <label>
-                    Confirm Password
-                </label>
+                <label>Confirm Password</label>
 
                 <input
                     type="password"
                     id="confirmPassword"
                     placeholder="Confirm your password"
-                    autocomplete="new-password"
                     minlength="6"
                     required>
 
             </div>
 
 
-            <!-- BUTTON -->
-
             <button
                 type="submit"
-                class="create-btn"
-                id="createButton">
+                id="createButton"
+                class="create-btn">
 
                 ✨ Create New Account
 
             </button>
-
 
         </form>
 
@@ -457,395 +277,249 @@ body {
         </div>
 
 
-        <a
-            href="login.html"
-            class="login-link">
+        <a href="login.html"
+           class="login-link">
 
             ← Back to Login
 
         </a>
-
 
     </div>
 
 </div>
 
 
-<!-- =========================================
-     SUPABASE JAVASCRIPT LIBRARY
-========================================= -->
-
-<script
-src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
-
 <script>
 
-/* =========================================
-   SUPABASE CONFIGURATION
-========================================= */
+/* =====================================
+   SUPABASE CONFIG
+===================================== */
 
 const SUPABASE_URL =
     "https://uigekrizjpypvxrpnzy.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
     "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
 
 
-/* =========================================
-   CHECK SUPABASE LIBRARY
-========================================= */
+/* =====================================
+   SIGNUP
+===================================== */
 
-if (!window.supabase) {
+document
+.getElementById("signupForm")
+.addEventListener("submit", async function(event){
 
-    const errorBox =
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+    const errorMessage =
         document.getElementById("errorMessage");
 
-    errorBox.textContent =
-        "❌ Supabase library could not load. Please refresh the page.";
+    const successMessage =
+        document.getElementById("successMessage");
 
-    errorBox.style.display =
-        "block";
-
-    throw new Error(
-        "Supabase JavaScript library not loaded"
-    );
-
-}
+    const button =
+        document.getElementById("createButton");
 
 
-/* =========================================
-   CREATE SUPABASE CLIENT
-========================================= */
-
-const supabaseClient =
-    window.supabase.createClient(
-
-        SUPABASE_URL,
-
-        SUPABASE_PUBLISHABLE_KEY
-
-    );
+    errorMessage.style.display = "none";
+    successMessage.style.display = "none";
 
 
-console.log(
-    "✅ Supabase client initialized"
-);
+    /* PASSWORD CHECK */
+
+    if(password !== confirmPassword){
+
+        errorMessage.textContent =
+            "❌ Passwords do not match.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
 
 
-/* =========================================
-   SIGNUP FORM
-========================================= */
+    if(password.length < 6){
 
-const signupForm =
-    document.getElementById("signupForm");
+        errorMessage.textContent =
+            "❌ Password must be at least 6 characters.";
 
+        errorMessage.style.display = "block";
 
-signupForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
+        return;
+    }
 
 
-        /* =================================
-           GET INPUT VALUES
-        ================================= */
+    button.disabled = true;
 
-        const name =
-            document
-            .getElementById("name")
-            .value
-            .trim();
+    button.textContent =
+        "Creating Account...";
 
 
-        const email =
-            document
-            .getElementById("email")
-            .value
-            .trim()
-            .toLowerCase();
+    try{
 
+        /* =====================================
+           DIRECT SUPABASE AUTH REQUEST
+        ===================================== */
 
-        const password =
-            document
-            .getElementById("password")
-            .value;
+        const response = await fetch(
 
+            SUPABASE_URL + "/auth/v1/signup",
 
-        const confirmPassword =
-            document
-            .getElementById("confirmPassword")
-            .value;
+            {
 
+                method: "POST",
 
-        const errorMessage =
-            document
-            .getElementById("errorMessage");
+                headers: {
 
+                    "Content-Type":
+                        "application/json",
 
-        const successMessage =
-            document
-            .getElementById("successMessage");
+                    "apikey":
+                        SUPABASE_KEY
 
+                },
 
-        const createButton =
-            document
-            .getElementById("createButton");
-
-
-        /* =================================
-           CLEAR OLD MESSAGES
-        ================================= */
-
-        errorMessage.style.display =
-            "none";
-
-        successMessage.style.display =
-            "none";
-
-
-        /* =================================
-           PASSWORD CHECK
-        ================================= */
-
-        if (password !== confirmPassword) {
-
-            errorMessage.textContent =
-                "❌ Passwords do not match.";
-
-            errorMessage.style.display =
-                "block";
-
-            return;
-
-        }
-
-
-        if (password.length < 6) {
-
-            errorMessage.textContent =
-                "❌ Password must contain at least 6 characters.";
-
-            errorMessage.style.display =
-                "block";
-
-            return;
-
-        }
-
-
-        /* =================================
-           BUTTON LOADING
-        ================================= */
-
-        createButton.disabled =
-            true;
-
-        createButton.textContent =
-            "Creating Account...";
-
-
-        try {
-
-
-            console.log(
-                "🔄 Sending signup request..."
-            );
-
-
-            /* =================================
-               SUPABASE AUTH SIGNUP
-            ================================= */
-
-            const result =
-                await supabaseClient.auth.signUp({
+                body: JSON.stringify({
 
                     email: email,
 
                     password: password,
 
-                    options: {
+                    data: {
 
-                        data: {
-
-                            full_name:
-                                name
-
-                        },
-
-                        emailRedirectTo:
-                            "https://govardhan1305.github.io/talent-exchange/login.html"
+                        full_name: name
 
                     }
 
-                });
-
-
-            const data =
-                result.data;
-
-            const error =
-                result.error;
-
-
-            console.log(
-                "Supabase response:",
-                result
-            );
-
-
-            /* =================================
-               HANDLE ERROR
-            ================================= */
-
-            if (error) {
-
-                throw error;
+                })
 
             }
 
-
-            /* =================================
-               SAVE LOCAL PROFILE
-            ================================= */
-
-            const profile = {
-
-                name: name,
-
-                email: email,
-
-                skill: "",
-
-                learningSkill: "",
-
-                bio: ""
-
-            };
+        );
 
 
-            localStorage.setItem(
+        const result =
+            await response.json();
 
-                "userProfile",
 
-                JSON.stringify(profile)
+        console.log(
+            "Supabase response:",
+            result
+        );
+
+
+        /* =====================================
+           ERROR
+        ===================================== */
+
+        if(!response.ok){
+
+            throw new Error(
+
+                result.msg ||
+                result.message ||
+                result.error_description ||
+                "Signup failed."
 
             );
-
-
-            /* =================================
-               SUCCESS MESSAGE
-            ================================= */
-
-            successMessage.innerHTML =
-
-                "✅ Account created successfully!<br><br>" +
-
-                "📧 Please check your email and verify your account.";
-
-
-            successMessage.style.display =
-                "block";
-
-
-            createButton.textContent =
-                "Account Created ✓";
-
-
-            /* =================================
-               REDIRECT TO LOGIN
-            ================================= */
-
-            setTimeout(function() {
-
-                window.location.href =
-                    "login.html";
-
-            }, 4000);
-
 
         }
 
 
-        catch(error) {
+        /* =====================================
+           SUCCESS
+        ===================================== */
+
+        successMessage.innerHTML =
+            "✅ Account created successfully!<br><br>" +
+            "📧 Check your email to verify your account.";
+
+        successMessage.style.display =
+            "block";
 
 
-            console.error(
-                "❌ SUPABASE SIGNUP ERROR:",
-                error
-            );
+        button.textContent =
+            "Account Created ✓";
 
 
-            let errorText =
-                error?.message ||
-                "Unable to create account.";
+        /* SAVE PROFILE NAME */
+
+        localStorage.setItem(
+
+            "userProfile",
+
+            JSON.stringify({
+
+                name:name,
+
+                email:email,
+
+                skill:"",
+
+                learningSkill:"",
+
+                bio:""
+
+            })
+
+        );
 
 
-            /* =================================
-               FRIENDLY ERRORS
-            ================================= */
+        /* REDIRECT */
 
-            if (
-                errorText
-                .toLowerCase()
-                .includes("failed to fetch")
-            ) {
+        setTimeout(function(){
 
-                errorText =
-                    "❌ Failed to connect to Supabase. Please check your internet connection and try again.";
+            window.location.href =
+                "login.html";
 
-            }
+        },4000);
 
 
-            else if (
-                errorText
-                .toLowerCase()
-                .includes("already registered")
-            ) {
+    }
 
-                errorText =
-                    "❌ This email is already registered. Please login.";
+    catch(error){
 
-            }
+        console.error(
+            "SIGNUP ERROR:",
+            error
+        );
 
 
-            else if (
-                errorText
-                .toLowerCase()
-                .includes("password")
-            ) {
-
-                errorText =
-                    "❌ Please use a stronger password.";
-
-            }
+        errorMessage.textContent =
+            "❌ " + error.message;
 
 
-            errorMessage.textContent =
-                errorText;
+        errorMessage.style.display =
+            "block";
 
 
-            errorMessage.style.display =
-                "block";
+        button.disabled =
+            false;
 
 
-            createButton.disabled =
-                false;
+        button.textContent =
+            "✨ Create New Account";
 
+    }
 
-            createButton.textContent =
-                "✨ Create New Account";
-
-
-        }
-
-    });
-
+});
 
 </script>
-
 
 </body>
 
