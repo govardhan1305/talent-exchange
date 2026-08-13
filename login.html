@@ -4,10 +4,12 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login | Talent Exchange</title>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -19,13 +21,10 @@
 }
 
 body {
-
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     color: white;
@@ -48,60 +47,34 @@ body {
             #070711,
             #15132b
         );
-
 }
-
-
-/* MAIN */
 
 .login-container {
-
     width: 90%;
-
     max-width: 430px;
-
     padding: 20px;
-
 }
 
-
-/* LOGO */
-
 .logo {
-
     text-align: center;
-
     margin-bottom: 25px;
-
 }
 
 .logo-icon {
-
     font-size: 48px;
-
     margin-bottom: 8px;
-
 }
 
 .logo h1 {
-
     font-size: 30px;
-
 }
 
 .logo p {
-
     color: #aaa;
-
     margin-top: 8px;
-
 }
 
-
-/* CARD */
-
 .login-card {
-
     padding: 32px;
 
     border-radius: 24px;
@@ -116,45 +89,27 @@ body {
 
     box-shadow:
         0 20px 60px rgba(0,0,0,0.35);
-
 }
-
 
 .login-card h2 {
-
     text-align: center;
-
     margin-bottom: 25px;
-
     font-size: 25px;
-
 }
 
-
-/* INPUT */
-
 .input-group {
-
     margin-bottom: 18px;
-
 }
 
 .input-group label {
-
     display: block;
-
     margin-bottom: 8px;
-
     color: #ddd;
-
     font-size: 14px;
-
 }
 
 .input-group input {
-
     width: 100%;
-
     padding: 14px;
 
     border-radius: 12px;
@@ -170,23 +125,16 @@ body {
         rgba(255,255,255,0.08);
 
     font-size: 15px;
-
 }
 
 .input-group input:focus {
-
     border-color: #a786ff;
 
     background:
         rgba(255,255,255,0.11);
-
 }
 
-
-/* LOGIN BUTTON */
-
 .login-btn {
-
     width: 100%;
 
     padding: 14px;
@@ -213,24 +161,22 @@ body {
         );
 
     transition: 0.3s;
-
 }
 
 .login-btn:hover {
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     box-shadow:
         0 8px 25px rgba(128,102,255,0.3);
-
 }
 
-
-/* DIVIDER */
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
 
 .divider {
-
     display: flex;
 
     align-items: center;
@@ -242,12 +188,10 @@ body {
     color: #777;
 
     font-size: 13px;
-
 }
 
 .divider::before,
 .divider::after {
-
     content: "";
 
     flex: 1;
@@ -256,24 +200,17 @@ body {
 
     background:
         rgba(255,255,255,0.12);
-
 }
 
-
-/* SIGNUP */
-
 .signup-text {
-
     text-align: center;
 
     color: #aaa;
 
     font-size: 14px;
-
 }
 
 .signup-btn {
-
     display: block;
 
     width: 100%;
@@ -297,21 +234,14 @@ body {
         rgba(255,255,255,0.06);
 
     transition: 0.3s;
-
 }
 
 .signup-btn:hover {
-
     background:
         rgba(255,255,255,0.13);
-
 }
 
-
-/* ERROR */
-
 .error-message {
-
     display: none;
 
     margin-bottom: 15px;
@@ -326,24 +256,33 @@ body {
 
     background:
         rgba(255,70,70,0.12);
-
 }
 
+.success-message {
+    display: none;
 
-/* MOBILE */
+    margin-bottom: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    color: #9be6a5;
+
+    background:
+        rgba(70,200,120,0.15);
+}
 
 @media(max-width:500px) {
 
     .login-card {
-
         padding: 25px 20px;
-
     }
 
     .logo h1 {
-
         font-size: 26px;
-
     }
 
 }
@@ -378,7 +317,6 @@ body {
     </div>
 
 
-
     <!-- LOGIN CARD -->
 
     <div class="login-card">
@@ -394,17 +332,20 @@ body {
         <div
             class="error-message"
             id="errorMessage"
-        >
-            Please enter your email and password.
-        </div>
+        ></div>
 
+
+        <!-- SUCCESS -->
+
+        <div
+            class="success-message"
+            id="successMessage"
+        ></div>
 
 
         <!-- LOGIN FORM -->
 
-        <form
-            onsubmit="loginUser(event)"
-        >
+        <form onsubmit="loginUser(event)">
 
 
             <!-- EMAIL -->
@@ -425,7 +366,6 @@ body {
             </div>
 
 
-
             <!-- PASSWORD -->
 
             <div class="input-group">
@@ -444,12 +384,12 @@ body {
             </div>
 
 
-
             <!-- LOGIN -->
 
             <button
                 type="submit"
                 class="login-btn"
+                id="loginButton"
             >
                 🔐 Login
             </button>
@@ -458,13 +398,11 @@ body {
         </form>
 
 
-
         <!-- DIVIDER -->
 
         <div class="divider">
             OR
         </div>
-
 
 
         <!-- SIGN UP -->
@@ -490,24 +428,43 @@ body {
 </div>
 
 
-
 <script>
 
-function loginUser(event) {
+/* ==========================================
+   SUPABASE CONNECTION
+========================================== */
+
+const SUPABASE_URL =
+    "https://uigekrizjpypvxrpnzy.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+async function loginUser(event) {
 
     event.preventDefault();
 
 
     const email =
-        document.getElementById(
-            "email"
-        ).value.trim();
+        document.getElementById("email")
+        .value.trim();
 
 
     const password =
-        document.getElementById(
-            "password"
-        ).value.trim();
+        document.getElementById("password")
+        .value;
 
 
     const error =
@@ -516,39 +473,212 @@ function loginUser(event) {
         );
 
 
-    if (!email || !password) {
+    const success =
+        document.getElementById(
+            "successMessage"
+        );
+
+
+    const loginButton =
+        document.getElementById(
+            "loginButton"
+        );
+
+
+    /* Hide old messages */
+
+    error.style.display = "none";
+
+    success.style.display = "none";
+
+
+    /* Loading */
+
+    loginButton.disabled = true;
+
+    loginButton.textContent =
+        "Logging in...";
+
+
+    try {
+
+
+        /* ======================================
+           SUPABASE LOGIN
+        ====================================== */
+
+        const { data, error: loginError } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        /* Check error */
+
+        if (loginError) {
+
+            throw loginError;
+
+        }
+
+
+        /* Make sure session exists */
+
+        if (!data.session) {
+
+            throw new Error(
+                "Login session could not be created."
+            );
+
+        }
+
+
+        /* ======================================
+           SAVE BASIC LOCAL PROFILE
+        ====================================== */
+
+        const user =
+            data.user;
+
+
+        const existingProfile =
+            localStorage.getItem(
+                "userProfile"
+            );
+
+
+        if (!existingProfile) {
+
+            const profile = {
+
+                name:
+                    user.user_metadata?.full_name
+                    || "",
+
+                email:
+                    user.email
+                    || email,
+
+                skill: "",
+
+                learningSkill: "",
+
+                bio: ""
+
+            };
+
+
+            localStorage.setItem(
+                "userProfile",
+                JSON.stringify(profile)
+            );
+
+        }
+
+
+        /* ======================================
+           SUCCESS
+        ====================================== */
+
+        success.textContent =
+            "✅ Login successful! Redirecting...";
+
+        success.style.display =
+            "block";
+
+
+        loginButton.textContent =
+            "Login Successful ✓";
+
+
+        /* ======================================
+           DASHBOARD
+        ====================================== */
+
+        setTimeout(function() {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 1000);
+
+
+    }
+
+    catch (loginError) {
+
+
+        console.error(
+            "Login Error:",
+            loginError
+        );
+
+
+        error.textContent =
+            "❌ " + getLoginError(loginError);
+
 
         error.style.display =
             "block";
 
-        return;
+
+        loginButton.disabled =
+            false;
+
+
+        loginButton.textContent =
+            "🔐 Login";
+
+    }
+
+}
+
+
+/* ==========================================
+   FRIENDLY ERROR MESSAGES
+========================================== */
+
+function getLoginError(error) {
+
+    const message =
+        error?.message || "";
+
+
+    if (
+        message.toLowerCase()
+        .includes("invalid login credentials")
+    ) {
+
+        return "Invalid email or password.";
 
     }
 
 
-    /*
-      TEMPORARY LOGIN
+    if (
+        message.toLowerCase()
+        .includes("email not confirmed")
+    ) {
 
-      Backend will replace this
-      tomorrow with real authentication.
-    */
+        return "Please confirm your email before logging in.";
 
-    localStorage.setItem(
-        "loggedIn",
-        "true"
-    );
+    }
 
 
-    localStorage.setItem(
-        "currentUser",
-        email
-    );
+    if (
+        message.toLowerCase()
+        .includes("rate limit")
+    ) {
+
+        return "Too many attempts. Please try again later.";
+
+    }
 
 
-    /* GO TO DASHBOARD */
-
-    window.location.href =
-        "dashboard.html";
+    return message || "Unable to login. Please try again.";
 
 }
 
