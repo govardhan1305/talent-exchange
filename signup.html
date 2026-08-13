@@ -358,6 +358,8 @@ body{
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
 const SUPABASE_URL =
@@ -366,52 +368,139 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
 
-async function testSupabase() {
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-    const errorBox =
+document.getElementById("signupForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    const errorMessage =
         document.getElementById("errorMessage");
 
-    errorBox.style.display = "block";
-    errorBox.style.color = "white";
-    errorBox.style.background = "#333";
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const createButton =
+        document.getElementById("createButton");
+
+
+    errorMessage.style.display = "none";
+    successMessage.style.display = "none";
+
+
+    if (password !== confirmPassword) {
+
+        errorMessage.textContent =
+            "❌ Passwords do not match.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        errorMessage.textContent =
+            "❌ Password must contain at least 6 characters.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    createButton.disabled = true;
+    createButton.textContent = "Creating Account...";
+
 
     try {
 
-        const response = await fetch(
-            SUPABASE_URL + "/auth/v1/settings",
-            {
-                method: "GET",
+        const { data, error } =
+            await supabaseClient.auth.signUp({
 
-                headers: {
-                    "apikey": SUPABASE_KEY
+                email: email,
+
+                password: password,
+
+                options: {
+                    data: {
+                        full_name: name
+                    }
                 }
-            }
+
+            });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        localStorage.setItem(
+            "userProfile",
+            JSON.stringify({
+                name: name,
+                email: email,
+                skill: "",
+                learningSkill: "",
+                bio: ""
+            })
         );
 
-        const text = await response.text();
 
-        console.log("STATUS:", response.status);
-        console.log("RESPONSE:", text);
+        successMessage.innerHTML =
+            "✅ Account created successfully!<br>" +
+            "📧 Check your email for verification.";
 
-        errorBox.innerHTML =
-            "STATUS: " + response.status +
-            "<br><br>" +
-            text;
+        successMessage.style.display = "block";
+
+        createButton.textContent =
+            "Account Created ✓";
+
+
+        setTimeout(function() {
+
+            window.location.href = "login.html";
+
+        }, 4000);
+
 
     } catch (error) {
 
         console.error(error);
 
-        errorBox.innerHTML =
-            "BROWSER ERROR:<br>" +
-            error.message;
-    }
-}
+        errorMessage.textContent =
+            "❌ " + error.message;
 
-window.onload = testSupabase;
+        errorMessage.style.display = "block";
+
+        createButton.disabled = false;
+
+        createButton.textContent =
+            "✨ Create New Account";
+    }
+
+});
 
 </script>
-
 
 </body>
 
