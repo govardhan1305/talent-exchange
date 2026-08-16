@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -194,12 +193,9 @@ body{
 
 </head>
 
-
 <body>
 
-
 <div class="signup-container">
-
 
     <div class="logo">
 
@@ -218,14 +214,11 @@ body{
     </div>
 
 
-
     <div class="signup-card">
-
 
         <h2>
             Create Your Account 🚀
         </h2>
-
 
 
         <div
@@ -234,18 +227,13 @@ body{
         </div>
 
 
-
         <div
             id="successMessage"
             class="message success">
         </div>
 
 
-
         <form id="signupForm">
-
-
-            <!-- NAME -->
 
             <div class="input-group">
 
@@ -262,9 +250,6 @@ body{
             </div>
 
 
-
-            <!-- EMAIL -->
-
             <div class="input-group">
 
                 <label>
@@ -279,9 +264,6 @@ body{
 
             </div>
 
-
-
-            <!-- PASSWORD -->
 
             <div class="input-group">
 
@@ -299,9 +281,6 @@ body{
             </div>
 
 
-
-            <!-- CONFIRM PASSWORD -->
-
             <div class="input-group">
 
                 <label>
@@ -318,9 +297,6 @@ body{
             </div>
 
 
-
-            <!-- BUTTON -->
-
             <button
                 type="submit"
                 class="create-btn"
@@ -330,9 +306,7 @@ body{
 
             </button>
 
-
         </form>
-
 
 
         <div class="login-text">
@@ -340,7 +314,6 @@ body{
             Already have an account?
 
         </div>
-
 
 
         <a
@@ -351,157 +324,274 @@ body{
 
         </a>
 
-
     </div>
 
 </div>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-console.log("Supabase library:", window.supabase);
-</script>
-
 <script>
 
-const SUPABASE_URL =
-"https://uigekrizjpypvxrpnzy.supabase.co";
+/*
+====================================================
+TALENT EXCHANGE - SIGNUP
+====================================================
 
-const SUPABASE_KEY =
-"sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
+Supabase has been completely removed.
 
-const supabaseClient =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+The form will connect to our Python Flask
+backend after the backend is created.
 
-document.getElementById("signupForm")
-.addEventListener("submit", async function(event) {
+Expected API:
 
-    event.preventDefault();
+POST /api/signup
 
-    const name =
-        document.getElementById("name").value.trim();
+Data sent:
 
-    const email =
-        document.getElementById("email").value.trim();
+{
+    name: "...",
+    email: "...",
+    password: "..."
+}
 
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-    const errorMessage =
-        document.getElementById("errorMessage");
-
-    const successMessage =
-        document.getElementById("successMessage");
-
-    const createButton =
-        document.getElementById("createButton");
+====================================================
+*/
 
 
-    errorMessage.style.display = "none";
-    successMessage.style.display = "none";
+const signupForm =
+    document.getElementById("signupForm");
 
 
-    if (password !== confirmPassword) {
+signupForm.addEventListener(
+    "submit",
+    async function(event){
 
-        errorMessage.textContent =
-            "❌ Passwords do not match.";
-
-        errorMessage.style.display = "block";
-
-        return;
-    }
+        event.preventDefault();
 
 
-    if (password.length < 6) {
-
-        errorMessage.textContent =
-            "❌ Password must contain at least 6 characters.";
-
-        errorMessage.style.display = "block";
-
-        return;
-    }
+        const name =
+            document.getElementById("name")
+            .value
+            .trim();
 
 
-    createButton.disabled = true;
-    createButton.textContent = "Creating Account...";
+        const email =
+            document.getElementById("email")
+            .value
+            .trim();
 
 
-    try {
-
-        const { data, error } =
-            await supabaseClient.auth.signUp({
-
-                email: email,
-
-                password: password,
-
-                options: {
-                    data: {
-                        full_name: name
-                    }
-                }
-
-            });
+        const password =
+            document.getElementById("password")
+            .value;
 
 
-        if (error) {
-            throw error;
+        const confirmPassword =
+            document.getElementById("confirmPassword")
+            .value;
+
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        const createButton =
+            document.getElementById("createButton");
+
+
+        errorMessage.style.display = "none";
+        successMessage.style.display = "none";
+
+
+        /*
+        PASSWORD CHECK
+        */
+
+        if(password !== confirmPassword){
+
+            errorMessage.textContent =
+                "❌ Passwords do not match.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
         }
 
 
-        localStorage.setItem(
-            "userProfile",
-            JSON.stringify({
-                name: name,
-                email: email,
-                skill: "",
-                learningSkill: "",
-                bio: ""
-            })
-        );
+        /*
+        PASSWORD LENGTH
+        */
+
+        if(password.length < 6){
+
+            errorMessage.textContent =
+                "❌ Password must contain at least 6 characters.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+        }
 
 
-        successMessage.innerHTML =
-            "✅ Account created successfully!<br>" +
-            "📧 Check your email for verification.";
+        /*
+        BUTTON LOADING
+        */
 
-        successMessage.style.display = "block";
-
-        createButton.textContent =
-            "Account Created ✓";
-
-
-        setTimeout(function() {
-
-            window.location.href = "login.html";
-
-        }, 4000);
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        errorMessage.textContent =
-            "❌ " + error.message;
-
-        errorMessage.style.display = "block";
-
-        createButton.disabled = false;
+        createButton.disabled = true;
 
         createButton.textContent =
-            "✨ Create New Account";
+            "Creating Account...";
+
+
+        try{
+
+            /*
+            ============================================
+            PYTHON BACKEND
+            ============================================
+
+            Backend URL will be added after we
+            create and deploy Flask.
+
+            Example:
+
+            https://your-backend.onrender.com/api/signup
+
+            ============================================
+            */
+
+
+            const response =
+                await fetch(
+                    "YOUR_PYTHON_BACKEND_URL/api/signup",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                name: name,
+
+                                email: email,
+
+                                password: password
+
+                            })
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    result.message ||
+                    "Account creation failed."
+                );
+
+            }
+
+
+            /*
+            SUCCESS
+            */
+
+            successMessage.innerHTML =
+                "✅ Account created successfully!<br>" +
+                "Redirecting to Login...";
+
+
+            successMessage.style.display =
+                "block";
+
+
+            createButton.textContent =
+                "Account Created ✓";
+
+
+            /*
+            Save only temporary UI information.
+            Password is NEVER stored here.
+            */
+
+            localStorage.setItem(
+                "userProfile",
+                JSON.stringify({
+
+                    name: name,
+
+                    email: email,
+
+                    skill: "",
+
+                    learningSkill: "",
+
+                    bio: ""
+
+                })
+            );
+
+
+            /*
+            REDIRECT
+            */
+
+            setTimeout(function(){
+
+                window.location.href =
+                    "login.html";
+
+            },2000);
+
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Signup Error:",
+                error
+            );
+
+
+            errorMessage.textContent =
+                "❌ " +
+                (
+                    error.message ||
+                    "Unable to connect to server."
+                );
+
+
+            errorMessage.style.display =
+                "block";
+
+
+            createButton.disabled =
+                false;
+
+
+            createButton.textContent =
+                "✨ Create New Account";
+
+        }
+
     }
-
-});
+);
 
 </script>
 
