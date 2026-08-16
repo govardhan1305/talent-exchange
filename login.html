@@ -10,225 +10,228 @@
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
 
     background:
-        radial-gradient(circle at 15% 15%, #5b358d, transparent 32%),
-        radial-gradient(circle at 85% 85%, #254e9d, transparent 32%),
-        linear-gradient(135deg, #070711, #15132b);
+    radial-gradient(circle at 15% 15%,#5b358d,transparent 32%),
+    radial-gradient(circle at 85% 85%,#254e9d,transparent 32%),
+    linear-gradient(135deg,#070711,#15132b);
 }
 
-.login-container {
-    width: 90%;
-    max-width: 430px;
-    padding: 20px;
+.login-container{
+    width:90%;
+    max-width:430px;
+    padding:20px;
 }
 
-.logo {
-    text-align: center;
-    margin-bottom: 25px;
+.logo{
+    text-align:center;
+    margin-bottom:25px;
 }
 
-.logo-icon {
-    font-size: 48px;
-    margin-bottom: 8px;
+.logo-icon{
+    font-size:48px;
+    margin-bottom:8px;
 }
 
-.logo h1 {
-    font-size: 30px;
+.logo h1{
+    font-size:30px;
 }
 
-.logo p {
-    color: #aaa;
-    margin-top: 8px;
+.logo p{
+    color:#aaa;
+    margin-top:8px;
 }
 
-.login-card {
-    padding: 32px;
-    border-radius: 24px;
+.login-card{
+    padding:32px;
+    border-radius:24px;
 
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:blur(18px);
 
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
 }
 
-.login-card h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 25px;
+.login-card h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:25px;
 }
 
-.input-group {
-    margin-bottom: 18px;
+.input-group{
+    margin-bottom:18px;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #ddd;
-    font-size: 14px;
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#ddd;
+    font-size:14px;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 14px;
+.input-group input{
+    width:100%;
+    padding:14px;
 
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.12);
 
-    outline: none;
+    outline:none;
 
-    color: white;
-    background: rgba(255,255,255,0.08);
+    color:white;
+    background:rgba(255,255,255,0.08);
 
-    font-size: 15px;
+    font-size:15px;
 }
 
-.input-group input:focus {
-    border-color: #a786ff;
-    background: rgba(255,255,255,0.11);
+.input-group input:focus{
+    border-color:#a786ff;
+    background:rgba(255,255,255,0.11);
 }
 
-.login-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 5px;
+.login-btn{
+    width:100%;
+    padding:14px;
+    margin-top:5px;
 
-    border: none;
-    border-radius: 12px;
+    border:none;
+    border-radius:12px;
 
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    background: linear-gradient(90deg, #8066ff, #bd82ff);
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
 
-    transition: 0.3s;
+    transition:0.3s;
 }
 
-.login-btn:hover {
-    transform: translateY(-2px);
+.login-btn:hover{
+    transform:translateY(-2px);
 
     box-shadow:
         0 8px 25px rgba(128,102,255,0.3);
 }
 
-.login-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+.login-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+    transform:none;
 }
 
-.divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    margin: 25px 0;
+    margin:25px 0;
 
-    color: #777;
-    font-size: 13px;
+    color:#777;
+    font-size:13px;
 }
 
 .divider::before,
-.divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
+.divider::after{
+    content:"";
+    flex:1;
+    height:1px;
 
     background:
         rgba(255,255,255,0.12);
 }
 
-.signup-text {
-    text-align: center;
-    color: #aaa;
-    font-size: 14px;
+.signup-text{
+    text-align:center;
+
+    color:#aaa;
+    font-size:14px;
 }
 
-.signup-btn {
-    display: block;
-    width: 100%;
+.signup-btn{
+    display:block;
+    width:100%;
 
-    margin-top: 12px;
-    padding: 13px;
+    margin-top:12px;
+    padding:13px;
 
-    text-align: center;
-    text-decoration: none;
+    text-align:center;
+    text-decoration:none;
 
-    color: white;
+    color:white;
 
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border-radius:12px;
+
+    border:
+        1px solid rgba(255,255,255,0.15);
 
     background:
         rgba(255,255,255,0.06);
 
-    transition: 0.3s;
+    transition:0.3s;
 }
 
-.signup-btn:hover {
+.signup-btn:hover{
     background:
         rgba(255,255,255,0.13);
 }
 
-.error-message {
-    display: none;
+.error-message{
+    display:none;
 
-    margin-bottom: 15px;
-    padding: 12px;
+    margin-bottom:15px;
+    padding:12px;
 
-    border-radius: 10px;
+    border-radius:10px;
 
-    text-align: center;
+    text-align:center;
 
-    color: #ffaaaa;
+    color:#ffaaaa;
 
     background:
         rgba(255,70,70,0.12);
 }
 
-.success-message {
-    display: none;
+.success-message{
+    display:none;
 
-    margin-bottom: 15px;
-    padding: 12px;
+    margin-bottom:15px;
+    padding:12px;
 
-    border-radius: 10px;
+    border-radius:10px;
 
-    text-align: center;
+    text-align:center;
 
-    color: #9be6a5;
+    color:#9be6a5;
 
     background:
         rgba(70,200,120,0.15);
 }
 
-@media(max-width:500px) {
+@media(max-width:500px){
 
-    .login-card {
-        padding: 25px 20px;
+    .login-card{
+        padding:25px 20px;
     }
 
-    .logo h1 {
-        font-size: 26px;
+    .logo h1{
+        font-size:26px;
     }
 
 }
@@ -348,239 +351,176 @@ body {
 
 <script>
 
-/*
-====================================================
-TALENT EXCHANGE LOGIN
-====================================================
-
-Supabase has been completely removed.
-
-Python Flask backend will handle authentication.
-
-Expected endpoint:
-
-POST /api/login
-
-Data:
-
-{
-    email: "...",
-    password: "..."
-}
-
-====================================================
-*/
+const BACKEND_URL =
+    "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-const loginForm =
-    document.getElementById("loginForm");
+document.getElementById("loginForm")
+.addEventListener("submit", async function(event){
+
+    event.preventDefault();
 
 
-loginForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-
-        const email =
-            document.getElementById("email")
-            .value
-            .trim();
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
 
 
-        const password =
-            document.getElementById("password")
-            .value;
+    const password =
+        document.getElementById("password")
+        .value;
 
 
-        const error =
-            document.getElementById("errorMessage");
+    const error =
+        document.getElementById("errorMessage");
 
 
-        const success =
-            document.getElementById("successMessage");
+    const success =
+        document.getElementById("successMessage");
 
 
-        const loginButton =
-            document.getElementById("loginButton");
+    const loginButton =
+        document.getElementById("loginButton");
 
 
-        error.style.display = "none";
-        success.style.display = "none";
+    error.style.display = "none";
+    success.style.display = "none";
 
 
-        loginButton.disabled = true;
+    loginButton.disabled = true;
 
-        loginButton.textContent =
-            "Logging in...";
-
-
-        try {
-
-            /*
-            ==========================================
-            PYTHON BACKEND URL
-
-            We will replace this after Flask
-            backend is deployed.
-            ==========================================
-            */
-
-            const response =
-                await fetch(
-                    "YOUR_PYTHON_BACKEND_URL/api/login",
-                    {
-
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                email: email,
-
-                                password: password
-
-                            })
-
-                    }
-                );
+    loginButton.textContent =
+        "Logging in...";
 
 
-            const result =
-                await response.json();
+    try{
 
+        const response =
+            await fetch(
+                BACKEND_URL + "/api/login",
+                {
+                    method: "POST",
 
-            if (!response.ok) {
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                throw new Error(
-                    result.message ||
-                    "Invalid email or password."
-                );
+                    body: JSON.stringify({
 
-            }
+                        email: email,
 
-
-            /*
-            ==========================================
-            SAVE LOGIN INFORMATION
-            ==========================================
-            */
-
-            localStorage.setItem(
-                "loggedIn",
-                "true"
-            );
-
-
-            localStorage.setItem(
-                "currentUser",
-                email
-            );
-
-
-            /*
-            Save profile returned by backend
-            if available.
-            */
-
-            if (result.user) {
-
-                localStorage.setItem(
-                    "userProfile",
-                    JSON.stringify({
-
-                        name:
-                            result.user.name || "",
-
-                        email:
-                            result.user.email || email,
-
-                        skill:
-                            result.user.skill || "",
-
-                        learningSkill:
-                            result.user.learningSkill || "",
-
-                        bio:
-                            result.user.bio || ""
+                        password: password
 
                     })
-                );
-
-            }
-
-
-            /*
-            ==========================================
-            SUCCESS
-            ==========================================
-            */
-
-            success.textContent =
-                "✅ Login successful! Redirecting...";
-
-
-            success.style.display =
-                "block";
-
-
-            loginButton.textContent =
-                "Login Successful ✓";
-
-
-            /*
-            ==========================================
-            DASHBOARD
-            ==========================================
-            */
-
-            setTimeout(function() {
-
-                window.location.href =
-                    "dashboard.html";
-
-            }, 1000);
-
-
-        }
-
-        catch(errorObject) {
-
-            console.error(
-                "Login Error:",
-                errorObject
+                }
             );
 
 
-            error.textContent =
-                "❌ " +
-                (
-                    errorObject.message ||
-                    "Unable to connect to server."
-                );
+        const result =
+            await response.json();
 
 
-            error.style.display =
-                "block";
+        if(!response.ok){
 
-
-            loginButton.disabled =
-                false;
-
-
-            loginButton.textContent =
-                "🔐 Login";
+            throw new Error(
+                result.message ||
+                "Invalid email or password."
+            );
 
         }
 
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "currentUser",
+            email
+        );
+
+
+        if(result.user){
+
+            localStorage.setItem(
+                "userProfile",
+                JSON.stringify({
+
+                    name:
+                        result.user.name || "",
+
+                    email:
+                        result.user.email || email,
+
+                    skill:
+                        result.user.skill || "",
+
+                    learningSkill:
+                        result.user.learningSkill || "",
+
+                    bio:
+                        result.user.bio || ""
+
+                })
+            );
+
+        }
+
+
+        success.textContent =
+            "✅ Login successful! Redirecting...";
+
+
+        success.style.display =
+            "block";
+
+
+        loginButton.textContent =
+            "Login Successful ✓";
+
+
+        setTimeout(function(){
+
+            window.location.href =
+                "dashboard.html";
+
+        },1000);
+
+
+    }catch(errorObject){
+
+        console.error(
+            "Login Error:",
+            errorObject
+        );
+
+
+        error.textContent =
+            "❌ " +
+            (
+                errorObject.message ||
+                "Unable to connect to server."
+            );
+
+
+        error.style.display =
+            "block";
+
+
+        loginButton.disabled =
+            false;
+
+
+        loginButton.textContent =
+            "🔐 Login";
+
     }
-);
+
+});
 
 </script>
 
