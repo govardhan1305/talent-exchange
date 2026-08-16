@@ -292,201 +292,108 @@
          SIGNUP JAVASCRIPT
          ========================================== -->
 
-    <script>
+   <script>
 
-        async function registerUser(event) {
-
-            event.preventDefault();
-
-
-            // Get form values
-
-            const name =
-                document
-                .getElementById("name")
-                .value
-                .trim();
+const BACKEND_URL =
+    "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-            const email =
-                document
-                .getElementById("email")
-                .value
-                .trim()
-                .toLowerCase();
+async function registerUser(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const skill =
+        document.getElementById("skill").value.trim();
 
 
-            const password =
-                document
-                .getElementById("password")
-                .value;
+    if (!name || !email || !password || !skill) {
+
+        alert("Please fill all fields.");
+
+        return;
+    }
 
 
-            const skill =
-                document
-                .getElementById("skill")
-                .value
-                .trim();
+    try {
 
+        const response = await fetch(
+            BACKEND_URL + "/api/signup",
+            {
+                method: "POST",
 
-            // Check fields
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
 
-            if (
-                !name ||
-                !email ||
-                !password ||
-                !skill
-            ) {
+                body: JSON.stringify({
 
-                alert(
-                    "Please fill all fields."
-                );
+                    name: name,
 
-                return;
+                    email: email,
+
+                    password: password,
+
+                    skill: skill
+
+                })
             }
+        );
 
 
-            // Password validation
-
-            if (password.length < 6) {
-
-                alert(
-                    "Password must contain at least 6 characters."
-                );
-
-                return;
-            }
+        const result =
+            await response.json();
 
 
-            // Disable button
+        if (!response.ok) {
 
-            const button =
-                document
-                .getElementById("registerButton");
-
-
-            button.disabled = true;
-
-            button.innerText =
-                "Creating Account...";
-
-
-            try {
-
-                // Send data to Python backend
-
-                const response =
-                    await fetch(
-                        "https://talent-exchange-backend-p5wq.onrender.com/api/signup",
-                        {
-
-                            method: "POST",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json"
-
-                            },
-
-                            body: JSON.stringify({
-
-                                name: name,
-
-                                email: email,
-
-                                password: password
-
-                            })
-
-                        }
-                    );
-
-
-                // Convert response to JSON
-
-                const data =
-                    await response.json();
-
-
-                // Successful signup
-
-                if (data.success) {
-
-
-                    // Save profile information
-
-                    localStorage.setItem(
-                        "userName",
-                        name
-                    );
-
-
-                    localStorage.setItem(
-                        "userEmail",
-                        email
-                    );
-
-
-                    localStorage.setItem(
-                        "userSkill",
-                        skill
-                    );
-
-
-                    alert(
-                        "Account created successfully! 🎉"
-                    );
-
-
-                    // Go to login
-
-                    window.location.href =
-                        "login.html";
-
-
-                } else {
-
-
-                    // Backend error
-
-                    alert(
-                        data.message ||
-                        "Unable to create account."
-                    );
-
-                }
-
-
-            } catch (error) {
-
-
-                console.error(
-                    "Signup error:",
-                    error
-                );
-
-
-                alert(
-                    "Unable to connect to server. Please check your internet connection and try again."
-                );
-
-
-            } finally {
-
-
-                // Enable button again
-
-                button.disabled = false;
-
-                button.innerText =
-                    "Create Account 🚀";
-
-            }
+            throw new Error(
+                result.message ||
+                "Registration failed."
+            );
 
         }
 
-    </script>
+
+        alert(
+            "Account created successfully! 🎉"
+        );
+
+
+        window.location.href =
+            "login.html";
+
+
+    } catch (error) {
+
+        console.error(
+            "Signup Error:",
+            error
+        );
+
+
+        alert(
+            "❌ " +
+            (
+                error.message ||
+                "Unable to connect to server."
+            )
+        );
+
+    }
+
+}
+
+</script>
 
 </body>
 
