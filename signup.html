@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Create Account | Talent Exchange</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -178,7 +176,6 @@ body{
 }
 
 @media(max-width:500px){
-
     .signup-card{
         padding:25px 20px;
     }
@@ -186,9 +183,7 @@ body{
     .logo h1{
         font-size:26px;
     }
-
 }
-
 </style>
 
 </head>
@@ -199,47 +194,27 @@ body{
 
     <div class="logo">
 
-        <div class="logo-icon">
-            ✨
-        </div>
+        <div class="logo-icon">✨</div>
 
-        <h1>
-            Talent Exchange
-        </h1>
+        <h1>Talent Exchange</h1>
 
-        <p>
-            Learn • Share • Connect
-        </p>
+        <p>Learn • Share • Connect</p>
 
     </div>
 
-
     <div class="signup-card">
 
-        <h2>
-            Create Your Account 🚀
-        </h2>
+        <h2>Create Your Account 🚀</h2>
 
+        <div id="errorMessage" class="message error"></div>
 
-        <div
-            id="errorMessage"
-            class="message error">
-        </div>
-
-
-        <div
-            id="successMessage"
-            class="message success">
-        </div>
-
+        <div id="successMessage" class="message success"></div>
 
         <form id="signupForm">
 
             <div class="input-group">
 
-                <label>
-                    Full Name
-                </label>
+                <label>Full Name</label>
 
                 <input
                     type="text"
@@ -249,12 +224,9 @@ body{
 
             </div>
 
-
             <div class="input-group">
 
-                <label>
-                    Email
-                </label>
+                <label>Email</label>
 
                 <input
                     type="email"
@@ -264,12 +236,9 @@ body{
 
             </div>
 
-
             <div class="input-group">
 
-                <label>
-                    Password
-                </label>
+                <label>Password</label>
 
                 <input
                     type="password"
@@ -280,12 +249,9 @@ body{
 
             </div>
 
-
             <div class="input-group">
 
-                <label>
-                    Confirm Password
-                </label>
+                <label>Confirm Password</label>
 
                 <input
                     type="password"
@@ -295,7 +261,6 @@ body{
                     required>
 
             </div>
-
 
             <button
                 type="submit"
@@ -308,20 +273,12 @@ body{
 
         </form>
 
-
         <div class="login-text">
-
             Already have an account?
-
         </div>
 
-
-        <a
-            href="login.html"
-            class="login-link">
-
+        <a href="login.html" class="login-link">
             ← Back to Login
-
         </a>
 
     </div>
@@ -331,267 +288,184 @@ body{
 
 <script>
 
-/*
-====================================================
-TALENT EXCHANGE - SIGNUP
-====================================================
-
-Supabase has been completely removed.
-
-The form will connect to our Python Flask
-backend after the backend is created.
-
-Expected API:
-
-POST /api/signup
-
-Data sent:
-
-{
-    name: "...",
-    email: "...",
-    password: "..."
-}
-
-====================================================
-*/
+const BACKEND_URL =
+    "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-const signupForm =
-    document.getElementById("signupForm");
+document.getElementById("signupForm")
+.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name")
+        .value
+        .trim();
+
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword")
+        .value;
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const createButton =
+        document.getElementById("createButton");
 
 
-signupForm.addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
+    errorMessage.style.display = "none";
+    successMessage.style.display = "none";
 
 
-        const name =
-            document.getElementById("name")
-            .value
-            .trim();
+    if(password !== confirmPassword){
+
+        errorMessage.textContent =
+            "❌ Passwords do not match.";
+
+        errorMessage.style.display =
+            "block";
+
+        return;
+    }
 
 
-        const email =
-            document.getElementById("email")
-            .value
-            .trim();
+    if(password.length < 6){
+
+        errorMessage.textContent =
+            "❌ Password must contain at least 6 characters.";
+
+        errorMessage.style.display =
+            "block";
+
+        return;
+    }
 
 
-        const password =
-            document.getElementById("password")
-            .value;
+    createButton.disabled = true;
+
+    createButton.textContent =
+        "Creating Account...";
 
 
-        const confirmPassword =
-            document.getElementById("confirmPassword")
-            .value;
+    try{
+
+        const response =
+            await fetch(
+                BACKEND_URL + "/api/signup",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        password: password
+
+                    })
+                }
+            );
 
 
-        const errorMessage =
-            document.getElementById("errorMessage");
+        const result =
+            await response.json();
 
 
-        const successMessage =
-            document.getElementById("successMessage");
+        if(!response.ok){
 
+            throw new Error(
+                result.message ||
+                "Account creation failed."
+            );
 
-        const createButton =
-            document.getElementById("createButton");
-
-
-        errorMessage.style.display = "none";
-        successMessage.style.display = "none";
-
-
-        /*
-        PASSWORD CHECK
-        */
-
-        if(password !== confirmPassword){
-
-            errorMessage.textContent =
-                "❌ Passwords do not match.";
-
-            errorMessage.style.display =
-                "block";
-
-            return;
         }
 
 
-        /*
-        PASSWORD LENGTH
-        */
+        successMessage.innerHTML =
+            "✅ Account created successfully!<br>" +
+            "You can now login.";
 
-        if(password.length < 6){
+        successMessage.style.display =
+            "block";
 
-            errorMessage.textContent =
-                "❌ Password must contain at least 6 characters.";
-
-            errorMessage.style.display =
-                "block";
-
-            return;
-        }
-
-
-        /*
-        BUTTON LOADING
-        */
-
-        createButton.disabled = true;
 
         createButton.textContent =
-            "Creating Account...";
+            "Account Created ✓";
 
 
-        try{
+        localStorage.setItem(
+            "userProfile",
+            JSON.stringify({
 
-            /*
-            ============================================
-            PYTHON BACKEND
-            ============================================
+                name: name,
 
-            Backend URL will be added after we
-            create and deploy Flask.
+                email: email,
 
-            Example:
+                skill: "",
 
-            https://your-backend.onrender.com/api/signup
+                learningSkill: "",
 
-            ============================================
-            */
+                bio: ""
 
-
-            const response =
-                await fetch(
-                    "YOUR_PYTHON_BACKEND_URL/api/signup",
-                    {
-
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                name: name,
-
-                                email: email,
-
-                                password: password
-
-                            })
-
-                    }
-                );
+            })
+        );
 
 
-            const result =
-                await response.json();
+        setTimeout(function(){
+
+            window.location.href =
+                "login.html";
+
+        },2000);
 
 
-            if(!response.ok){
+    }catch(error){
 
-                throw new Error(
-                    result.message ||
-                    "Account creation failed."
-                );
-
-            }
+        console.error(
+            "Signup Error:",
+            error
+        );
 
 
-            /*
-            SUCCESS
-            */
-
-            successMessage.innerHTML =
-                "✅ Account created successfully!<br>" +
-                "Redirecting to Login...";
-
-
-            successMessage.style.display =
-                "block";
-
-
-            createButton.textContent =
-                "Account Created ✓";
-
-
-            /*
-            Save only temporary UI information.
-            Password is NEVER stored here.
-            */
-
-            localStorage.setItem(
-                "userProfile",
-                JSON.stringify({
-
-                    name: name,
-
-                    email: email,
-
-                    skill: "",
-
-                    learningSkill: "",
-
-                    bio: ""
-
-                })
+        errorMessage.textContent =
+            "❌ " +
+            (
+                error.message ||
+                "Unable to connect to server."
             );
 
 
-            /*
-            REDIRECT
-            */
-
-            setTimeout(function(){
-
-                window.location.href =
-                    "login.html";
-
-            },2000);
+        errorMessage.style.display =
+            "block";
 
 
-        }
+        createButton.disabled =
+            false;
 
-        catch(error){
-
-            console.error(
-                "Signup Error:",
-                error
-            );
-
-
-            errorMessage.textContent =
-                "❌ " +
-                (
-                    error.message ||
-                    "Unable to connect to server."
-                );
-
-
-            errorMessage.style.display =
-                "block";
-
-
-            createButton.disabled =
-                false;
-
-
-            createButton.textContent =
-                "✨ Create New Account";
-
-        }
+        createButton.textContent =
+            "✨ Create New Account";
 
     }
-);
+
+});
 
 </script>
 
