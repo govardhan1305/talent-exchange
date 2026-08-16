@@ -19,9 +19,7 @@
 }
 
 body{
-
     min-height:100vh;
-
     color:white;
 
     background:
@@ -35,20 +33,13 @@ body{
         #080812,
         #15132b
     );
-
 }
 
-
-/* NAVBAR */
-
 nav{
-
     height:70px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 6%;
@@ -59,21 +50,15 @@ nav{
     1px solid rgba(255,255,255,.1);
 
     backdrop-filter:blur(15px);
-
 }
 
 .logo{
-
     font-size:21px;
-
     font-weight:bold;
-
 }
 
 .back{
-
     color:white;
-
     text-decoration:none;
 
     padding:9px 14px;
@@ -82,31 +67,17 @@ nav{
     1px solid rgba(255,255,255,.2);
 
     border-radius:10px;
-
 }
-
-
-/* MAIN */
 
 .container{
-
     width:92%;
-
     max-width:850px;
-
     margin:20px auto;
-
 }
 
-
-/* PERSON */
-
 .profile{
-
     display:flex;
-
     align-items:center;
-
     gap:14px;
 
     padding:16px 18px;
@@ -119,19 +90,14 @@ nav{
     1px solid rgba(255,255,255,.1);
 
     margin-bottom:12px;
-
 }
 
 .avatar{
-
     width:55px;
-
     height:55px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -144,93 +110,66 @@ nav{
     );
 
     font-size:26px;
-
 }
 
 .profile h2{
-
     margin-bottom:4px;
-
 }
 
 .online{
-
     color:#62e27c;
-
     font-size:13px;
-
 }
 
-
-/* CALL BUTTONS */
-
 .call-buttons{
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
 
     gap:12px;
 
     margin-bottom:12px;
-
 }
 
 .call{
-
     padding:15px;
 
     border:none;
-
     border-radius:14px;
 
     color:white;
 
     font-weight:bold;
-
     font-size:15px;
 
     cursor:pointer;
-
 }
 
 .video{
-
     background:
     linear-gradient(
         135deg,
         #8066ff,
         #bd82ff
     );
-
 }
 
 .audio{
-
     background:
     linear-gradient(
         135deg,
         #347cff,
         #5b69ff
     );
-
 }
 
 .call:active{
-
     transform:scale(.98);
-
 }
 
-
-/* CHAT */
-
 .chat{
-
     height:610px;
 
     display:flex;
-
     flex-direction:column;
 
     overflow:hidden;
@@ -242,40 +181,25 @@ nav{
 
     border:
     1px solid rgba(255,255,255,.1);
-
 }
 
-
-/* CHAT HEADER */
-
 .chat-header{
-
     padding:15px 18px;
 
     border-bottom:
     1px solid rgba(255,255,255,.08);
-
 }
 
 .chat-header h3{
-
     margin-bottom:4px;
-
 }
 
 .chat-header p{
-
     color:#999;
-
     font-size:12px;
-
 }
 
-
-/* MESSAGES */
-
 .messages{
-
     flex:1;
 
     overflow-y:auto;
@@ -283,15 +207,12 @@ nav{
     padding:18px;
 
     display:flex;
-
     flex-direction:column;
 
     gap:12px;
-
 }
 
 .message{
-
     max-width:75%;
 
     padding:11px 14px;
@@ -299,26 +220,21 @@ nav{
     border-radius:16px;
 
     line-height:1.4;
-
     font-size:14px;
 
     word-wrap:break-word;
-
 }
 
 .received{
-
     align-self:flex-start;
 
     background:
     rgba(255,255,255,.1);
 
     border-bottom-left-radius:4px;
-
 }
 
 .sent{
-
     align-self:flex-end;
 
     background:
@@ -329,11 +245,9 @@ nav{
     );
 
     border-bottom-right-radius:4px;
-
 }
 
 .time{
-
     display:block;
 
     text-align:right;
@@ -343,14 +257,9 @@ nav{
     opacity:.6;
 
     margin-top:4px;
-
 }
 
-
-/* INPUT */
-
 .input-area{
-
     display:flex;
 
     align-items:center;
@@ -364,17 +273,13 @@ nav{
 
     border-top:
     1px solid rgba(255,255,255,.08);
-
 }
 
 .input-area button{
-
     width:42px;
-
     height:42px;
 
     border:none;
-
     border-radius:50%;
 
     background:
@@ -385,17 +290,14 @@ nav{
     cursor:pointer;
 
     font-size:17px;
-
 }
 
 .input-area input{
-
     flex:1;
 
     padding:13px;
 
     border:none;
-
     outline:none;
 
     border-radius:12px;
@@ -406,31 +308,22 @@ nav{
     color:white;
 
     font-size:14px;
-
 }
 
 .input-area input::placeholder{
-
     color:#888;
-
 }
 
 .send{
-
     background:
     linear-gradient(
         135deg,
         #8066ff,
         #bd82ff
     ) !important;
-
 }
 
-
-/* CALL SCREEN */
-
 .call-screen{
-
     position:fixed;
 
     inset:0;
@@ -438,20 +331,16 @@ nav{
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     background:
     rgba(3,3,10,.97);
 
     z-index:999;
-
 }
 
 .call-box{
-
     width:90%;
-
     max-width:430px;
 
     padding:30px;
@@ -465,18 +354,12 @@ nav{
 
     border:
     1px solid rgba(255,255,255,.12);
-
 }
 
-
-/* VIDEO PREVIEW */
-
 #localVideo{
-
     display:none;
 
     width:100%;
-
     max-width:350px;
 
     margin:20px auto;
@@ -484,24 +367,16 @@ nav{
     border-radius:18px;
 
     background:#000;
-
 }
 
-
-/* CALL AVATAR */
-
 .call-avatar{
-
     width:90px;
-
     height:90px;
 
     margin:0 auto 18px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -514,29 +389,22 @@ nav{
     );
 
     font-size:40px;
-
 }
 
 .call-box h2{
-
     margin-bottom:8px;
-
 }
 
 .call-status{
-
     color:#aaa;
 
     margin-bottom:25px;
-
 }
 
 .end-call{
-
     padding:13px 30px;
 
     border:none;
-
     border-radius:30px;
 
     background:#e74c3c;
@@ -546,36 +414,24 @@ nav{
     font-weight:bold;
 
     cursor:pointer;
-
 }
-
-
-/* MOBILE */
 
 @media(max-width:600px){
 
     .container{
-
         width:96%;
-
     }
 
     .chat{
-
         height:600px;
-
     }
 
     .message{
-
         max-width:85%;
-
     }
 
     .logo{
-
         font-size:17px;
-
     }
 
 }
@@ -607,8 +463,6 @@ nav{
 <div class="container">
 
 
-    <!-- PERSON -->
-
     <div class="profile">
 
         <div class="avatar">
@@ -630,17 +484,13 @@ nav{
     </div>
 
 
-    <!-- CALL BUTTONS -->
-
     <div class="call-buttons">
 
         <button
             class="call video"
             onclick="startCall('video')"
         >
-
             🎥 Video Call
-
         </button>
 
 
@@ -648,15 +498,11 @@ nav{
             class="call audio"
             onclick="startCall('audio')"
         >
-
             🎤 Audio Call
-
         </button>
 
     </div>
 
-
-    <!-- CHAT -->
 
     <div class="chat">
 
@@ -711,16 +557,12 @@ nav{
 </div>
 
 
-<!-- CALL SCREEN -->
-
 <div
     class="call-screen"
     id="callScreen"
 >
 
-
     <div class="call-box">
-
 
         <div
             class="call-avatar"
@@ -729,11 +571,9 @@ nav{
             🤝
         </div>
 
-
         <h2 id="callName">
             Connection
         </h2>
-
 
         <p
             class="call-status"
@@ -742,8 +582,6 @@ nav{
             Calling...
         </p>
 
-
-        <!-- CAMERA -->
 
         <video
             id="localVideo"
@@ -757,11 +595,8 @@ nav{
             class="end-call"
             onclick="endCall()"
         >
-
             📵 End Call
-
         </button>
-
 
     </div>
 
@@ -771,21 +606,31 @@ nav{
 <script>
 
 
-/* ==========================================
-   CURRENT USER
-========================================== */
+// ==========================================
+// BACKEND
+// ==========================================
+
+const BACKEND_URL =
+    "https://talent-exchange-backend-p5wq.onrender.com";
+
+
+// ==========================================
+// CURRENT USER
+// ==========================================
 
 let currentUser = null;
 
-try {
+try{
 
-    currentUser = JSON.parse(
-        localStorage.getItem(
-            "userProfile"
-        ) || "null"
-    );
+    currentUser =
+        JSON.parse(
+            localStorage.getItem(
+                "userProfile"
+            ) || "null"
+        );
 
-} catch(error) {
+}
+catch(error){
 
     currentUser = null;
 
@@ -797,9 +642,7 @@ if(
     !currentUser.id
 ){
 
-    alert(
-        "Please login again."
-    );
+    alert("Please login again.");
 
     window.location.href =
         "index.html";
@@ -807,89 +650,149 @@ if(
 }
 
 
-/* ==========================================
-   CONNECTION
-========================================== */
+// ==========================================
+// ACTIVE CONNECTION
+// ==========================================
 
 const personName =
     localStorage.getItem(
         "activeChatName"
-    ) ||
-    "Connection";
+    ) || "Connection";
 
 
 const skillName =
     localStorage.getItem(
         "activeChatSkill"
-    ) ||
-    "Skill Exchange";
+    ) || "Skill Exchange";
 
 
-document
-.getElementById(
-    "personName"
-)
-.textContent =
-    personName;
-
-
-document
-.getElementById(
-    "skillName"
-)
-.textContent =
-    "Skill: " +
-    skillName;
-
-
-document
-.getElementById(
-    "callName"
-)
-.textContent =
-    personName;
-
-
-/* ==========================================
-   CHAT STORAGE
-========================================== */
-
-const chatKey =
-
-    "chat_" +
-    currentUser.id +
-    "_" +
-    personName
-    .replace(
-        /\s+/g,
-        "_"
+const receiverId =
+    parseInt(
+        localStorage.getItem(
+            "activeChatId"
+        ),
+        10
     );
 
 
-let messages = [];
+document
+.getElementById("personName")
+.textContent =
+    personName;
 
 
-try {
+document
+.getElementById("skillName")
+.textContent =
+    "Skill: " + skillName;
 
-    messages =
-        JSON.parse(
-            localStorage.getItem(
-                chatKey
-            ) || "[]"
-        );
 
-} catch(error) {
+document
+.getElementById("callName")
+.textContent =
+    personName;
 
-    messages = [];
+
+// ==========================================
+// CHECK CONNECTION ID
+// ==========================================
+
+if(!receiverId){
+
+    document
+        .getElementById("messages")
+        .innerHTML = `
+
+            <div
+                style="
+                text-align:center;
+                color:#ffaaaa;
+                padding:30px;
+                "
+            >
+
+                ❌ Connection information missing.
+
+                <br><br>
+
+                Go back to Connections
+                and open Chat again.
+
+            </div>
+
+        `;
 
 }
 
 
-/* ==========================================
-   DISPLAY MESSAGES
-========================================== */
+// ==========================================
+// LOAD MESSAGES
+// ==========================================
 
-function displayMessages(){
+async function loadMessages(){
+
+    if(!receiverId){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/messages/" +
+                currentUser.id +
+                "/" +
+                receiverId
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to load messages."
+            );
+
+        }
+
+
+        const messages =
+            data.messages || [];
+
+
+        displayMessages(
+            messages
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Load messages error:",
+            error
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// DISPLAY
+// ==========================================
+
+function displayMessages(messages){
 
     const box =
         document.getElementById(
@@ -900,8 +803,31 @@ function displayMessages(){
     box.innerHTML = "";
 
 
+    if(messages.length === 0){
+
+        box.innerHTML = `
+
+            <div
+                style="
+                text-align:center;
+                color:#777;
+                padding:30px;
+                "
+            >
+
+                💬 Start the conversation
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
     messages.forEach(
-        message => {
+        function(message){
 
             const div =
                 document.createElement(
@@ -909,22 +835,35 @@ function displayMessages(){
                 );
 
 
+            const type =
+                Number(
+                    message.senderId
+                ) ===
+                Number(
+                    currentUser.id
+                )
+                ? "sent"
+                : "received";
+
+
             div.className =
                 "message " +
-                message.type;
+                type;
 
 
             div.innerHTML =
 
                 escapeHTML(
-                    message.text
+                    message.message
                 )
 
                 +
 
                 `<span class="time">
                     ${escapeHTML(
-                        message.time
+                        formatTime(
+                            message.createdAt
+                        )
                     )}
                 </span>`;
 
@@ -943,11 +882,11 @@ function displayMessages(){
 }
 
 
-/* ==========================================
-   SEND MESSAGE
-========================================== */
+// ==========================================
+// SEND MESSAGE
+// ==========================================
 
-function sendMessage(){
+async function sendMessage(){
 
     const input =
         document.getElementById(
@@ -966,37 +905,109 @@ function sendMessage(){
     }
 
 
-    messages.push({
+    if(!receiverId){
 
-        text:text,
+        alert(
+            "Connection not selected."
+        );
 
-        type:"sent",
+        return;
 
-        time:getTime()
-
-    });
-
-
-    saveMessages();
+    }
 
 
-    input.value = "";
+    input.disabled = true;
 
 
-    displayMessages();
+    try{
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/messages",
+
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                    JSON.stringify({
+
+                        senderId:
+                            currentUser.id,
+
+                        receiverId:
+                            receiverId,
+
+                        message:
+                            text
+
+                    })
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Message could not be sent."
+            );
+
+        }
+
+
+        input.value = "";
+
+
+        await loadMessages();
+
+    }
+    catch(error){
+
+        console.error(
+            "Send message error:",
+            error
+        );
+
+
+        alert(
+            "❌ " +
+            error.message
+        );
+
+    }
+    finally{
+
+        input.disabled = false;
+
+        input.focus();
+
+    }
 
 }
 
 
-/* ==========================================
-   ENTER TO SEND
-========================================== */
+// ==========================================
+// ENTER
+// ==========================================
 
 function handleKey(event){
 
     if(
-        event.key ===
-        "Enter"
+        event.key === "Enter"
     ){
 
         event.preventDefault();
@@ -1008,9 +1019,9 @@ function handleKey(event){
 }
 
 
-/* ==========================================
-   EMOJI
-========================================== */
+// ==========================================
+// EMOJI
+// ==========================================
 
 function addEmoji(){
 
@@ -1020,55 +1031,60 @@ function addEmoji(){
         );
 
 
-    input.value +=
-        " 😊";
-
+    input.value += " 😊";
 
     input.focus();
 
 }
 
 
-/* ==========================================
-   SAVE MESSAGES
-========================================== */
+// ==========================================
+// TIME
+// ==========================================
 
-function saveMessages(){
+function formatTime(value){
 
-    localStorage.setItem(
+    if(!value){
 
-        chatKey,
+        return "";
 
-        JSON.stringify(
-            messages
+    }
+
+
+    const date =
+        new Date(
+            value.replace(
+                " ",
+                "T"
+            ) + "Z"
+        );
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
         )
+    ){
 
+        return value;
+
+    }
+
+
+    return date.toLocaleTimeString(
+        [],
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
     );
 
 }
 
 
-/* ==========================================
-   TIME
-========================================== */
-
-function getTime(){
-
-    return new Date()
-        .toLocaleTimeString(
-            [],
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        );
-
-}
-
-
-/* ==========================================
-   SECURITY
-========================================== */
+// ==========================================
+// SECURITY
+// ==========================================
 
 function escapeHTML(text){
 
@@ -1079,7 +1095,7 @@ function escapeHTML(text){
 
 
     div.textContent =
-        text;
+        String(text);
 
 
     return div.innerHTML;
@@ -1087,12 +1103,23 @@ function escapeHTML(text){
 }
 
 
-/* ==========================================
-   CAMERA / MICROPHONE
-========================================== */
+// ==========================================
+// AUTO REFRESH
+// ==========================================
 
-let mediaStream =
-    null;
+// Every 2 seconds check for new messages
+
+setInterval(
+    loadMessages,
+    2000
+);
+
+
+// ==========================================
+// CAMERA / MICROPHONE
+// ==========================================
+
+let mediaStream = null;
 
 
 async function startCall(type){
@@ -1119,14 +1146,10 @@ async function startCall(type){
         "flex";
 
 
-    try {
-
-
-        /* VIDEO CALL */
+    try{
 
         if(
-            type ===
-            "video"
+            type === "video"
         ){
 
             mediaStream =
@@ -1135,7 +1158,6 @@ async function startCall(type){
                 .getUserMedia({
 
                     video:true,
-
                     audio:true
 
                 });
@@ -1152,11 +1174,7 @@ async function startCall(type){
             status.textContent =
                 "🎥 Camera and microphone enabled";
 
-
         }
-
-
-        /* AUDIO CALL */
 
         else{
 
@@ -1166,7 +1184,6 @@ async function startCall(type){
                 .getUserMedia({
 
                     video:false,
-
                     audio:true
 
                 });
@@ -1179,12 +1196,9 @@ async function startCall(type){
             status.textContent =
                 "🎤 Microphone enabled";
 
-
         }
 
-
     }
-
     catch(error){
 
         console.error(
@@ -1195,33 +1209,26 @@ async function startCall(type){
         status.textContent =
             "❌ Camera/Microphone permission denied.";
 
-
     }
 
 }
 
 
-/* ==========================================
-   END CALL
-========================================== */
+// ==========================================
+// END CALL
+// ==========================================
 
 function endCall(){
 
     if(mediaStream){
 
         mediaStream
-            .getTracks()
-            .forEach(
-                track => {
+        .getTracks()
+        .forEach(
+            track => track.stop()
+        );
 
-                    track.stop();
-
-                }
-            );
-
-
-        mediaStream =
-            null;
+        mediaStream = null;
 
     }
 
@@ -1232,9 +1239,7 @@ function endCall(){
         );
 
 
-    video.srcObject =
-        null;
-
+    video.srcObject = null;
 
     video.style.display =
         "none";
@@ -1250,11 +1255,11 @@ function endCall(){
 }
 
 
-/* ==========================================
-   LOAD
-========================================== */
+// ==========================================
+// INITIAL LOAD
+// ==========================================
 
-displayMessages();
+loadMessages();
 
 </script>
 
