@@ -5,10 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Connections | Talent Exchange</title>
 
@@ -28,25 +26,27 @@ body{
     color:white;
 
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            #59338d,
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 10% 10%,
+        #59338d,
+        transparent 30%
+    ),
 
-        radial-gradient(
-            circle at 90% 80%,
-            #254d9c,
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 90% 80%,
+        #254d9c,
+        transparent 30%
+    ),
 
-        linear-gradient(
-            135deg,
-            #070711,
-            #15132b
-        );
-
+    linear-gradient(
+        135deg,
+        #070711,
+        #15132b
+    );
 }
+
+
+/* NAVBAR */
 
 .navbar{
 
@@ -61,20 +61,17 @@ body{
     justify-content:space-between;
 
     background:
-        rgba(10,10,20,.85);
+    rgba(10,10,20,.85);
 
     border-bottom:
-        1px solid rgba(255,255,255,.1);
+    1px solid rgba(255,255,255,.1);
 
-    backdrop-filter:
-        blur(18px);
-
+    backdrop-filter:blur(18px);
 }
 
 .logo{
 
     font-size:21px;
-
     font-weight:bold;
 
 }
@@ -90,16 +87,18 @@ body{
     border-radius:10px;
 
     background:
-        rgba(255,255,255,.08);
-
+    rgba(255,255,255,.08);
 }
 
 .back:hover{
 
     background:
-        rgba(255,255,255,.15);
+    rgba(255,255,255,.15);
 
 }
+
+
+/* MAIN */
 
 .container{
 
@@ -126,18 +125,17 @@ body{
     margin-bottom:10px;
 
     background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #c49cff
-        );
+    linear-gradient(
+        90deg,
+        #ffffff,
+        #c49cff
+    );
 
     -webkit-background-clip:text;
 
     background-clip:text;
 
     color:transparent;
-
 }
 
 .heading p{
@@ -146,26 +144,35 @@ body{
 
 }
 
+
+/* STATUS */
+
 #status{
 
     text-align:center;
 
     color:#aaa;
 
-    padding:35px;
+    padding:25px;
 
 }
+
+
+/* CONNECTIONS */
 
 .connections{
 
     display:grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+    repeat(2,1fr);
 
     gap:20px;
 
 }
+
+
+/* CARD */
 
 .connection-card{
 
@@ -174,13 +181,12 @@ body{
     border-radius:21px;
 
     background:
-        rgba(255,255,255,.07);
+    rgba(255,255,255,.07);
 
     border:
-        1px solid rgba(255,255,255,.1);
+    1px solid rgba(255,255,255,.1);
 
-    backdrop-filter:
-        blur(15px);
+    backdrop-filter:blur(15px);
 
     transition:.3s;
 
@@ -188,13 +194,15 @@ body{
 
 .connection-card:hover{
 
-    transform:
-        translateY(-5px);
+    transform:translateY(-5px);
 
     background:
-        rgba(255,255,255,.10);
+    rgba(255,255,255,.10);
 
 }
+
+
+/* USER */
 
 .user{
 
@@ -225,12 +233,11 @@ body{
     font-size:27px;
 
     background:
-        linear-gradient(
-            135deg,
-            #8066ff,
-            #bd82ff
-        );
-
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
 }
 
 .user h2{
@@ -248,6 +255,9 @@ body{
     font-size:14px;
 
 }
+
+
+/* SKILLS */
 
 .skills{
 
@@ -270,43 +280,14 @@ body{
     color:#d7caff;
 
     background:
-        rgba(130,100,255,.2);
+    rgba(130,100,255,.2);
 
     font-size:13px;
 
 }
 
 
-/* BUTTON AREA */
-
-.action-buttons{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:10px;
-
-}
-
-.connected{
-
-    width:100%;
-
-    padding:13px;
-
-    border:none;
-
-    border-radius:11px;
-
-    color:#9be6a5;
-
-    background:
-        rgba(70,200,120,.15);
-
-    font-weight:bold;
-
-}
+/* CHAT BUTTON */
 
 .chat-btn{
 
@@ -321,26 +302,33 @@ body{
     color:white;
 
     background:
-        linear-gradient(
-            90deg,
-            #8066ff,
-            #bd82ff
-        );
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
 
     font-weight:bold;
+
+    font-size:15px;
 
     cursor:pointer;
 
     transition:.3s;
-
 }
 
 .chat-btn:hover{
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 8px 20px
+    rgba(128,102,255,.25);
 
 }
+
+
+/* ERROR */
 
 .error{
 
@@ -357,9 +345,11 @@ body{
     color:#ffaaaa;
 
     background:
-        rgba(255,70,70,.12);
-
+    rgba(255,70,70,.12);
 }
+
+
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -375,13 +365,9 @@ body{
 
     }
 
-}
+    .container{
 
-@media(max-width:450px){
-
-    .action-buttons{
-
-        grid-template-columns:1fr;
+        width:94%;
 
     }
 
@@ -400,24 +386,20 @@ body{
 <nav class="navbar">
 
     <div class="logo">
-
         ✨ Talent Exchange
-
     </div>
-
 
     <a
         href="dashboard.html"
         class="back"
     >
-
         ← Dashboard
-
     </a>
 
 </nav>
 
 
+<!-- MAIN -->
 
 <main class="container">
 
@@ -428,7 +410,6 @@ body{
             My Connections 🤝
         </h1>
 
-
         <p>
             People you connected with through Talent Exchange.
         </p>
@@ -436,34 +417,24 @@ body{
     </div>
 
 
-
     <div
         id="error"
-        class="error"
-    >
+        class="error">
     </div>
 
 
-
-    <div
-        id="status"
-    >
-
+    <div id="status">
         🔄 Loading connections...
-
     </div>
-
 
 
     <div
         id="connections"
-        class="connections"
-    >
+        class="connections">
     </div>
 
 
 </main>
-
 
 
 <script>
@@ -492,11 +463,63 @@ function getCurrentUser(){
         );
 
     }
+
     catch(error){
 
         return {};
 
     }
+
+}
+
+
+/* ==========================================
+   OPEN CHAT
+========================================== */
+
+function openChat(
+    personId,
+    personName,
+    personSkill
+){
+
+    console.log(
+        "Opening chat with:",
+        personId,
+        personName
+    );
+
+
+    /*
+       IMPORTANT
+
+       Save the OTHER person's ID.
+    */
+
+    localStorage.setItem(
+        "activeChatId",
+        String(personId)
+    );
+
+
+    localStorage.setItem(
+        "activeChatName",
+        personName
+    );
+
+
+    localStorage.setItem(
+        "activeChatSkill",
+        personSkill || ""
+    );
+
+
+    /*
+       Open chat page
+    */
+
+    window.location.href =
+        "chat.html";
 
 }
 
@@ -632,9 +655,11 @@ async function loadConnections(){
 
 
     }
+
     catch(error){
 
         console.error(
+            "Connection error:",
             error
         );
 
@@ -675,6 +700,10 @@ function createConnectionCard(
         "connection-card";
 
 
+    const id =
+        connection.id;
+
+
     const name =
         connection.name ||
         "User";
@@ -695,124 +724,135 @@ function createConnectionCard(
         "";
 
 
-    card.innerHTML = `
-
-        <div class="user">
-
-            <div class="avatar">
-                👤
-            </div>
+    const userSection =
+        document.createElement(
+            "div"
+        );
 
 
-            <div>
-
-                <h2>
-                    ${escapeHTML(name)}
-                </h2>
+    userSection.className =
+        "user";
 
 
-                <p>
-                    ${escapeHTML(email)}
-                </p>
+    userSection.innerHTML = `
 
-            </div>
-
+        <div class="avatar">
+            👤
         </div>
 
+        <div>
 
-        <div class="skills">
+            <h2>
+                ${escapeHTML(name)}
+            </h2>
 
-            ${
-                skill
-                ?
-                `
-                <span class="skill">
-                    🛠️ ${escapeHTML(skill)}
-                </span>
-                `
-                :
-                ""
-            }
-
-
-            ${
-                learningSkill
-                ?
-                `
-                <span class="skill">
-                    📚 ${escapeHTML(
-                        learningSkill
-                    )}
-                </span>
-                `
-                :
-                ""
-            }
-
-        </div>
-
-
-        <div class="action-buttons">
-
-
-            <button
-                class="connected"
-                disabled
-            >
-
-                🤝 Connected
-
-            </button>
-
-
-            <button
-                class="chat-btn"
-                onclick="openChat(
-                    '${escapeJS(name)}',
-                    '${escapeJS(skill)}'
-                )"
-            >
-
-                💬 Chat
-
-            </button>
-
+            <p>
+                ${escapeHTML(email)}
+            </p>
 
         </div>
 
     `;
 
 
+    card.appendChild(
+        userSection
+    );
+
+
+    const skills =
+        document.createElement(
+            "div"
+        );
+
+
+    skills.className =
+        "skills";
+
+
+    if(skill){
+
+        const skillElement =
+            document.createElement(
+                "span"
+            );
+
+        skillElement.className =
+            "skill";
+
+        skillElement.textContent =
+            "🛠️ " + skill;
+
+        skills.appendChild(
+            skillElement
+        );
+
+    }
+
+
+    if(learningSkill){
+
+        const learningElement =
+            document.createElement(
+                "span"
+            );
+
+        learningElement.className =
+            "skill";
+
+        learningElement.textContent =
+            "📚 " + learningSkill;
+
+        skills.appendChild(
+            learningElement
+        );
+
+    }
+
+
+    card.appendChild(
+        skills
+    );
+
+
+    /* CHAT BUTTON */
+
+    const chatButton =
+        document.createElement(
+            "button"
+        );
+
+
+    chatButton.className =
+        "chat-btn";
+
+
+    chatButton.textContent =
+        "💬 Chat";
+
+
+    chatButton.addEventListener(
+        "click",
+        function(){
+
+            openChat(
+                id,
+                name,
+                skill
+            );
+
+        }
+    );
+
+
+    card.appendChild(
+        chatButton
+    );
+
+
     container.appendChild(
         card
     );
-
-}
-
-
-/* ==========================================
-   OPEN CHAT
-========================================== */
-
-function openChat(
-    name,
-    skill
-){
-
-    localStorage.setItem(
-        "activeChatName",
-        name
-    );
-
-
-    localStorage.setItem(
-        "activeChatSkill",
-        skill || "Skill Exchange"
-    );
-
-
-    window.location.href =
-        "chat.html";
 
 }
 
@@ -848,37 +888,6 @@ function escapeHTML(value){
         .replace(
             /'/g,
             "&#039;"
-        );
-
-}
-
-
-/* ==========================================
-   ESCAPE JAVASCRIPT
-========================================== */
-
-function escapeJS(value){
-
-    return String(value)
-
-        .replace(
-            /\\/g,
-            "\\\\"
-        )
-
-        .replace(
-            /'/g,
-            "\\'"
-        )
-
-        .replace(
-            /\r/g,
-            "\\r"
-        )
-
-        .replace(
-            /\n/g,
-            "\\n"
         );
 
 }
