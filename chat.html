@@ -1,15 +1,20 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+<!DOCTYPE html>
+<html lang="en">
 
-«»
+<head>
 
-<title>Chat | Talent Exchange</title><style>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat | Talent Exchange</title>
+
+<style>
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
     font-family:Arial,sans-serif;
 }
 
@@ -48,8 +53,7 @@ nav{
 
     padding:0 6%;
 
-    background:
-    rgba(10,10,20,.85);
+    background:rgba(10,10,20,.85);
 
     border-bottom:
     1px solid rgba(255,255,255,.1);
@@ -95,7 +99,7 @@ nav{
 }
 
 
-/* PROFILE */
+/* PERSON */
 
 .profile{
 
@@ -109,8 +113,7 @@ nav{
 
     border-radius:18px;
 
-    background:
-    rgba(255,255,255,.07);
+    background:rgba(255,255,255,.07);
 
     border:
     1px solid rgba(255,255,255,.1);
@@ -122,11 +125,13 @@ nav{
 .avatar{
 
     width:55px;
+
     height:55px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
@@ -173,7 +178,7 @@ nav{
 
 .call{
 
-    padding:14px;
+    padding:15px;
 
     border:none;
 
@@ -186,14 +191,6 @@ nav{
     font-size:15px;
 
     cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.call:hover{
-
-    transform:translateY(-2px);
 
 }
 
@@ -219,8 +216,14 @@ nav{
 
 }
 
+.call:active{
 
-/* CHAT BOX */
+    transform:scale(.98);
+
+}
+
+
+/* CHAT */
 
 .chat{
 
@@ -344,22 +347,6 @@ nav{
 }
 
 
-/* TYPING */
-
-.typing{
-
-    display:none;
-
-    padding:
-    0 20px 10px;
-
-    color:#aaa;
-
-    font-size:12px;
-
-}
-
-
 /* INPUT */
 
 .input-area{
@@ -418,6 +405,8 @@ nav{
 
     color:white;
 
+    font-size:14px;
+
 }
 
 .input-area input::placeholder{
@@ -465,7 +454,7 @@ nav{
 
     max-width:430px;
 
-    padding:35px;
+    padding:30px;
 
     text-align:center;
 
@@ -479,17 +468,40 @@ nav{
 
 }
 
+
+/* VIDEO PREVIEW */
+
+#localVideo{
+
+    display:none;
+
+    width:100%;
+
+    max-width:350px;
+
+    margin:20px auto;
+
+    border-radius:18px;
+
+    background:#000;
+
+}
+
+
+/* CALL AVATAR */
+
 .call-avatar{
 
     width:90px;
+
     height:90px;
 
-    margin:
-    0 auto 18px;
+    margin:0 auto 18px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
@@ -548,12 +560,6 @@ nav{
 
     }
 
-    .call-buttons{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
     .chat{
 
         height:600px;
@@ -574,41 +580,130 @@ nav{
 
 }
 
-</style></head><body><nav><div class="logo">
+</style>
 
-    ✨ Talent Exchange
-
-</div>
+</head>
 
 
-<a
-    href="connections.html"
-    class="back"
->
+<body>
 
-    ← Connections
 
-</a>
+<nav>
 
-</nav><div class="container"><!-- PROFILE -->
+    <div class="logo">
+        ✨ Talent Exchange
+    </div>
 
-<div class="profile">
+    <a
+        href="connections.html"
+        class="back"
+    >
+        ← Connections
+    </a>
 
-    <div class="avatar">
+</nav>
 
-        🤝
+
+<div class="container">
+
+
+    <!-- PERSON -->
+
+    <div class="profile">
+
+        <div class="avatar">
+            🤝
+        </div>
+
+        <div>
+
+            <h2 id="personName">
+                Connection
+            </h2>
+
+            <div class="online">
+                🟢 Connected
+            </div>
+
+        </div>
 
     </div>
 
 
-    <div>
+    <!-- CALL BUTTONS -->
 
-        <h2 id="personName">
-            Connection
-        </h2>
+    <div class="call-buttons">
 
-        <div class="online">
-            🟢 Online
+        <button
+            class="call video"
+            onclick="startCall('video')"
+        >
+
+            🎥 Video Call
+
+        </button>
+
+
+        <button
+            class="call audio"
+            onclick="startCall('audio')"
+        >
+
+            🎤 Audio Call
+
+        </button>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div class="chat">
+
+
+        <div class="chat-header">
+
+            <h3>
+                💬 Messages
+            </h3>
+
+            <p id="skillName">
+                Skill Exchange
+            </p>
+
+        </div>
+
+
+        <div
+            class="messages"
+            id="messages"
+        ></div>
+
+
+        <div class="input-area">
+
+            <button
+                onclick="addEmoji()"
+            >
+                😊
+            </button>
+
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type a message..."
+                onkeydown="handleKey(event)"
+            >
+
+
+            <button
+                class="send"
+                onclick="sendMessage()"
+            >
+                ➤
+            </button>
+
         </div>
 
     </div>
@@ -616,210 +711,183 @@ nav{
 </div>
 
 
-<!-- CALLS -->
+<!-- CALL SCREEN -->
 
-<div class="call-buttons">
-
-    <button
-        class="call video"
-        onclick="startCall('video')"
-    >
-
-        🎥 Video Call
-
-    </button>
-
-
-    <button
-        class="call audio"
-        onclick="startCall('audio')"
-    >
-
-        📞 Audio Call
-
-    </button>
-
-</div>
-
-
-<!-- CHAT -->
-
-<div class="chat">
-
-
-    <div class="chat-header">
-
-        <h3>
-            💬 Messages
-        </h3>
-
-        <p id="skillName">
-            Skill Exchange
-        </p>
-
-    </div>
-
-
-    <div
-        class="messages"
-        id="messages"
-    ></div>
-
-
-    <div
-        class="typing"
-        id="typing"
-    >
-
-        ✍️ Typing...
-
-    </div>
-
-
-    <div class="input-area">
-
-
-        <button
-            onclick="addEmoji()"
-        >
-            😊
-        </button>
-
-
-        <input
-            type="text"
-            id="messageInput"
-            placeholder="Type a message..."
-            onkeydown="handleKey(event)"
-            oninput="showTyping()"
-        >
-
-
-        <button
-            class="send"
-            onclick="sendMessage()"
-        >
-
-            ➤
-
-        </button>
-
-
-    </div>
-
-</div>
-
-</div><!-- CALL SCREEN --><div
+<div
     class="call-screen"
     id="callScreen"
-><div class="call-box">
+>
 
 
-    <div class="call-avatar">
-        🤝
+    <div class="call-box">
+
+
+        <div
+            class="call-avatar"
+            id="callAvatar"
+        >
+            🤝
+        </div>
+
+
+        <h2 id="callName">
+            Connection
+        </h2>
+
+
+        <p
+            class="call-status"
+            id="callStatus"
+        >
+            Calling...
+        </p>
+
+
+        <!-- CAMERA -->
+
+        <video
+            id="localVideo"
+            autoplay
+            muted
+            playsinline
+        ></video>
+
+
+        <button
+            class="end-call"
+            onclick="endCall()"
+        >
+
+            📵 End Call
+
+        </button>
+
+
     </div>
-
-
-    <h2 id="callName">
-        Connection
-    </h2>
-
-
-    <p
-        class="call-status"
-        id="callStatus"
-    >
-        Calling...
-    </p>
-
-
-    <button
-        class="end-call"
-        onclick="endCall()"
-    >
-
-        📵 End Call
-
-    </button>
-
 
 </div>
 
-</div><script>
+
+<script>
 
 
-/* CONNECTION */
+/* ==========================================
+   CURRENT USER
+========================================== */
+
+let currentUser = null;
+
+try {
+
+    currentUser = JSON.parse(
+        localStorage.getItem(
+            "userProfile"
+        ) || "null"
+    );
+
+} catch(error) {
+
+    currentUser = null;
+
+}
+
+
+if(
+    !currentUser ||
+    !currentUser.id
+){
+
+    alert(
+        "Please login again."
+    );
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* ==========================================
+   CONNECTION
+========================================== */
 
 const personName =
-
     localStorage.getItem(
         "activeChatName"
-    )
-    || "Connection";
+    ) ||
+    "Connection";
 
 
 const skillName =
-
     localStorage.getItem(
         "activeChatSkill"
-    )
-    || "Skill Exchange";
+    ) ||
+    "Skill Exchange";
 
 
 document
-    .getElementById("personName")
-    .textContent =
-        personName;
+.getElementById(
+    "personName"
+)
+.textContent =
+    personName;
 
 
 document
-    .getElementById("skillName")
-    .textContent =
-        "Skill: " + skillName;
+.getElementById(
+    "skillName"
+)
+.textContent =
+    "Skill: " +
+    skillName;
 
 
-/* CHAT STORAGE */
+document
+.getElementById(
+    "callName"
+)
+.textContent =
+    personName;
+
+
+/* ==========================================
+   CHAT STORAGE
+========================================== */
 
 const chatKey =
 
     "chat_" +
-    personName.replace(
+    currentUser.id +
+    "_" +
+    personName
+    .replace(
         /\s+/g,
         "_"
     );
 
 
-let messages =
-
-    JSON.parse(
-        localStorage.getItem(chatKey)
-        || "[]"
-    );
+let messages = [];
 
 
-/* FIRST MESSAGE */
+try {
 
-if(messages.length === 0){
+    messages =
+        JSON.parse(
+            localStorage.getItem(
+                chatKey
+            ) || "[]"
+        );
 
-    messages.push({
+} catch(error) {
 
-        text:
-        "Hey! 👋 Nice to connect with you.",
-
-        type:
-        "received",
-
-        time:
-        getTime()
-
-    });
-
-    saveMessages();
+    messages = [];
 
 }
 
 
-/* DISPLAY */
+/* ==========================================
+   DISPLAY MESSAGES
+========================================== */
 
 function displayMessages(){
 
@@ -832,33 +900,41 @@ function displayMessages(){
     box.innerHTML = "";
 
 
-    messages.forEach(message => {
+    messages.forEach(
+        message => {
 
-        const div =
-            document.createElement("div");
-
-
-        div.className =
-            "message " +
-            message.type;
+            const div =
+                document.createElement(
+                    "div"
+                );
 
 
-        div.innerHTML =
-
-            escapeHTML(
-                message.text
-            )
-
-            +
-
-            `<span class="time">
-                ${message.time}
-            </span>`;
+            div.className =
+                "message " +
+                message.type;
 
 
-        box.appendChild(div);
+            div.innerHTML =
 
-    });
+                escapeHTML(
+                    message.text
+                )
+
+                +
+
+                `<span class="time">
+                    ${escapeHTML(
+                        message.time
+                    )}
+                </span>`;
+
+
+            box.appendChild(
+                div
+            );
+
+        }
+    );
 
 
     box.scrollTop =
@@ -867,7 +943,9 @@ function displayMessages(){
 }
 
 
-/* SEND MESSAGE */
+/* ==========================================
+   SEND MESSAGE
+========================================== */
 
 function sendMessage(){
 
@@ -881,7 +959,7 @@ function sendMessage(){
         input.value.trim();
 
 
-    if(text === ""){
+    if(!text){
 
         return;
 
@@ -907,60 +985,21 @@ function sendMessage(){
 
     displayMessages();
 
-
-    /* FAKE REPLY */
-
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "typing"
-            )
-            .style.display =
-                "block";
-
-
-    },500);
-
-
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "typing"
-            )
-            .style.display =
-                "none";
-
-
-        messages.push({
-
-            text:
-            "Sounds great! 👍",
-
-            type:
-            "received",
-
-            time:
-            getTime()
-
-        });
-
-
-        saveMessages();
-
-        displayMessages();
-
-    },1500);
-
 }
 
 
-/* ENTER */
+/* ==========================================
+   ENTER TO SEND
+========================================== */
 
 function handleKey(event){
 
-    if(event.key === "Enter"){
+    if(
+        event.key ===
+        "Enter"
+    ){
+
+        event.preventDefault();
 
         sendMessage();
 
@@ -969,7 +1008,9 @@ function handleKey(event){
 }
 
 
-/* EMOJI */
+/* ==========================================
+   EMOJI
+========================================== */
 
 function addEmoji(){
 
@@ -979,26 +1020,18 @@ function addEmoji(){
         );
 
 
-    input.value += " 😊";
+    input.value +=
+        " 😊";
+
 
     input.focus();
 
 }
 
 
-/* TYPING */
-
-function showTyping(){
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-}
-
-
-/* SAVE */
+/* ==========================================
+   SAVE MESSAGES
+========================================== */
 
 function saveMessages(){
 
@@ -1006,14 +1039,18 @@ function saveMessages(){
 
         chatKey,
 
-        JSON.stringify(messages)
+        JSON.stringify(
+            messages
+        )
 
     );
 
 }
 
 
-/* TIME */
+/* ==========================================
+   TIME
+========================================== */
 
 function getTime(){
 
@@ -1029,7 +1066,9 @@ function getTime(){
 }
 
 
-/* SECURITY */
+/* ==========================================
+   SECURITY
+========================================== */
 
 function escapeHTML(text){
 
@@ -1038,60 +1077,168 @@ function escapeHTML(text){
             "div"
         );
 
+
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
 }
 
 
-/* CALL */
+/* ==========================================
+   CAMERA / MICROPHONE
+========================================== */
 
-function startCall(type){
+let mediaStream =
+    null;
 
-    document
-        .getElementById(
+
+async function startCall(type){
+
+    const screen =
+        document.getElementById(
             "callScreen"
-        )
-        .style.display =
-            "flex";
+        );
 
 
-    document
-        .getElementById(
-            "callName"
-        )
-        .textContent =
-            personName;
+    const status =
+        document.getElementById(
+            "callStatus"
+        );
 
 
-    if(type === "video"){
+    const video =
+        document.getElementById(
+            "localVideo"
+        );
 
-        document
-            .getElementById(
-                "callStatus"
-            )
-            .textContent =
-                "🎥 Starting video call...";
 
-    }else{
+    screen.style.display =
+        "flex";
 
-        document
-            .getElementById(
-                "callStatus"
-            )
-            .textContent =
-                "📞 Starting audio call...";
+
+    try {
+
+
+        /* VIDEO CALL */
+
+        if(
+            type ===
+            "video"
+        ){
+
+            mediaStream =
+                await navigator
+                .mediaDevices
+                .getUserMedia({
+
+                    video:true,
+
+                    audio:true
+
+                });
+
+
+            video.srcObject =
+                mediaStream;
+
+
+            video.style.display =
+                "block";
+
+
+            status.textContent =
+                "🎥 Camera and microphone enabled";
+
+
+        }
+
+
+        /* AUDIO CALL */
+
+        else{
+
+            mediaStream =
+                await navigator
+                .mediaDevices
+                .getUserMedia({
+
+                    video:false,
+
+                    audio:true
+
+                });
+
+
+            video.style.display =
+                "none";
+
+
+            status.textContent =
+                "🎤 Microphone enabled";
+
+
+        }
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        status.textContent =
+            "❌ Camera/Microphone permission denied.";
+
 
     }
 
 }
 
 
-/* END CALL */
+/* ==========================================
+   END CALL
+========================================== */
 
 function endCall(){
+
+    if(mediaStream){
+
+        mediaStream
+            .getTracks()
+            .forEach(
+                track => {
+
+                    track.stop();
+
+                }
+            );
+
+
+        mediaStream =
+            null;
+
+    }
+
+
+    const video =
+        document.getElementById(
+            "localVideo"
+        );
+
+
+    video.srcObject =
+        null;
+
+
+    video.style.display =
+        "none";
+
 
     document
         .getElementById(
@@ -1103,8 +1250,14 @@ function endCall(){
 }
 
 
-/* LOAD */
+/* ==========================================
+   LOAD
+========================================== */
 
 displayMessages();
 
-</script></body></html>
+</script>
+
+</body>
+
+</html>
