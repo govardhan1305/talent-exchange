@@ -240,6 +240,7 @@ body{
 
 </head>
 
+
 <body>
 
 <div class="login-container">
@@ -284,7 +285,7 @@ body{
 
             <div class="input-group">
 
-                <label>
+                <label for="email">
                     Email
                 </label>
 
@@ -292,6 +293,7 @@ body{
                     type="email"
                     id="email"
                     placeholder="Enter your email"
+                    autocomplete="email"
                     required>
 
             </div>
@@ -299,7 +301,7 @@ body{
 
             <div class="input-group">
 
-                <label>
+                <label for="password">
                     Password
                 </label>
 
@@ -307,6 +309,7 @@ body{
                     type="password"
                     id="password"
                     placeholder="Enter your password"
+                    autocomplete="current-password"
                     required>
 
             </div>
@@ -336,8 +339,11 @@ body{
         </div>
 
 
+        <!-- IMPORTANT:
+             Your signup page is register.html -->
+
         <a
-            href="signup.html"
+            href="register.html"
             class="signup-btn">
 
             ✨ Create New Account
@@ -351,176 +357,266 @@ body{
 
 <script>
 
+
+// ==========================================
+// BACKEND URL
+// ==========================================
+
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-document.getElementById("loginForm")
-.addEventListener("submit", async function(event){
+// ==========================================
+// LOGIN
+// ==========================================
 
-    event.preventDefault();
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    async function(event){
 
-
-    const email =
-        document.getElementById("email")
-        .value
-        .trim();
-
-
-    const password =
-        document.getElementById("password")
-        .value;
+        event.preventDefault();
 
 
-    const error =
-        document.getElementById("errorMessage");
+        // Get values
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
 
 
-    const success =
-        document.getElementById("successMessage");
+        const password =
+            document
+            .getElementById("password")
+            .value;
 
 
-    const loginButton =
-        document.getElementById("loginButton");
+        const error =
+            document
+            .getElementById("errorMessage");
 
 
-    error.style.display = "none";
-    success.style.display = "none";
+        const success =
+            document
+            .getElementById("successMessage");
 
 
-    loginButton.disabled = true;
-
-    loginButton.textContent =
-        "Logging in...";
-
-
-    try{
-
-        const response =
-            await fetch(
-                BACKEND_URL + "/api/login",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        email: email,
-
-                        password: password
-
-                    })
-                }
-            );
+        const loginButton =
+            document
+            .getElementById("loginButton");
 
 
-        const result =
-            await response.json();
-
-
-        if(!response.ok){
-
-            throw new Error(
-                result.message ||
-                "Invalid email or password."
-            );
-
-        }
-
-
-        localStorage.setItem(
-            "loggedIn",
-            "true"
-        );
-
-
-        localStorage.setItem(
-            "currentUser",
-            email
-        );
-
-
-        if(result.user){
-
-            localStorage.setItem(
-                "userProfile",
-                JSON.stringify({
-
-                    name:
-                        result.user.name || "",
-
-                    email:
-                        result.user.email || email,
-
-                    skill:
-                        result.user.skill || "",
-
-                    learningSkill:
-                        result.user.learningSkill || "",
-
-                    bio:
-                        result.user.bio || ""
-
-                })
-            );
-
-        }
-
-
-        success.textContent =
-            "✅ Login successful! Redirecting...";
-
-
-        success.style.display =
-            "block";
-
-
-        loginButton.textContent =
-            "Login Successful ✓";
-
-
-        setTimeout(function(){
-
-            window.location.href =
-                "dashboard.html";
-
-        },1000);
-
-
-    }catch(errorObject){
-
-        console.error(
-            "Login Error:",
-            errorObject
-        );
-
-
-        error.textContent =
-            "❌ " +
-            (
-                errorObject.message ||
-                "Unable to connect to server."
-            );
-
+        // Clear messages
 
         error.style.display =
-            "block";
+            "none";
 
+        success.style.display =
+            "none";
+
+
+        // Disable button
 
         loginButton.disabled =
-            false;
-
+            true;
 
         loginButton.textContent =
-            "🔐 Login";
+            "Logging in...";
+
+
+        try{
+
+
+            // ==================================
+            // SEND LOGIN REQUEST
+            // ==================================
+
+            const response =
+                await fetch(
+
+                    BACKEND_URL +
+                    "/api/login",
+
+                    {
+
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                            "application/json"
+                        },
+
+                        body:
+                        JSON.stringify({
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        })
+
+                    }
+
+                );
+
+
+            // Get backend response
+
+            const result =
+                await response.json();
+
+
+            // ==================================
+            // LOGIN FAILED
+            // ==================================
+
+            if(!response.ok){
+
+                throw new Error(
+
+                    result.message ||
+                    "Invalid email or password."
+
+                );
+
+            }
+
+
+            // ==================================
+            // LOGIN SUCCESS
+            // ==================================
+
+            if(result.success){
+
+
+                // Login status
+
+                localStorage.setItem(
+                    "loggedIn",
+                    "true"
+                );
+
+
+                // Current user email
+
+                localStorage.setItem(
+                    "currentUser",
+                    email
+                );
+
+
+                // Save user profile
+
+                if(result.user){
+
+                    localStorage.setItem(
+
+                        "userProfile",
+
+                        JSON.stringify({
+
+                            id:
+                                result.user.id || "",
+
+                            name:
+                                result.user.name || "",
+
+                            email:
+                                result.user.email ||
+                                email,
+
+                            skill:
+                                result.user.skill || "",
+
+                            learningSkill:
+                                result.user.learningSkill ||
+                                "",
+
+                            bio:
+                                result.user.bio || ""
+
+                        })
+
+                    );
+
+                }
+
+
+                // Success message
+
+                success.textContent =
+                    "✅ Login successful! Redirecting...";
+
+
+                success.style.display =
+                    "block";
+
+
+                loginButton.textContent =
+                    "Login Successful ✓";
+
+
+                // ==================================
+                // REDIRECT TO DASHBOARD
+                // ==================================
+
+                setTimeout(
+
+                    function(){
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+
+                    1000
+
+                );
+
+            }
+
+
+        }
+
+        catch(errorObject){
+
+
+            console.error(
+                "Login Error:",
+                errorObject
+            );
+
+
+            error.textContent =
+                "❌ " +
+                (
+                    errorObject.message ||
+                    "Unable to connect to server."
+                );
+
+
+            error.style.display =
+                "block";
+
+
+            loginButton.disabled =
+                false;
+
+
+            loginButton.textContent =
+                "🔐 Login";
+
+        }
 
     }
 
-});
+);
 
 </script>
 
