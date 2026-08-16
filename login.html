@@ -8,9 +8,6 @@
 
 <title>Login | Talent Exchange</title>
 
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 
 * {
@@ -22,31 +19,15 @@
 
 body {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     color: white;
 
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            #5b358d,
-            transparent 32%
-        ),
-
-        radial-gradient(
-            circle at 85% 85%,
-            #254e9d,
-            transparent 32%
-        ),
-
-        linear-gradient(
-            135deg,
-            #070711,
-            #15132b
-        );
+        radial-gradient(circle at 15% 15%, #5b358d, transparent 32%),
+        radial-gradient(circle at 85% 85%, #254e9d, transparent 32%),
+        linear-gradient(135deg, #070711, #15132b);
 }
 
 .login-container {
@@ -76,19 +57,14 @@ body {
 
 .login-card {
     padding: 32px;
-
     border-radius: 24px;
 
-    background:
-        rgba(255,255,255,0.07);
-
-    border:
-        1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
 
     backdrop-filter: blur(18px);
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
 }
 
 .login-card h2 {
@@ -113,52 +89,36 @@ body {
     padding: 14px;
 
     border-radius: 12px;
-
-    border:
-        1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.12);
 
     outline: none;
 
     color: white;
-
-    background:
-        rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.08);
 
     font-size: 15px;
 }
 
 .input-group input:focus {
     border-color: #a786ff;
-
-    background:
-        rgba(255,255,255,0.11);
+    background: rgba(255,255,255,0.11);
 }
 
 .login-btn {
     width: 100%;
-
     padding: 14px;
-
     margin-top: 5px;
 
     border: none;
-
     border-radius: 12px;
 
     color: white;
-
     font-size: 16px;
-
     font-weight: bold;
 
     cursor: pointer;
 
-    background:
-        linear-gradient(
-            90deg,
-            #8066ff,
-            #bd82ff
-        );
+    background: linear-gradient(90deg, #8066ff, #bd82ff);
 
     transition: 0.3s;
 }
@@ -178,24 +138,19 @@ body {
 
 .divider {
     display: flex;
-
     align-items: center;
-
     gap: 12px;
 
     margin: 25px 0;
 
     color: #777;
-
     font-size: 13px;
 }
 
 .divider::before,
 .divider::after {
     content: "";
-
     flex: 1;
-
     height: 1px;
 
     background:
@@ -204,31 +159,24 @@ body {
 
 .signup-text {
     text-align: center;
-
     color: #aaa;
-
     font-size: 14px;
 }
 
 .signup-btn {
     display: block;
-
     width: 100%;
 
     margin-top: 12px;
-
     padding: 13px;
 
     text-align: center;
-
     text-decoration: none;
 
     color: white;
 
     border-radius: 12px;
-
-    border:
-        1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
 
     background:
         rgba(255,255,255,0.06);
@@ -245,7 +193,6 @@ body {
     display: none;
 
     margin-bottom: 15px;
-
     padding: 12px;
 
     border-radius: 10px;
@@ -262,7 +209,6 @@ body {
     display: none;
 
     margin-bottom: 15px;
-
     padding: 12px;
 
     border-radius: 10px;
@@ -291,14 +237,9 @@ body {
 
 </head>
 
-
 <body>
 
-
 <div class="login-container">
-
-
-    <!-- LOGO -->
 
     <div class="logo">
 
@@ -317,38 +258,26 @@ body {
     </div>
 
 
-    <!-- LOGIN CARD -->
-
     <div class="login-card">
-
 
         <h2>
             Welcome Back 👋
         </h2>
 
 
-        <!-- ERROR -->
-
         <div
             class="error-message"
-            id="errorMessage"
-        ></div>
+            id="errorMessage">
+        </div>
 
-
-        <!-- SUCCESS -->
 
         <div
             class="success-message"
-            id="successMessage"
-        ></div>
+            id="successMessage">
+        </div>
 
 
-        <!-- LOGIN FORM -->
-
-        <form onsubmit="loginUser(event)">
-
-
-            <!-- EMAIL -->
+        <form id="loginForm">
 
             <div class="input-group">
 
@@ -360,13 +289,10 @@ body {
                     type="email"
                     id="email"
                     placeholder="Enter your email"
-                    required
-                >
+                    required>
 
             </div>
 
-
-            <!-- PASSWORD -->
 
             <div class="input-group">
 
@@ -378,34 +304,27 @@ body {
                     type="password"
                     id="password"
                     placeholder="Enter your password"
-                    required
-                >
+                    required>
 
             </div>
 
 
-            <!-- LOGIN -->
-
             <button
                 type="submit"
                 class="login-btn"
-                id="loginButton"
-            >
-                🔐 Login
-            </button>
+                id="loginButton">
 
+                🔐 Login
+
+            </button>
 
         </form>
 
-
-        <!-- DIVIDER -->
 
         <div class="divider">
             OR
         </div>
 
-
-        <!-- SIGN UP -->
 
         <div class="signup-text">
 
@@ -416,274 +335,254 @@ body {
 
         <a
             href="signup.html"
-            class="signup-btn"
-        >
+            class="signup-btn">
+
             ✨ Create New Account
+
         </a>
 
-
     </div>
-
 
 </div>
 
 
 <script>
 
-/* ==========================================
-   SUPABASE CONNECTION
-========================================== */
+/*
+====================================================
+TALENT EXCHANGE LOGIN
+====================================================
 
-const SUPABASE_URL =
-    "https://uigekrizjpypvxrpnzy.supabase.co";
+Supabase has been completely removed.
 
-const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_zbxRmxoGjU8fqrv04QWahQ_QW36q2dh";
+Python Flask backend will handle authentication.
 
+Expected endpoint:
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+POST /api/login
 
+Data:
 
-/* ==========================================
-   LOGIN
-========================================== */
+{
+    email: "...",
+    password: "..."
+}
 
-async function loginUser(event) {
-
-    event.preventDefault();
+====================================================
+*/
 
 
-    const email =
-        document.getElementById("email")
-        .value.trim();
+const loginForm =
+    document.getElementById("loginForm");
 
 
-    const password =
-        document.getElementById("password")
-        .value;
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
 
 
-    const error =
-        document.getElementById(
-            "errorMessage"
-        );
+        const email =
+            document.getElementById("email")
+            .value
+            .trim();
 
 
-    const success =
-        document.getElementById(
-            "successMessage"
-        );
+        const password =
+            document.getElementById("password")
+            .value;
 
 
-    const loginButton =
-        document.getElementById(
-            "loginButton"
-        );
+        const error =
+            document.getElementById("errorMessage");
 
 
-    /* Hide old messages */
-
-    error.style.display = "none";
-
-    success.style.display = "none";
+        const success =
+            document.getElementById("successMessage");
 
 
-    /* Loading */
-
-    loginButton.disabled = true;
-
-    loginButton.textContent =
-        "Logging in...";
+        const loginButton =
+            document.getElementById("loginButton");
 
 
-    try {
+        error.style.display = "none";
+        success.style.display = "none";
 
 
-        /* ======================================
-           SUPABASE LOGIN
-        ====================================== */
+        loginButton.disabled = true;
 
-        const { data, error: loginError } =
-            await supabaseClient.auth.signInWithPassword({
-
-                email: email,
-
-                password: password
-
-            });
+        loginButton.textContent =
+            "Logging in...";
 
 
-        /* Check error */
+        try {
 
-        if (loginError) {
+            /*
+            ==========================================
+            PYTHON BACKEND URL
 
-            throw loginError;
+            We will replace this after Flask
+            backend is deployed.
+            ==========================================
+            */
 
-        }
+            const response =
+                await fetch(
+                    "YOUR_PYTHON_BACKEND_URL/api/login",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                email: email,
+
+                                password: password
+
+                            })
+
+                    }
+                );
 
 
-        /* Make sure session exists */
+            const result =
+                await response.json();
 
-        if (!data.session) {
 
-            throw new Error(
-                "Login session could not be created."
+            if (!response.ok) {
+
+                throw new Error(
+                    result.message ||
+                    "Invalid email or password."
+                );
+
+            }
+
+
+            /*
+            ==========================================
+            SAVE LOGIN INFORMATION
+            ==========================================
+            */
+
+            localStorage.setItem(
+                "loggedIn",
+                "true"
             );
-
-        }
-
-
-        /* ======================================
-           SAVE BASIC LOCAL PROFILE
-        ====================================== */
-
-        const user =
-            data.user;
-
-
-        const existingProfile =
-            localStorage.getItem(
-                "userProfile"
-            );
-
-
-        if (!existingProfile) {
-
-            const profile = {
-
-                name:
-                    user.user_metadata?.full_name
-                    || "",
-
-                email:
-                    user.email
-                    || email,
-
-                skill: "",
-
-                learningSkill: "",
-
-                bio: ""
-
-            };
 
 
             localStorage.setItem(
-                "userProfile",
-                JSON.stringify(profile)
+                "currentUser",
+                email
             );
+
+
+            /*
+            Save profile returned by backend
+            if available.
+            */
+
+            if (result.user) {
+
+                localStorage.setItem(
+                    "userProfile",
+                    JSON.stringify({
+
+                        name:
+                            result.user.name || "",
+
+                        email:
+                            result.user.email || email,
+
+                        skill:
+                            result.user.skill || "",
+
+                        learningSkill:
+                            result.user.learningSkill || "",
+
+                        bio:
+                            result.user.bio || ""
+
+                    })
+                );
+
+            }
+
+
+            /*
+            ==========================================
+            SUCCESS
+            ==========================================
+            */
+
+            success.textContent =
+                "✅ Login successful! Redirecting...";
+
+
+            success.style.display =
+                "block";
+
+
+            loginButton.textContent =
+                "Login Successful ✓";
+
+
+            /*
+            ==========================================
+            DASHBOARD
+            ==========================================
+            */
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "dashboard.html";
+
+            }, 1000);
+
 
         }
 
+        catch(errorObject) {
 
-        /* ======================================
-           SUCCESS
-        ====================================== */
-
-        success.textContent =
-            "✅ Login successful! Redirecting...";
-
-        success.style.display =
-            "block";
+            console.error(
+                "Login Error:",
+                errorObject
+            );
 
 
-        loginButton.textContent =
-            "Login Successful ✓";
+            error.textContent =
+                "❌ " +
+                (
+                    errorObject.message ||
+                    "Unable to connect to server."
+                );
 
 
-        /* ======================================
-           DASHBOARD
-        ====================================== */
-
-        setTimeout(function() {
-
-            window.location.href =
-                "dashboard.html";
-
-        }, 1000);
+            error.style.display =
+                "block";
 
 
-    }
-
-    catch (loginError) {
-
-
-        console.error(
-            "Login Error:",
-            loginError
-        );
+            loginButton.disabled =
+                false;
 
 
-        error.textContent =
-            "❌ " + getLoginError(loginError);
+            loginButton.textContent =
+                "🔐 Login";
 
-
-        error.style.display =
-            "block";
-
-
-        loginButton.disabled =
-            false;
-
-
-        loginButton.textContent =
-            "🔐 Login";
+        }
 
     }
-
-}
-
-
-/* ==========================================
-   FRIENDLY ERROR MESSAGES
-========================================== */
-
-function getLoginError(error) {
-
-    const message =
-        error?.message || "";
-
-
-    if (
-        message.toLowerCase()
-        .includes("invalid login credentials")
-    ) {
-
-        return "Invalid email or password.";
-
-    }
-
-
-    if (
-        message.toLowerCase()
-        .includes("email not confirmed")
-    ) {
-
-        return "Please confirm your email before logging in.";
-
-    }
-
-
-    if (
-        message.toLowerCase()
-        .includes("rate limit")
-    ) {
-
-        return "Too many attempts. Please try again later.";
-
-    }
-
-
-    return message || "Unable to login. Please try again.";
-
-}
+);
 
 </script>
-
 
 </body>
 
