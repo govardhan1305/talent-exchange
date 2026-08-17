@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,6 +20,7 @@
 body{
     min-height:100vh;
     color:white;
+
     background:
     radial-gradient(circle at top right,#3b2470,transparent 35%),
     linear-gradient(135deg,#080812,#15132b);
@@ -26,12 +28,18 @@ body{
 
 nav{
     height:70px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 6%;
+
     background:rgba(10,10,20,.85);
-    border-bottom:1px solid rgba(255,255,255,.1);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.1);
+
     backdrop-filter:blur(15px);
 }
 
@@ -43,41 +51,53 @@ nav{
 .back{
     color:white;
     text-decoration:none;
+
     padding:9px 14px;
+
     border:1px solid rgba(255,255,255,.2);
+
     border-radius:10px;
 }
 
 .container{
     width:92%;
     max-width:850px;
+
     margin:20px auto;
 }
 
 .profile{
     display:flex;
     align-items:center;
-    gap:14px;
-    padding:16px 18px;
-    border-radius:18px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1);
-    margin-bottom:12px;
-}
 
-.avatar,
-.call-avatar{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
+    gap:14px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.07);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    margin-bottom:12px;
 }
 
 .avatar{
     width:55px;
     height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
     font-size:26px;
+
+    background:
+    linear-gradient(135deg,#8066ff,#bd82ff);
 }
 
 .profile h2{
@@ -89,44 +109,27 @@ nav{
     font-size:13px;
 }
 
-.call-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-bottom:12px;
-}
-
-.call{
-    padding:15px;
-    border:none;
-    border-radius:14px;
-    color:white;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-}
-
-.video{
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
-}
-
-.audio{
-    background:linear-gradient(135deg,#347cff,#5b69ff);
-}
-
 .chat{
-    height:610px;
+    height:650px;
+
     display:flex;
     flex-direction:column;
+
     overflow:hidden;
+
     border-radius:20px;
+
     background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,255,255,.1);
+
+    border:
+    1px solid rgba(255,255,255,.1);
 }
 
 .chat-header{
     padding:15px 18px;
-    border-bottom:1px solid rgba(255,255,255,.08);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 
 .chat-header h3{
@@ -140,70 +143,116 @@ nav{
 
 .messages{
     flex:1;
+
     overflow-y:auto;
+
     padding:18px;
+
     display:flex;
     flex-direction:column;
+
     gap:12px;
 }
 
 .message{
     max-width:75%;
+
     padding:11px 14px;
+
     border-radius:16px;
+
     line-height:1.4;
+
     font-size:14px;
+
     word-wrap:break-word;
 }
 
 .received{
     align-self:flex-start;
+
     background:rgba(255,255,255,.1);
+
     border-bottom-left-radius:4px;
 }
 
 .sent{
     align-self:flex-end;
-    background:linear-gradient(135deg,#8066ff,#bd82ff);
+
+    background:
+    linear-gradient(135deg,#8066ff,#bd82ff);
+
     border-bottom-right-radius:4px;
 }
 
 .time{
     display:block;
+
     text-align:right;
+
     font-size:9px;
+
     opacity:.6;
+
     margin-top:4px;
+}
+
+.empty{
+    margin:auto;
+
+    text-align:center;
+
+    color:#888;
+
+    padding:30px;
 }
 
 .input-area{
     display:flex;
     align-items:center;
+
     gap:8px;
+
     padding:12px;
+
     background:rgba(8,8,18,.9);
-    border-top:1px solid rgba(255,255,255,.08);
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
 }
 
 .input-area button{
     width:42px;
     height:42px;
+
     border:none;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.1);
+
     color:white;
+
     cursor:pointer;
+
     font-size:17px;
 }
 
 .input-area input{
     flex:1;
+
     padding:13px;
+
     border:none;
+
     outline:none;
+
     border-radius:12px;
+
     background:rgba(255,255,255,.1);
+
     color:white;
+
     font-size:14px;
 }
 
@@ -212,91 +261,45 @@ nav{
 }
 
 .send{
-    background:linear-gradient(135deg,#8066ff,#bd82ff)!important;
+    background:
+    linear-gradient(135deg,#8066ff,#bd82ff)!important;
 }
 
+.input-area button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
 
-/* CALL SCREEN */
-
-.call-screen{
-    position:fixed;
-    inset:0;
+.error{
     display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgba(3,3,10,.97);
-    z-index:9999;
-}
 
-.call-box{
-    width:92%;
-    max-width:500px;
-    padding:25px;
+    padding:12px;
+
+    margin-bottom:12px;
+
     text-align:center;
-    border-radius:25px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    color:#ff9b9b;
+
+    background:rgba(220,60,70,.15);
 }
 
-.call-avatar{
-    width:90px;
-    height:90px;
-    margin:0 auto 18px;
-    font-size:40px;
-}
-
-.call-box h2{
-    margin-bottom:8px;
-}
-
-.call-status{
-    color:#aaa;
-    margin-bottom:20px;
-}
-
-video{
-    background:#000;
-    border-radius:18px;
-}
-
-#localVideo{
+.success{
     display:none;
-    width:100%;
-    max-height:300px;
-    object-fit:cover;
-}
 
-#remoteVideo{
-    display:none;
-    width:100%;
-    max-height:400px;
-    object-fit:cover;
-    margin-bottom:15px;
-}
+    padding:12px;
 
-.call-actions{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-top:20px;
-}
+    margin-bottom:12px;
 
-.call-action{
-    padding:12px 22px;
-    border:none;
-    border-radius:25px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
+    text-align:center;
 
-.accept{
-    background:#28a745;
-}
+    border-radius:12px;
 
-.reject,
-.end-call{
-    background:#e74c3c;
+    color:#9be6a5;
+
+    background:rgba(70,200,120,.15);
 }
 
 @media(max-width:600px){
@@ -320,6 +323,7 @@ video{
 }
 
 </style>
+
 </head>
 
 
@@ -332,7 +336,10 @@ video{
         ✨ Talent Exchange
     </div>
 
-    <a href="connections.html" class="back">
+    <a
+        href="connections.html"
+        class="back"
+    >
         ← Connections
     </a>
 
@@ -340,6 +347,18 @@ video{
 
 
 <div class="container">
+
+
+    <div
+        id="error"
+        class="error"
+    ></div>
+
+
+    <div
+        id="success"
+        class="success"
+    ></div>
 
 
     <div class="profile">
@@ -363,26 +382,8 @@ video{
     </div>
 
 
-    <div class="call-buttons">
-
-        <button
-            class="call video"
-            onclick="startCall('video')"
-        >
-            🎥 Video Call
-        </button>
-
-        <button
-            class="call audio"
-            onclick="startCall('audio')"
-        >
-            🎤 Audio Call
-        </button>
-
-    </div>
-
-
     <div class="chat">
+
 
         <div class="chat-header">
 
@@ -400,115 +401,50 @@ video{
         <div
             class="messages"
             id="messages"
-        ></div>
+        >
+
+            <div class="empty">
+                🔄 Loading messages...
+            </div>
+
+        </div>
 
 
         <div class="input-area">
 
-            <button onclick="addEmoji()">
+
+            <button
+                id="emojiButton"
+                type="button"
+                onclick="addEmoji()"
+            >
                 😊
             </button>
+
 
             <input
                 type="text"
                 id="messageInput"
                 placeholder="Type a message..."
-                onkeydown="handleKey(event)"
+                autocomplete="off"
             >
+
 
             <button
                 class="send"
+                id="sendButton"
+                type="button"
                 onclick="sendMessage()"
             >
                 ➤
             </button>
 
+
         </div>
+
 
     </div>
 
-</div>
-
-
-<!-- CALL SCREEN -->
-
-<div
-    class="call-screen"
-    id="callScreen"
->
-
-    <div class="call-box">
-
-        <div class="call-avatar">
-            🤝
-        </div>
-
-        <h2 id="callName">
-            Connection
-        </h2>
-
-        <p
-            class="call-status"
-            id="callStatus"
-        >
-            Calling...
-        </p>
-
-
-        <video
-            id="remoteVideo"
-            autoplay
-            playsinline
-        ></video>
-
-
-        <video
-            id="localVideo"
-            autoplay
-            muted
-            playsinline
-        ></video>
-
-
-        <div
-            class="call-actions"
-            id="incomingActions"
-            style="display:none;"
-        >
-
-            <button
-                class="call-action accept"
-                onclick="acceptIncomingCall()"
-            >
-                ✅ Accept
-            </button>
-
-            <button
-                class="call-action reject"
-                onclick="rejectIncomingCall()"
-            >
-                ❌ Reject
-            </button>
-
-        </div>
-
-
-        <div
-            class="call-actions"
-            id="activeCallActions"
-            style="display:none;"
-        >
-
-            <button
-                class="call-action end-call"
-                onclick="endCall()"
-            >
-                📵 End Call
-            </button>
-
-        </div>
-
-    </div>
 
 </div>
 
@@ -516,103 +452,267 @@ video{
 <script>
 
 
-// ======================================================
+// =====================================================
 // BACKEND
-// ======================================================
+// =====================================================
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-// ======================================================
+// =====================================================
 // CURRENT USER
-// ======================================================
+// =====================================================
 
 let currentUser = null;
 
-try{
 
-    currentUser =
-        JSON.parse(
-            localStorage.getItem("userProfile") || "null"
+// =====================================================
+// GET CURRENT USER
+// =====================================================
+
+function getCurrentUser(){
+
+    try{
+
+        const profile =
+            JSON.parse(
+                localStorage.getItem(
+                    "userProfile"
+                ) || "null"
+            );
+
+        if(
+            profile &&
+            profile.id
+        ){
+
+            return profile;
+
+        }
+
+
+        const user =
+            JSON.parse(
+                localStorage.getItem(
+                    "user"
+                ) || "null"
+            );
+
+
+        if(
+            user &&
+            user.id
+        ){
+
+            return user;
+
+        }
+
+
+        return null;
+
+    }
+    catch(error){
+
+        console.error(
+            "Current user error:",
+            error
         );
 
-}
-catch(error){
+        return null;
 
-    currentUser = null;
-
-}
-
-
-if(
-    !currentUser ||
-    !currentUser.id
-){
-
-    alert("Please login again.");
-
-    window.location.href =
-        "index.html";
+    }
 
 }
 
 
-// ======================================================
+// =====================================================
 // ACTIVE CHAT USER
-// ======================================================
+// =====================================================
 
-const activeChatId =
-    localStorage.getItem("activeChatId");
+function getActiveChatId(){
 
-const personName =
-    localStorage.getItem("activeChatName")
-    || "Connection";
-
-const skillName =
-    localStorage.getItem("activeChatSkill")
-    || "Skill Exchange";
-
-
-if(!activeChatId){
-
-    alert("Chat user not selected.");
-
-    window.location.href =
-        "connections.html";
+    return (
+        localStorage.getItem(
+            "activeChatId"
+        ) || ""
+    );
 
 }
 
 
-document.getElementById("personName")
-.textContent = personName;
+function getActiveChatName(){
 
-document.getElementById("skillName")
-.textContent = "Skill: " + skillName;
+    return (
+        localStorage.getItem(
+            "activeChatName"
+        ) || "Connection"
+    );
 
-document.getElementById("callName")
-.textContent = personName;
+}
 
 
-// ======================================================
-// MESSAGES
-// ======================================================
+function getActiveChatSkill(){
+
+    return (
+        localStorage.getItem(
+            "activeChatSkill"
+        ) || "Skill Exchange"
+    );
+
+}
+
+
+// =====================================================
+// INITIALIZE
+// =====================================================
+
+function initializeChat(){
+
+    currentUser =
+        getCurrentUser();
+
+
+    const activeChatId =
+        getActiveChatId();
+
+
+    const activeChatName =
+        getActiveChatName();
+
+
+    const activeChatSkill =
+        getActiveChatSkill();
+
+
+    console.log(
+        "CURRENT USER:",
+        currentUser
+    );
+
+
+    console.log(
+        "ACTIVE CHAT ID:",
+        activeChatId
+    );
+
+
+    if(
+        !currentUser ||
+        !currentUser.id
+    ){
+
+        alert(
+            "Please login again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    if(!activeChatId){
+
+        alert(
+            "Chat user not selected."
+        );
+
+        window.location.href =
+            "connections.html";
+
+        return;
+
+    }
+
+
+    if(
+        Number(currentUser.id)
+        ===
+        Number(activeChatId)
+    ){
+
+        alert(
+            "You cannot chat with yourself."
+        );
+
+        window.location.href =
+            "connections.html";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "personName"
+    ).textContent =
+        activeChatName;
+
+
+    document.getElementById(
+        "skillName"
+    ).textContent =
+        "Skill: " +
+        activeChatSkill;
+
+
+    loadMessages();
+
+}
+
+
+// =====================================================
+// LOAD MESSAGES
+// =====================================================
 
 async function loadMessages(){
+
+    const activeChatId =
+        getActiveChatId();
+
+
+    if(
+        !currentUser ||
+        !currentUser.id ||
+        !activeChatId
+    ){
+
+        return;
+
+    }
+
 
     try{
 
         const response =
             await fetch(
+
                 BACKEND_URL +
                 "/api/messages/" +
-                currentUser.id +
+                encodeURIComponent(
+                    currentUser.id
+                ) +
                 "/" +
-                activeChatId
+                encodeURIComponent(
+                    activeChatId
+                )
+
             );
+
 
         const data =
             await response.json();
+
+
+        console.log(
+            "MESSAGES RESPONSE:",
+            data
+        );
+
 
         if(!response.ok){
 
@@ -623,98 +723,343 @@ async function loadMessages(){
 
         }
 
+
         const box =
-            document.getElementById("messages");
+            document.getElementById(
+                "messages"
+            );
+
 
         box.innerHTML = "";
 
-        (data.messages || []).forEach(
-            message => {
 
-                const div =
-                    document.createElement("div");
+        const messages =
+            Array.isArray(
+                data.messages
+            )
+            ? data.messages
+            : [];
 
-                div.className =
-                    Number(message.senderId)
-                    === Number(currentUser.id)
-                    ? "message sent"
-                    : "message received";
 
-                div.innerHTML =
-                    escapeHTML(message.message) +
-                    `<span class="time">
-                        ${escapeHTML(
-                            message.createdAt || ""
-                        )}
-                    </span>`;
+        if(
+            messages.length === 0
+        ){
 
-                box.appendChild(div);
+            box.innerHTML = `
+
+                <div class="empty">
+
+                    💬 No messages yet.<br>
+
+                    Start the conversation!
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        messages.forEach(
+            function(message){
+
+                displayMessage(
+                    message
+                );
 
             }
         );
 
+
         box.scrollTop =
             box.scrollHeight;
+
 
     }
     catch(error){
 
         console.error(
-            "Load messages:",
+            "LOAD MESSAGES ERROR:",
             error
         );
+
+
+        const box =
+            document.getElementById(
+                "messages"
+            );
+
+
+        box.innerHTML = `
+
+            <div class="empty">
+
+                ❌ ${escapeHTML(
+                    error.message
+                )}
+
+            </div>
+
+        `;
 
     }
 
 }
 
 
-// ======================================================
+// =====================================================
+// DISPLAY MESSAGE
+// =====================================================
+
+function displayMessage(
+    message
+){
+
+    const box =
+        document.getElementById(
+            "messages"
+        );
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    /*
+    IMPORTANT:
+
+    Backend returns:
+
+    sender_id
+    receiver_id
+    created_at
+
+    NOT:
+
+    senderId
+    receiverId
+    createdAt
+    */
+
+
+    const senderId =
+        Number(
+            message.sender_id
+        );
+
+
+    const isMine =
+        senderId ===
+        Number(
+            currentUser.id
+        );
+
+
+    div.className =
+        isMine
+        ? "message sent"
+        : "message received";
+
+
+    const messageText =
+        escapeHTML(
+            message.message ||
+            ""
+        );
+
+
+    const createdAt =
+        message.created_at
+        ? formatDate(
+            message.created_at
+        )
+        : "";
+
+
+    div.innerHTML = `
+
+        ${messageText}
+
+        <span class="time">
+
+            ${escapeHTML(
+                createdAt
+            )}
+
+        </span>
+
+    `;
+
+
+    box.appendChild(
+        div
+    );
+
+}
+
+
+// =====================================================
 // SEND MESSAGE
-// ======================================================
+// =====================================================
 
 async function sendMessage(){
 
     const input =
-        document.getElementById("messageInput");
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    const sendButton =
+        document.getElementById(
+            "sendButton"
+        );
+
 
     const text =
         input.value.trim();
 
-    if(!text) return;
 
-    input.disabled = true;
+    const activeChatId =
+        getActiveChatId();
+
+
+    if(!text){
+
+        return;
+
+    }
+
+
+    if(
+        !currentUser ||
+        !currentUser.id
+    ){
+
+        showError(
+            "Please login again."
+        );
+
+        return;
+
+    }
+
+
+    if(!activeChatId){
+
+        showError(
+            "Receiver not selected."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        Number(currentUser.id)
+        ===
+        Number(activeChatId)
+    ){
+
+        showError(
+            "You cannot send a message to yourself."
+        );
+
+        return;
+
+    }
+
+
+    input.disabled =
+        true;
+
+
+    sendButton.disabled =
+        true;
+
 
     try{
 
+        /*
+        IMPORTANT FIX:
+
+        Backend app.py expects:
+
+        sender_id
+        receiver_id
+        message
+
+        NOT:
+
+        senderId
+        receiverId
+        */
+
+
+        const requestBody = {
+
+            sender_id:
+                Number(
+                    currentUser.id
+                ),
+
+            receiver_id:
+                Number(
+                    activeChatId
+                ),
+
+            message:
+                text
+
+        };
+
+
+        console.log(
+            "SENDING MESSAGE:",
+            requestBody
+        );
+
+
         const response =
             await fetch(
-                BACKEND_URL + "/api/messages",
+
+                BACKEND_URL +
+                "/api/messages",
+
                 {
-                    method:"POST",
+
+                    method:
+                        "POST",
 
                     headers:{
                         "Content-Type":
                             "application/json"
                     },
 
-                    body:JSON.stringify({
+                    body:
+                        JSON.stringify(
+                            requestBody
+                        )
 
-                        senderId:
-                            currentUser.id,
-
-                        receiverId:
-                            Number(activeChatId),
-
-                        message:
-                            text
-
-                    })
                 }
+
             );
+
 
         const data =
             await response.json();
+
+
+        console.log(
+            "SEND MESSAGE RESPONSE:",
+            data
+        );
+
 
         if(!response.ok){
 
@@ -725,19 +1070,43 @@ async function sendMessage(){
 
         }
 
-        input.value = "";
+
+        input.value =
+            "";
+
+
+        showSuccess(
+            "Message sent!"
+        );
+
 
         await loadMessages();
+
 
     }
     catch(error){
 
-        alert("❌ " + error.message);
+        console.error(
+            "SEND MESSAGE ERROR:",
+            error
+        );
+
+
+        showError(
+            error.message
+        );
 
     }
     finally{
 
-        input.disabled = false;
+        input.disabled =
+            false;
+
+
+        sendButton.disabled =
+            false;
+
+
         input.focus();
 
     }
@@ -745,9 +1114,18 @@ async function sendMessage(){
 }
 
 
-function handleKey(event){
+// =====================================================
+// ENTER KEY
+// =====================================================
 
-    if(event.key === "Enter"){
+function handleKey(
+    event
+){
+
+    if(
+        event.key ===
+        "Enter"
+    ){
 
         event.preventDefault();
 
@@ -758,1015 +1136,206 @@ function handleKey(event){
 }
 
 
+// =====================================================
+// EMOJI
+// =====================================================
+
 function addEmoji(){
 
     const input =
-        document.getElementById("messageInput");
+        document.getElementById(
+            "messageInput"
+        );
 
-    input.value += " 😊";
+
+    input.value +=
+        " 😊";
+
 
     input.focus();
 
 }
 
 
-function escapeHTML(text){
+// =====================================================
+// FORMAT DATE
+// =====================================================
+
+function formatDate(
+    value
+){
+
+    try{
+
+        const date =
+            new Date(
+                value
+            );
+
+
+        if(
+            isNaN(
+                date.getTime()
+            )
+        ){
+
+            return String(
+                value
+            );
+
+        }
+
+
+        return date.toLocaleString();
+
+    }
+    catch(error){
+
+        return String(
+            value
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// ESCAPE HTML
+// =====================================================
+
+function escapeHTML(
+    value
+){
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    div.textContent = text;
+
+    div.textContent =
+        String(
+            value
+        );
+
 
     return div.innerHTML;
 
 }
 
 
-setInterval(
-    loadMessages,
-    2000
-);
+// =====================================================
+// SUCCESS MESSAGE
+// =====================================================
 
+function showSuccess(
+    text
+){
 
-// ======================================================
-// WEBRTC
-// ======================================================
-
-let peerConnection = null;
-
-let localStream = null;
-
-let currentCallId = null;
-
-let incomingCall = null;
-
-let currentCallType = "video";
-
-
-const rtcConfig = {
-
-    iceServers:[
-        {
-            urls:
-            "stun:stun.l.google.com:19302"
-        },
-        {
-            urls:
-            "stun:stun1.l.google.com:19302"
-        }
-    ]
-
-};
-
-
-// ======================================================
-// CREATE PEER CONNECTION
-// ======================================================
-
-function createPeerConnection(){
-
-    peerConnection =
-        new RTCPeerConnection(
-            rtcConfig
-        );
-
-
-    peerConnection.ontrack =
-        function(event){
-
-            const remoteVideo =
-                document.getElementById(
-                    "remoteVideo"
-                );
-
-            remoteVideo.srcObject =
-                event.streams[0];
-
-            remoteVideo.style.display =
-                "block";
-
-        };
-
-
-    peerConnection.onicecandidate =
-        async function(event){
-
-            if(
-                !event.candidate ||
-                !currentCallId
-            ){
-
-                return;
-
-            }
-
-            try{
-
-                await fetch(
-                    BACKEND_URL +
-                    "/api/calls/" +
-                    currentCallId +
-                    "/candidate",
-                    {
-
-                        method:"POST",
-
-                        headers:{
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body:JSON.stringify({
-
-                            userId:
-                                currentUser.id,
-
-                            candidate:
-                                event.candidate
-
-                        })
-
-                    }
-                );
-
-            }
-            catch(error){
-
-                console.error(
-                    "ICE candidate error:",
-                    error
-                );
-
-            }
-
-        };
-
-    return peerConnection;
-
-}
-
-
-// ======================================================
-// START CALL
-// ======================================================
-
-async function startCall(type){
-
-    currentCallType = type;
-
-    const screen =
+    const box =
         document.getElementById(
-            "callScreen"
-        );
-
-    const status =
-        document.getElementById(
-            "callStatus"
-        );
-
-    const localVideo =
-        document.getElementById(
-            "localVideo"
-        );
-
-    screen.style.display =
-        "flex";
-
-    document.getElementById(
-        "incomingActions"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "activeCallActions"
-    ).style.display =
-        "flex";
-
-    status.textContent =
-        "📞 Calling " + personName + "...";
-
-
-    try{
-
-        localStream =
-            await navigator.mediaDevices
-            .getUserMedia({
-
-                video:
-                    type === "video",
-
-                audio:true
-
-            });
-
-
-        localStream
-        .getTracks()
-        .forEach(
-            track => {
-
-                if(!peerConnection){
-
-                    createPeerConnection();
-
-                }
-
-                peerConnection.addTrack(
-                    track,
-                    localStream
-                );
-
-            }
+            "success"
         );
 
 
-        if(type === "video"){
+    box.textContent =
+        "✅ " + text;
 
-            localVideo.srcObject =
-                localStream;
 
-            localVideo.style.display =
-                "block";
+    box.style.display =
+        "block";
 
-        }
 
+    setTimeout(
+        function(){
 
-        const offer =
-            await peerConnection
-            .createOffer();
-
-
-        await peerConnection
-        .setLocalDescription(
-            offer
-        );
-
-
-        const response =
-            await fetch(
-                BACKEND_URL +
-                "/api/calls",
-                {
-
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:JSON.stringify({
-
-                        callerId:
-                            currentUser.id,
-
-                        receiverId:
-                            Number(activeChatId),
-
-                        type:type,
-
-                        offer:offer
-
-                    })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if(!response.ok){
-
-            throw new Error(
-                data.message ||
-                "Could not create call."
-            );
-
-        }
-
-
-        currentCallId =
-            data.callId;
-
-
-        status.textContent =
-            "📞 Ringing...";
-
-        pollCallStatus();
-
-    }
-    catch(error){
-
-        console.error(
-            "Start call error:",
-            error
-        );
-
-        status.textContent =
-            "❌ " + error.message;
-
-        stopMedia();
-
-    }
-
-}
-
-
-// ======================================================
-// CHECK INCOMING CALL
-// ======================================================
-
-async function checkIncomingCalls(){
-
-    try{
-
-        const response =
-            await fetch(
-                BACKEND_URL +
-                "/api/calls/incoming/" +
-                currentUser.id
-            );
-
-        const data =
-            await response.json();
-
-        if(
-            !response.ok ||
-            !data.calls ||
-            !data.calls.length
-        ){
-
-            return;
-
-        }
-
-
-        const call =
-            data.calls[0];
-
-
-        if(
-            currentCallId ||
-            incomingCall
-        ){
-
-            return;
-
-        }
-
-
-        incomingCall =
-            call;
-
-        currentCallId =
-            call.callId;
-
-        currentCallType =
-            call.type;
-
-
-        document.getElementById(
-            "callScreen"
-        ).style.display =
-            "flex";
-
-
-        document.getElementById(
-            "callName"
-        ).textContent =
-            personName;
-
-
-        document.getElementById(
-            "callStatus"
-        ).textContent =
-            "📞 Incoming " +
-            call.type +
-            " call";
-
-
-        document.getElementById(
-            "incomingActions"
-        ).style.display =
-            "flex";
-
-
-        document.getElementById(
-            "activeCallActions"
-        ).style.display =
-            "none";
-
-    }
-    catch(error){
-
-        console.error(
-            "Incoming call error:",
-            error
-        );
-
-    }
-
-}
-
-
-setInterval(
-    checkIncomingCalls,
-    2000
-);
-
-
-// ======================================================
-// ACCEPT CALL
-// ======================================================
-
-async function acceptIncomingCall(){
-
-    if(!incomingCall){
-
-        return;
-
-    }
-
-
-    try{
-
-        document.getElementById(
-            "incomingActions"
-        ).style.display =
-            "none";
-
-
-        document.getElementById(
-            "activeCallActions"
-        ).style.display =
-            "flex";
-
-
-        document.getElementById(
-            "callStatus"
-        ).textContent =
-            "🔗 Connecting...";
-
-
-        localStream =
-            await navigator.mediaDevices
-            .getUserMedia({
-
-                video:
-                    currentCallType === "video",
-
-                audio:true
-
-            });
-
-
-        createPeerConnection();
-
-
-        localStream
-        .getTracks()
-        .forEach(
-            track => {
-
-                peerConnection.addTrack(
-                    track,
-                    localStream
-                );
-
-            }
-        );
-
-
-        const localVideo =
-            document.getElementById(
-                "localVideo"
-            );
-
-
-        if(currentCallType === "video"){
-
-            localVideo.srcObject =
-                localStream;
-
-            localVideo.style.display =
-                "block";
-
-        }
-
-
-        await peerConnection
-        .setRemoteDescription(
-            new RTCSessionDescription(
-                incomingCall.offer
-            )
-        );
-
-
-        const answer =
-            await peerConnection
-            .createAnswer();
-
-
-        await peerConnection
-        .setLocalDescription(
-            answer
-        );
-
-
-        const response =
-            await fetch(
-                BACKEND_URL +
-                "/api/calls/" +
-                currentCallId +
-                "/answer",
-                {
-
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:JSON.stringify({
-
-                        userId:
-                            currentUser.id,
-
-                        answer:answer
-
-                    })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if(!response.ok){
-
-            throw new Error(
-                data.message ||
-                "Could not accept call."
-            );
-
-        }
-
-
-        incomingCall = null;
-
-
-        document.getElementById(
-            "callStatus"
-        ).textContent =
-            "🟢 Connected";
-
-    }
-    catch(error){
-
-        console.error(
-            "Accept call error:",
-            error
-        );
-
-        alert(
-            "❌ " + error.message
-        );
-
-        endCall();
-
-    }
-
-}
-
-
-// ======================================================
-// REJECT CALL
-// ======================================================
-
-async function rejectIncomingCall(){
-
-    if(!currentCallId){
-
-        closeCallScreen();
-
-        return;
-
-    }
-
-
-    try{
-
-        await fetch(
-            BACKEND_URL +
-            "/api/calls/" +
-            currentCallId +
-            "/reject",
-            {
-
-                method:"POST",
-
-                headers:{
-                    "Content-Type":
-                        "application/json"
-                },
-
-                body:JSON.stringify({
-
-                    userId:
-                        currentUser.id
-
-                })
-
-            }
-        );
-
-    }
-    catch(error){
-
-        console.error(
-            error
-        );
-
-    }
-
-
-    incomingCall = null;
-
-    currentCallId = null;
-
-    closeCallScreen();
-
-}
-
-
-// ======================================================
-// POLL CALL STATUS
-// ======================================================
-
-async function pollCallStatus(){
-
-    const timer =
-        setInterval(
-            async function(){
-
-                if(!currentCallId){
-
-                    clearInterval(timer);
-
-                    return;
-
-                }
-
-
-                try{
-
-                    const response =
-                        await fetch(
-                            BACKEND_URL +
-                            "/api/calls/" +
-                            currentCallId
-                        );
-
-
-                    const data =
-                        await response.json();
-
-
-                    if(!response.ok){
-
-                        return;
-
-                    }
-
-
-                    const call =
-                        data.call;
-
-
-                    if(!call){
-
-                        return;
-
-                    }
-
-
-                    if(
-                        call.status ===
-                        "rejected"
-                    ){
-
-                        clearInterval(timer);
-
-                        document.getElementById(
-                            "callStatus"
-                        ).textContent =
-                            "❌ Call rejected.";
-
-                        setTimeout(
-                            closeCallScreen,
-                            1200
-                        );
-
-                        return;
-
-                    }
-
-
-                    if(
-                        call.status ===
-                        "ended"
-                    ){
-
-                        clearInterval(timer);
-
-                        closeCallScreen();
-
-                        return;
-
-                    }
-
-
-                    if(
-                        call.answer &&
-                        peerConnection &&
-                        peerConnection
-                        .signalingState
-                        ===
-                        "have-local-offer"
-                    ){
-
-                        await peerConnection
-                        .setRemoteDescription(
-                            new RTCSessionDescription(
-                                call.answer
-                            )
-                        );
-
-
-                        document.getElementById(
-                            "callStatus"
-                        ).textContent =
-                            "🟢 Connected";
-
-                        clearInterval(timer);
-
-                        pollCandidates();
-
-                    }
-
-                }
-                catch(error){
-
-                    console.error(
-                        "Call status error:",
-                        error
-                    );
-
-                }
-
-            },
-            1500
-        );
-
-}
-
-
-// ======================================================
-// ICE CANDIDATES
-// ======================================================
-
-async function pollCandidates(){
-
-    if(!currentCallId){
-
-        return;
-
-    }
-
-
-    setInterval(
-        async function(){
-
-            try{
-
-                const response =
-                    await fetch(
-                        BACKEND_URL +
-                        "/api/calls/" +
-                        currentCallId +
-                        "/candidates/" +
-                        currentUser.id
-                    );
-
-
-                if(!response.ok){
-
-                    return;
-
-                }
-
-
-                const data =
-                    await response.json();
-
-
-                for(
-                    const candidate
-                    of
-                    (data.candidates || [])
-                ){
-
-                    try{
-
-                        await peerConnection
-                        .addIceCandidate(
-                            new RTCIceCandidate(
-                                candidate
-                            )
-                        );
-
-                    }
-                    catch(error){
-
-                        console.error(
-                            "Add ICE error:",
-                            error
-                        );
-
-                    }
-
-                }
-
-            }
-            catch(error){
-
-                console.error(
-                    "Candidate polling:",
-                    error
-                );
-
-            }
+            box.style.display =
+                "none";
 
         },
-        1000
+        2500
     );
 
 }
 
 
-// ======================================================
-// END CALL
-// ======================================================
+// =====================================================
+// ERROR MESSAGE
+// =====================================================
 
-async function endCall(){
+function showError(
+    text
+){
 
-    const callId =
-        currentCallId;
+    const box =
+        document.getElementById(
+            "error"
+        );
 
 
-    if(callId){
+    box.textContent =
+        "❌ " + text;
 
-        try{
 
-            await fetch(
-                BACKEND_URL +
-                "/api/calls/" +
-                callId +
-                "/end",
-                {
+    box.style.display =
+        "block";
 
-                    method:"POST",
 
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
+    setTimeout(
+        function(){
 
-                    body:JSON.stringify({
+            box.style.display =
+                "none";
 
-                        userId:
-                            currentUser.id
+        },
+        4000
+    );
 
-                    })
+}
 
-                }
+
+// =====================================================
+// AUTO REFRESH
+// =====================================================
+
+setInterval(
+    function(){
+
+        loadMessages();
+
+    },
+    3000
+);
+
+
+// =====================================================
+// START
+// =====================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const input =
+            document.getElementById(
+                "messageInput"
             );
 
-        }
-        catch(error){
 
-            console.error(
-                "End call error:",
-                error
-            );
-
-        }
-
-    }
-
-
-    stopMedia();
-
-
-    if(peerConnection){
-
-        peerConnection.close();
-
-        peerConnection = null;
-
-    }
-
-
-    currentCallId = null;
-
-    incomingCall = null;
-
-
-    closeCallScreen();
-
-}
-
-
-// ======================================================
-// STOP MEDIA
-// ======================================================
-
-function stopMedia(){
-
-    if(localStream){
-
-        localStream
-        .getTracks()
-        .forEach(
-            track =>
-                track.stop()
-        );
-
-        localStream = null;
-
-    }
-
-
-    const localVideo =
-        document.getElementById(
-            "localVideo"
-        );
-
-    const remoteVideo =
-        document.getElementById(
-            "remoteVideo"
+        input.addEventListener(
+            "keydown",
+            handleKey
         );
 
 
-    localVideo.srcObject = null;
+        initializeChat();
 
-    remoteVideo.srcObject = null;
-
-    localVideo.style.display = "none";
-
-    remoteVideo.style.display = "none";
-
-}
-
-
-// ======================================================
-// CLOSE CALL SCREEN
-// ======================================================
-
-function closeCallScreen(){
-
-    document.getElementById(
-        "callScreen"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "incomingActions"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "activeCallActions"
-    ).style.display =
-        "none";
-
-}
-
-
-// ======================================================
-// FIRST LOAD
-// ======================================================
-
-loadMessages();
-
-checkIncomingCalls();
+    }
+);
 
 </script>
 
 </body>
+
 </html>
