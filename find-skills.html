@@ -29,6 +29,8 @@ body{
     linear-gradient(135deg,#070711,#15132b);
 }
 
+/* NAVBAR */
+
 .navbar{
     min-height:72px;
     padding:15px 6%;
@@ -60,6 +62,13 @@ body{
     rgba(255,255,255,.08);
 }
 
+.back:hover{
+    background:
+    rgba(255,255,255,.15);
+}
+
+/* MAIN */
+
 .container{
     width:90%;
     max-width:1050px;
@@ -81,9 +90,34 @@ body{
     color:#aaa;
 }
 
+/* SUCCESS */
+
+.success{
+    display:none;
+
+    padding:14px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    border-radius:12px;
+
+    color:#9be6a5;
+
+    background:
+    rgba(70,200,120,.15);
+
+    border:
+    1px solid rgba(70,200,120,.25);
+}
+
+/* SEARCH */
+
 .search-box{
     display:flex;
     gap:10px;
+
     margin-bottom:30px;
 }
 
@@ -101,6 +135,13 @@ body{
 
     background:
     rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.search-box input::placeholder{
+    color:#888;
 }
 
 .search-box button{
@@ -118,11 +159,19 @@ body{
     linear-gradient(90deg,#8066ff,#bd82ff);
 }
 
+.search-box button:hover{
+    opacity:.9;
+}
+
+/* STATUS */
+
 #status{
     text-align:center;
     color:#aaa;
     padding:30px;
 }
+
+/* CARDS */
 
 .skills{
     display:grid;
@@ -143,6 +192,15 @@ body{
 
     border:
     1px solid rgba(255,255,255,.1);
+
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+
+    background:
+    rgba(255,255,255,.1);
 }
 
 .avatar{
@@ -170,6 +228,7 @@ body{
 .email{
     color:#999;
     font-size:13px;
+
     margin-bottom:15px;
 }
 
@@ -206,26 +265,17 @@ body{
     linear-gradient(90deg,#8066ff,#bd82ff);
 }
 
+.request-btn:hover{
+    opacity:.9;
+}
+
 .request-btn:disabled{
     opacity:.6;
+
+    cursor:not-allowed;
 }
 
-.success{
-    display:none;
-
-    padding:14px;
-
-    margin-bottom:20px;
-
-    text-align:center;
-
-    border-radius:12px;
-
-    color:#9be6a5;
-
-    background:
-    rgba(70,200,120,.15);
-}
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -245,6 +295,19 @@ body{
         font-size:32px;
     }
 
+    .navbar{
+        padding:15px 4%;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .back{
+        padding:9px 12px;
+        font-size:14px;
+    }
+
 }
 
 </style>
@@ -253,6 +316,8 @@ body{
 
 <body>
 
+
+<!-- NAVBAR -->
 
 <nav class="navbar">
 
@@ -270,7 +335,12 @@ body{
 </nav>
 
 
+<!-- MAIN -->
+
 <main class="container">
+
+
+    <!-- HEADING -->
 
     <div class="heading">
 
@@ -285,10 +355,14 @@ body{
     </div>
 
 
+    <!-- SUCCESS MESSAGE -->
+
     <div id="success"
          class="success">
     </div>
 
+
+    <!-- SEARCH -->
 
     <div class="search-box">
 
@@ -308,20 +382,29 @@ body{
     </div>
 
 
+    <!-- STATUS -->
+
     <div id="status">
         🔄 Loading users...
     </div>
 
 
+    <!-- USERS -->
+
     <div id="skills"
          class="skills">
     </div>
+
 
 </main>
 
 
 <script>
 
+
+// =====================================================
+// BACKEND
+// =====================================================
 
 const BACKEND_URL =
 "https://talent-exchange-backend-p5wq.onrender.com";
@@ -330,45 +413,98 @@ const BACKEND_URL =
 let users = [];
 
 
-// =====================================
+// =====================================================
+// GET CURRENT USER
+// =====================================================
+
+function getCurrentUser(){
+
+    try{
+
+        const profile =
+            JSON.parse(
+                localStorage.getItem(
+                    "userProfile"
+                ) || "{}"
+            );
+
+        return profile;
+
+    }
+    catch(error){
+
+        console.error(
+            "Profile error:",
+            error
+        );
+
+        return {};
+
+    }
+
+}
+
+
+// =====================================================
 // LOAD USERS
-// =====================================
+// =====================================================
 
 async function loadUsers(){
 
     const status =
-        document.getElementById("status");
+        document.getElementById(
+            "status"
+        );
 
     try{
 
+        status.innerHTML =
+            "🔄 Loading users...";
+
+
         const response =
             await fetch(
-                BACKEND_URL + "/api/users"
+                BACKEND_URL +
+                "/api/users"
             );
+
 
         const data =
             await response.json();
 
-        console.log("API:",data);
+
+        console.log(
+            "Users API:",
+            data
+        );
+
 
         if(!response.ok){
 
             throw new Error(
                 data.message ||
-                "Failed to load users"
+                "Failed to load users."
             );
 
         }
 
+
         users =
-            data.users || [];
+            Array.isArray(data.users)
+            ? data.users
+            : [];
+
 
         displayUsers(users);
 
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "LOAD USERS ERROR:",
+            error
+        );
+
 
         status.innerHTML =
         "❌ Unable to load users.<br><br>" +
@@ -379,42 +515,80 @@ async function loadUsers(){
 }
 
 
-// =====================================
+// =====================================================
 // DISPLAY USERS
-// =====================================
+// =====================================================
 
 function displayUsers(list){
 
     const container =
-        document.getElementById("skills");
+        document.getElementById(
+            "skills"
+        );
 
     const status =
-        document.getElementById("status");
-
-
-    container.innerHTML = "";
-
-
-    const profile =
-        JSON.parse(
-            localStorage.getItem(
-                "userProfile"
-            ) || "{}"
+        document.getElementById(
+            "status"
         );
 
 
-    const currentEmail =
-        profile.email ||
-        localStorage.getItem(
-            "currentUser"
-        ) ||
+    container.innerHTML =
         "";
+
+
+    const profile =
+        getCurrentUser();
+
+
+    const currentId =
+        profile.id;
+
+
+    const currentEmail =
+        (
+            profile.email ||
+            localStorage.getItem(
+                "currentUser"
+            ) ||
+            ""
+        ).toLowerCase();
 
 
     const otherUsers =
         list.filter(function(user){
 
-            return user.email !== currentEmail;
+            const userEmail =
+                (
+                    user.email ||
+                    ""
+                ).toLowerCase();
+
+
+            // Remove logged-in user
+
+            if(
+                currentId &&
+                Number(user.id) ===
+                Number(currentId)
+            ){
+
+                return false;
+
+            }
+
+
+            if(
+                currentEmail &&
+                userEmail ===
+                currentEmail
+            ){
+
+                return false;
+
+            }
+
+
+            return true;
 
         });
 
@@ -422,59 +596,71 @@ function displayUsers(list){
     if(otherUsers.length === 0){
 
         status.innerHTML =
-        "👥 No other users found yet.";
+            "👥 No other users found yet.";
 
         return;
 
     }
 
 
-    status.innerHTML = "";
+    status.innerHTML =
+        "";
 
 
     otherUsers.forEach(function(user){
 
         const card =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         card.className =
             "card";
 
 
         const name =
-            user.name || "Unknown User";
+            user.name ||
+            "Unknown User";
+
 
         const email =
-            user.email || "";
+            user.email ||
+            "";
+
 
         const skill =
-            user.skill || "Skill not added";
+            user.skill ||
+            "Skill not added";
+
+
+        const avatar =
+            name
+            .charAt(0)
+            .toUpperCase();
 
 
         card.innerHTML = `
 
             <div class="avatar">
-                👤
+                ${avatar}
             </div>
 
-            <h2>${name}</h2>
+            <h2>
+                ${escapeHTML(name)}
+            </h2>
 
             <div class="email">
-                ${email}
+                ${escapeHTML(email)}
             </div>
 
             <div class="skill">
-                🛠️ ${skill}
+                🛠️ ${escapeHTML(skill)}
             </div>
 
             <button
                 class="request-btn"
-                onclick="sendRequest(
-                    ${user.id},
-                    '${name.replace(/'/g,"\\'")}',
-                    '${skill.replace(/'/g,"\\'")}',
-                    this
-                )">
+                data-user-id="${user.id}">
 
                 🤝 Request Exchange
 
@@ -483,54 +669,128 @@ function displayUsers(list){
         `;
 
 
-        container.appendChild(card);
+        const button =
+            card.querySelector(
+                ".request-btn"
+            );
+
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                sendRequest(
+                    user.id,
+                    name,
+                    skill,
+                    button
+                );
+
+            }
+        );
+
+
+        container.appendChild(
+            card
+        );
 
     });
 
 }
 
 
-// =====================================
+// =====================================================
 // SEARCH
-// =====================================
+// =====================================================
 
 function searchUsers(){
 
+    const input =
+        document.getElementById(
+            "search"
+        );
+
+
     const value =
-        document
-        .getElementById("search")
-        .value
+        input.value
         .toLowerCase()
         .trim();
 
 
+    if(!value){
+
+        displayUsers(users);
+
+        return;
+
+    }
+
+
     const filtered =
-        users.filter(function(user){
+        users.filter(
+            function(user){
 
-            const name =
-                (user.name || "")
-                .toLowerCase();
-
-            const skill =
-                (user.skill || "")
-                .toLowerCase();
-
-            return (
-                name.includes(value) ||
-                skill.includes(value)
-            );
-
-        });
+                const name =
+                    (
+                        user.name ||
+                        ""
+                    ).toLowerCase();
 
 
-    displayUsers(filtered);
+                const skill =
+                    (
+                        user.skill ||
+                        ""
+                    ).toLowerCase();
+
+
+                const learning =
+                    (
+                        user.learning_skill ||
+                        ""
+                    ).toLowerCase();
+
+
+                return (
+
+                    name.includes(value) ||
+
+                    skill.includes(value) ||
+
+                    learning.includes(value)
+
+                );
+
+            }
+        );
+
+
+    displayUsers(
+        filtered
+    );
 
 }
 
 
-// =====================================
+// =====================================================
+// LIVE SEARCH
+// =====================================================
+
+document
+    .getElementById("search")
+    .addEventListener(
+        "input",
+        function(){
+
+            searchUsers();
+
+        }
+    );
+
+
+// =====================================================
 // SEND REQUEST
-// =====================================
+// =====================================================
 
 async function sendRequest(
     receiverId,
@@ -540,16 +800,16 @@ async function sendRequest(
 ){
 
     const profile =
-        JSON.parse(
-            localStorage.getItem(
-                "userProfile"
-            ) || "{}"
-        );
+        getCurrentUser();
 
 
     const senderId =
         profile.id;
 
+
+    // -----------------------------------------------
+    // LOGIN CHECK
+    // -----------------------------------------------
 
     if(!senderId){
 
@@ -562,13 +822,39 @@ async function sendRequest(
     }
 
 
-    button.disabled = true;
+    // -----------------------------------------------
+    // PREVENT SELF REQUEST
+    // -----------------------------------------------
+
+    if(
+        Number(senderId) ===
+        Number(receiverId)
+    ){
+
+        alert(
+            "You cannot send a request to yourself."
+        );
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
 
     button.textContent =
         "Sending...";
 
 
     try{
+
+        // -------------------------------------------
+        // IMPORTANT:
+        // Python backend expects
+        // sender_id and receiver_id
+        // -------------------------------------------
 
         const response =
             await fetch(
@@ -585,11 +871,11 @@ async function sendRequest(
 
                     body:JSON.stringify({
 
-                        senderId:
-                        senderId,
+                        sender_id:
+                        Number(senderId),
 
-                        receiverId:
-                        receiverId,
+                        receiver_id:
+                        Number(receiverId),
 
                         skill:
                         skill
@@ -604,15 +890,25 @@ async function sendRequest(
             await response.json();
 
 
+        console.log(
+            "Request API:",
+            data
+        );
+
+
         if(!response.ok){
 
             throw new Error(
                 data.message ||
-                "Request failed"
+                "Request failed."
             );
 
         }
 
+
+        // -------------------------------------------
+        // SUCCESS
+        // -------------------------------------------
 
         button.textContent =
             "✓ Request Sent";
@@ -627,10 +923,15 @@ async function sendRequest(
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "REQUEST ERROR:",
+            error
+        );
+
 
         button.disabled =
             false;
+
 
         button.textContent =
             "🤝 Request Exchange";
@@ -646,11 +947,13 @@ async function sendRequest(
 }
 
 
-// =====================================
+// =====================================================
 // SUCCESS MESSAGE
-// =====================================
+// =====================================================
 
-function showSuccess(text){
+function showSuccess(
+    text
+){
 
     const box =
         document.getElementById(
@@ -661,25 +964,63 @@ function showSuccess(text){
     box.textContent =
         text;
 
+
     box.style.display =
         "block";
 
 
-    setTimeout(function(){
+    setTimeout(
+        function(){
 
-        box.style.display =
-            "none";
+            box.style.display =
+                "none";
 
-    },3000);
+        },
+        3000
+    );
 
 }
 
 
-// =====================================
+// =====================================================
+// HTML SAFETY
+// =====================================================
+
+function escapeHTML(
+    value
+){
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+// =====================================================
 // START
-// =====================================
+// =====================================================
 
 loadUsers();
+
 
 </script>
 
