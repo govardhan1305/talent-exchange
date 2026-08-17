@@ -46,7 +46,9 @@ body{
 }
 
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
 
@@ -98,7 +100,9 @@ body{
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container{
 
@@ -145,7 +149,9 @@ body{
 }
 
 
-/* STATUS */
+/* =========================
+   STATUS
+========================= */
 
 #status{
 
@@ -158,7 +164,9 @@ body{
 }
 
 
-/* CONNECTIONS */
+/* =========================
+   CONNECTIONS
+========================= */
 
 .connections{
 
@@ -172,7 +180,9 @@ body{
 }
 
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .connection-card{
 
@@ -202,7 +212,9 @@ body{
 }
 
 
-/* USER */
+/* =========================
+   USER
+========================= */
 
 .user{
 
@@ -257,7 +269,9 @@ body{
 }
 
 
-/* SKILLS */
+/* =========================
+   SKILLS
+========================= */
 
 .skills{
 
@@ -287,7 +301,9 @@ body{
 }
 
 
-/* CHAT BUTTON */
+/* =========================
+   CHAT BUTTON
+========================= */
 
 .chat-btn{
 
@@ -328,7 +344,9 @@ body{
 }
 
 
-/* ERROR */
+/* =========================
+   ERROR
+========================= */
 
 .error{
 
@@ -349,7 +367,9 @@ body{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -381,7 +401,9 @@ body{
 <body>
 
 
-<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav class="navbar">
 
@@ -399,7 +421,9 @@ body{
 </nav>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main class="container">
 
@@ -440,31 +464,38 @@ body{
 <script>
 
 
-/* ==========================================
+/* =====================================================
    BACKEND
-========================================== */
+===================================================== */
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-/* ==========================================
+/* =====================================================
    CURRENT USER
-========================================== */
+===================================================== */
 
 function getCurrentUser(){
 
     try{
 
         return JSON.parse(
+
             localStorage.getItem(
                 "userProfile"
             ) || "{}"
+
         );
 
     }
 
     catch(error){
+
+        console.error(
+            "USER PROFILE ERROR:",
+            error
+        );
 
         return {};
 
@@ -473,9 +504,9 @@ function getCurrentUser(){
 }
 
 
-/* ==========================================
+/* =====================================================
    OPEN CHAT
-========================================== */
+===================================================== */
 
 function openChat(
     personId,
@@ -484,16 +515,24 @@ function openChat(
 ){
 
     console.log(
-        "Opening chat with:",
-        personId,
-        personName
+        "Opening chat with USER ID:",
+        personId
     );
 
-
     /*
-       IMPORTANT
+    IMPORTANT FIX
 
-       Save the OTHER person's ID.
+    personId MUST be the OTHER USER'S ID.
+
+    Backend connections response contains:
+
+        connection.id
+            = connection table ID
+
+        connection.other_user_id
+            = actual user ID
+
+    We must use other_user_id.
     */
 
     localStorage.setItem(
@@ -514,9 +553,13 @@ function openChat(
     );
 
 
-    /*
-       Open chat page
-    */
+    console.log(
+        "ACTIVE CHAT ID SAVED:",
+        localStorage.getItem(
+            "activeChatId"
+        )
+    );
+
 
     window.location.href =
         "chat.html";
@@ -524,9 +567,9 @@ function openChat(
 }
 
 
-/* ==========================================
+/* =====================================================
    LOAD CONNECTIONS
-========================================== */
+===================================================== */
 
 async function loadConnections(){
 
@@ -582,7 +625,9 @@ async function loadConnections(){
 
                 BACKEND_URL +
                 "/api/connections/" +
-                user.id
+                encodeURIComponent(
+                    user.id
+                )
 
             );
 
@@ -592,7 +637,7 @@ async function loadConnections(){
 
 
         console.log(
-            "Connections:",
+            "CONNECTIONS RESPONSE:",
             data
         );
 
@@ -600,15 +645,21 @@ async function loadConnections(){
         if(!response.ok){
 
             throw new Error(
+
                 data.message ||
                 "Unable to load connections."
+
             );
 
         }
 
 
         const connections =
-            data.connections || [];
+            Array.isArray(
+                data.connections
+            )
+            ? data.connections
+            : [];
 
 
         if(
@@ -622,8 +673,10 @@ async function loadConnections(){
                 <br><br>
 
                 <small>
+
                     Accept a talent exchange request
                     to create a connection.
+
                 </small>
 
             `;
@@ -643,14 +696,18 @@ async function loadConnections(){
 
 
         connections.forEach(
+
             function(connection){
 
                 createConnectionCard(
+
                     connection,
                     container
+
                 );
 
             }
+
         );
 
 
@@ -659,7 +716,7 @@ async function loadConnections(){
     catch(error){
 
         console.error(
-            "Connection error:",
+            "CONNECTION ERROR:",
             error
         );
 
@@ -681,9 +738,9 @@ async function loadConnections(){
 }
 
 
-/* ==========================================
+/* =====================================================
    CREATE CONNECTION CARD
-========================================== */
+===================================================== */
 
 function createConnectionCard(
     connection,
@@ -700,8 +757,29 @@ function createConnectionCard(
         "connection-card";
 
 
-    const id =
-        connection.id;
+    /*
+    =====================================================
+    IMPORTANT FIX
+    =====================================================
+
+    OLD:
+
+        connection.id
+
+    WRONG.
+
+    connection.id is the CONNECTION TABLE ID.
+
+    We need:
+
+        connection.other_user_id
+
+    This is the actual user ID of the person
+    we want to chat with.
+    */
+
+    const personId =
+        connection.other_user_id;
 
 
     const name =
@@ -720,9 +798,28 @@ function createConnectionCard(
 
 
     const learningSkill =
-        connection.learningSkill ||
+        connection.learning_skill ||
         "";
 
+
+    console.log(
+        "CONNECTION CARD:",
+        {
+            connectionId:
+                connection.id,
+
+            otherUserId:
+                connection.other_user_id,
+
+            name:
+                name
+        }
+    );
+
+
+    /* =================================================
+       USER SECTION
+    ================================================= */
 
     const userSection =
         document.createElement(
@@ -760,6 +857,10 @@ function createConnectionCard(
     );
 
 
+    /* =================================================
+       SKILLS
+    ================================================= */
+
     const skills =
         document.createElement(
             "div"
@@ -777,11 +878,15 @@ function createConnectionCard(
                 "span"
             );
 
+
         skillElement.className =
             "skill";
 
+
         skillElement.textContent =
-            "🛠️ " + skill;
+            "🛠️ " +
+            skill;
+
 
         skills.appendChild(
             skillElement
@@ -797,11 +902,15 @@ function createConnectionCard(
                 "span"
             );
 
+
         learningElement.className =
             "skill";
 
+
         learningElement.textContent =
-            "📚 " + learningSkill;
+            "📚 " +
+            learningSkill;
+
 
         skills.appendChild(
             learningElement
@@ -815,7 +924,9 @@ function createConnectionCard(
     );
 
 
-    /* CHAT BUTTON */
+    /* =================================================
+       CHAT BUTTON
+    ================================================= */
 
     const chatButton =
         document.createElement(
@@ -832,16 +943,29 @@ function createConnectionCard(
 
 
     chatButton.addEventListener(
+
         "click",
+
         function(){
 
+            /*
+            IMPORTANT:
+
+            Use personId = other_user_id
+            */
+
             openChat(
-                id,
+
+                personId,
+
                 name,
+
                 skill
+
             );
 
         }
+
     );
 
 
@@ -857,9 +981,9 @@ function createConnectionCard(
 }
 
 
-/* ==========================================
+/* =====================================================
    ESCAPE HTML
-========================================== */
+===================================================== */
 
 function escapeHTML(value){
 
@@ -893,11 +1017,21 @@ function escapeHTML(value){
 }
 
 
-/* ==========================================
+/* =====================================================
    START
-========================================== */
+===================================================== */
 
-loadConnections();
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function(){
+
+        loadConnections();
+
+    }
+
+);
 
 </script>
 
