@@ -29,15 +29,13 @@ body{
 
     justify-content:center;
 
-    padding:20px;
-
     color:white;
 
     background:
     radial-gradient(
         circle at top right,
         #3b2470,
-        transparent 35%
+        transparent 40%
     ),
     linear-gradient(
         135deg,
@@ -49,7 +47,7 @@ body{
 
 .container{
 
-    width:100%;
+    width:92%;
 
     max-width:430px;
 
@@ -57,14 +55,13 @@ body{
 
     border-radius:25px;
 
-    background:rgba(255,255,255,.07);
+    background:
+    rgba(255,255,255,.07);
 
-    border:1px solid rgba(255,255,255,.12);
+    border:
+    1px solid rgba(255,255,255,.12);
 
     backdrop-filter:blur(15px);
-
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.4);
 
 }
 
@@ -72,7 +69,7 @@ body{
 
     text-align:center;
 
-    font-size:28px;
+    font-size:25px;
 
     font-weight:bold;
 
@@ -92,7 +89,7 @@ body{
 
 .form-group{
 
-    margin-bottom:16px;
+    margin-bottom:15px;
 
 }
 
@@ -108,12 +105,11 @@ label{
 
 }
 
-input,
-textarea{
+input{
 
     width:100%;
 
-    padding:13px 14px;
+    padding:13px;
 
     border:none;
 
@@ -121,27 +117,16 @@ textarea{
 
     border-radius:12px;
 
-    background:rgba(255,255,255,.1);
+    background:
+    rgba(255,255,255,.1);
 
     color:white;
 
     font-size:14px;
 
-    border:1px solid
-    rgba(255,255,255,.08);
-
 }
 
-textarea{
-
-    resize:none;
-
-    min-height:80px;
-
-}
-
-input::placeholder,
-textarea::placeholder{
+input::placeholder{
 
     color:#888;
 
@@ -153,15 +138,15 @@ button{
 
     padding:14px;
 
-    margin-top:8px;
+    margin-top:10px;
 
     border:none;
 
-    border-radius:13px;
+    border-radius:12px;
 
     color:white;
 
-    font-size:16px;
+    font-size:15px;
 
     font-weight:bold;
 
@@ -184,11 +169,11 @@ button:disabled{
 
 }
 
-.login-link{
+.login{
 
     text-align:center;
 
-    margin-top:20px;
+    margin-top:18px;
 
     color:#aaa;
 
@@ -196,7 +181,7 @@ button:disabled{
 
 }
 
-.login-link a{
+.login a{
 
     color:#bd82ff;
 
@@ -206,65 +191,35 @@ button:disabled{
 
 }
 
-.status{
-
-    display:none;
-
-    margin-bottom:15px;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    font-size:13px;
-
-}
-
 </style>
 
 </head>
-
 
 <body>
 
 
 <div class="container">
 
-
     <div class="logo">
         ✨ Talent Exchange
     </div>
-
 
     <div class="subtitle">
         Create your account
     </div>
 
 
-    <div
-        id="status"
-        class="status"
-    ></div>
-
-
-    <form
-        id="registerForm"
-        onsubmit="registerUser(event)"
-    >
+    <form id="registerForm">
 
 
         <div class="form-group">
 
-            <label for="name">
-                Full Name
-            </label>
+            <label>Full Name</label>
 
             <input
                 type="text"
                 id="name"
-                placeholder="Enter your full name"
+                placeholder="Enter your name"
                 required
             >
 
@@ -273,9 +228,7 @@ button:disabled{
 
         <div class="form-group">
 
-            <label for="email">
-                Email
-            </label>
+            <label>Email</label>
 
             <input
                 type="email"
@@ -289,15 +242,12 @@ button:disabled{
 
         <div class="form-group">
 
-            <label for="password">
-                Password
-            </label>
+            <label>Password</label>
 
             <input
                 type="password"
                 id="password"
                 placeholder="Minimum 6 characters"
-                minlength="6"
                 required
             >
 
@@ -306,14 +256,12 @@ button:disabled{
 
         <div class="form-group">
 
-            <label for="skill">
-                Your Skill
-            </label>
+            <label>Your Skill</label>
 
             <input
                 type="text"
                 id="skill"
-                placeholder="Example: Python, Editing, Drawing"
+                placeholder="Example: Python"
                 required
             >
 
@@ -322,14 +270,12 @@ button:disabled{
 
         <div class="form-group">
 
-            <label for="learningSkill">
-                Skill You Want To Learn
-            </label>
+            <label>Learning Skill</label>
 
             <input
                 type="text"
                 id="learningSkill"
-                placeholder="Example: JavaScript"
+                placeholder="Example: Web Development"
             >
 
         </div>
@@ -337,14 +283,13 @@ button:disabled{
 
         <div class="form-group">
 
-            <label for="bio">
-                Bio
-            </label>
+            <label>Bio</label>
 
-            <textarea
+            <input
+                type="text"
                 id="bio"
-                placeholder="Tell something about yourself..."
-            ></textarea>
+                placeholder="Tell something about yourself"
+            >
 
         </div>
 
@@ -353,14 +298,14 @@ button:disabled{
             type="submit"
             id="registerButton"
         >
-            Create Account 🚀
+            Create Account
         </button>
 
 
     </form>
 
 
-    <div class="login-link">
+    <div class="login">
 
         Already have an account?
 
@@ -370,85 +315,71 @@ button:disabled{
 
     </div>
 
-
 </div>
 
 
 <script>
 
-
-// =====================================================
-// BACKEND URL
-// =====================================================
-
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-// =====================================================
-// REGISTER
-// =====================================================
+const form =
+    document.getElementById("registerForm");
+
+
+form.addEventListener(
+    "submit",
+    registerUser
+);
+
 
 async function registerUser(event){
 
     event.preventDefault();
 
 
+    const button =
+        document.getElementById(
+            "registerButton"
+        );
+
+
     const name =
-        document
-        .getElementById("name")
-        .value
-        .trim();
+        document.getElementById(
+            "name"
+        ).value.trim();
 
 
     const email =
-        document
-        .getElementById("email")
-        .value
-        .trim()
-        .toLowerCase();
+        document.getElementById(
+            "email"
+        ).value.trim().toLowerCase();
 
 
     const password =
-        document
-        .getElementById("password")
-        .value;
+        document.getElementById(
+            "password"
+        ).value;
 
 
     const skill =
-        document
-        .getElementById("skill")
-        .value
-        .trim();
+        document.getElementById(
+            "skill"
+        ).value.trim();
 
 
     const learningSkill =
-        document
-        .getElementById("learningSkill")
-        .value
-        .trim();
+        document.getElementById(
+            "learningSkill"
+        ).value.trim();
 
 
     const bio =
-        document
-        .getElementById("bio")
-        .value
-        .trim();
+        document.getElementById(
+            "bio"
+        ).value.trim();
 
-
-    const button =
-        document
-        .getElementById("registerButton");
-
-
-    const status =
-        document
-        .getElementById("status");
-
-
-    // =================================================
-    // VALIDATION
-    // =================================================
 
     if(
         !name ||
@@ -457,9 +388,8 @@ async function registerUser(event){
         !skill
     ){
 
-        showStatus(
-            "Please fill all required fields.",
-            false
+        alert(
+            "Please fill all required fields."
         );
 
         return;
@@ -469,9 +399,8 @@ async function registerUser(event){
 
     if(password.length < 6){
 
-        showStatus(
-            "Password must contain at least 6 characters.",
-            false
+        alert(
+            "Password must contain at least 6 characters."
         );
 
         return;
@@ -479,28 +408,13 @@ async function registerUser(event){
     }
 
 
-    // =================================================
-    // DISABLE BUTTON
-    // =================================================
-
     button.disabled = true;
 
     button.textContent =
         "Creating Account...";
 
 
-    showStatus(
-        "Creating your account...",
-        true
-    );
-
-
     try{
-
-
-        // =============================================
-        // API REQUEST
-        // =============================================
 
         const response =
             await fetch(
@@ -513,13 +427,8 @@ async function registerUser(event){
                     method:"POST",
 
                     headers:{
-
                         "Content-Type":
-                            "application/json",
-
-                        "Accept":
                             "application/json"
-
                     },
 
                     body:
@@ -545,152 +454,99 @@ async function registerUser(event){
             );
 
 
-        // =============================================
-        // READ RESPONSE SAFELY
-        // =============================================
+        /*
+         * IMPORTANT:
+         * First read TEXT.
+         * Then convert JSON.
+         * This prevents:
+         * Unexpected token '<'
+         */
 
-        const contentType =
-            response.headers
-            .get("content-type") || "";
+        const rawText =
+            await response.text();
+
+
+        console.log(
+            "Backend response:",
+            rawText
+        );
 
 
         let result;
 
 
-        if(
-            contentType.includes(
-                "application/json"
-            )
-        ){
+        try{
 
             result =
-                await response.json();
+                JSON.parse(rawText);
 
         }
-        else{
-
-            const text =
-                await response.text();
+        catch(jsonError){
 
             console.error(
-                "Non-JSON response:",
-                text
+                "Backend returned non-JSON:",
+                rawText
             );
 
-
             throw new Error(
-                "Server returned an invalid response. Please check the backend deployment."
+                "Backend JSON response raaledu. Render backend URL/route check cheyyali."
             );
 
         }
 
-
-        // =============================================
-        // API ERROR
-        // =============================================
 
         if(!response.ok){
 
             throw new Error(
-
                 result.message ||
                 "Registration failed."
-
             );
 
         }
 
 
-        // =============================================
-        // SUCCESS
-        // =============================================
+        if(result.success){
 
-        showStatus(
-            "Account created successfully! 🎉",
-            true
-        );
+            alert(
+                "✅ Account created successfully!"
+            );
 
 
-        alert(
-            "Account created successfully! 🎉\n\nYou can login anytime using the same email and password."
-        );
+            window.location.href =
+                "login.html";
 
+        }
+        else{
 
-        // =============================================
-        // GO TO LOGIN
-        // =============================================
+            throw new Error(
+                result.message ||
+                "Registration failed."
+            );
 
-        window.location.href =
-            "login.html";
-
+        }
 
     }
     catch(error){
 
         console.error(
-            "Registration Error:",
+            "REGISTER ERROR:",
             error
         );
 
 
-        showStatus(
+        alert(
             "❌ " +
-            (
-                error.message ||
-                "Unable to connect to server."
-            ),
-            false
+            error.message
         );
-
 
     }
     finally{
 
-        button.disabled = false;
+        button.disabled =
+            false;
 
         button.textContent =
-            "Create Account 🚀";
-
-    }
-
-}
-
-
-// =====================================================
-// STATUS MESSAGE
-// =====================================================
-
-function showStatus(message, success){
-
-    const status =
-        document
-        .getElementById("status");
-
-
-    status.style.display =
-        "block";
-
-
-    status.textContent =
-        message;
-
-
-    if(success){
-
-        status.style.background =
-            "rgba(46,204,113,.15)";
-
-        status.style.color =
-            "#62e27c";
-
-    }
-    else{
-
-        status.style.background =
-            "rgba(231,76,60,.15)";
-
-        status.style.color =
-            "#ff7675";
+            "Create Account";
 
     }
 
