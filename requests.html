@@ -2,8 +2,13 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>My Requests | Talent Exchange</title>
 
@@ -207,6 +212,22 @@ button:disabled{
     background:rgba(70,200,120,.15);
 }
 
+.error{
+    display:none;
+
+    padding:14px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    border-radius:12px;
+
+    color:#ff9b9b;
+
+    background:rgba(220,60,70,.15);
+}
+
 @media(max-width:700px){
 
     .heading h1{
@@ -220,9 +241,12 @@ button:disabled{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <nav class="navbar">
 
@@ -230,7 +254,10 @@ button:disabled{
         ✨ Talent Exchange
     </div>
 
-    <a href="dashboard.html" class="back">
+    <a
+        href="dashboard.html"
+        class="back"
+    >
         ← Dashboard
     </a>
 
@@ -238,6 +265,7 @@ button:disabled{
 
 
 <main class="container">
+
 
     <div class="heading">
 
@@ -252,31 +280,49 @@ button:disabled{
     </div>
 
 
-    <div id="success"
-         class="success">
-    </div>
+    <div
+        id="success"
+        class="success"
+    ></div>
 
 
-    <div id="status"
-         class="status">
+    <div
+        id="error"
+        class="error"
+    ></div>
 
+
+    <div
+        id="status"
+        class="status"
+    >
         🔄 Loading requests...
-
     </div>
 
 
-    <div id="requests"
-         class="requests">
-    </div>
+    <div
+        id="requests"
+        class="requests"
+    ></div>
+
 
 </main>
 
 
 <script>
 
+
+// =====================================================
+// BACKEND
+// =====================================================
+
 const BACKEND_URL =
 "https://talent-exchange-backend-p5wq.onrender.com";
 
+
+// =====================================================
+// CURRENT USER
+// =====================================================
 
 let currentUser = null;
 
@@ -293,13 +339,37 @@ function getCurrentUser(){
             JSON.parse(
                 localStorage.getItem(
                     "userProfile"
-                ) || "{}"
+                ) || "null"
             );
 
-        return profile;
+
+        if(profile){
+
+            return profile;
+
+        }
+
+
+        // Backup localStorage names
+
+        const user =
+            JSON.parse(
+                localStorage.getItem(
+                    "user"
+                ) || "null"
+            );
+
+
+        return user || {};
 
     }
+
     catch(error){
+
+        console.error(
+            "USER ERROR:",
+            error
+        );
 
         return {};
 
@@ -315,17 +385,31 @@ function getCurrentUser(){
 async function loadRequests(){
 
     const status =
-        document.getElementById("status");
+        document.getElementById(
+            "status"
+        );
+
 
     const container =
-        document.getElementById("requests");
+        document.getElementById(
+            "requests"
+        );
 
 
     currentUser =
         getCurrentUser();
 
 
-    if(!currentUser.id){
+    console.log(
+        "CURRENT USER:",
+        currentUser
+    );
+
+
+    if(
+        !currentUser ||
+        !currentUser.id
+    ){
 
         status.innerHTML =
             "❌ Please login again.";
@@ -341,16 +425,39 @@ async function loadRequests(){
             "🔄 Loading requests...";
 
 
+        container.innerHTML =
+            "";
+
+
+        /*
+        IMPORTANT:
+
+        New backend endpoint:
+
+        /api/requests/user/<user_id>
+
+        */
+
         const response =
             await fetch(
+
                 BACKEND_URL +
-                "/api/requests/" +
-                currentUser.id
+                "/api/requests/user/" +
+                encodeURIComponent(
+                    currentUser.id
+                )
+
             );
 
 
         const data =
             await response.json();
+
+
+        console.log(
+            "REQUEST RESPONSE:",
+            data
+        );
 
 
         if(!response.ok){
@@ -364,14 +471,16 @@ async function loadRequests(){
 
 
         const requests =
-            data.requests || [];
+            Array.isArray(
+                data.requests
+            )
+            ? data.requests
+            : [];
 
 
-        container.innerHTML =
-            "";
-
-
-        if(requests.length === 0){
+        if(
+            requests.length === 0
+        ){
 
             status.innerHTML =
                 "📭 No requests yet.";
@@ -393,10 +502,16 @@ async function loadRequests(){
             }
         );
 
+
     }
+
     catch(error){
 
-        console.error(error);
+        console.error(
+            "LOAD REQUEST ERROR:",
+            error
+        );
+
 
         status.innerHTML =
             "❌ " +
@@ -420,8 +535,11 @@ function displayRequest(req){
 
 
     const isReceiver =
-        Number(req.receiver_id) ===
-        Number(currentUser.id);
+        Number(
+            req.receiver_id
+        ) === Number(
+            currentUser.id
+        );
 
 
     const otherName =
@@ -437,7 +555,9 @@ function displayRequest(req){
 
 
     const card =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     card.className =
@@ -445,13 +565,20 @@ function displayRequest(req){
 
 
     const initial =
-        (otherName || "?")
+        (
+            otherName ||
+            "?"
+        )
         .charAt(0)
         .toUpperCase();
 
 
     let buttons = "";
 
+
+    // =================================================
+    // ONLY RECEIVER CAN ACCEPT / REJECT
+    // =================================================
 
     if(
         isReceiver &&
@@ -464,23 +591,28 @@ function displayRequest(req){
 
                 <button
                     class="accept"
-                    onclick="updateRequest(
-                        ${req.id},
-                        'accepted',
-                        this
-                    )">
+                    onclick="
+                        acceptRequest(
+                            ${req.id},
+                            this
+                        )
+                    "
+                >
 
                     ✓ Accept
 
                 </button>
 
+
                 <button
                     class="reject"
-                    onclick="updateRequest(
-                        ${req.id},
-                        'rejected',
-                        this
-                    )">
+                    onclick="
+                        rejectRequest(
+                            ${req.id},
+                            this
+                        )
+                    "
+                >
 
                     ✕ Reject
 
@@ -493,54 +625,153 @@ function displayRequest(req){
     }
 
 
+    // =================================================
+    // SENT REQUEST
+    // =================================================
+
+    if(
+        !isReceiver &&
+        req.status === "pending"
+    ){
+
+        buttons = `
+
+            <div class="status-badge">
+
+                ⏳ Waiting for response
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // ACCEPTED
+    // =================================================
+
+    if(
+        req.status === "accepted"
+    ){
+
+        buttons = `
+
+            <div class="status-badge">
+
+                ✅ Connected
+
+            </div>
+
+        `;
+
+    }
+
+
+    // =================================================
+    // REJECTED
+    // =================================================
+
+    if(
+        req.status === "rejected"
+    ){
+
+        buttons = `
+
+            <div class="status-badge">
+
+                ❌ Request rejected
+
+            </div>
+
+        `;
+
+    }
+
+
     card.innerHTML = `
 
         <div class="avatar">
-            ${initial}
+
+            ${escapeHTML(initial)}
+
         </div>
+
 
         <h2>
-            ${escapeHTML(otherName || "Unknown User")}
+
+            ${escapeHTML(
+                otherName ||
+                "Unknown User"
+            )}
+
         </h2>
 
+
         <div class="email">
-            ${escapeHTML(otherEmail || "")}
+
+            ${escapeHTML(
+                otherEmail ||
+                ""
+            )}
+
         </div>
 
+
         <div class="skill">
-            🛠️ ${escapeHTML(req.skill || "Skill")}
+
+            🛠️
+            ${escapeHTML(
+                req.skill ||
+                "Skill"
+            )}
+
         </div>
+
 
         <br>
 
+
         <div class="status-badge">
-            Status: ${escapeHTML(req.status || "pending")}
+
+            Status:
+            ${escapeHTML(
+                req.status ||
+                "pending"
+            )}
+
         </div>
+
 
         ${buttons}
 
     `;
 
 
-    container.appendChild(card);
+    container.appendChild(
+        card
+    );
 
 }
 
 
 // =====================================================
-// ACCEPT / REJECT
+// ACCEPT REQUEST
 // =====================================================
 
-async function updateRequest(
+async function acceptRequest(
     requestId,
-    newStatus,
     button
 ){
 
+    const parent =
+        button.closest(
+            ".buttons"
+        );
+
+
     const buttons =
-        button
-        .parentElement
-        .querySelectorAll(
+        parent.querySelectorAll(
             "button"
         );
 
@@ -548,45 +779,49 @@ async function updateRequest(
     buttons.forEach(
         function(btn){
 
-            btn.disabled = true;
+            btn.disabled =
+                true;
 
         }
     );
 
 
     button.textContent =
-        newStatus === "accepted"
-        ? "Accepting..."
-        : "Rejecting...";
+        "Accepting...";
 
 
     try{
 
+        /*
+        IMPORTANT:
+
+        Backend endpoint:
+
+        POST
+        /api/requests/<request_id>/accept
+
+        */
+
         const response =
             await fetch(
+
                 BACKEND_URL +
                 "/api/requests/" +
-                requestId,
+                requestId +
+                "/accept",
+
                 {
 
-                    method:"PUT",
+                    method:
+                    "POST",
 
                     headers:{
                         "Content-Type":
                         "application/json"
-                    },
-
-                    body:JSON.stringify({
-
-                        status:
-                        newStatus,
-
-                        user_id:
-                        currentUser.id
-
-                    })
+                    }
 
                 }
+
             );
 
 
@@ -594,35 +829,48 @@ async function updateRequest(
             await response.json();
 
 
+        console.log(
+            "ACCEPT RESPONSE:",
+            data
+        );
+
+
         if(!response.ok){
 
             throw new Error(
                 data.message ||
-                "Unable to update request."
+                "Unable to accept request."
             );
 
         }
 
 
         showSuccess(
-            newStatus === "accepted"
-            ? "✅ Request accepted!"
-            : "❌ Request rejected!"
+            "✅ Request accepted successfully!"
         );
 
 
         setTimeout(
-            loadRequests,
+            function(){
+
+                loadRequests();
+
+            },
             500
         );
 
+
     }
+
     catch(error){
 
-        console.error(error);
+        console.error(
+            "ACCEPT ERROR:",
+            error
+        );
 
 
-        alert(
+        showError(
             "❌ " +
             error.message
         );
@@ -631,16 +879,144 @@ async function updateRequest(
         buttons.forEach(
             function(btn){
 
-                btn.disabled = false;
+                btn.disabled =
+                    false;
 
             }
         );
 
 
         button.textContent =
-            newStatus === "accepted"
-            ? "✓ Accept"
-            : "✕ Reject";
+            "✓ Accept";
+
+    }
+
+}
+
+
+// =====================================================
+// REJECT REQUEST
+// =====================================================
+
+async function rejectRequest(
+    requestId,
+    button
+){
+
+    const parent =
+        button.closest(
+            ".buttons"
+        );
+
+
+    const buttons =
+        parent.querySelectorAll(
+            "button"
+        );
+
+
+    buttons.forEach(
+        function(btn){
+
+            btn.disabled =
+                true;
+
+        }
+    );
+
+
+    button.textContent =
+        "Rejecting...";
+
+
+    try{
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/requests/" +
+                requestId +
+                "/reject",
+
+                {
+
+                    method:
+                    "POST",
+
+                    headers:{
+                        "Content-Type":
+                        "application/json"
+                    }
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "REJECT RESPONSE:",
+            data
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to reject request."
+            );
+
+        }
+
+
+        showSuccess(
+            "❌ Request rejected."
+        );
+
+
+        setTimeout(
+            function(){
+
+                loadRequests();
+
+            },
+            500
+        );
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "REJECT ERROR:",
+            error
+        );
+
+
+        showError(
+            "❌ " +
+            error.message
+        );
+
+
+        buttons.forEach(
+            function(btn){
+
+                btn.disabled =
+                    false;
+
+            }
+        );
+
+
+        button.textContent =
+            "✕ Reject";
 
     }
 
@@ -651,7 +1027,9 @@ async function updateRequest(
 // SUCCESS
 // =====================================================
 
-function showSuccess(text){
+function showSuccess(
+    text
+){
 
     const box =
         document.getElementById(
@@ -681,17 +1059,76 @@ function showSuccess(text){
 
 
 // =====================================================
+// ERROR
+// =====================================================
+
+function showError(
+    text
+){
+
+    const box =
+        document.getElementById(
+            "error"
+        );
+
+
+    box.textContent =
+        text;
+
+
+    box.style.display =
+        "block";
+
+
+    setTimeout(
+        function(){
+
+            box.style.display =
+                "none";
+
+        },
+        4000
+    );
+
+}
+
+
+// =====================================================
 // HTML SAFETY
 // =====================================================
 
-function escapeHTML(value){
+function escapeHTML(
+    value
+){
 
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    return String(
+        value
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
@@ -700,7 +1137,14 @@ function escapeHTML(value){
 // START
 // =====================================================
 
-loadRequests();
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadRequests();
+
+    }
+);
 
 </script>
 
