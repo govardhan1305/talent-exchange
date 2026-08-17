@@ -2,206 +2,260 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Join Talent Exchange</title>
+<meta charset="UTF-8">
 
-    <style>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+<title>Register | Talent Exchange</title>
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+<style>
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #090916,
-                    #24164d,
-                    #11112b
-                );
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-            color: white;
-            padding: 20px;
-        }
+body{
 
-        .register-box {
-            width: 100%;
-            max-width: 430px;
+    min-height:100vh;
 
-            padding: 35px;
+    display:flex;
 
-            border-radius: 25px;
+    align-items:center;
 
-            background: rgba(255,255,255,0.08);
+    justify-content:center;
 
-            border: 1px solid rgba(255,255,255,0.15);
+    padding:20px;
 
-            backdrop-filter: blur(15px);
+    color:white;
 
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.4);
-        }
+    background:
+    radial-gradient(
+        circle at top right,
+        #3b2470,
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #080812,
+        #15132b
+    );
 
-        .logo {
-            text-align: center;
+}
 
-            font-size: 28px;
+.container{
 
-            font-weight: bold;
+    width:100%;
 
-            margin-bottom: 10px;
-        }
+    max-width:430px;
 
-        .subtitle {
-            text-align: center;
+    padding:30px;
 
-            color: #bbb;
+    border-radius:25px;
 
-            margin-bottom: 30px;
+    background:rgba(255,255,255,.07);
 
-            line-height: 1.5;
-        }
+    border:1px solid rgba(255,255,255,.12);
 
-        label {
-            display: block;
+    backdrop-filter:blur(15px);
 
-            margin: 15px 0 7px;
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.4);
 
-            color: #ddd;
-        }
+}
 
-        input {
-            width: 100%;
+.logo{
 
-            padding: 14px;
+    text-align:center;
 
-            border-radius: 12px;
+    font-size:28px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.15);
+    font-weight:bold;
 
-            background:
-                rgba(255,255,255,0.08);
+    margin-bottom:8px;
 
-            color: white;
+}
 
-            outline: none;
+.subtitle{
 
-            font-size: 15px;
-        }
+    text-align:center;
 
-        input::placeholder {
-            color: #999;
-        }
+    color:#aaa;
 
-        input:focus {
-            border-color: #9b7cff;
+    margin-bottom:25px;
 
-            box-shadow:
-                0 0 10px
-                rgba(155,124,255,0.2);
-        }
+}
 
-        button {
-            width: 100%;
+.form-group{
 
-            margin-top: 25px;
+    margin-bottom:16px;
 
-            padding: 15px;
+}
 
-            border: none;
+label{
 
-            border-radius: 12px;
+    display:block;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #8b6cff,
-                    #c084fc
-                );
+    margin-bottom:7px;
 
-            color: white;
+    font-size:14px;
 
-            font-size: 16px;
+    color:#ddd;
 
-            font-weight: bold;
+}
 
-            cursor: pointer;
+input,
+textarea{
 
-            transition: 0.2s;
-        }
+    width:100%;
 
-        button:hover {
-            transform: translateY(-2px);
+    padding:13px 14px;
 
-            box-shadow:
-                0 8px 25px
-                rgba(139,108,255,0.35);
-        }
+    border:none;
 
-        button:disabled {
-            opacity: 0.6;
+    outline:none;
 
-            cursor: not-allowed;
+    border-radius:12px;
 
-            transform: none;
-        }
+    background:rgba(255,255,255,.1);
 
-        .login {
-            text-align: center;
+    color:white;
 
-            margin-top: 20px;
+    font-size:14px;
 
-            color: #aaa;
-        }
+    border:1px solid
+    rgba(255,255,255,.08);
 
-        .login a {
-            color: #b69cff;
+}
 
-            text-decoration: none;
+textarea{
 
-            font-weight: bold;
-        }
+    resize:none;
 
-        .login a:hover {
-            text-decoration: underline;
-        }
+    min-height:80px;
 
-    </style>
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#888;
+
+}
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:8px;
+
+    border:none;
+
+    border-radius:13px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8066ff,
+        #bd82ff
+    );
+
+}
+
+button:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+.login-link{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
+
+.login-link a{
+
+    color:#bd82ff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.status{
+
+    display:none;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    font-size:13px;
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-    <div class="register-box">
 
-        <div class="logo">
-            ✨ Talent Exchange
-        </div>
-
-        <p class="subtitle">
-            Create your account and start exchanging skills.
-        </p>
+<div class="container">
 
 
-        <!-- REGISTER FORM -->
+    <div class="logo">
+        ✨ Talent Exchange
+    </div>
 
-        <form onsubmit="registerUser(event)">
+
+    <div class="subtitle">
+        Create your account
+    </div>
 
 
-            <!-- NAME -->
+    <div
+        id="status"
+        class="status"
+    ></div>
+
+
+    <form
+        id="registerForm"
+        onsubmit="registerUser(event)"
+    >
+
+
+        <div class="form-group">
 
             <label for="name">
                 Full Name
@@ -210,13 +264,14 @@
             <input
                 type="text"
                 id="name"
-                placeholder="Enter your name"
-                autocomplete="name"
+                placeholder="Enter your full name"
                 required
             >
 
+        </div>
 
-            <!-- EMAIL -->
+
+        <div class="form-group">
 
             <label for="email">
                 Email
@@ -226,12 +281,13 @@
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                autocomplete="email"
                 required
             >
 
+        </div>
 
-            <!-- PASSWORD -->
+
+        <div class="form-group">
 
             <label for="password">
                 Password
@@ -240,14 +296,15 @@
             <input
                 type="password"
                 id="password"
-                placeholder="Create a password"
-                autocomplete="new-password"
+                placeholder="Minimum 6 characters"
                 minlength="6"
                 required
             >
 
+        </div>
 
-            <!-- SKILL -->
+
+        <div class="form-group">
 
             <label for="skill">
                 Your Skill
@@ -256,144 +313,391 @@
             <input
                 type="text"
                 id="skill"
-                placeholder="Example: Web Development"
+                placeholder="Example: Python, Editing, Drawing"
                 required
             >
 
+        </div>
 
-            <!-- BUTTON -->
 
-            <button
-                type="submit"
-                id="registerButton"
+        <div class="form-group">
+
+            <label for="learningSkill">
+                Skill You Want To Learn
+            </label>
+
+            <input
+                type="text"
+                id="learningSkill"
+                placeholder="Example: JavaScript"
             >
-                Create Account 🚀
-            </button>
-
-        </form>
-
-
-        <!-- LOGIN -->
-
-        <div class="login">
-
-            Already have an account?
-
-            <a href="login.html">
-                Login
-            </a>
 
         </div>
+
+
+        <div class="form-group">
+
+            <label for="bio">
+                Bio
+            </label>
+
+            <textarea
+                id="bio"
+                placeholder="Tell something about yourself..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="registerButton"
+        >
+            Create Account 🚀
+        </button>
+
+
+    </form>
+
+
+    <div class="login-link">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
 
     </div>
 
 
-    <!-- ==========================================
-         SIGNUP JAVASCRIPT
-         ========================================== -->
+</div>
 
-   <script>
+
+<script>
+
+
+// =====================================================
+// BACKEND URL
+// =====================================================
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-async function registerUser(event) {
+// =====================================================
+// REGISTER
+// =====================================================
+
+async function registerUser(event){
 
     event.preventDefault();
 
+
     const name =
-        document.getElementById("name").value.trim();
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
 
     const email =
-        document.getElementById("email").value.trim();
+        document
+        .getElementById("email")
+        .value
+        .trim()
+        .toLowerCase();
+
 
     const password =
-        document.getElementById("password").value;
+        document
+        .getElementById("password")
+        .value;
+
 
     const skill =
-        document.getElementById("skill").value.trim();
+        document
+        .getElementById("skill")
+        .value
+        .trim();
 
 
-    if (!name || !email || !password || !skill) {
+    const learningSkill =
+        document
+        .getElementById("learningSkill")
+        .value
+        .trim();
 
-        alert("Please fill all fields.");
+
+    const bio =
+        document
+        .getElementById("bio")
+        .value
+        .trim();
+
+
+    const button =
+        document
+        .getElementById("registerButton");
+
+
+    const status =
+        document
+        .getElementById("status");
+
+
+    // =================================================
+    // VALIDATION
+    // =================================================
+
+    if(
+        !name ||
+        !email ||
+        !password ||
+        !skill
+    ){
+
+        showStatus(
+            "Please fill all required fields.",
+            false
+        );
 
         return;
+
     }
 
 
-    try {
+    if(password.length < 6){
 
-        const response = await fetch(
-            BACKEND_URL + "/api/signup",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
-
-                body: JSON.stringify({
-
-                    name: name,
-
-                    email: email,
-
-                    password: password,
-
-                    skill: skill
-
-                })
-            }
+        showStatus(
+            "Password must contain at least 6 characters.",
+            false
         );
 
+        return;
 
-        const result =
-            await response.json();
+    }
 
 
-        if (!response.ok) {
+    // =================================================
+    // DISABLE BUTTON
+    // =================================================
+
+    button.disabled = true;
+
+    button.textContent =
+        "Creating Account...";
+
+
+    showStatus(
+        "Creating your account...",
+        true
+    );
+
+
+    try{
+
+
+        // =============================================
+        // API REQUEST
+        // =============================================
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/signup",
+
+                {
+
+                    method:"POST",
+
+                    headers:{
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                    JSON.stringify({
+
+                        name:name,
+
+                        email:email,
+
+                        password:password,
+
+                        skill:skill,
+
+                        learningSkill:
+                            learningSkill,
+
+                        bio:bio
+
+                    })
+
+                }
+
+            );
+
+
+        // =============================================
+        // READ RESPONSE SAFELY
+        // =============================================
+
+        const contentType =
+            response.headers
+            .get("content-type") || "";
+
+
+        let result;
+
+
+        if(
+            contentType.includes(
+                "application/json"
+            )
+        ){
+
+            result =
+                await response.json();
+
+        }
+        else{
+
+            const text =
+                await response.text();
+
+            console.error(
+                "Non-JSON response:",
+                text
+            );
+
 
             throw new Error(
-                result.message ||
-                "Registration failed."
+                "Server returned an invalid response. Please check the backend deployment."
             );
 
         }
 
 
-        alert(
-            "Account created successfully! 🎉"
+        // =============================================
+        // API ERROR
+        // =============================================
+
+        if(!response.ok){
+
+            throw new Error(
+
+                result.message ||
+                "Registration failed."
+
+            );
+
+        }
+
+
+        // =============================================
+        // SUCCESS
+        // =============================================
+
+        showStatus(
+            "Account created successfully! 🎉",
+            true
         );
 
+
+        alert(
+            "Account created successfully! 🎉\n\nYou can login anytime using the same email and password."
+        );
+
+
+        // =============================================
+        // GO TO LOGIN
+        // =============================================
 
         window.location.href =
             "login.html";
 
 
-    } catch (error) {
+    }
+    catch(error){
 
         console.error(
-            "Signup Error:",
+            "Registration Error:",
             error
         );
 
 
-        alert(
+        showStatus(
             "❌ " +
             (
                 error.message ||
                 "Unable to connect to server."
-            )
+            ),
+            false
         );
+
+
+    }
+    finally{
+
+        button.disabled = false;
+
+        button.textContent =
+            "Create Account 🚀";
+
+    }
+
+}
+
+
+// =====================================================
+// STATUS MESSAGE
+// =====================================================
+
+function showStatus(message, success){
+
+    const status =
+        document
+        .getElementById("status");
+
+
+    status.style.display =
+        "block";
+
+
+    status.textContent =
+        message;
+
+
+    if(success){
+
+        status.style.background =
+            "rgba(46,204,113,.15)";
+
+        status.style.color =
+            "#62e27c";
+
+    }
+    else{
+
+        status.style.background =
+            "rgba(231,76,60,.15)";
+
+        status.style.color =
+            "#ff7675";
 
     }
 
 }
 
 </script>
+
 
 </body>
 
