@@ -2,22 +2,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>My Requests | Talent Exchange</title>
 
-
 <style>
-
-/* =========================
-   RESET
-========================= */
 
 *{
     margin:0;
@@ -26,371 +16,151 @@
     font-family:Arial,sans-serif;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 body{
-
     min-height:100vh;
-
     color:white;
 
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            #59338d,
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 90% 80%,
-            #254d9c,
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #070711,
-            #15132b
-        );
-
+    radial-gradient(circle at 10% 10%,#59338d,transparent 30%),
+    radial-gradient(circle at 90% 80%,#254d9c,transparent 30%),
+    linear-gradient(135deg,#070711,#15132b);
 }
 
-
-/* =========================
-   NAVBAR
-========================= */
-
 .navbar{
-
     min-height:72px;
-
     padding:15px 6%;
 
     display:flex;
-
+    justify-content:space-between;
     align-items:center;
 
-    justify-content:space-between;
-
-    gap:20px;
-
-    background:
-        rgba(10,10,20,0.85);
+    background:rgba(10,10,20,.85);
 
     border-bottom:
-        1px solid rgba(255,255,255,0.1);
-
-    backdrop-filter:
-        blur(18px);
-
+    1px solid rgba(255,255,255,.1);
 }
-
 
 .logo{
-
     font-size:21px;
-
     font-weight:bold;
-
 }
 
-
 .back{
-
     color:white;
-
     text-decoration:none;
 
     padding:10px 16px;
 
     border-radius:10px;
 
-    background:
-        rgba(255,255,255,0.08);
-
-    transition:0.3s;
-
+    background:rgba(255,255,255,.08);
 }
-
-
-.back:hover{
-
-    background:
-        rgba(255,255,255,0.15);
-
-}
-
-
-/* =========================
-   CONTAINER
-========================= */
 
 .container{
-
     width:90%;
-
-    max-width:900px;
+    max-width:1000px;
 
     margin:45px auto;
-
 }
-
-
-/* =========================
-   HEADING
-========================= */
 
 .heading{
-
     text-align:center;
-
-    margin-bottom:35px;
-
+    margin-bottom:30px;
 }
-
 
 .heading h1{
-
     font-size:40px;
-
     margin-bottom:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #c49cff
-        );
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-
 }
-
 
 .heading p{
-
     color:#aaa;
-
-    font-size:15px;
-
 }
 
-
-/* =========================
-   LOADING / EMPTY
-========================= */
-
-#status{
-
+.status{
     text-align:center;
-
     color:#aaa;
-
-    padding:35px;
-
-    font-size:16px;
-
+    padding:30px;
 }
-
-
-/* =========================
-   REQUEST LIST
-========================= */
 
 .requests{
-
     display:grid;
-
     gap:20px;
-
 }
 
-
-/* =========================
-   REQUEST CARD
-========================= */
-
-.request-card{
-
+.card{
     padding:25px;
 
     border-radius:20px;
 
-    background:
-        rgba(255,255,255,0.07);
+    background:rgba(255,255,255,.07);
 
     border:
-        1px solid rgba(255,255,255,0.1);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,0.2);
-
-    transition:0.3s;
-
+    1px solid rgba(255,255,255,.1);
 }
-
-
-.request-card:hover{
-
-    transform:
-        translateY(-4px);
-
-    background:
-        rgba(255,255,255,0.09);
-
-}
-
-
-/* =========================
-   USER
-========================= */
-
-.user{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:20px;
-
-}
-
 
 .avatar{
-
-    width:60px;
-
-    height:60px;
+    width:55px;
+    height:55px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
 
-    font-size:27px;
+    font-size:24px;
+
+    margin-bottom:15px;
 
     background:
-        linear-gradient(
-            135deg,
-            #8066ff,
-            #bd82ff
-        );
-
+    linear-gradient(135deg,#8066ff,#bd82ff);
 }
 
-
-.user h2{
-
-    font-size:20px;
-
-    margin-bottom:5px;
-
+.card h2{
+    margin-bottom:7px;
 }
 
-
-.user p{
-
-    color:#aaa;
-
-    font-size:14px;
-
+.email{
+    color:#999;
+    font-size:13px;
+    margin-bottom:15px;
 }
-
-
-/* =========================
-   SKILL
-========================= */
 
 .skill{
-
     display:inline-block;
 
-    padding:9px 14px;
+    padding:7px 12px;
 
     border-radius:20px;
 
     color:#d7caff;
 
-    background:
-        rgba(130,100,255,0.2);
-
-    font-size:14px;
+    background:rgba(130,100,255,.2);
 
     margin-bottom:18px;
-
 }
 
+.status-badge{
+    display:inline-block;
 
-/* =========================
-   STATUS
-========================= */
+    padding:7px 12px;
 
-.request-status{
+    border-radius:20px;
 
-    margin-top:5px;
+    background:rgba(255,255,255,.08);
 
-    margin-bottom:20px;
+    color:#ccc;
 
-    color:#aaa;
-
-    font-size:14px;
-
+    margin-bottom:18px;
 }
-
-
-.pending{
-
-    color:#ffd580;
-
-}
-
-
-.accepted{
-
-    color:#9be6a5;
-
-}
-
-
-.rejected{
-
-    color:#ffaaaa;
-
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
 
 .buttons{
-
     display:flex;
-
-    gap:12px;
-
+    gap:10px;
 }
 
-
-.accept,
-.reject{
-
+button{
     flex:1;
 
     padding:13px;
@@ -401,519 +171,193 @@ body{
 
     color:white;
 
-    font-size:14px;
-
     font-weight:bold;
 
     cursor:pointer;
-
-    transition:0.3s;
-
 }
-
 
 .accept{
-
     background:
-        linear-gradient(
-            90deg,
-            #4caf75,
-            #66c98c
-        );
-
+    linear-gradient(90deg,#3bbf72,#5bd98d);
 }
-
 
 .reject{
-
     background:
-        rgba(255,80,80,0.18);
-
-    color:#ffaaaa;
-
+    linear-gradient(90deg,#d94d5b,#ef7180);
 }
 
-
-.accept:hover{
-
-    transform:
-        translateY(-2px);
-
-}
-
-
-.reject:hover{
-
-    background:
-        rgba(255,80,80,0.28);
-
-}
-
-
-.accept:disabled,
-.reject:disabled{
-
-    opacity:0.5;
-
+button:disabled{
+    opacity:.6;
     cursor:not-allowed;
-
 }
 
-
-/* =========================
-   ERROR
-========================= */
-
-.error-box{
-
+.success{
     display:none;
+
+    padding:14px;
 
     margin-bottom:20px;
 
-    padding:15px;
-
-    border-radius:12px;
-
     text-align:center;
 
-    color:#ffaaaa;
-
-    background:
-        rgba(255,70,70,0.12);
-
-    border:
-        1px solid
-        rgba(255,70,70,0.15);
-
-}
-
-
-/* =========================
-   SUCCESS
-========================= */
-
-.success-box{
-
-    display:none;
-
-    margin-bottom:20px;
-
-    padding:15px;
-
     border-radius:12px;
-
-    text-align:center;
 
     color:#9be6a5;
 
-    background:
-        rgba(70,200,120,0.12);
-
+    background:rgba(70,200,120,.15);
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    .navbar{
-
-        padding:15px;
-
-    }
-
-
-    .logo{
-
-        font-size:18px;
-
-    }
-
-
-    .back{
-
-        padding:8px 11px;
-
-        font-size:13px;
-
-    }
-
-
-    .container{
-
-        width:92%;
-
-        margin:30px auto;
-
-    }
-
+@media(max-width:700px){
 
     .heading h1{
-
         font-size:32px;
-
     }
 
-
     .buttons{
-
         flex-direction:column;
-
     }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
 <nav class="navbar">
 
-
     <div class="logo">
-
         ✨ Talent Exchange
-
     </div>
 
-
-    <a
-        href="dashboard.html"
-        class="back"
-    >
-
+    <a href="dashboard.html" class="back">
         ← Dashboard
-
     </a>
-
 
 </nav>
 
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <main class="container">
-
 
     <div class="heading">
 
         <h1>
-
-            My Requests 📨
-
+            My Requests 🤝
         </h1>
 
-
         <p>
-
             Manage your talent exchange requests.
-
         </p>
 
     </div>
 
 
-
-    <!-- ERROR -->
-
-    <div
-        id="errorBox"
-        class="error-box"
-    >
-
+    <div id="success"
+         class="success">
     </div>
 
 
-
-    <!-- SUCCESS -->
-
-    <div
-        id="successBox"
-        class="success-box"
-    >
-
-    </div>
-
-
-
-    <!-- STATUS -->
-
-    <div
-        id="status"
-    >
+    <div id="status"
+         class="status">
 
         🔄 Loading requests...
 
     </div>
 
 
-
-    <!-- REQUESTS -->
-
-    <div
-        id="requests"
-        class="requests"
-    >
-
+    <div id="requests"
+         class="requests">
     </div>
-
 
 </main>
 
 
-
 <script>
 
-
-/* ==========================================
-   BACKEND URL
-========================================== */
-
 const BACKEND_URL =
-    "https://talent-exchange-backend-p5wq.onrender.com";
+"https://talent-exchange-backend-p5wq.onrender.com";
 
 
-/* ==========================================
-   GET LOGGED-IN USER
-========================================== */
+let currentUser = null;
+
+
+// =====================================================
+// GET CURRENT USER
+// =====================================================
 
 function getCurrentUser(){
 
     try{
 
-        const savedProfile =
-            localStorage.getItem(
-                "userProfile"
+        const profile =
+            JSON.parse(
+                localStorage.getItem(
+                    "userProfile"
+                ) || "{}"
             );
 
-
-        if(!savedProfile){
-
-            return null;
-
-        }
-
-
-        return JSON.parse(
-            savedProfile
-        );
-
+        return profile;
 
     }
     catch(error){
 
-        console.error(
-            "Profile error:",
-            error
-        );
-
-        return null;
+        return {};
 
     }
 
 }
 
 
-/* ==========================================
-   SHOW ERROR
-========================================== */
-
-function showError(message){
-
-    const errorBox =
-        document.getElementById(
-            "errorBox"
-        );
-
-
-    errorBox.textContent =
-        "❌ " + message;
-
-
-    errorBox.style.display =
-        "block";
-
-}
-
-
-/* ==========================================
-   SHOW SUCCESS
-========================================== */
-
-function showSuccess(message){
-
-    const successBox =
-        document.getElementById(
-            "successBox"
-        );
-
-
-    successBox.textContent =
-        "✅ " + message;
-
-
-    successBox.style.display =
-        "block";
-
-
-    setTimeout(function(){
-
-        successBox.style.display =
-            "none";
-
-    },3000);
-
-}
-
-
-/* ==========================================
-   LOAD REQUESTS
-========================================== */
+// =====================================================
+// LOAD REQUESTS
+// =====================================================
 
 async function loadRequests(){
 
     const status =
-        document.getElementById(
-            "status"
-        );
-
+        document.getElementById("status");
 
     const container =
-        document.getElementById(
-            "requests"
-        );
+        document.getElementById("requests");
 
 
-    const errorBox =
-        document.getElementById(
-            "errorBox"
-        );
-
-
-    errorBox.style.display =
-        "none";
-
-
-    container.innerHTML =
-        "";
-
-
-    status.innerHTML =
-        "🔄 Loading requests...";
-
-
-    /* GET USER */
-
-    const user =
+    currentUser =
         getCurrentUser();
 
 
-    console.log(
-        "Current user:",
-        user
-    );
-
-
-    /* CHECK USER */
-
-    if(!user){
+    if(!currentUser.id){
 
         status.innerHTML =
-            "";
-
-
-        showError(
-            "Please login first."
-        );
+            "❌ Please login again.";
 
         return;
 
     }
-
-
-    /* CHECK USER ID */
-
-    if(!user.id){
-
-        status.innerHTML =
-            "";
-
-
-        showError(
-            "User ID not found. Please logout and login again."
-        );
-
-        console.error(
-            "userProfile does not contain id:",
-            user
-        );
-
-        return;
-
-    }
-
-
-    console.log(
-        "Loading requests for user ID:",
-        user.id
-    );
 
 
     try{
 
+        status.innerHTML =
+            "🔄 Loading requests...";
 
-        /* API REQUEST */
 
         const response =
             await fetch(
-
                 BACKEND_URL +
                 "/api/requests/" +
-                encodeURIComponent(
-                    user.id
-                )
-
+                currentUser.id
             );
-
-
-        console.log(
-            "Response status:",
-            response.status
-        );
 
 
         const data =
             await response.json();
 
 
-        console.log(
-            "Requests API:",
-            data
-        );
-
-
-        /* API ERROR */
-
         if(!response.ok){
 
             throw new Error(
-
                 data.message ||
-                "Unable to load requests."
-
+                "Failed to load requests."
             );
 
         }
@@ -923,201 +367,124 @@ async function loadRequests(){
             data.requests || [];
 
 
-        /* NO REQUESTS */
+        container.innerHTML =
+            "";
 
-        if(
-            requests.length === 0
-        ){
 
-            status.innerHTML = `
-                📭 No requests yet.
-                <br><br>
-                <small>
-                    When someone sends you a
-                    talent exchange request,
-                    it will appear here.
-                </small>
-            `;
+        if(requests.length === 0){
+
+            status.innerHTML =
+                "📭 No requests yet.";
 
             return;
 
         }
 
 
-        /* REQUESTS FOUND */
-
-        status.innerHTML =
-            `📨 ${requests.length} request${
-                requests.length === 1
-                ? ""
-                : "s"
-            } found`;
-
-
-        /* DISPLAY */
-
-        requests.forEach(
-            function(request){
-
-                createRequestCard(
-                    request,
-                    container
-                );
-
-            }
-        );
-
-
-    }
-    catch(error){
-
-        console.error(
-            "Load requests error:",
-            error
-        );
-
-
         status.innerHTML =
             "";
 
 
-        showError(
-            error.message ||
-            "Unable to connect to backend."
+        requests.forEach(
+            function(req){
+
+                displayRequest(req);
+
+            }
         );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.innerHTML =
+            "❌ " +
+            error.message;
 
     }
 
 }
 
 
-/* ==========================================
-   CREATE REQUEST CARD
-========================================== */
+// =====================================================
+// DISPLAY REQUEST
+// =====================================================
 
-function createRequestCard(
-    request,
-    container
-){
+function displayRequest(req){
 
-    const card =
-        document.createElement(
-            "div"
+    const container =
+        document.getElementById(
+            "requests"
         );
 
 
+    const isReceiver =
+        Number(req.receiver_id) ===
+        Number(currentUser.id);
+
+
+    const otherName =
+        isReceiver
+        ? req.sender_name
+        : req.receiver_name;
+
+
+    const otherEmail =
+        isReceiver
+        ? req.sender_email
+        : req.receiver_email;
+
+
+    const card =
+        document.createElement("div");
+
+
     card.className =
-        "request-card";
+        "card";
 
 
-    const sender =
-        request.sender || {};
+    const initial =
+        (otherName || "?")
+        .charAt(0)
+        .toUpperCase();
 
 
-    const senderName =
-        sender.name ||
-        "Unknown User";
-
-
-    const senderEmail =
-        sender.email ||
-        "";
-
-
-    const skill =
-        request.skill ||
-        "Unknown Skill";
-
-
-    const requestStatus =
-        request.status ||
-        "pending";
-
-
-    /* PENDING */
-
-    let actionHTML = "";
+    let buttons = "";
 
 
     if(
-        requestStatus ===
-        "pending"
+        isReceiver &&
+        req.status === "pending"
     ){
 
-        actionHTML = `
+        buttons = `
 
             <div class="buttons">
 
                 <button
                     class="accept"
-                    onclick="
-                        updateRequest(
-                            ${request.id},
-                            'accepted',
-                            this
-                        )
-                    "
-                >
+                    onclick="updateRequest(
+                        ${req.id},
+                        'accepted',
+                        this
+                    )">
 
-                    ✅ Accept
+                    ✓ Accept
 
                 </button>
-
 
                 <button
                     class="reject"
-                    onclick="
-                        updateRequest(
-                            ${request.id},
-                            'rejected',
-                            this
-                        )
-                    "
-                >
+                    onclick="updateRequest(
+                        ${req.id},
+                        'rejected',
+                        this
+                    )">
 
-                    ❌ Reject
+                    ✕ Reject
 
                 </button>
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* ACCEPTED */
-
-    if(
-        requestStatus ===
-        "accepted"
-    ){
-
-        actionHTML = `
-
-            <div class="request-status accepted">
-
-                ✅ You accepted this request.
-
-            </div>
-
-        `;
-
-    }
-
-
-    /* REJECTED */
-
-    if(
-        requestStatus ===
-        "rejected"
-    ){
-
-        actionHTML = `
-
-            <div class="request-status rejected">
-
-                ❌ You rejected this request.
 
             </div>
 
@@ -1128,85 +495,41 @@ function createRequestCard(
 
     card.innerHTML = `
 
-        <div class="user">
-
-            <div class="avatar">
-
-                👤
-
-            </div>
-
-
-            <div>
-
-                <h2>
-
-                    ${escapeHTML(
-                        senderName
-                    )}
-
-                </h2>
-
-
-                <p>
-
-                    ${escapeHTML(
-                        senderEmail
-                    )}
-
-                </p>
-
-            </div>
-
+        <div class="avatar">
+            ${initial}
         </div>
 
+        <h2>
+            ${escapeHTML(otherName || "Unknown User")}
+        </h2>
+
+        <div class="email">
+            ${escapeHTML(otherEmail || "")}
+        </div>
 
         <div class="skill">
-
-            🛠️ Skill:
-
-            ${escapeHTML(
-                skill
-            )}
-
+            🛠️ ${escapeHTML(req.skill || "Skill")}
         </div>
 
+        <br>
 
-        <div class="
-            request-status
-            ${escapeHTML(
-                requestStatus
-            )}
-        ">
-
-            Status:
-
-            <strong>
-
-                ${escapeHTML(
-                    requestStatus
-                )}
-
-            </strong>
-
+        <div class="status-badge">
+            Status: ${escapeHTML(req.status || "pending")}
         </div>
 
-
-        ${actionHTML}
+        ${buttons}
 
     `;
 
 
-    container.appendChild(
-        card
-    );
+    container.appendChild(card);
 
 }
 
 
-/* ==========================================
-   ACCEPT / REJECT REQUEST
-========================================== */
+// =====================================================
+// ACCEPT / REJECT
+// =====================================================
 
 async function updateRequest(
     requestId,
@@ -1214,14 +537,10 @@ async function updateRequest(
     button
 ){
 
-    const card =
-        button.closest(
-            ".request-card"
-        );
-
-
     const buttons =
-        card.querySelectorAll(
+        button
+        .parentElement
+        .querySelectorAll(
             "button"
         );
 
@@ -1229,45 +548,45 @@ async function updateRequest(
     buttons.forEach(
         function(btn){
 
-            btn.disabled =
-                true;
+            btn.disabled = true;
 
         }
     );
 
 
-    try{
+    button.textContent =
+        newStatus === "accepted"
+        ? "Accepting..."
+        : "Rejecting...";
 
+
+    try{
 
         const response =
             await fetch(
-
                 BACKEND_URL +
                 "/api/requests/" +
                 requestId,
-
                 {
 
-                    method:
-                        "PUT",
+                    method:"PUT",
 
                     headers:{
-
                         "Content-Type":
-                            "application/json"
-
+                        "application/json"
                     },
 
-                    body:
-                        JSON.stringify({
+                    body:JSON.stringify({
 
-                            status:
-                                newStatus
+                        status:
+                        newStatus,
 
-                        })
+                        user_id:
+                        currentUser.id
+
+                    })
 
                 }
-
             );
 
 
@@ -1275,129 +594,115 @@ async function updateRequest(
             await response.json();
 
 
-        console.log(
-            "Update response:",
-            data
-        );
-
-
         if(!response.ok){
 
             throw new Error(
-
                 data.message ||
                 "Unable to update request."
-
             );
 
         }
 
 
-        if(
-            newStatus ===
-            "accepted"
-        ){
-
-            showSuccess(
-                "Request accepted successfully!"
-            );
-
-        }
-        else{
-
-            showSuccess(
-                "Request rejected."
-            );
-
-        }
-
-
-        /* RELOAD */
-
-        setTimeout(
-            function(){
-
-                loadRequests();
-
-            },
-            500
+        showSuccess(
+            newStatus === "accepted"
+            ? "✅ Request accepted!"
+            : "❌ Request rejected!"
         );
 
+
+        setTimeout(
+            loadRequests,
+            500
+        );
 
     }
     catch(error){
 
-        console.error(
-            "Update request error:",
-            error
-        );
+        console.error(error);
 
 
-        showError(
-            error.message ||
-            "Unable to update request."
+        alert(
+            "❌ " +
+            error.message
         );
 
 
         buttons.forEach(
             function(btn){
 
-                btn.disabled =
-                    false;
+                btn.disabled = false;
 
             }
         );
+
+
+        button.textContent =
+            newStatus === "accepted"
+            ? "✓ Accept"
+            : "✕ Reject";
 
     }
 
 }
 
 
-/* ==========================================
-   ESCAPE HTML
-========================================== */
+// =====================================================
+// SUCCESS
+// =====================================================
 
-function escapeHTML(value){
+function showSuccess(text){
 
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
+    const box =
+        document.getElementById(
+            "success"
         );
+
+
+    box.textContent =
+        text;
+
+
+    box.style.display =
+        "block";
+
+
+    setTimeout(
+        function(){
+
+            box.style.display =
+                "none";
+
+        },
+        3000
+    );
 
 }
 
 
-/* ==========================================
-   START
-========================================== */
+// =====================================================
+// HTML SAFETY
+// =====================================================
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+// =====================================================
+// START
+// =====================================================
 
 loadRequests();
 
-
 </script>
-
 
 </body>
 
