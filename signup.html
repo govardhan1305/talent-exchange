@@ -1,3 +1,6 @@
+Absolutely. I’ll keep your current design and functionality, and add only the **Skill You Can Share** field plus the corresponding JavaScript handling.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -307,7 +310,7 @@ body{
         <form id="signupForm">
 
 
-            <!-- NAME -->
+            <!-- FULL NAME -->
 
             <div class="input-group">
 
@@ -375,6 +378,24 @@ body{
                     id="confirmPassword"
                     placeholder="Confirm your password"
                     minlength="6"
+                    required>
+
+            </div>
+
+
+
+            <!-- SKILL -->
+
+            <div class="input-group">
+
+                <label>
+                    Skill You Can Share
+                </label>
+
+                <input
+                    type="text"
+                    id="skill"
+                    placeholder="e.g. Python, Drawing, Guitar"
                     required>
 
             </div>
@@ -524,6 +545,13 @@ document
             .value;
 
 
+        const skill =
+            document
+            .getElementById("skill")
+            .value
+            .trim();
+
+
         const skillEvidence =
             document
             .getElementById("skillEvidence");
@@ -588,6 +616,26 @@ document
 
             errorMessage.textContent =
                 "❌ Password must contain at least 6 characters.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* ==============================
+           SKILL CHECK
+        ============================== */
+
+        if(
+            !skill
+        ){
+
+            errorMessage.textContent =
+                "❌ Please enter the skill you can share.";
 
             errorMessage.style.display =
                 "block";
@@ -706,31 +754,65 @@ document
                BACKEND REQUEST
             ========================== */
 
-            const formData = new FormData();
+            const formData =
+                new FormData();
 
-            formData.append("name", name);
-            formData.append("email", email);
-            formData.append("password", password);
 
-            formData.append("skill", "");
-            formData.append("learning_skill", "");
-            formData.append("bio", "");
+            formData.append(
+                "name",
+                name
+            );
+
+
+            formData.append(
+                "email",
+                email
+            );
+
+
+            formData.append(
+                "password",
+                password
+            );
+
+
+            formData.append(
+                "skill",
+                skill
+            );
+
+
+            formData.append(
+                "learning_skill",
+                ""
+            );
+
+
+            formData.append(
+                "bio",
+                ""
+            );
+
 
             formData.append(
                 "skillEvidence",
                 skillEvidence.files[0]
             );
 
+
+
             const response =
                 await fetch(
                     BACKEND_URL +
                     "/api/signup",
                     {
+
                         method:
                             "POST",
 
                         body:
                             formData
+
                     }
                 );
 
@@ -781,7 +863,7 @@ document
                         email,
 
                     skill:
-                        "",
+                        skill,
 
                     learningSkill:
                         "",
@@ -870,3 +952,4 @@ document
 </body>
 
 </html>
+```
