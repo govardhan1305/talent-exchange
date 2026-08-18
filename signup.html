@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,6 +105,7 @@ body{
     background:rgba(255,255,255,0.11);
 }
 
+
 /* =========================
    SKILL EVIDENCE
 ========================= */
@@ -125,20 +126,57 @@ body{
 
 .skill-evidence-input{
     width:100% !important;
-    padding:12px !important;
+
+    padding:10px !important;
 
     border-radius:12px !important;
 
-    border:
-        1px solid rgba(255,255,255,0.12) !important;
+    border:1px solid rgba(255,255,255,0.12) !important;
 
     color:white !important;
 
-    background:
-        rgba(255,255,255,0.08) !important;
+    background:rgba(255,255,255,0.08) !important;
 
     cursor:pointer;
+
+    font-size:14px;
 }
+
+
+/* FILE BUTTON */
+
+.skill-evidence-input::file-selector-button{
+
+    padding:10px 14px;
+
+    margin-right:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#8066ff;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+}
+
+.skill-evidence-input::file-selector-button:hover{
+
+    background:#9a83ff;
+
+}
+
+
+/* =========================
+   CREATE BUTTON
+========================= */
 
 .create-btn{
     width:100%;
@@ -176,6 +214,11 @@ body{
     cursor:not-allowed;
 }
 
+
+/* =========================
+   MESSAGES
+========================= */
+
 .message{
     display:none;
 
@@ -204,6 +247,11 @@ body{
         rgba(70,200,120,0.15);
 }
 
+
+/* =========================
+   LOGIN
+========================= */
+
 .login-text{
     text-align:center;
 
@@ -230,6 +278,11 @@ body{
 .login-link:hover{
     text-decoration:underline;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:500px){
 
@@ -273,7 +326,6 @@ body{
     </div>
 
 
-
     <!-- SIGNUP CARD -->
 
     <div class="signup-card">
@@ -284,7 +336,6 @@ body{
         </h2>
 
 
-
         <!-- ERROR -->
 
         <div
@@ -293,14 +344,12 @@ body{
         </div>
 
 
-
         <!-- SUCCESS -->
 
         <div
             id="successMessage"
             class="message success">
         </div>
-
 
 
         <!-- SIGNUP FORM -->
@@ -325,7 +374,6 @@ body{
             </div>
 
 
-
             <!-- EMAIL -->
 
             <div class="input-group">
@@ -341,7 +389,6 @@ body{
                     required>
 
             </div>
-
 
 
             <!-- PASSWORD -->
@@ -362,7 +409,6 @@ body{
             </div>
 
 
-
             <!-- CONFIRM PASSWORD -->
 
             <div class="input-group">
@@ -381,7 +427,6 @@ body{
             </div>
 
 
-
             <!-- SKILL -->
 
             <div class="input-group">
@@ -397,7 +442,6 @@ body{
                     required>
 
             </div>
-
 
 
             <!-- SKILL EVIDENCE -->
@@ -447,7 +491,6 @@ body{
             </div>
 
 
-
             <!-- CREATE ACCOUNT -->
 
             <button
@@ -463,7 +506,6 @@ body{
         </form>
 
 
-
         <!-- LOGIN -->
 
         <div class="login-text">
@@ -471,7 +513,6 @@ body{
             Already have an account?
 
         </div>
-
 
 
         <a
@@ -488,7 +529,6 @@ body{
 </div>
 
 
-
 <script>
 
 /* ==========================================
@@ -497,7 +537,6 @@ body{
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
-
 
 
 /* ==========================================
@@ -570,7 +609,6 @@ document
             .getElementById("createButton");
 
 
-
         /* ==============================
            HIDE OLD MESSAGES
         ============================== */
@@ -580,7 +618,6 @@ document
 
         successMessage.style.display =
             "none";
-
 
 
         /* ==============================
@@ -603,7 +640,6 @@ document
         }
 
 
-
         /* ==============================
            PASSWORD LENGTH
         ============================== */
@@ -621,7 +657,6 @@ document
             return;
 
         }
-
 
 
         /* ==============================
@@ -643,7 +678,6 @@ document
         }
 
 
-
         /* ==============================
            EVIDENCE CHECK
         ============================== */
@@ -663,10 +697,8 @@ document
         }
 
 
-
         const evidenceFile =
             skillEvidence.files[0];
-
 
 
         /* ==============================
@@ -688,7 +720,6 @@ document
         ];
 
 
-
         if(
             !allowedTypes
             .includes(
@@ -705,7 +736,6 @@ document
             return;
 
         }
-
 
 
         /* ==============================
@@ -732,7 +762,6 @@ document
         }
 
 
-
         /* ==============================
            LOADING
         ============================== */
@@ -744,12 +773,11 @@ document
             "Creating Account...";
 
 
-
         try{
 
 
             /* ==========================
-               BACKEND REQUEST
+               FORM DATA
             ========================== */
 
             const formData =
@@ -794,26 +822,26 @@ document
 
             formData.append(
                 "skillEvidence",
-                skillEvidence.files[0]
+                evidenceFile
             );
 
 
+            /* ==========================
+               SEND TO BACKEND
+            ========================== */
 
             const response =
                 await fetch(
                     BACKEND_URL +
                     "/api/signup",
                     {
-
                         method:
                             "POST",
 
                         body:
                             formData
-
                     }
                 );
-
 
 
             /* ==========================
@@ -822,7 +850,6 @@ document
 
             const result =
                 await response.json();
-
 
 
             /* ==========================
@@ -841,7 +868,6 @@ document
                 );
 
             }
-
 
 
             /* ==========================
@@ -874,7 +900,6 @@ document
             );
 
 
-
             /* ==========================
                SUCCESS
             ========================== */
@@ -893,7 +918,6 @@ document
                 "Account Created ✓";
 
 
-
             /* ==========================
                REDIRECT
             ========================== */
@@ -910,7 +934,6 @@ document
 
 
         }
-
 
         catch(error){
 
@@ -950,4 +973,4 @@ document
 </body>
 
 </html>
-
+```
