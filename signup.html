@@ -1,12 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Create Account | Talent Exchange</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -101,6 +105,41 @@ body{
     background:rgba(255,255,255,0.11);
 }
 
+/* =========================
+   SKILL EVIDENCE
+========================= */
+
+.skill-evidence-text{
+    color:#aaa;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.skill-evidence-note{
+    color:#888;
+    font-size:12px;
+    margin-top:8px;
+    line-height:1.4;
+}
+
+.skill-evidence-input{
+    width:100% !important;
+    padding:12px !important;
+
+    border-radius:12px !important;
+
+    border:
+        1px solid rgba(255,255,255,0.12) !important;
+
+    color:white !important;
+
+    background:
+        rgba(255,255,255,0.08) !important;
+
+    cursor:pointer;
+}
+
 .create-btn{
     width:100%;
     padding:14px;
@@ -115,14 +154,21 @@ body{
 
     cursor:pointer;
 
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
+    background:
+        linear-gradient(
+            90deg,
+            #8066ff,
+            #bd82ff
+        );
 
     transition:0.3s;
 }
 
 .create-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 25px rgba(128,102,255,0.3);
+
+    box-shadow:
+        0 8px 25px rgba(128,102,255,0.3);
 }
 
 .create-btn:disabled{
@@ -132,10 +178,12 @@ body{
 
 .message{
     display:none;
+
     margin-bottom:15px;
     padding:13px;
 
     border-radius:10px;
+
     text-align:center;
 
     font-size:14px;
@@ -144,16 +192,21 @@ body{
 
 .error{
     color:#ffb0b0;
-    background:rgba(255,70,70,0.15);
+
+    background:
+        rgba(255,70,70,0.15);
 }
 
 .success{
     color:#a8f0b0;
-    background:rgba(70,200,120,0.15);
+
+    background:
+        rgba(70,200,120,0.15);
 }
 
 .login-text{
     text-align:center;
+
     margin-top:22px;
 
     color:#aaa;
@@ -162,12 +215,15 @@ body{
 
 .login-link{
     display:block;
+
     margin-top:10px;
 
     text-align:center;
 
     color:#c9b7ff;
+
     text-decoration:none;
+
     font-weight:bold;
 }
 
@@ -176,6 +232,7 @@ body{
 }
 
 @media(max-width:500px){
+
     .signup-card{
         padding:25px 20px;
     }
@@ -183,38 +240,81 @@ body{
     .logo h1{
         font-size:26px;
     }
+
 }
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="signup-container">
 
+
+    <!-- LOGO -->
+
     <div class="logo">
 
-        <div class="logo-icon">✨</div>
+        <div class="logo-icon">
+            ✨
+        </div>
 
-        <h1>Talent Exchange</h1>
+        <h1>
+            Talent Exchange
+        </h1>
 
-        <p>Learn • Share • Connect</p>
+        <p>
+            Learn • Share • Connect
+        </p>
 
     </div>
 
+
+
+    <!-- SIGNUP CARD -->
+
     <div class="signup-card">
 
-        <h2>Create Your Account 🚀</h2>
 
-        <div id="errorMessage" class="message error"></div>
+        <h2>
+            Create Your Account 🚀
+        </h2>
 
-        <div id="successMessage" class="message success"></div>
+
+
+        <!-- ERROR -->
+
+        <div
+            id="errorMessage"
+            class="message error">
+        </div>
+
+
+
+        <!-- SUCCESS -->
+
+        <div
+            id="successMessage"
+            class="message success">
+        </div>
+
+
+
+        <!-- SIGNUP FORM -->
 
         <form id="signupForm">
 
+
+            <!-- NAME -->
+
             <div class="input-group">
 
-                <label>Full Name</label>
+                <label>
+                    Full Name
+                </label>
 
                 <input
                     type="text"
@@ -224,9 +324,15 @@ body{
 
             </div>
 
+
+
+            <!-- EMAIL -->
+
             <div class="input-group">
 
-                <label>Email</label>
+                <label>
+                    Email
+                </label>
 
                 <input
                     type="email"
@@ -236,9 +342,15 @@ body{
 
             </div>
 
+
+
+            <!-- PASSWORD -->
+
             <div class="input-group">
 
-                <label>Password</label>
+                <label>
+                    Password
+                </label>
 
                 <input
                     type="password"
@@ -249,9 +361,15 @@ body{
 
             </div>
 
+
+
+            <!-- CONFIRM PASSWORD -->
+
             <div class="input-group">
 
-                <label>Confirm Password</label>
+                <label>
+                    Confirm Password
+                </label>
 
                 <input
                     type="password"
@@ -262,6 +380,58 @@ body{
 
             </div>
 
+
+
+            <!-- SKILL EVIDENCE -->
+
+            <div class="input-group">
+
+                <label>
+                    Skill Evidence
+                    <span style="color:#aaa;">
+                        (Required)
+                    </span>
+                </label>
+
+                <p class="skill-evidence-text">
+
+                    Upload something that demonstrates
+                    your talent.
+
+                    You can upload a certificate,
+                    project, portfolio, or a short
+                    skill demonstration video.
+
+                </p>
+
+
+                <input
+                    type="file"
+                    id="skillEvidence"
+                    class="skill-evidence-input"
+                    accept=".pdf,.jpg,.jpeg,.png,.mp4,.webm"
+                    required>
+
+
+                <p class="skill-evidence-note">
+
+                    Accepted formats:
+                    PDF, JPG, PNG, MP4, WEBM
+
+                    <br>
+
+                    Your evidence will be reviewed
+                    by the admin before your skill
+                    can be verified.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- CREATE ACCOUNT -->
+
             <button
                 type="submit"
                 class="create-btn"
@@ -271,204 +441,451 @@ body{
 
             </button>
 
+
         </form>
 
+
+
+        <!-- LOGIN -->
+
         <div class="login-text">
+
             Already have an account?
+
         </div>
 
-        <a href="login.html" class="login-link">
+
+
+        <a
+            href="login.html"
+            class="login-link">
+
             ← Back to Login
+
         </a>
+
 
     </div>
 
 </div>
 
 
+
 <script>
+
+/* ==========================================
+   BACKEND
+========================================== */
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
 
 
-document.getElementById("signupForm")
-.addEventListener("submit", async function(event){
 
-    event.preventDefault();
+/* ==========================================
+   SIGNUP FORM
+========================================== */
 
-    const name =
-        document.getElementById("name")
-        .value
-        .trim();
+document
+.getElementById("signupForm")
+.addEventListener(
+    "submit",
+    async function(event){
 
-    const email =
-        document.getElementById("email")
-        .value
-        .trim();
-
-    const password =
-        document.getElementById("password")
-        .value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword")
-        .value;
-
-    const errorMessage =
-        document.getElementById("errorMessage");
-
-    const successMessage =
-        document.getElementById("successMessage");
-
-    const createButton =
-        document.getElementById("createButton");
+        event.preventDefault();
 
 
-    errorMessage.style.display = "none";
-    successMessage.style.display = "none";
+        /* ==============================
+           GET FORM VALUES
+        ============================== */
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
 
 
-    if(password !== confirmPassword){
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
 
-        errorMessage.textContent =
-            "❌ Passwords do not match.";
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
+
+
+        const confirmPassword =
+            document
+            .getElementById("confirmPassword")
+            .value;
+
+
+        const skillEvidence =
+            document
+            .getElementById("skillEvidence");
+
+
+        const errorMessage =
+            document
+            .getElementById("errorMessage");
+
+
+        const successMessage =
+            document
+            .getElementById("successMessage");
+
+
+        const createButton =
+            document
+            .getElementById("createButton");
+
+
+
+        /* ==============================
+           HIDE OLD MESSAGES
+        ============================== */
 
         errorMessage.style.display =
-            "block";
+            "none";
 
-        return;
-    }
-
-
-    if(password.length < 6){
-
-        errorMessage.textContent =
-            "❌ Password must contain at least 6 characters.";
-
-        errorMessage.style.display =
-            "block";
-
-        return;
-    }
+        successMessage.style.display =
+            "none";
 
 
-    createButton.disabled = true;
 
-    createButton.textContent =
-        "Creating Account...";
+        /* ==============================
+           PASSWORD CHECK
+        ============================== */
 
+        if(
+            password !==
+            confirmPassword
+        ){
 
-    try{
+            errorMessage.textContent =
+                "❌ Passwords do not match.";
 
-        const response =
-            await fetch(
-                BACKEND_URL + "/api/signup",
-                {
-                    method: "POST",
+            errorMessage.style.display =
+                "block";
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        name: name,
-
-                        email: email,
-
-                        password: password
-
-                    })
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if(!response.ok){
-
-            throw new Error(
-                result.message ||
-                "Account creation failed."
-            );
+            return;
 
         }
 
 
-        successMessage.innerHTML =
-            "✅ Account created successfully!<br>" +
-            "You can now login.";
 
-        successMessage.style.display =
-            "block";
+        /* ==============================
+           PASSWORD LENGTH
+        ============================== */
 
+        if(
+            password.length < 6
+        ){
+
+            errorMessage.textContent =
+                "❌ Password must contain at least 6 characters.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* ==============================
+           EVIDENCE CHECK
+        ============================== */
+
+        if(
+            !skillEvidence.files.length
+        ){
+
+            errorMessage.textContent =
+                "❌ Please upload your skill evidence.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        const evidenceFile =
+            skillEvidence.files[0];
+
+
+
+        /* ==============================
+           ALLOWED FILE TYPES
+        ============================== */
+
+        const allowedTypes = [
+
+            "application/pdf",
+
+            "image/jpeg",
+
+            "image/png",
+
+            "video/mp4",
+
+            "video/webm"
+
+        ];
+
+
+
+        if(
+            !allowedTypes
+            .includes(
+                evidenceFile.type
+            )
+        ){
+
+            errorMessage.textContent =
+                "❌ Please upload a PDF, JPG, PNG, MP4 or WEBM file.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* ==============================
+           FILE SIZE LIMIT
+        ============================== */
+
+        const maxFileSize =
+            10 * 1024 * 1024;
+
+
+        if(
+            evidenceFile.size >
+            maxFileSize
+        ){
+
+            errorMessage.textContent =
+                "❌ File size must be 10 MB or less.";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* ==============================
+           LOADING
+        ============================== */
+
+        createButton.disabled =
+            true;
 
         createButton.textContent =
-            "Account Created ✓";
+            "Creating Account...";
 
 
-        localStorage.setItem(
-            "userProfile",
-            JSON.stringify({
 
-                name: name,
-
-                email: email,
-
-                skill: "",
-
-                learningSkill: "",
-
-                bio: ""
-
-            })
-        );
+        try{
 
 
-        setTimeout(function(){
+            /* ==========================
+               CURRENT BACKEND REQUEST
+            ========================== */
 
-            window.location.href =
-                "login.html";
+            /*
+                NOTE:
 
-        },2000);
+                This currently sends the
+                signup information as JSON.
+
+                The evidence file is
+                validated above but is NOT
+                uploaded to the backend yet.
+
+                We will add the secure
+                evidence-upload API next.
+            */
+
+            const response =
+                await fetch(
+                    BACKEND_URL +
+                    "/api/signup",
+                    {
+
+                        method:
+                            "POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                name:
+                                    name,
+
+                                email:
+                                    email,
+
+                                password:
+                                    password
+
+                            })
+
+                    }
+                );
 
 
-    }catch(error){
 
-        console.error(
-            "Signup Error:",
-            error
-        );
+            /* ==========================
+               READ RESPONSE
+            ========================== */
+
+            const result =
+                await response.json();
 
 
-        errorMessage.textContent =
-            "❌ " +
-            (
-                error.message ||
-                "Unable to connect to server."
+
+            /* ==========================
+               CHECK RESPONSE
+            ========================== */
+
+            if(
+                !response.ok
+            ){
+
+                throw new Error(
+
+                    result.message ||
+                    "Account creation failed."
+
+                );
+
+            }
+
+
+
+            /* ==========================
+               SAVE LOCAL PROFILE
+            ========================== */
+
+            localStorage.setItem(
+
+                "userProfile",
+
+                JSON.stringify({
+
+                    name:
+                        name,
+
+                    email:
+                        email,
+
+                    skill:
+                        "",
+
+                    learningSkill:
+                        "",
+
+                    bio:
+                        ""
+
+                })
+
             );
 
 
-        errorMessage.style.display =
-            "block";
+
+            /* ==========================
+               SUCCESS
+            ========================== */
+
+            successMessage.innerHTML =
+
+                "✅ Account created successfully!<br>" +
+
+                "Your skill evidence will be reviewed by the admin.";
+
+            successMessage.style.display =
+                "block";
 
 
-        createButton.disabled =
-            false;
+            createButton.textContent =
+                "Account Created ✓";
 
-        createButton.textContent =
-            "✨ Create New Account";
+
+
+            /* ==========================
+               REDIRECT
+            ========================== */
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "login.html";
+
+                },
+                2500
+            );
+
+
+        }
+
+
+        catch(error){
+
+            console.error(
+                "Signup Error:",
+                error
+            );
+
+
+            errorMessage.textContent =
+                "❌ " +
+                (
+                    error.message ||
+                    "Unable to connect to server."
+                );
+
+
+            errorMessage.style.display =
+                "block";
+
+
+            createButton.disabled =
+                false;
+
+
+            createButton.textContent =
+                "✨ Create New Account";
+
+        }
 
     }
-
-});
+);
 
 </script>
+
 
 </body>
 
 </html>
+```
