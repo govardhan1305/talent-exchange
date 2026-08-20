@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,6 +133,26 @@ input::placeholder{
 
 }
 
+input[type="file"]{
+
+    padding:10px;
+
+    cursor:pointer;
+
+}
+
+.evidence-text{
+
+    color:#999;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-top:7px;
+
+}
+
 button{
 
     width:100%;
@@ -261,9 +282,39 @@ button:disabled{
             <input
                 type="text"
                 id="skill"
-                placeholder="Example: Python"
+                placeholder="Example: Python, Video Editing, Graphic Design"
                 required
             >
+
+        </div>
+
+
+        <!-- SKILL EVIDENCE -->
+
+        <div class="form-group">
+
+            <label>
+                Skill Evidence
+            </label>
+
+            <input
+                type="file"
+                id="skillEvidence"
+                accept=".pdf,.jpg,.jpeg,.png,.mp4,.webm"
+                required
+            >
+
+            <div class="evidence-text">
+
+                Upload evidence that demonstrates your skill.
+                You can upload a certificate, project screenshot,
+                portfolio, or a short skill demonstration video.
+
+                <br><br>
+
+                Accepted: PDF, JPG, PNG, MP4, WEBM.
+
+            </div>
 
         </div>
 
@@ -381,6 +432,12 @@ async function registerUser(event){
         ).value.trim();
 
 
+    const skillEvidence =
+        document.getElementById(
+            "skillEvidence"
+        );
+
+
     if(
         !name ||
         !email ||
@@ -408,6 +465,36 @@ async function registerUser(event){
     }
 
 
+    if(!skillEvidence.files.length){
+
+        alert(
+            "Please upload your Skill Evidence."
+        );
+
+        return;
+
+    }
+
+
+    const evidenceFile =
+        skillEvidence.files[0];
+
+
+    const maxFileSize =
+        10 * 1024 * 1024;
+
+
+    if(evidenceFile.size > maxFileSize){
+
+        alert(
+            "Skill Evidence file must be 10 MB or less."
+        );
+
+        return;
+
+    }
+
+
     button.disabled = true;
 
     button.textContent =
@@ -415,6 +502,52 @@ async function registerUser(event){
 
 
     try{
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "name",
+            name
+        );
+
+
+        formData.append(
+            "email",
+            email
+        );
+
+
+        formData.append(
+            "password",
+            password
+        );
+
+
+        formData.append(
+            "skill",
+            skill
+        );
+
+
+        formData.append(
+            "learningSkill",
+            learningSkill
+        );
+
+
+        formData.append(
+            "bio",
+            bio
+        );
+
+
+        formData.append(
+            "skillEvidence",
+            evidenceFile
+        );
+
 
         const response =
             await fetch(
@@ -426,41 +559,13 @@ async function registerUser(event){
 
                     method:"POST",
 
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-
                     body:
-                    JSON.stringify({
-
-                        name:name,
-
-                        email:email,
-
-                        password:password,
-
-                        skill:skill,
-
-                        learningSkill:
-                            learningSkill,
-
-                        bio:bio
-
-                    })
+                        formData
 
                 }
 
             );
 
-
-        /*
-         * IMPORTANT:
-         * First read TEXT.
-         * Then convert JSON.
-         * This prevents:
-         * Unexpected token '<'
-         */
 
         const rawText =
             await response.text();
@@ -483,13 +588,8 @@ async function registerUser(event){
         }
         catch(jsonError){
 
-            console.error(
-                "Backend returned non-JSON:",
-                rawText
-            );
-
             throw new Error(
-                "Backend JSON response raaledu. Render backend URL/route check cheyyali."
+                "Backend response error. app.py needs to support Skill Evidence upload."
             );
 
         }
@@ -508,7 +608,7 @@ async function registerUser(event){
         if(result.success){
 
             alert(
-                "✅ Account created successfully!"
+                "Account created successfully! Your Skill Evidence will be reviewed."
             );
 
 
@@ -558,3 +658,4 @@ async function registerUser(event){
 </body>
 
 </html>
+```
