@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,12 +31,14 @@ body{
 .navbar{
     min-height:72px;
     padding:12px 6%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     background:rgba(10,10,20,0.78);
     border-bottom:1px solid rgba(255,255,255,0.1);
+
     backdrop-filter:blur(18px);
 }
 
@@ -46,8 +50,10 @@ body{
 .back{
     color:white;
     text-decoration:none;
+
     padding:10px 16px;
     border-radius:10px;
+
     background:rgba(255,255,255,0.08);
 }
 
@@ -88,6 +94,7 @@ body{
 .avatar{
     width:85px;
     height:85px;
+
     margin:0 auto 25px;
 
     display:flex;
@@ -95,6 +102,7 @@ body{
     justify-content:center;
 
     border-radius:50%;
+
     font-size:38px;
 
     background:linear-gradient(135deg,#8066ff,#bd82ff);
@@ -106,7 +114,9 @@ body{
 
 .form-group label{
     display:block;
+
     margin-bottom:8px;
+
     color:#ddd;
     font-size:14px;
 }
@@ -114,6 +124,7 @@ body{
 .form-group input,
 .form-group textarea{
     width:100%;
+
     padding:14px 15px;
 
     border-radius:12px;
@@ -132,6 +143,117 @@ body{
     resize:vertical;
 }
 
+.form-group input[type="file"]{
+    padding:12px;
+    cursor:pointer;
+}
+
+.demo-section{
+    margin-top:35px;
+    margin-bottom:25px;
+
+    padding-top:25px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.12);
+}
+
+.demo-title{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.demo-description{
+    color:#aaa;
+
+    font-size:14px;
+    line-height:1.5;
+
+    margin-bottom:20px;
+}
+
+.demo-note{
+    color:#888;
+
+    font-size:12px;
+    line-height:1.5;
+
+    margin-top:8px;
+}
+
+.video-preview{
+    display:none;
+
+    width:100%;
+
+    margin-top:15px;
+
+    border-radius:14px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+}
+
+.demo-list{
+    margin-top:20px;
+}
+
+.demo-card{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.demo-info{
+    min-width:0;
+}
+
+.demo-name{
+    font-size:14px;
+    font-weight:bold;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.demo-status{
+    margin-top:5px;
+
+    color:#aaa;
+    font-size:12px;
+}
+
+.remove-demo{
+    padding:8px 12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    color:#ffb3b3;
+
+    background:
+        rgba(255,70,70,0.12);
+
+    cursor:pointer;
+}
+
 .save-btn{
     width:100%;
     padding:15px;
@@ -139,9 +261,15 @@ body{
     border:none;
     border-radius:13px;
 
-    background:linear-gradient(90deg,#8066ff,#bd82ff);
+    background:
+        linear-gradient(
+            90deg,
+            #8066ff,
+            #bd82ff
+        );
 
     color:white;
+
     font-size:16px;
     font-weight:bold;
 
@@ -155,10 +283,12 @@ body{
 
 .message{
     display:none;
+
     margin-top:20px;
     padding:15px;
 
     text-align:center;
+
     border-radius:12px;
 }
 
@@ -174,6 +304,11 @@ body{
 
 @media(max-width:600px){
 
+    .container{
+        width:92%;
+        margin:30px auto;
+    }
+
     .heading h1{
         font-size:32px;
     }
@@ -182,9 +317,18 @@ body{
         padding:22px;
     }
 
+    .navbar{
+        padding:12px 4%;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
 }
 
 </style>
+
 </head>
 
 
@@ -207,7 +351,9 @@ body{
 </nav>
 
 
+
 <main class="container">
+
 
     <div class="heading">
 
@@ -216,20 +362,26 @@ body{
         </h1>
 
         <p>
-            Tell people about yourself and your skills.
+            Tell people about yourself, your skills and your work.
         </p>
 
     </div>
 
 
+
     <div class="profile-card">
+
 
         <div class="avatar">
             👤
         </div>
 
 
+
         <form id="profileForm">
+
+
+            <!-- FULL NAME -->
 
             <div class="form-group">
 
@@ -247,6 +399,9 @@ body{
             </div>
 
 
+
+            <!-- EMAIL -->
+
             <div class="form-group">
 
                 <label>
@@ -262,6 +417,9 @@ body{
 
             </div>
 
+
+
+            <!-- SKILL -->
 
             <div class="form-group">
 
@@ -279,6 +437,9 @@ body{
             </div>
 
 
+
+            <!-- LEARNING SKILL -->
+
             <div class="form-group">
 
                 <label>
@@ -294,6 +455,9 @@ body{
             </div>
 
 
+
+            <!-- BIO -->
+
             <div class="form-group">
 
                 <label>
@@ -308,6 +472,91 @@ body{
             </div>
 
 
+
+            <!-- SKILL DEMONSTRATIONS -->
+
+            <div class="demo-section">
+
+                <h2 class="demo-title">
+                    Skill Demonstrations
+                </h2>
+
+                <p class="demo-description">
+
+                    Upload short videos that demonstrate
+                    your skills, projects or work.
+
+                    These videos help others understand
+                    what you can do.
+
+                </p>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Demonstration Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="demoTitle"
+                        placeholder="Example: My Python Calculator Project"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Add Skill Video
+                    </label>
+
+                    <input
+                        type="file"
+                        id="skillVideo"
+                        accept="video/mp4,video/webm,video/quicktime"
+                    >
+
+                    <p class="demo-note">
+
+                        Accepted formats:
+                        MP4, WEBM and MOV.
+
+                        Keep videos short and relevant
+                        to the skill shown on your profile.
+
+                    </p>
+
+                </div>
+
+
+
+                <video
+                    id="videoPreview"
+                    class="video-preview"
+                    controls
+                >
+                </video>
+
+
+
+                <div
+                    id="demoList"
+                    class="demo-list"
+                >
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SAVE PROFILE -->
+
             <button
                 type="submit"
                 class="save-btn"
@@ -316,7 +565,9 @@ body{
                 💾 Save Profile
             </button>
 
+
         </form>
+
 
 
         <div
@@ -327,21 +578,326 @@ body{
         </div>
 
 
+
         <div
             class="message error"
             id="errorMessage"
         >
         </div>
 
+
     </div>
+
 
 </main>
 
 
+
 <script>
+
 
 const BACKEND_URL =
     "https://talent-exchange-backend-p5wq.onrender.com";
+
+
+/* ==========================================
+   TEMPORARY SKILL DEMONSTRATIONS
+
+   Frontend preview only.
+   Backend upload will be connected next.
+========================================== */
+
+let skillDemonstrations = [];
+
+
+/* ==========================================
+   VIDEO PREVIEW
+========================================== */
+
+document
+.getElementById("skillVideo")
+.addEventListener(
+    "change",
+    function(event){
+
+        const file =
+            event.target.files[0];
+
+
+        const preview =
+            document.getElementById(
+                "videoPreview"
+            );
+
+
+        if(!file){
+
+            preview.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        const allowedTypes = [
+
+            "video/mp4",
+
+            "video/webm",
+
+            "video/quicktime"
+
+        ];
+
+
+        if(
+            !allowedTypes.includes(
+                file.type
+            )
+        ){
+
+            showError(
+                "Please select an MP4, WEBM or MOV video."
+            );
+
+            event.target.value = "";
+
+            preview.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        const maxFileSize =
+            50 * 1024 * 1024;
+
+
+        if(
+            file.size >
+            maxFileSize
+        ){
+
+            showError(
+                "Video size must be 50 MB or less."
+            );
+
+            event.target.value = "";
+
+            preview.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        hideMessages();
+
+
+        preview.src =
+            URL.createObjectURL(
+                file
+            );
+
+
+        preview.style.display =
+            "block";
+
+
+        const titleInput =
+            document.getElementById(
+                "demoTitle"
+            );
+
+
+        if(!titleInput.value.trim()){
+
+            titleInput.value =
+                file.name
+                .replace(/\.[^/.]+$/, "");
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   ADD DEMO TO TEMPORARY LIST
+
+   This does NOT upload to backend yet.
+========================================== */
+
+function addDemoToList(){
+
+    const videoInput =
+        document.getElementById(
+            "skillVideo"
+        );
+
+
+    const titleInput =
+        document.getElementById(
+            "demoTitle"
+        );
+
+
+    const file =
+        videoInput.files[0];
+
+
+    const title =
+        titleInput.value.trim();
+
+
+    if(!file){
+        return;
+    }
+
+
+    skillDemonstrations.push({
+
+        id:
+            Date.now(),
+
+        title:
+            title ||
+            file.name,
+
+        fileName:
+            file.name
+
+    });
+
+
+    renderDemoList();
+
+}
+
+
+/* ==========================================
+   RENDER DEMO LIST
+========================================== */
+
+function renderDemoList(){
+
+    const list =
+        document.getElementById(
+            "demoList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    skillDemonstrations
+    .forEach(function(demo){
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "demo-card";
+
+
+        card.innerHTML =
+
+            '<div class="demo-info">' +
+
+                '<div class="demo-name">' +
+
+                    escapeHtml(
+                        demo.title
+                    ) +
+
+                '</div>' +
+
+                '<div class="demo-status">' +
+
+                    'Ready to upload when backend is connected'
+
+                +
+
+                '</div>' +
+
+            '</div>' +
+
+            '<button ' +
+
+                'type="button" ' +
+
+                'class="remove-demo" ' +
+
+                'onclick="removeDemo(' +
+
+                    demo.id +
+
+                ')"' +
+
+            '>' +
+
+                'Remove'
+
+            +
+
+            '</button>';
+
+
+        list.appendChild(
+            card
+        );
+
+    });
+
+}
+
+
+/* ==========================================
+   REMOVE DEMO
+========================================== */
+
+function removeDemo(id){
+
+    skillDemonstrations =
+        skillDemonstrations.filter(
+            function(demo){
+
+                return demo.id !== id;
+
+            }
+        );
+
+
+    renderDemoList();
+
+}
+
+
+/* ==========================================
+   ESCAPE HTML
+========================================== */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
 
 
 /* ==========================================
@@ -351,33 +907,56 @@ const BACKEND_URL =
 function loadProfile(){
 
     const savedProfile =
-        localStorage.getItem("userProfile");
+        localStorage.getItem(
+            "userProfile"
+        );
+
 
     if(!savedProfile){
         return;
     }
 
+
     try{
 
         const profile =
-            JSON.parse(savedProfile);
+            JSON.parse(
+                savedProfile
+            );
 
-        document.getElementById("name").value =
+
+        document
+        .getElementById("name")
+        .value =
             profile.name || "";
 
-        document.getElementById("email").value =
+
+        document
+        .getElementById("email")
+        .value =
             profile.email || "";
 
-        document.getElementById("skill").value =
+
+        document
+        .getElementById("skill")
+        .value =
             profile.skill || "";
 
-        document.getElementById("learningSkill").value =
+
+        document
+        .getElementById("learningSkill")
+        .value =
             profile.learningSkill || "";
 
-        document.getElementById("bio").value =
+
+        document
+        .getElementById("bio")
+        .value =
             profile.bio || "";
 
-    }catch(error){
+
+    }
+    catch(error){
 
         console.error(
             "Profile load error:",
@@ -395,218 +974,284 @@ function loadProfile(){
 
 document
 .getElementById("profileForm")
-.addEventListener("submit", async function(event){
+.addEventListener(
+    "submit",
+    async function(event){
 
-    event.preventDefault();
-
-    const name =
-        document.getElementById("name")
-        .value
-        .trim();
-
-    const email =
-        document.getElementById("email")
-        .value
-        .trim();
-
-    const skill =
-        document.getElementById("skill")
-        .value
-        .trim();
-
-    const learningSkill =
-        document.getElementById("learningSkill")
-        .value
-        .trim();
-
-    const bio =
-        document.getElementById("bio")
-        .value
-        .trim();
+        event.preventDefault();
 
 
-    const savedProfile =
-        localStorage.getItem("userProfile");
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
 
 
-    if(!savedProfile){
-
-        showError(
-            "User profile not found. Please login again."
-        );
-
-        return;
-
-    }
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
 
 
-    let profile;
-
-    try{
-
-        profile =
-            JSON.parse(savedProfile);
-
-    }catch(error){
-
-        showError(
-            "Invalid profile data. Please login again."
-        );
-
-        return;
-
-    }
+        const skill =
+            document
+            .getElementById("skill")
+            .value
+            .trim();
 
 
-    const userId =
-        profile.id;
+        const learningSkill =
+            document
+            .getElementById("learningSkill")
+            .value
+            .trim();
 
 
-    if(!userId){
-
-        showError(
-            "User ID not found. Please logout and login again."
-        );
-
-        return;
-
-    }
+        const bio =
+            document
+            .getElementById("bio")
+            .value
+            .trim();
 
 
-    const saveButton =
-        document.getElementById("saveButton");
-
-
-    saveButton.disabled = true;
-
-    saveButton.textContent =
-        "Saving...";
-
-
-    hideMessages();
-
-
-    try{
-
-        const response =
-            await fetch(
-                BACKEND_URL +
-                "/api/users/" +
-                userId,
-                {
-                    method:"PUT",
-
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:JSON.stringify({
-
-                        name:name,
-
-                        email:email,
-
-                        skill:skill,
-
-                        learningSkill:
-                            learningSkill,
-
-                        bio:bio
-
-                    })
-
-                }
+        const savedProfile =
+            localStorage.getItem(
+                "userProfile"
             );
 
 
-        const result =
-            await response.json();
+        if(!savedProfile){
 
-
-        if(!response.ok){
-
-            throw new Error(
-                result.message ||
-                "Unable to update profile."
+            showError(
+                "User profile not found. Please login again."
             );
+
+            return;
 
         }
 
 
-        /* UPDATE LOCAL STORAGE */
+        let profile;
 
-        if(result.user){
 
-            localStorage.setItem(
-                "userProfile",
-                JSON.stringify({
+        try{
 
-                    id:
-                        result.user.id,
+            profile =
+                JSON.parse(
+                    savedProfile
+                );
 
-                    name:
-                        result.user.name,
+        }
+        catch(error){
 
-                    email:
-                        result.user.email,
-
-                    skill:
-                        result.user.skill,
-
-                    learningSkill:
-                        result.user.learningSkill,
-
-                    bio:
-                        result.user.bio
-
-                })
+            showError(
+                "Invalid profile data. Please login again."
             );
+
+            return;
 
         }
 
 
-        showSuccess();
+        const userId =
+            profile.id;
 
 
-        saveButton.textContent =
-            "✅ Profile Saved";
+        if(!userId){
+
+            showError(
+                "User ID not found. Please logout and login again."
+            );
+
+            return;
+
+        }
 
 
-        setTimeout(function(){
+        /* ADD SELECTED VIDEO TO UI LIST */
 
-            window.location.href =
-                "dashboard.html";
-
-        },1500);
-
-
-    }catch(error){
-
-        console.error(
-            "Profile update error:",
-            error
-        );
+        const selectedVideo =
+            document
+            .getElementById(
+                "skillVideo"
+            ).files[0];
 
 
-        showError(
-            "❌ " +
-            (
-                error.message ||
-                "Unable to connect to server."
-            )
-        );
+        if(selectedVideo){
+
+            addDemoToList();
+
+        }
+
+
+        const saveButton =
+            document.getElementById(
+                "saveButton"
+            );
 
 
         saveButton.disabled =
-            false;
+            true;
+
 
         saveButton.textContent =
-            "💾 Save Profile";
+            "Saving...";
+
+
+        hideMessages();
+
+
+        try{
+
+
+            /* CURRENT PROFILE API */
+
+            const response =
+                await fetch(
+
+                    BACKEND_URL +
+                    "/api/users/" +
+                    userId,
+
+                    {
+
+                        method:"PUT",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                        JSON.stringify({
+
+                            name:
+                                name,
+
+                            email:
+                                email,
+
+                            skill:
+                                skill,
+
+                            learningSkill:
+                                learningSkill,
+
+                            bio:
+                                bio
+
+                        })
+
+                    }
+
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if(!response.ok){
+
+                throw new Error(
+
+                    result.message ||
+
+                    "Unable to update profile."
+
+                );
+
+            }
+
+
+            /* UPDATE LOCAL STORAGE */
+
+            if(result.user){
+
+                localStorage.setItem(
+
+                    "userProfile",
+
+                    JSON.stringify({
+
+                        id:
+                            result.user.id,
+
+                        name:
+                            result.user.name,
+
+                        email:
+                            result.user.email,
+
+                        skill:
+                            result.user.skill,
+
+                        learningSkill:
+                            result.user.learningSkill,
+
+                        bio:
+                            result.user.bio
+
+                    })
+
+                );
+
+            }
+
+
+            showSuccess();
+
+
+            saveButton.textContent =
+                "✅ Profile Saved";
+
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                1500
+            );
+
+
+        }
+        catch(error){
+
+            console.error(
+                "Profile update error:",
+                error
+            );
+
+
+            showError(
+
+                "❌ " +
+
+                (
+                    error.message ||
+
+                    "Unable to connect to server."
+                )
+
+            );
+
+
+            saveButton.disabled =
+                false;
+
+
+            saveButton.textContent =
+                "💾 Save Profile";
+
+        }
 
     }
-
-});
+);
 
 
 /* ==========================================
@@ -619,6 +1264,7 @@ function showSuccess(){
         document.getElementById(
             "successMessage"
         );
+
 
     message.style.display =
         "block";
@@ -637,8 +1283,10 @@ function showError(text){
             "errorMessage"
         );
 
+
     message.textContent =
         text;
+
 
     message.style.display =
         "block";
@@ -646,27 +1294,40 @@ function showError(text){
 }
 
 
+/* ==========================================
+   HIDE MESSAGES
+========================================== */
+
 function hideMessages(){
 
-    document.getElementById(
+    document
+    .getElementById(
         "successMessage"
-    ).style.display =
+    )
+    .style.display =
         "none";
 
-    document.getElementById(
+
+    document
+    .getElementById(
         "errorMessage"
-    ).style.display =
+    )
+    .style.display =
         "none";
 
 }
 
 
-/* LOAD */
+/* ==========================================
+   INITIAL LOAD
+========================================== */
 
 loadProfile();
 
 </script>
 
+
 </body>
 
 </html>
+```
