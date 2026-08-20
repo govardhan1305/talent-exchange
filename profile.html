@@ -1,3 +1,14 @@
+Yes. Nee current `profile.html` lo Skill Demonstrations UI already undi, but it currently says **“Ready to upload when backend is connected”** and only adds videos to a temporary frontend list.  
+
+Below code connects it to the backend routes we added:
+
+* `POST /api/users/<user_id>/skill-videos`
+* `GET /api/users/<user_id>/skill-videos`
+* `GET /api/skill-videos/<video_id>/stream`
+* `DELETE /api/skill-videos/<video_id>`
+
+Replace your entire **`profile.html`** with this:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +42,11 @@ body{
 .navbar{
     min-height:72px;
     padding:12px 6%;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     background:rgba(10,10,20,0.78);
     border-bottom:1px solid rgba(255,255,255,0.1);
-
     backdrop-filter:blur(18px);
 }
 
@@ -50,10 +58,8 @@ body{
 .back{
     color:white;
     text-decoration:none;
-
     padding:10px 16px;
     border-radius:10px;
-
     background:rgba(255,255,255,0.08);
 }
 
@@ -71,7 +77,6 @@ body{
 .heading h1{
     font-size:40px;
     margin-bottom:10px;
-
     background:linear-gradient(90deg,white,#c49cff);
     -webkit-background-clip:text;
     color:transparent;
@@ -84,27 +89,20 @@ body{
 .profile-card{
     padding:30px;
     border-radius:24px;
-
     background:rgba(255,255,255,0.07);
     border:1px solid rgba(255,255,255,0.1);
-
     backdrop-filter:blur(18px);
 }
 
 .avatar{
     width:85px;
     height:85px;
-
     margin:0 auto 25px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
     font-size:38px;
-
     background:linear-gradient(135deg,#8066ff,#bd82ff);
 }
 
@@ -114,9 +112,7 @@ body{
 
 .form-group label{
     display:block;
-
     margin-bottom:8px;
-
     color:#ddd;
     font-size:14px;
 }
@@ -124,17 +120,12 @@ body{
 .form-group input,
 .form-group textarea{
     width:100%;
-
     padding:14px 15px;
-
     border-radius:12px;
     border:1px solid rgba(255,255,255,0.12);
-
     outline:none;
-
     background:rgba(255,255,255,0.08);
     color:white;
-
     font-size:15px;
 }
 
@@ -151,11 +142,8 @@ body{
 .demo-section{
     margin-top:35px;
     margin-bottom:25px;
-
     padding-top:25px;
-
-    border-top:
-        1px solid rgba(255,255,255,0.12);
+    border-top:1px solid rgba(255,255,255,0.12);
 }
 
 .demo-title{
@@ -165,33 +153,42 @@ body{
 
 .demo-description{
     color:#aaa;
-
     font-size:14px;
     line-height:1.5;
-
     margin-bottom:20px;
 }
 
 .demo-note{
     color:#888;
-
     font-size:12px;
     line-height:1.5;
-
     margin-top:8px;
 }
 
 .video-preview{
     display:none;
-
     width:100%;
-
     margin-top:15px;
-
     border-radius:14px;
+    border:1px solid rgba(255,255,255,0.12);
+}
 
-    border:
-        1px solid rgba(255,255,255,0.12);
+.upload-demo-btn{
+    width:100%;
+    padding:13px;
+    margin-top:5px;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    background:rgba(128,102,255,0.45);
+}
+
+.upload-demo-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
 }
 
 .demo-list{
@@ -199,80 +196,57 @@ body{
 }
 
 .demo-card{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    gap:15px;
-
     padding:15px;
-
-    margin-bottom:12px;
-
+    margin-bottom:14px;
     border-radius:14px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+}
 
-    background:
-        rgba(255,255,255,0.06);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
+.demo-video{
+    width:100%;
+    margin-top:12px;
+    border-radius:12px;
+    background:#000;
 }
 
 .demo-info{
-    min-width:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .demo-name{
-    font-size:14px;
+    font-size:15px;
     font-weight:bold;
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    word-break:break-word;
 }
 
 .demo-status{
     margin-top:5px;
-
     color:#aaa;
     font-size:12px;
 }
 
 .remove-demo{
     padding:8px 12px;
-
     border:none;
-
     border-radius:8px;
-
     color:#ffb3b3;
-
-    background:
-        rgba(255,70,70,0.12);
-
+    background:rgba(255,70,70,0.12);
     cursor:pointer;
 }
 
 .save-btn{
     width:100%;
     padding:15px;
-
     border:none;
     border-radius:13px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8066ff,
-            #bd82ff
-        );
-
+    background:linear-gradient(90deg,#8066ff,#bd82ff);
     color:white;
-
     font-size:16px;
     font-weight:bold;
-
     cursor:pointer;
 }
 
@@ -283,12 +257,9 @@ body{
 
 .message{
     display:none;
-
     margin-top:20px;
     padding:15px;
-
     text-align:center;
-
     border-radius:12px;
 }
 
@@ -331,9 +302,7 @@ body{
 
 </head>
 
-
 <body>
-
 
 <nav class="navbar">
 
@@ -341,25 +310,18 @@ body{
         ✨ Talent Exchange
     </div>
 
-    <a
-        href="dashboard.html"
-        class="back"
-    >
+    <a href="dashboard.html" class="back">
         ← Dashboard
     </a>
 
 </nav>
 
 
-
 <main class="container">
-
 
     <div class="heading">
 
-        <h1>
-            My Profile 👤
-        </h1>
+        <h1>My Profile 👤</h1>
 
         <p>
             Tell people about yourself, your skills and your work.
@@ -368,26 +330,19 @@ body{
     </div>
 
 
-
     <div class="profile-card">
-
 
         <div class="avatar">
             👤
         </div>
 
 
-
         <form id="profileForm">
 
 
-            <!-- FULL NAME -->
-
             <div class="form-group">
 
-                <label>
-                    Full Name
-                </label>
+                <label>Full Name</label>
 
                 <input
                     type="text"
@@ -399,14 +354,9 @@ body{
             </div>
 
 
-
-            <!-- EMAIL -->
-
             <div class="form-group">
 
-                <label>
-                    Email
-                </label>
+                <label>Email</label>
 
                 <input
                     type="email"
@@ -418,14 +368,9 @@ body{
             </div>
 
 
-
-            <!-- SKILL -->
-
             <div class="form-group">
 
-                <label>
-                    Skill You Offer
-                </label>
+                <label>Skill You Offer</label>
 
                 <input
                     type="text"
@@ -437,14 +382,9 @@ body{
             </div>
 
 
-
-            <!-- LEARNING SKILL -->
-
             <div class="form-group">
 
-                <label>
-                    Learning Skill
-                </label>
+                <label>Learning Skill</label>
 
                 <input
                     type="text"
@@ -455,14 +395,9 @@ body{
             </div>
 
 
-
-            <!-- BIO -->
-
             <div class="form-group">
 
-                <label>
-                    About You
-                </label>
+                <label>About You</label>
 
                 <textarea
                     id="bio"
@@ -470,7 +405,6 @@ body{
                 ></textarea>
 
             </div>
-
 
 
             <!-- SKILL DEMONSTRATIONS -->
@@ -486,11 +420,7 @@ body{
                     Upload short videos that demonstrate
                     your skills, projects or work.
 
-                    These videos help others understand
-                    what you can do.
-
                 </p>
-
 
 
                 <div class="form-group">
@@ -506,7 +436,6 @@ body{
                     >
 
                 </div>
-
 
 
                 <div class="form-group">
@@ -526,13 +455,11 @@ body{
                         Accepted formats:
                         MP4, WEBM and MOV.
 
-                        Keep videos short and relevant
-                        to the skill shown on your profile.
+                        Maximum video size: 50 MB.
 
                     </p>
 
                 </div>
-
 
 
                 <video
@@ -543,6 +470,14 @@ body{
                 </video>
 
 
+                <button
+                    type="button"
+                    class="upload-demo-btn"
+                    id="uploadVideoButton"
+                >
+                    🎥 Upload Skill Demonstration
+                </button>
+
 
                 <div
                     id="demoList"
@@ -550,12 +485,8 @@ body{
                 >
                 </div>
 
-
             </div>
 
-
-
-            <!-- SAVE PROFILE -->
 
             <button
                 type="submit"
@@ -565,18 +496,14 @@ body{
                 💾 Save Profile
             </button>
 
-
         </form>
-
 
 
         <div
             class="message success"
             id="successMessage"
         >
-            ✅ Profile updated successfully!
         </div>
-
 
 
         <div
@@ -585,12 +512,9 @@ body{
         >
         </div>
 
-
     </div>
 
-
 </main>
-
 
 
 <script>
@@ -601,13 +525,38 @@ const BACKEND_URL =
 
 
 /* ==========================================
-   TEMPORARY SKILL DEMONSTRATIONS
-
-   Frontend preview only.
-   Backend upload will be connected next.
+   GET CURRENT USER
 ========================================== */
 
-let skillDemonstrations = [];
+function getCurrentUser(){
+
+    const savedProfile =
+        localStorage.getItem(
+            "userProfile"
+        );
+
+
+    if(!savedProfile){
+
+        return null;
+
+    }
+
+
+    try{
+
+        return JSON.parse(
+            savedProfile
+        );
+
+    }
+    catch(error){
+
+        return null;
+
+    }
+
+}
 
 
 /* ==========================================
@@ -717,7 +666,10 @@ document
 
             titleInput.value =
                 file.name
-                .replace(/\.[^/.]+$/, "");
+                .replace(
+                    /\.[^/.]+$/,
+                    ""
+                );
 
         }
 
@@ -726,12 +678,41 @@ document
 
 
 /* ==========================================
-   ADD DEMO TO TEMPORARY LIST
-
-   This does NOT upload to backend yet.
+   UPLOAD SKILL VIDEO
 ========================================== */
 
-function addDemoToList(){
+document
+.getElementById("uploadVideoButton")
+.addEventListener(
+    "click",
+    uploadSkillVideo
+);
+
+
+async function uploadSkillVideo(){
+
+
+    const user =
+        getCurrentUser();
+
+
+    if(!user || !user.id){
+
+        showError(
+            "User not found. Please login again."
+        );
+
+        return;
+
+    }
+
+
+    const title =
+        document
+        .getElementById("demoTitle")
+        .value
+        .trim();
+
 
     const videoInput =
         document.getElementById(
@@ -739,50 +720,194 @@ function addDemoToList(){
         );
 
 
-    const titleInput =
-        document.getElementById(
-            "demoTitle"
-        );
-
-
-    const file =
+    const video =
         videoInput.files[0];
 
 
-    const title =
-        titleInput.value.trim();
+    if(!title){
 
+        showError(
+            "Please enter a demonstration title."
+        );
 
-    if(!file){
         return;
+
     }
 
 
-    skillDemonstrations.push({
+    if(!video){
 
-        id:
-            Date.now(),
+        showError(
+            "Please select a skill demonstration video."
+        );
 
-        title:
-            title ||
-            file.name,
+        return;
 
-        fileName:
-            file.name
-
-    });
+    }
 
 
-    renderDemoList();
+    const uploadButton =
+        document.getElementById(
+            "uploadVideoButton"
+        );
+
+
+    uploadButton.disabled =
+        true;
+
+
+    uploadButton.textContent =
+        "Uploading Video...";
+
+
+    hideMessages();
+
+
+    try{
+
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "title",
+            title
+        );
+
+
+        formData.append(
+            "video",
+            video
+        );
+
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/users/" +
+                user.id +
+                "/skill-videos",
+
+                {
+
+                    method:"POST",
+
+                    body:
+                        formData
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+
+                result.message ||
+
+                "Video upload failed."
+
+            );
+
+        }
+
+
+        showSuccess(
+            "✅ Skill demonstration uploaded successfully!"
+        );
+
+
+        document
+        .getElementById("demoTitle")
+        .value =
+            "";
+
+
+        videoInput.value =
+            "";
+
+
+        const preview =
+            document.getElementById(
+                "videoPreview"
+            );
+
+
+        preview.pause();
+
+        preview.removeAttribute(
+            "src"
+        );
+
+        preview.load();
+
+        preview.style.display =
+            "none";
+
+
+        await loadSkillVideos();
+
+
+    }
+    catch(error){
+
+        console.error(
+            "VIDEO UPLOAD ERROR:",
+            error
+        );
+
+
+        showError(
+
+            "❌ " +
+
+            (
+                error.message ||
+
+                "Unable to upload video."
+            )
+
+        );
+
+    }
+    finally{
+
+        uploadButton.disabled =
+            false;
+
+
+        uploadButton.textContent =
+            "🎥 Upload Skill Demonstration";
+
+    }
 
 }
 
 
 /* ==========================================
-   RENDER DEMO LIST
+   LOAD SKILL VIDEOS
 ========================================== */
 
-function renderDemoList(){
+async function loadSkillVideos(){
+
+
+    const user =
+        getCurrentUser();
+
+
+    if(!user || !user.id){
+
+        return;
+
+    }
+
 
     const list =
         document.getElementById(
@@ -790,91 +915,300 @@ function renderDemoList(){
         );
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+        '<div class="demo-status">Loading skill demonstrations...</div>';
 
 
-    skillDemonstrations
-    .forEach(function(demo){
+    try{
 
-        const card =
-            document.createElement(
-                "div"
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/users/" +
+                user.id +
+                "/skill-videos"
+
             );
 
 
-        card.className =
-            "demo-card";
+        const result =
+            await response.json();
 
 
-        card.innerHTML =
+        if(!response.ok){
 
-            '<div class="demo-info">' +
+            throw new Error(
 
-                '<div class="demo-name">' +
+                result.message ||
 
-                    escapeHtml(
-                        demo.title
-                    ) +
+                "Unable to load videos."
 
-                '</div>' +
+            );
 
-                '<div class="demo-status">' +
-
-                    'Ready to upload when backend is connected'
-
-                +
-
-                '</div>' +
-
-            '</div>' +
-
-            '<button ' +
-
-                'type="button" ' +
-
-                'class="remove-demo" ' +
-
-                'onclick="removeDemo(' +
-
-                    demo.id +
-
-                ')"' +
-
-            '>' +
-
-                'Remove'
-
-            +
-
-            '</button>';
+        }
 
 
-        list.appendChild(
-            card
+        const videos =
+            result.videos || [];
+
+
+        renderSkillVideos(
+            videos
         );
 
-    });
+
+    }
+    catch(error){
+
+        console.error(
+            "LOAD VIDEOS ERROR:",
+            error
+        );
+
+
+        list.innerHTML =
+            '<div class="demo-status">Unable to load skill demonstrations.</div>';
+
+    }
 
 }
 
 
 /* ==========================================
-   REMOVE DEMO
+   RENDER SKILL VIDEOS
 ========================================== */
 
-function removeDemo(id){
+function renderSkillVideos(videos){
 
-    skillDemonstrations =
-        skillDemonstrations.filter(
-            function(demo){
 
-                return demo.id !== id;
-
-            }
+    const list =
+        document.getElementById(
+            "demoList"
         );
 
 
-    renderDemoList();
+    list.innerHTML =
+        "";
+
+
+    if(!videos.length){
+
+        list.innerHTML =
+            '<div class="demo-status">No skill demonstrations uploaded yet.</div>';
+
+        return;
+
+    }
+
+
+    videos.forEach(
+        function(video){
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "demo-card";
+
+
+            const safeTitle =
+                escapeHtml(
+                    video.title
+                );
+
+
+            const streamUrl =
+
+                BACKEND_URL +
+
+                "/api/skill-videos/" +
+
+                video.id +
+
+                "/stream";
+
+
+            card.innerHTML =
+
+                '<div class="demo-info">' +
+
+                    '<div>' +
+
+                        '<div class="demo-name">' +
+
+                            safeTitle +
+
+                        '</div>' +
+
+                        '<div class="demo-status">' +
+
+                            'Uploaded skill demonstration'
+
+                        +
+
+                        '</div>' +
+
+                    '</div>' +
+
+                    '<button ' +
+
+                        'type="button" ' +
+
+                        'class="remove-demo" ' +
+
+                        'onclick="deleteSkillVideo(' +
+
+                            video.id +
+
+                        ')"' +
+
+                    '>' +
+
+                        'Delete' +
+
+                    '</button>' +
+
+                '</div>' +
+
+                '<video ' +
+
+                    'class="demo-video" ' +
+
+                    'controls ' +
+
+                    'preload="metadata"' +
+
+                '>' +
+
+                    '<source ' +
+
+                        'src="' +
+
+                        streamUrl +
+
+                        '" ' +
+
+                        'type="' +
+
+                        escapeHtml(
+                            video.file_type ||
+                            "video/mp4"
+                        ) +
+
+                        '"' +
+
+                    '>' +
+
+                    'Your browser does not support video playback.' +
+
+                '</video>';
+
+
+            list.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   DELETE SKILL VIDEO
+========================================== */
+
+async function deleteSkillVideo(videoId){
+
+
+    const confirmed =
+        confirm(
+            "Delete this skill demonstration?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    hideMessages();
+
+
+    try{
+
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/api/skill-videos/" +
+                videoId,
+
+                {
+
+                    method:"DELETE"
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+
+                result.message ||
+
+                "Unable to delete video."
+
+            );
+
+        }
+
+
+        showSuccess(
+            "🗑️ Skill demonstration deleted."
+        );
+
+
+        await loadSkillVideos();
+
+
+    }
+    catch(error){
+
+        console.error(
+            "DELETE VIDEO ERROR:",
+            error
+        );
+
+
+        showError(
+
+            "❌ " +
+
+            (
+                error.message ||
+
+                "Unable to delete video."
+            )
+
+        );
+
+    }
 
 }
 
@@ -892,7 +1226,7 @@ function escapeHtml(text){
 
 
     div.textContent =
-        text;
+        text || "";
 
 
     return div.innerHTML;
@@ -906,64 +1240,50 @@ function escapeHtml(text){
 
 function loadProfile(){
 
-    const savedProfile =
-        localStorage.getItem(
-            "userProfile"
+
+    const profile =
+        getCurrentUser();
+
+
+    if(!profile){
+
+        showError(
+            "Profile not found. Please login again."
         );
 
-
-    if(!savedProfile){
         return;
-    }
-
-
-    try{
-
-        const profile =
-            JSON.parse(
-                savedProfile
-            );
-
-
-        document
-        .getElementById("name")
-        .value =
-            profile.name || "";
-
-
-        document
-        .getElementById("email")
-        .value =
-            profile.email || "";
-
-
-        document
-        .getElementById("skill")
-        .value =
-            profile.skill || "";
-
-
-        document
-        .getElementById("learningSkill")
-        .value =
-            profile.learningSkill || "";
-
-
-        document
-        .getElementById("bio")
-        .value =
-            profile.bio || "";
-
 
     }
-    catch(error){
 
-        console.error(
-            "Profile load error:",
-            error
-        );
 
-    }
+    document
+    .getElementById("name")
+    .value =
+        profile.name || "";
+
+
+    document
+    .getElementById("email")
+    .value =
+        profile.email || "";
+
+
+    document
+    .getElementById("skill")
+    .value =
+        profile.skill || "";
+
+
+    document
+    .getElementById("learningSkill")
+    .value =
+        profile.learningSkill || "";
+
+
+    document
+    .getElementById("bio")
+    .value =
+        profile.bio || "";
 
 }
 
@@ -979,6 +1299,27 @@ document
     async function(event){
 
         event.preventDefault();
+
+
+        const profile =
+            getCurrentUser();
+
+
+        if(!profile || !profile.id){
+
+            showError(
+                "User ID not found. Please login again."
+            );
+
+            return;
+
+        }
+
+
+        const saveButton =
+            document.getElementById(
+                "saveButton"
+            );
 
 
         const name =
@@ -1016,82 +1357,6 @@ document
             .trim();
 
 
-        const savedProfile =
-            localStorage.getItem(
-                "userProfile"
-            );
-
-
-        if(!savedProfile){
-
-            showError(
-                "User profile not found. Please login again."
-            );
-
-            return;
-
-        }
-
-
-        let profile;
-
-
-        try{
-
-            profile =
-                JSON.parse(
-                    savedProfile
-                );
-
-        }
-        catch(error){
-
-            showError(
-                "Invalid profile data. Please login again."
-            );
-
-            return;
-
-        }
-
-
-        const userId =
-            profile.id;
-
-
-        if(!userId){
-
-            showError(
-                "User ID not found. Please logout and login again."
-            );
-
-            return;
-
-        }
-
-
-        /* ADD SELECTED VIDEO TO UI LIST */
-
-        const selectedVideo =
-            document
-            .getElementById(
-                "skillVideo"
-            ).files[0];
-
-
-        if(selectedVideo){
-
-            addDemoToList();
-
-        }
-
-
-        const saveButton =
-            document.getElementById(
-                "saveButton"
-            );
-
-
         saveButton.disabled =
             true;
 
@@ -1106,41 +1371,37 @@ document
         try{
 
 
-            /* CURRENT PROFILE API */
-
             const response =
                 await fetch(
 
                     BACKEND_URL +
                     "/api/users/" +
-                    userId,
+                    profile.id,
 
                     {
 
                         method:"PUT",
 
                         headers:{
+
                             "Content-Type":
                                 "application/json"
+
                         },
 
                         body:
                         JSON.stringify({
 
-                            name:
-                                name,
+                            name:name,
 
-                            email:
-                                email,
+                            email:email,
 
-                            skill:
-                                skill,
+                            skill:skill,
 
                             learningSkill:
                                 learningSkill,
 
-                            bio:
-                                bio
+                            bio:bio
 
                         })
 
@@ -1165,8 +1426,6 @@ document
 
             }
 
-
-            /* UPDATE LOCAL STORAGE */
 
             if(result.user){
 
@@ -1199,31 +1458,48 @@ document
                 );
 
             }
+            else{
+
+                localStorage.setItem(
+
+                    "userProfile",
+
+                    JSON.stringify({
+
+                        ...profile,
+
+                        name:name,
+
+                        email:email,
+
+                        skill:skill,
+
+                        learningSkill:
+                            learningSkill,
+
+                        bio:bio
+
+                    })
+
+                );
+
+            }
 
 
-            showSuccess();
+            showSuccess(
+                "✅ Profile updated successfully!"
+            );
 
 
             saveButton.textContent =
                 "✅ Profile Saved";
 
 
-            setTimeout(
-                function(){
-
-                    window.location.href =
-                        "dashboard.html";
-
-                },
-                1500
-            );
-
-
         }
         catch(error){
 
             console.error(
-                "Profile update error:",
+                "PROFILE UPDATE ERROR:",
                 error
             );
 
@@ -1235,18 +1511,27 @@ document
                 (
                     error.message ||
 
-                    "Unable to connect to server."
+                    "Unable to update profile."
                 )
 
             );
 
+        }
+        finally{
 
             saveButton.disabled =
                 false;
 
 
-            saveButton.textContent =
-                "💾 Save Profile";
+            setTimeout(
+                function(){
+
+                    saveButton.textContent =
+                        "💾 Save Profile";
+
+                },
+                1500
+            );
 
         }
 
@@ -1255,10 +1540,10 @@ document
 
 
 /* ==========================================
-   SUCCESS
+   SUCCESS MESSAGE
 ========================================== */
 
-function showSuccess(){
+function showSuccess(text){
 
     const message =
         document.getElementById(
@@ -1266,14 +1551,26 @@ function showSuccess(){
         );
 
 
+    message.textContent =
+        text;
+
+
     message.style.display =
         "block";
+
+
+    document
+    .getElementById(
+        "errorMessage"
+    )
+    .style.display =
+        "none";
 
 }
 
 
 /* ==========================================
-   ERROR
+   ERROR MESSAGE
 ========================================== */
 
 function showError(text){
@@ -1290,6 +1587,14 @@ function showError(text){
 
     message.style.display =
         "block";
+
+
+    document
+    .getElementById(
+        "successMessage"
+    )
+    .style.display =
+        "none";
 
 }
 
@@ -1324,8 +1629,10 @@ function hideMessages(){
 
 loadProfile();
 
-</script>
+loadSkillVideos();
 
+
+</script>
 
 </body>
 
