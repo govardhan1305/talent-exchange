@@ -1,15 +1,4 @@
-Yes. Nee current `profile.html` lo Skill Demonstrations UI already undi, but it currently says **“Ready to upload when backend is connected”** and only adds videos to a temporary frontend list.  
 
-Below code connects it to the backend routes we added:
-
-* `POST /api/users/<user_id>/skill-videos`
-* `GET /api/users/<user_id>/skill-videos`
-* `GET /api/skill-videos/<video_id>/stream`
-* `DELETE /api/skill-videos/<video_id>`
-
-Replace your entire **`profile.html`** with this:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1637,4 +1626,4 @@ loadSkillVideos();
 </body>
 
 </html>
-```
+
